@@ -5,8 +5,8 @@
     let 
         opspark = window.opspark,
         animations = {},
-        spawnX = 30,
-        spawnY = 0;
+        spawnX = 20,
+        spawnY = 500;
         
     opspark.createPlayer = function (game) {
         let 
@@ -82,8 +82,8 @@
         
         function createDieState(name) {
             let 
-                xOffset = 8,
-                yOffset = 102,
+                xOffset = 1,
+                yOffset = 300,
                 state = createState(name);
                 state.stop = state.duck = state.fire = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
@@ -122,8 +122,8 @@
         
         function createFlyingJumpState(name) {
             let 
-                xOffset = 17,
-                yOffset = 9,
+                xOffset = 5,
+                yOffset = 5,
                 state = createState(name);
                 state.fire = state.duck = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
@@ -132,12 +132,12 @@
                 asset.body.bounce.y = 0;
                 game.add.tween(asset.body).to( { y: asset.body.y -100 }, 1000, Phaser.Easing.Linear.None, true);
 
-                asset.body.velocity.x = 200 * _direction;
+                asset.body.velocity.x = 100 * _direction;
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
             };
             state.exit = function() {
-                asset.body.bounce.y = 0.4;
+                asset.body.bounce.y = 0.2;
                 asset.x -= xOffset * _direction;
                 asset.y -= yOffset;
             };
@@ -216,23 +216,23 @@
             let 
                 flyingJump = animations.flyingJump,
                 // todo : fix magic number using mid, you'll have to find it by getting the length of the range of frames //
-                mid = Math.floor(flyingJump.frameTotal / 2),
+                mid = Math.floor(flyingJump.frameTotal / 18.75),
                 origYOffset = asset.body.offset.y;
                 console.log(`total frames: ${flyingJump.frameTotal}`);
                 console.log(`origYOffset : ${origYOffset}`);
             
-            asset.body.offset.x += 10 * _direction;
-            asset.body.offset.y -= 30;
-            asset.body.y -= 22;
+            asset.body.offset.x += 25 * _direction;
+            asset.body.offset.y -= 40;
+            asset.body.y -= 40;
             let onUpdate = function (anim, frame) {
                 console.log(frame.index);
-                if (frame.index < 52) {
+                if (frame.index < 20) {
                     console.log(`up y offset: ${asset.body.offset.y}`);
-                    asset.body.offset.y -= 1;
+                    asset.body.offset.y -= 10;
                 } else {
                     console.log(`down y offset: ${asset.body.offset.y}`);
-                    asset.body.offset.x -= 1 * _direction;
-                    asset.body.offset.y += 2;
+                    asset.body.offset.x -= 0.4 * _direction;
+                    asset.body.offset.y += 0.8;
                 }
             };
             
@@ -243,7 +243,7 @@
             setState(_flyingJump);
             asset.animations.currentAnim.onComplete.addOnce(function onComplete() { 
                 console.log('jump complete');
-                asset.body.offset.y += 24;
+                asset.body.offset.y += 5;
                 flyingJump.onUpdate.remove(onUpdate, this);
                 stop();
             }, this);
@@ -319,8 +319,8 @@
         game.physics.arcade.enable(asset);
     
         //  Player physics properties. Give the little guy a slight bounce.
-        asset.body.bounce.y = 0.4;
-        asset.body.gravity.y = 900;
+        asset.body.bounce.y = 0.2;
+        asset.body.gravity.y = 1150;
         // {"w":69,"h":107}
         asset.body.setSize(22, 95, 0, -3);
         asset.body.collideWorldBounds = true;
