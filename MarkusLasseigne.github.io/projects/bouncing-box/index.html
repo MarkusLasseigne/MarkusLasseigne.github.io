@@ -11,28 +11,16 @@
 	<style>
 		/* TODO 1 */
 		.box {
-            background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-color: clear;
-            display: block;
-            position: absolute;
-            border-radius: 100%;
-            width: 100px;
-            height: 100px;
-            top: 100px;
-            left: 0px;
-            font-size: 300%;
-            text-align: center;
-            user-select: none;
+			width: 70px;
+			height: 70px;
+			background-color: teal;
+			font-size: 300%;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 100px;
+			left: 0px;
 		}
-        .board {
-            size: native;
-            display: auto;
-            background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-            user-select: none;
-        }
-        
 	</style>
 
 </head>
@@ -48,72 +36,43 @@
 
 			// jQuery stuff setup for you
 			var box = jQuery('.box');
-			var boardWidth = jQuery('.board').width() - 92;
-			var boardHeight = jQuery('.board').height() + 872;
+			var boardWidth = jQuery('.board').width();
 	
 			// TODO 2 - Variable declarations 
-            var position;
-            var positionY;
-            var points;
-            var speed;
-            var direction;
-            var directionY;
+            var position;       // reference for the x-coordinate of our box
+            var points;       // reference for the x-coordinate of our box
+            var speed;          // reference for how fast the box moves
+            var direction      // reference for the direction the box is moving: 1 means right, -1 means left
             
             position = 0;
-            positionY = 0;
             points = 0;
-            speed = 5;
+            speed = 10;
             direction = 1;
-            directionY = 1;
             
-            box.css('left', position);
-            box.css('top', positionY);
-            box.text(points);
+            box.css('left', position);      // moves the box to the x-coordinate of <position> 
+            box.text(points);               // changes the text of the box to display the value of <points>
 			
 			function update() {
 				// TODO 3 / 6 / 7 / 8
-				 position += speed * direction;
-				 positionY += speed * directionY;
-                 console.log("X position: " + position);
-                 console.log("Y position: " + positionY);
-                 if(position > boardWidth) {
-                    console.log("Right Wall Hit");
-                    direction = -1;
-                    console.log(direction);
-                 }
-                if(position < 5){
-                    console.log("Left Wall Hit");
-                    direction = +1;
-                    console.log(direction);
-                 }
-                if(positionY < 4){
-                    console.log("Top Wall Hit");
-                    directionY = +1;
-                    console.log(directionY);
-                 }
-                if(positionY > boardHeight){
-                    console.log("Bottom Wall Hit");
-                    directionY = -1;
-                    console.log(directionY);
-                 }
-                box.css('left', position);
-                box.css('top', positionY);
-            }
+				 position += speed;    // increment position by speed on every update
+                 console.log("new position: " + position);
+                 box.css('left', position);      // set the 'left' CSS property of the box to the new value of position
+			};
+
+
+			
 			function handleBoxClick() {
 				// TODO 4 / 5
-                var randPosX = Math.random(5) * 1600;
-				var randPosY = Math.random(5) * 700;
-				var directX = Math.random() < 0.5 ? -1 : 1;
-				var directY = Math.random() < 0.5 ? -1 : 1;
-				 points += 1;
-				 box.text(points);
-				 direction = directX;
-				 directionY = directY;
-				 position = randPosX;
-				 positionY = randPosY;
-                 speed += 1;
-			}
-			var interval = setInterval(update, 16);
+				 points += 1;           // increase the point total
+				 box.text(points);      // update the new points total displayed by the box
+				 position = 0;         // reset the position of the box to 0
+                 speed += 3;    // increase the speed of the box on every click
+			};
+
+
+			//this executes the update function code every 50 milliseconds
+			setInterval(update, 50);
+			// this executes the handleBoxClick function code every time the box is clicked on
 			box.on('click', handleBoxClick);
 		})();
 	</script>
