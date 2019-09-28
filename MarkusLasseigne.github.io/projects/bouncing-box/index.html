@@ -1,106 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Bouncing Box</title>
-	<script src="jquery.min.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title>Bouncing Box</title>
+		<script src="jquery.min.js"></script>
 
 <!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 	<!-- BEGIN CSS -->
-	<style>
-	/* TODO 1 */
-	       .box {
-            	background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
-            	background-repeat: no-repeat;
-            	background-size: 100% 100%;
-            	background-color: clear;
-            	display: block;
-            	position: absolute;
-            	border-radius: 100%;
-            	width: 100px;
-            	height: 100px;
-            	top: 100px;
-            	left: 0px;
-            	font-size: 300%;
-            	text-align: center;
-            	user-select: none;
-			}
+		<style>
+		/* TODO 1 */
+		.box {
+            		background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
+            		background-repeat: no-repeat;
+            		background-size: 100% 100%;
+            		background-color: clear;
+           		display: block;
+            		position: absolute;
+            		border-radius: 100%;
+            		width: 100px;
+            		height: 100px;
+			top: 100px;
+            		left: 0px;
+            		font-size: 300%;
+            		text-align: center;
+            		user-select: none;
+		}
         	.board {
-            	size: native;
-            	display: auto;
-            	background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-            	user-select: none;
+            		size: native;
+            		display: auto;
+            		background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+            		user-select: none;
         	}
-	</style>
+        
+		</style>
 
-</head>
-<body class="board">
+	</head>
+	<body class="board">
 	<!-- HTML for the box -->
-	<div class="box">?</div>
+		<div class="box">?</div>
 
 	<!-- BEGIN JAVASCRIPT -->
-	<script>
-		(function(){
-			'use strict'
-			/* global jQuery */
+		<script>
+			(function(){
+				'use strict'
+				/* global jQuery */
 
-			// jQuery stuff setup for you
-			var box = jQuery('.box');
-			var boardWidth = jQuery('.board').width() - 92;
-			var boardHeight = jQuery('.board').height() + 872;
+				// jQuery stuff setup for you
+				var box = jQuery('.box');
+				var boardWidth = jQuery('.board').width() - 92;
+				var boardHeight = jQuery('.board').height() + 872;
 	
 			// TODO 2 - Variable declarations 
-            var position;
-            var positionY;
-            var points;
-            var speed;
-            var direction;
-            var directionY;
+       				var position;
+            			var positionY;
+            			var points;
+            			var speed;
+            			var direction;
+            			var directionY;
             
-            position = 0;
-            positionY = 0;
-            points = 0;
-            speed = 5;
-            direction = 1;
-            directionY = 1;
+            			position = 0;
+            			positionY = 0;
+            			points = 0;
+            			speed = 5;
+            			direction = 1;
+            			directionY = 1;
             
-            box.css('left', position);
-            box.css('top', positionY);
-            box.text(points);
+            			box.css('left', position);
+            			box.css('top', positionY);
+            			box.text(points);
 			
-			function update() {
+				function update() {
 				// TODO 3 / 6 / 7 / 8
-				 position += speed * direction;
-				 positionY += speed * directionY;
-                 console.log("X position: " + position);
-                 console.log("Y position: " + positionY);
-				if(position > boardWidth) {
-                    console.log("Right Wall Hit");
-                    direction = -1;
-                    console.log(direction);
-                 }
-                if(position < 5){
-                    console.log("Left Wall Hit");
-                    direction = +1;
-                    console.log(direction);
-                 }
-                if(positionY < 4){
-                    console.log("Top Wall Hit");
-                    directionY = +1;
-                    console.log(directionY);
-                 }
-                if(positionY > boardHeight){
-                    console.log("Bottom Wall Hit");
-                    directionY = -1;
-                    console.log(directionY);
-                 }
-                box.css('left', position);
-                box.css('top', positionY);
-            }
+				 	position += speed * direction;
+				 	positionY += speed * directionY;
+                 		console.log("X position: " + position);
+                 		console.log("Y position: " + positionY);
+                 		if(position > boardWidth) {
+                    		console.log("Right Wall Hit");
+                    		direction = -1;
+                    		console.log(direction);
+                 		}
+                		if(position < 5){
+                    		console.log("Left Wall Hit");
+                    		direction = +1;
+                    		console.log(direction);
+                 		}
+                		if(positionY < 4){
+                    		console.log("Top Wall Hit");
+                    		directionY = +1;
+                    		console.log(directionY);
+                 		}
+                		if(positionY > boardHeight){
+                    		console.log("Bottom Wall Hit");
+                    		directionY = -1;
+                    		console.log(directionY);
+                 		}
+                		box.css('left', position);
+                		box.css('top', positionY);
+            		}
 			function handleBoxClick() {
 				// TODO 4 / 5
-                var randPosX = Math.random(5) * 1600;
+                		var randPosX = Math.random(5) * 1600;
 				var randPosY = Math.random(5) * 700;
 				var directX = Math.random() < 0.5 ? -1 : 1;
 				var directY = Math.random() < 0.5 ? -1 : 1;
@@ -110,11 +111,11 @@
 				 directionY = directY;
 				 position = randPosX;
 				 positionY = randPosY;
-				 speed += 1;
+                 		 speed += 1;
 			}
 			var interval = setInterval(update, 16);
 			box.on('click', handleBoxClick);
-		})();
-	</script>
-</body>
+			})();
+		</script>
+	</body>
 </html>
