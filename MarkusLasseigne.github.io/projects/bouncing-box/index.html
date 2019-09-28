@@ -75,7 +75,7 @@
 				 positionY += speed * directionY;
                  console.log("X position: " + position);
                  console.log("Y position: " + positionY);
-                 if(position > boardWidth) {
+				if(position > boardWidth) {
                     console.log("Right Wall Hit");
                     direction = -1;
                     console.log(direction);
@@ -110,7 +110,7 @@
 				 directionY = directY;
 				 position = randPosX;
 				 positionY = randPosY;
-                 speed += 1;
+				 speed += 1;
 			}
 			var interval = setInterval(update, 16);
 			box.on('click', handleBoxClick);
