@@ -1,160 +1,160 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Bouncing Box</title>
-		<script src="jquery.min.js"></script>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
 
-	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
-		<!-- BEGIN CSS -->
-		<style>
-			.box {
-            	background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
-            	background-repeat: no-repeat;
-            	background-size: 100% 100%;
-            	background-color: clear;
-            	display: block;
-            	position: absolute;
-            	border-radius: 100%;
-            	width: 100px;
-            	height: 100px;
-            	top: 200px;
-            	left: 0px;
-            	font-size: 300%;
-            	color: black;
-            	text-align: center;
-            	user-select: none;
+	<!-- BEGIN CSS -->
+	<style>
+		.box {
+            background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-color: clear;
+            display: block;
+            position: absolute;
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 0px;
+            font-size: 300%;
+            color: black;
+            text-align: center;
+            user-select: none;
+		}
+        .board {
+            height: 870px;
+            width: 1810px;
+            background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+            user-select: none;
+        }
+
+	</style>
+
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<div class="box">?</div>
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script>
+		(function(){
+			'use strict'
+			/* global jQuery */
+
+			// jQuery stuff setup for you
+			var box = jQuery('.box');
+			var board = jQuery('.board');
+			var boardWidth = jQuery('.board').width();
+			var boardHeight = jQuery('.board').height();
+			board.css = board;
+
+			// Variable declarations 
+            var position;
+            position = 50;
+
+            var positionY;
+            positionY = 50;
+
+            var direction;
+            direction = 1;
+
+            var directionY;
+            directionY = 1;
+
+            var speed;
+            speed = 4;
+
+            var points;
+            if (points < 0) points = 0;
+            points = 0;
+
+            var miss;
+            if (miss < 0) miss = 0;
+            miss = 0;
+
+            box.css('left', position);
+            box.css('top', positionY);
+            box.text(points);
+
+			function update() {
+				 position += speed * direction;
+				 positionY += speed * directionY;
+				 console.log(speed);
+                 console.log("X position: " + position);
+                 console.log("Y position: " + positionY);
+                 if(position > boardWidth) {
+                    direction = -0.8;
+                    console.log("Right Wall Hit");
+                    console.log("X" + direction);
+                 }
+                if(position < 5){
+                    direction = +0.8;
+                    console.log("Left Wall Hit");
+                    console.log("X+" + direction);
+                 }
+                if(positionY < 4){
+                    directionY = +0.8;
+                    console.log("Top Wall Hit");
+                    console.log("Y+" + directionY);
+                 }
+                if(positionY > boardHeight){
+                    directionY = -0.8;
+                    console.log("Bottom Wall Hit");
+                    console.log("Y" + directionY);
+                 }
+                box.css('left', position);
+                box.css('top', positionY);
+            }
+			function handleBoxClicked() {
+				var directX = Math.random() < 0.5 ? -1 : 1;
+				var directY = Math.random() < 0.5 ? -1 : 1;				 
+                 if (points < 0) points = 0;
+                 points += 2;
+                 miss -= 2;
+                 if (miss < 0) miss = 0;
+                 box.text(points);
+                 console.log(points + " Got");
+                 if (speed <= 0) speed = 1.5;
+                 speed += 2;
+                 if (speed <= 0) speed = 1.5;
+				 direction = directX;
+				 directionY = directY;
 			}
-        	.board {
-            	height: 870px;
-            	width: 1810px;
-            	background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-            	user-select: none;
-        	}
+			function handleBoxMiss(){
+			    if (miss < 0) miss = 0;
+			    miss += 1;
+			    points -= 1;
+			    if (points < 0) points = 0;
+			    if (speed <= 0) speed = 1.5;
+			    speed -= 1.5;
+			    if (speed <= 0) speed = 1.5;
+			    console.log(miss + ' missed');
+			    box.text(points);
+			    if(points >= 10){
+			        alert("Congrats You Won!");
+			        clearInterval(interval);
+			        points = 11;
+			        miss -= -5;
+			    } else if(miss >= 15){
+			        alert("Refresh to try again.");
+			        clearInterval(interval);
+                    points -= 4;
+			        miss = 20;
+			    }
+			}
 
-		</style>
+			var interval = setInterval(update, 16);
 
-	</head>
-	<body class="board">
-		<!-- HTML for the box -->
-		<div class="box">?</div>
-
-		<!-- BEGIN JAVASCRIPT -->
-		<script>
-			(function(){
-				'use strict'
-				/* global jQuery */
-
-				// jQuery stuff setup for you
-				var box = jQuery('.box');
-				var board = jQuery('.board');
-				var boardWidth = jQuery('.board').width();
-				var boardHeight = jQuery('.board').height();
-				board.css = board;
-
-				// Variable declarations 
-            	var position;
-            	position = 50;
-
-	            var positionY;
-	            positionY = 50;
-
-	            var direction;
-	            direction = 1;
-
-	            var directionY;
-	            directionY = 1;
-
-	            var speed;
-	            speed = 4;
-
-	            var points;
-	            if (points < 0) points = 0;
-	            points = 0;
-
-	            var miss;
-	            if (miss < 0) miss = 0;
-	            miss = 0;
-
-	            box.css('left', position);
-	            box.css('top', positionY);
-	            box.text(points);
-
-				function update() {
-					 position += speed * direction;
-					 positionY += speed * directionY;
-					 console.log(speed);
-	                 console.log("X position: " + position);
-	                 console.log("Y position: " + positionY);
-	                 if(position > boardWidth) {
-	                    direction = -0.8;
-	                    console.log("Right Wall Hit");
-	                    console.log("X" + direction);
-	                }
-	                if(position < 5){
-	                    direction = +0.8;
-	                    console.log("Left Wall Hit");
-	                    console.log("X+" + direction);
-	                }
-	                if(positionY < 4){
-	                    directionY = +0.8;
-	                    console.log("Top Wall Hit");
-	                    console.log("Y+" + directionY);
-	                }
-					if(positionY > boardHeight){
-   	                 directionY = -0.8;
-  	                 console.log("Bottom Wall Hit");
-   	                 console.log("Y" + directionY);
-					}
-                	box.css('left', position);
-                	box.css('top', positionY);
-            	}
-				function handleBoxClicked() {
-					var directX = Math.random() < 0.8 ? -1 : 1;
-					var directY = Math.random() < 0.8 ? -1 : 1;				 
-            	     if (points < 0) points = 0;
-            	     points += 2;
-            	     miss -= 2;
-            	     if (miss < 0) miss = 0;
-            	     box.text(points);
-            	     console.log(points + " Got");
-            	     if (speed <= 0) speed = 1.5;
-            	     speed += 2.5;
-            	     if (speed <= 0) speed = 1.5;
-					 direction = directX;
-					 directionY = directY;
-				}
-				function handleBoxMiss(){
-				    if (miss < 0) miss = 0;
-				    miss += 1;
-				    points -= 1;
-				    if (points < 0) points = 0;
-				    if (speed <= 0) speed = 1.5;
-				    speed -= 1.5;
-				    if (speed <= 0) speed = 1.5;
-				    console.log(miss + ' missed');
-				    box.text(points);
-				    if(points >= 10){
-				        alert("Congrats You Won!");
-				        clearInterval(interval);
-				        points = 11;
-				        miss -= -5;
-				    } else if(miss >= 15){
-				        alert("Refresh to try again.");
-				        clearInterval(interval);
-        	            points -= 4;
-				        miss = 20;
-				    }
-				}
-
-				var interval = setInterval(update, 16);
-
-				box.click(handleBoxClicked);
-				box.dblclick(handleBoxClicked);
-				board.click(handleBoxMiss);
+			box.click(handleBoxClicked);
+			box.dblclick(handleBoxClicked);
+			board.click(handleBoxMiss);
 			
-			})();
-		</script>
-	</body>
+		})();
+	</script>
+</body>
 </html>
