@@ -6,57 +6,30 @@
     let platform = window.opspark.platform;
     
     /**
-     * init: This function initializes the platforms for the level.
-     * 
-     * GOAL: Add as many platforms necessary to make your level challenging.
-     * 
-     * Use the platform.create() method to create platforms for the level. 
-     * 
-     * platform.create() takes these arguments:
-     *      
+     * Platform code example:
      *      platform.create(x, y, scaleX, scaleY);
-     * 
-     *      x: The x coordineate for the platform.
-     *      y: The y coordineate for the platform.
-     *      scaleX: OPTIONAL The scale factor on the x-axis, this value will 
-     *              stretch the platform in width.
-     *      scaleY: OPTIONAL The scale factor on the y-axis, this value will 
-     *              stretch the platform in height.
      */ 
     platform.init = function (game) {
-        ////////////////////////////////////////////////////////////////////////
-        // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
-        
-        /*
-         * ground : here, we create a floor. Given the width of of the platform 
-         * asset, giving it a scaleX and scaleY of 2 will stretch it across the 
-         * bottom of the game.
-         */
+        //Floor or ground//
         platform.create(0, game.world.height - 32, 3, 2);
-
-        // example:
+        platform.create(0, 585, 0.7, 5);
+        //Top platform//
         platform.create(0, 125, 1.95, 0.6);
-        
+        //Step Walls and Jump Barriers//
         platform.create(380, 500, 0.10, 10);
         platform.create(410, 500, 0.02, 10);
-        
+
         platform.create(500, 415, 0.10, 15);
         platform.create(530, 415, 0.02, 15); 
-        
+
         platform.create(620, 330, 0.10, 15);
         platform.create(650, 330, 0.02, 15);
-        
+
         platform.create(740, 245, 0.10, 20);
         platform.create(770, 245, 0.02, 20);
-        
+
         platform.create(860, 160, 0.10, 20);
         platform.create(890, 160, 0.02, 20);
-        
-        platform.create(0, 585, 0.7, 5);
 
-        
-        
-        // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////
     };
 })(window);

@@ -7,7 +7,7 @@
         animations = {},
         spawnX = 20,
         spawnY = 500;
-        
+
     opspark.createPlayer = function (game) {
         let 
             asset = init(game),
@@ -20,7 +20,7 @@
             _fire = createFireState('fire'),
             _die = createDieState('die'),
             _state = _idle;
-        
+
         function createState(name) {
             return {
                 idle: idle,
@@ -40,8 +40,7 @@
                 getName: function() { return name; }
             };
         }
-        
-        
+
         function createDuckState(name) {
             var 
                 xOffset = -6,
@@ -60,7 +59,7 @@
             };
             return state;
         }
-        
+
         function createStopState(name) {
             var 
                 xOffset = .5,
@@ -79,7 +78,7 @@
             };
             return state;
         }
-        
+
         function createDieState(name) {
             let 
                 xOffset = 1,
@@ -99,7 +98,7 @@
             };
             return state;
         }
-        
+
         function createFireState(name) {
             let 
                 xOffset = 14,
