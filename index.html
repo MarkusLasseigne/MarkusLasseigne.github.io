@@ -2,87 +2,97 @@
 <html>
     <head>
         <title>Markus's Amazing Website</title>
-            <style>
-                body {
-                    background: rgb(100, 100, 100);
-                    color: rgb(45, 45, 45);
-                    padding: 1px;
-                    font-family: arial;
-               }
-               header {
-                    font-size: 1.5em;
-                    font-weight: bold;
-               }
-               #all-contents {
-                    margin-right: auto;
-               }
-                /* navigation menu */
-               nav {
-                    background: rgb(50, 10, 10);
-                    display: circle;
-                    padding: 5px;
-                    
-               }
-               nav header {
-                    color: rgb(255, 255, 255);
-               }
-               img {
-                    size: flex;
-                    background: rgb(0, 0, 0);
-                    padding: 2px;
-               }
-               nav ul {
-                    display: inline-block;
-                    padding: 0 10px;
-                    font-weight: bold;
-               }
-               nav a {
-                    text-decoration: none;
-                    color: #fff;
-               }
-               /* main container area beneath menu */
-               main {
-                    background: rgb(250, 240, 220);
-                    display: flex;
-               }
-               .sidebar {
-                    margin-right: 1px;
-                    padding: 5px;
-               }
-                    .content {
-                    padding: 10px;
-               }
-               .interests header {
-                    font-size: 1.25em;
-               }
-            </style>
-        </head>
-    <body>
-        <div id="all-contents"> 
-        <nav>
-            <header><b>Markus's Amazing Website</b></header>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-            </ul>
+        <style>
+            body {
+                background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+                font-family: Times, serif;
+                margin-top: 5px;
+                margin-right: 5px;
+                margin-left: 5px;
+                
+            }
+            /*Navigation Bar*/
+            #nav-bar {
+                background: rgb(10, 10, 24);
+                margin-left: 1px;
+                border-radius: 15px;
+                padding: 5px;
+                padding-top: 4px;
+                padding-left: 10px;
+                color: rgb(255,255,255);
+            }
+            header {
+                font-size: 1.8em;
+                font-weight: bold;
+            }
+            .links {
+                font-weight: bold;
+                display: inline-block;
+                font-size: 1em;
+            }
+            /*Links*/
+            #home:link, #home:visited, #port:link, #port:visited {
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+                text-align: center;
+                padding: 1px 1px;
+            }
+            #home:hover, #home:active, #port:hover, #port:active {
+                background-color: white;
+                border-radius: 5px;
+                color: black;
+                text-decoration: none;
+                text-align: center;
+                padding: 1px 1px;
+            }
+            /*Main Info*/
+            main {
+                background: rgb(255, 245, 235);
+                border-radius: 10px;
+                padding-bottom: 64px;
+                display: flex;
+            }
+            .sidebar {
+                background-image: url("https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096");
+                background-repeat: no-repeat;
+                background-size: 110px 190px;
+                background-color: black;
+                background-position: left 2px top 2px;
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-top: 5px;
+                height: 194px;
+                width: 114px;
+            }
+            #interests, #about {
+                margin-top: 4px;
+                font-size: 1.4em;
+                padding-bottom: -10px;
+            }
+        </style>
+    </head>
+    <body> 
+        <nav id="nav-bar">
+            <header>Markus Lasseigne's Amazing Website</header>
+            <div class="links">
+                <a href="index.html" id="home">Home</a>
+                <a href="portfolio.html" id="port">Portfolio</a>
+            </div>
         </nav>
-            <main>
-                <div class="sidebar">
-                    <img src="https://pbs.twimg.com/media/Dt6HYNBVsAAyYYT?format=jpg&name=medium" alt="Me" height="180" width="140">
-                </div>                
-                <div class="content">
-                    <header><b>Markus Lasseigne</b></header>
-                    <p>Student at Operation Spark</p>
-                    <section class="interests">
-                        <header><b>Interests</b></header>
-                        <ul>
-                            <li>Astronomy</li>
-                            <li>Gaming</li>
-                            <li>Ice Cream</li>
-                        </ul>
-                    </section>
-                </div>
-            </main>
-        </div>
+        <main>
+            <div class="sidebar">
+            </div>
+            <div class="content">
+                <header id="about">About</header>
+                <p>Student at Operation Spark</p>
+                <header id="interests">Interests</header>
+                    <ul>
+                        <li>Astronomy</li>
+                        <li>Gaming</li>
+                        <li>Ice Cream</li>
+                    </ul>
+            </div>
+        </main>
     </body>
 </html>
