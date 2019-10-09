@@ -15,15 +15,57 @@
         <script src="js/init/collectable.js"></script>
         <script src="js/init/cannon.js"></script>
         <script src="js/init/player.js"></script>
+        <style type="text/css">
+            /*Links*/
+            #home, #tips {
+                background-color: #202020;
+                text-decoration: none;
+                border-radius: 8px;
+                text-align: center;
+                display: inline;
+                padding: 2px;
+                color: white;
+            }
+            #home:hover, #tips:hover {
+                background-color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                text-align: center;
+                display: auto;
+                padding: 2px;
+                color: black;
+            }
+            #tip1 {
+                visibility: hidden;
+            }
+            .game {
+                margin-top: 10px;
+            }
+
+        </style>
     </head>
     <body>
-        <div class="game">
+        <nav>
+            <div class="links">
+                <a href="index.html" id="home">Home</a>
+                <script>
+                    function sw(y,x){
+                        t=document.getElementById(x).style
+                        t.visibility=(y=='on')?'visible':'hidden'
+                    }
+                </script>
+                <button id="tips" onclick=sw('on','tip1')>Tip?</button>
+                <div id="tip1">
+                <li>Step jumps need to be very exact.</li>
+                <li> Walls are one way. </li>
+                <button id="tips" onclick=sw('off','tip1')>No Tips?</button>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="game">
                 <script src="js/index.js"></script>
-        </div>
-        <div class="Tips">
-            <p><b>Tips</b></p>
-            <li>Walls are one way.</li>
-            <li>Step jumps need to be very exact.</li>            
-        </div>
+            </div>
+        </main>
     </body>
 </html>

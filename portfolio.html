@@ -6,106 +6,96 @@
             body {
                 background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
                 font-family: Times, serif;
-                margin-top: 5px;
                 margin-right: 5px;
                 margin-left: 5px;
-                
+                margin-top: 5px;
+                font-size: 110%;
             }
             /*Navigation Bar*/
             #nav-bar {
-                background: rgb(10, 10, 24);
-                margin-left: 1px;
-                border-radius: 15px;
-                padding: 5px;
-                padding-top: 0px;
-                padding-left: 10px;
-                color: rgb(255,255,255);
+                padding-bottom: 0.25%;
+                background: #101024;
+                border-radius: 10px;
+                color: white;
             }
-            header {
-                font-size: 2em;
+            #title {
+                background-color: #202020;
+                margin-bottom: 0.24%;
+                border-radius: 10px;
+                padding-left: 10px;
                 font-weight: bold;
+                font-size: 180%;
             }
             .links {
-                font-weight: bold;
                 display: inline-block;
-                font-size: 1em;
+                font-weight: bold;
+                font-size: 110%;
             }
             /*Links*/
-            #home:link, #home:visited {
-                border-radius: 5px;
+            #back {
+                background-color: #202020;
+                text-decoration: none;
+                border-radius: 8px;
+                text-align: center;
+                padding: 1px;
                 color: white;
-                text-decoration: none;
-                text-align: center;
-                padding: 1px 1px;
             }
-            #home:hover, #home:active {
+            #back:hover {
                 background-color: white;
-                border-radius: 5px;
-                color: black;
                 text-decoration: none;
+                border-radius: 8px;
                 text-align: center;
-                padding: 1px 1px;
+                padding: 1px;
+                color: black;
             }
             /*Main Info*/
             main {
-                background: rgb(255, 245, 235);
+                padding-bottom: 2%;
+                background: #EBF5FF;
                 border-radius: 10px;
-                padding-bottom: 10px;
-                padding-left: 5px;
+                display: flex;
             }
 
             /* portfolio styles */
             #portfolio {
                 list-style-type: none;
-                margin-left: 0px;
-                margin-right: 62%;
                 padding-left: 0px;
-                padding-top: 5px;
-                margin-top: 0px;
             }
             #portfolio a {
-                color: white;
-                padding: 11px;
-                margin-left: -15px;
-                padding-right: 40px;
-                border-radius: 10px;
-                background: clear;
                 text-decoration: none;
-                width: 50px;
+                border-radius: 10px;
+                margin-left: -10px;
+                background: clear;
+                padding: 11px;
+                color: white;
             }
             #portfolio a:hover {
-                color: black;
-                padding: 11px;
-                margin-left: -15px;
-                padding-right: 40px;
-                border-radius: 10px;
-                background: clear;
                 text-decoration: none;
-                width: 50px;
+                border-radius: 10px;
+                margin-left: -10px;
+                background: clear;
+                padding: 11px;
+                color: black;
             }
             #portfolio li {
-                background: black;
-                padding: 10px;
                 border-radius: 10px;
+                background: black;
                 margin-top: 20px;
+                padding: 10px;
             }
             #portfolio li:hover {
-                background: white;
-                padding: 10px
                 border-radius: 10px;
+                background: white;
                 margin-top: 20px;
+                padding: 10px;
             } 
         </style>
     </head>
     <body>
         <nav id="nav-bar">
-            <header>
-            Portfolio
-            </header>
+            <header id="title">Portfolio</header>
             <div class="links">
-                <a href="index.html" id="home">
-                Back
-                </a>
+                <a href="index.html" id="back">Back</a>
             </div>
         </nav>
         <main>
