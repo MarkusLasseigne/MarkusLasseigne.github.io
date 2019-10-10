@@ -1,103 +1,164 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Markus's Amazing Website</title>
-        <style>
+		<title>
+			Markus's Home Page
+		</title>
+		<style>
             body {
-                background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-                font-family: Times, serif;
-                margin-right: 5px;
-                margin-left: 5px;
-                margin-top: 5px;
-                font-size: 110%;
-            }
-            /*Navigation Bar*/
-            #nav-bar {
-                padding-bottom: 0.25%;
-                background: #101024;
-                border-radius: 10px;
-                color: white;
-            }
-            #title {
-                background-color: #202020;
-                margin-bottom: 0.24%;
-                border-radius: 10px;
-                padding-left: 10px;
-                font-weight: bold;
-                font-size: 180%;
-            }
-            .links {
-                display: inline-block;
-                font-weight: bold;
-                font-size: 110%;
-            }
-            /*Links*/
-            #home, #port {
-                background-color: #202020;
-                text-decoration: none;
-                border-radius: 8px;
-                text-align: center;
-                padding: 1px;
-                color: white;
-            }
-            #home:hover, #port:hover {
-                background-color: white;
-                text-decoration: none;
-                border-radius: 8px;
-                text-align: center;
-                padding: 1px;
-                color: black;
-            }
-            /*Main Info*/
-            main {
-                padding-bottom: 4.89%;
+				background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+			}
+			#bar {
+				border-right: 1.5px solid gray;
+				background-color: black;
+				position: absolute;
+				display: block; 
+				max-width: 175px;
+				width: 75px;
+				bottom: 0;
+				left: 0;
+				top: 0;
+			}
+			#drawer, a {
+				border: 0 solid gray;
+				border-bottom: 1.5px solid gray;
+				background-color: black;
+				text-decoration: none;
+				text-align: center;
+				margin-bottom: 0;
+				font-family: arial;
+				font-weight: bold;
+				padding: 20px 9px;
+				font-size: 125%;
+				display: block;
+				color: white;
+                left: 0;
+			}
+			#drawer:hover, a:hover {
+				border: 0 solid black;
+				border-bottom: 1.5px solid gray;
+				background-color: white;
+				text-decoration: none;
+				text-align: center;
+				margin-bottom: 0;
+				font-family: arial;
+				font-weight: bold;
+				font-size: 125%;
+				display: block;
+				color: black;
+			}
+			#links {
+			    margin-top: -40px;
+			}
+			#updated {
+			    position: absolute;
+			    font-size: 60%;
+			    color: white;
+			    bottom: 5px;
+			}
+			#main {
+				margin: 0 50px 50px 75px;
+				width: 75%;
+				height: 40%;
                 background: #EBF5FF;
                 border-radius: 10px;
-                display: flex;
-            }
-            .sidebar {
+                position: absolute;
+			}
+            #group1, #group2 {
+				margin-top: -14px;
+				margin-left: 10px;
+				display: block;
+			}
+			#group2 {
+			    margin-left: 150px;
+			    margin-top: 0px;
+			}
+			#self {
                 background-image: url("https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096");
-                background-position: left 2px top 2px;
+                background-position: top 2px left 2px;
                 background-repeat: no-repeat;
-                background-size: 110px 190px;
+                background-size: 120px 200px;
                 background-color: black;
-                margin-right: 5px;
-                margin-left: 5px;
-                margin-top: 5px;
-                height: 194px;
-                width: 114px;
+				margin: -5px 5px 5px 0;
+                height: 204px;
+                width: 124px;
+                position: absolute;
             }
-            header {
-                font-weight: bold;
-                font-size: 120%;
+			
+		</style>
+		<script>
+		//Goal, Modularity
+            function toggle(){
+                var links = document.getElementById('links');
+                if(links.style.display === 'block'){
+                    min();
+                    links.style.display = 'none';
+                } else {
+                    max();
+                    links.style.display='block';
+                }
             }
-            #interests, #about {
-                margin-top: 4px;
-                font-size: 110%;
-            }
-        </style>
-    </head>
-    <body> 
-        <nav id="nav-bar">
-            <header id="title">Markus Lasseigne's Amazing Website</header>
-            <div class="links">
-                <a href="index.html" id="home">Home</a>
-                <a href="portfolio.html" id="port">Portfolio</a>
-            </div>
-        </nav>
-        <main>
-            <div class="sidebar">
-            </div>
-            <div class="content">
-                <header id="about">About</header>
-                <p>Student at Operation Spark</p>
-                <header id="interests">Interests</header>
-                    <ul>
-                        <li>Astronomy</li>
-                        <li>Gaming</li>
-                        <li>Ice Cream</li>
-                    </ul>
-            </div>
-        </main>
-    </body>
+			function max(){
+				var	bar = document.getElementById('bar');
+				bar.style.width = '175px';
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='23px 59px';
+				var link = document.getElementById('link');
+				link.style.padding='20px 59.4px';
+				var main = document.getElementById('main');
+				main.style.margin='0px 0px 0px 175px';
+			}
+			function min(){
+				var	bar = document.getElementById('bar');
+				bar.style.width='75px';
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='23px 9px';			
+				var main = document.getElementById('main');
+				main.style.margin='0px 0px 200px 75px';
+			}
+		</script>
+	</head>
+	<body>
+		<nav id="bar">
+			<button type="button" id="drawer" style="padding: 23px 9px" onclick=toggle()>Home</button>
+			<div id="links" style="display: none;">
+				<div id="link">
+					<p id="updated">Last Updated: 10/10/19</p>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/portfolio.html">Portfolio</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/bouncing-box/">Bouncing Box</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/platformer/">Platformer</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/circularity/">Circularity</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/runtime/">Runtime</a>
+				</div>
+			</div>
+		</nav>
+		<main id="main">
+			<div id="group1">
+				<h1>Markus Lasseigne</h1>
+				<div id="self"></div>
+			</div>
+			<div id="group2">
+				<h2>About</h2>
+				<p>Student at:</p>
+				<li>K-12 Online School</li>
+				<li>Operation Spark</li>
+				<h3>Interests (to list a few):</h3>
+					<ul>
+						<li>Astronomy</li>
+						<li>Gaming</li>
+						<li>Ice Cream</li>
+					</ul>
+			</div>
+		</main>
+	</body>
 </html>

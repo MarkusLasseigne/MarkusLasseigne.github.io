@@ -119,9 +119,9 @@
     			function update() {
     				 position += speed * direction;
     				 positionY += speed * directionY;
-    				 console.log(speed);
-                     console.log("X position: " + position);
-                     console.log("Y position: " + positionY);
+//    				 console.log(speed);
+//                     console.log("X position: " + position);
+//                     console.log("Y position: " + positionY);
                      if(position > boardWidth) {
                         direction = -0.8;
                         console.log("Right Wall Hit");
@@ -189,9 +189,10 @@
     			        miss -= -5;
     			        box.hide();
     			        clearInterval(interval);
-						return;
+    			        return;
     			    }
     			    if(miss >= 14){
+    			        console.log(miss + ' missed');
     			        doAlert("You've Lost, Try Again?");
     			        points = -14;
     			        miss = 20;
