@@ -18,8 +18,9 @@
 				bottom: 0;
 				left: 0;
 				top: 0;
+				user-select: none;
 			}
-			#home, a {
+			#drawer, a {
 				border: 0 solid gray;
 				border-bottom: 1.5px solid gray;
 				background-color: black;
@@ -34,7 +35,7 @@
 				color: white;
                 left: 0;
 			}
-			#home:hover, a:hover {
+			#drawer:hover, a:hover {
 				border: 0 solid black;
 				border-bottom: 1.5px solid gray;
 				background-color: white;
@@ -55,17 +56,20 @@
 			    font-size: 60%;
 			    color: white;
 			    bottom: 5px;
+			    left: 0;
 			}
 			#main {
 				margin: 0 50px 50px 100px;
-				width: 75%;
-				height: 40%;
+				width: 74%;
+				height: 353.5px;
                 background: #EBF5FF;
                 border-radius: 10px;
                 position: absolute;
+                user-select: none;
 			}
             #definers {
                 margin-left: 10px;
+                margin-top: -10px;
             }
             h3 {
                 margin-bottom: -15px;
@@ -86,27 +90,29 @@
             }
 			function max(){
 				var	bar = document.getElementById('bar');
-				bar.style.width = '210px';
-				var home = document.getElementById('home');
-				home.style.padding='23px 59.5px';
+				bar.style.width = '160px';
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='30px 39px';
 				var link = document.getElementById('link');
-				link.style.padding='20px 59.4px';
+				link.style.padding='20px 40px';
 				var main = document.getElementById('main');
-				main.style.margin='0px 0px 0px 200px';
+				main.style.margin='0px 0px 0px 160px';
+				main.style.width='65%';
 			}
 			function min(){
 				var	bar = document.getElementById('bar');
 				bar.style.width='100px';
-				var home = document.getElementById('home');
-				home.style.padding='23px 9px';			
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='30px 9px';			
 				var main = document.getElementById('main');
 				main.style.margin='0px 0px 200px 100px';
+				main.style.width='74%';
 			}
 		</script>
 	</head>
 	<body>
 		<nav id="bar">
-			<button type="button" id="home" style="padding: 23px 9px" onclick=toggle()>Portfolio</button>
+			<button type="button" id="drawer" style="padding: 30px 9px" onclick=toggle()>Portfolio</button>
 			<div id="links" style="display: none;">
 				<div id="link">
 					<p id="updated">Last Updated: 10/10/19</p>
