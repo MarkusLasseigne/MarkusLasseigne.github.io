@@ -70,6 +70,7 @@
 			    font-size: 60%;
 			    color: white;
 			    bottom: 5px;
+			    visibility: hidden;
 			}
 			#homeP, #portP {
 				margin: 0px 0px 0px 100px;
@@ -112,6 +113,7 @@
 				var projD = document.getElementById('projD');
 				var homeB = document.getElementById('homeB');
 				var portB = document.getElementById('portB');
+				var lastU = document.getElementById('updated');
 //if both main and port are the same return to main
 				if(homeP.style.visibility === portP.style.visibility){
 					homeP.style.visibility = 'visible';
@@ -123,6 +125,7 @@
 			function homeToggle(homeT){
 				console.log("home clicked");
 				quickVar();
+				var lastU = document.getElementById('updated');
 				if('homeT'){
 					if(portP.style.visibility === 'visible'){
 						console.log("Loading Home Page");
@@ -133,16 +136,21 @@
 						homeB.style.margin = '0 0 0 0';
 						portB.style.padding = '20px 51.5px';
 						portB.style.margin = '64px 0 0 0';
+						lastU.style.visibility = 'hidden';
 						homeMin();
 						document.title = "Home";
 						return;
 					} else if(homeP.style.visibility === 'visible'){
 						if(portD.style.visibility !== 'visible'){
 							console.log("homebar opening");
+							var lastU = document.getElementById('updated');
+							lastU.style.visibility = 'visible';
 							homeMax();
 							return;
 						} else if(portD.style.visibility !== 'hidden'){
 							console.log("homebar closing");
+							var lastU = document.getElementById('updated');
+							lastU.style.visibility = 'hidden';
 							homeMin();
 						}
 					}
@@ -152,6 +160,7 @@
 			function portToggle(portT){
 				console.log("port clicked");
 				quickVar();
+				var lastU = document.getElementById('updated');
 				if('portT'){
 					if(homeP.style.visibility === 'visible'){
 						console.log("Loading Port Page");
@@ -162,16 +171,21 @@
 						homeB.style.margin = '68px 0 0 0';
 						portB.style.padding = '20px 14px';
 						portB.style.margin = '0 0 0 0';
+						lastU.style.visibility = 'hidden';
 						portMin();
 						document.title = "Portfolio";
 						return;
 					} else if(portP.style.visibility === 'visible'){
 						if(homeD.style.visibility !== 'visible'){
 							console.log("portbar opening");
+							var lastU = document.getElementById('updated');
+							lastU.style.visibility = 'visible';
 							portMax();
 							return;
 						} else if(portD.style.visibility !== 'hidden'){
-							console.log("portbar opening");
+							console.log("portbar closing");
+							var lastU = document.getElementById('updated');
+							lastU.style.visibility = 'hidden';
 							portMin();
 						}
 					}
@@ -180,6 +194,7 @@
 //if toggle on page HOME bar expand
 			function homeMax(){
 				quickVar();
+				var lastU = document.getElementById('updated');
 				if(portD.style.visibility === 'hidden'){
 					bar.style.maxwidth = '175px';
 					bar.style.width = '175px';
@@ -189,12 +204,14 @@
 					projD.style.visibility = 'visible';
 					homeB.style.padding = '20px 63.1px';
 					portB.style.visibility = 'visible';
+					lastU.style.visibility = 'visible';
 					console.log("homebar opening done");
 				}
 			}
 //if toggle on page HOME bar hide
 			function homeMin(){
 				quickVar();
+				var lastU = document.getElementById('updated');
 				if(portP.style.visibility === 'hidden'){
 					bar.style.maxwidth = '100px';
 					bar.style.width = '100px';
@@ -205,12 +222,14 @@
 					homeB.style.margin = '0 0 0 0';
 					portB.style.visibility = 'hidden';
 					portB.style.visibility = 'hidden';
+					lastU.style.visibility = 'hidden';
 					console.log("home closing done");
 				}
 			}
 //if toggle on page PORT bar expand
 			function portMax(){
 				quickVar();
+				var lastU = document.getElementById('updated');
 				var boxB = document.getElementById('boxB');
 				if(homeP.style.visibility === 'hidden'){
 					bar.style.maxwidth = '175px';
@@ -225,12 +244,14 @@
 					portB.style.margin = '0 0 0 0';
 					portB.style.position = 'absolute';
 					portB.style.padding = '20px 51.5px';
+					lastU.style.visibility = 'visible';
 					console.log("portMin done");
 				}
 			}
 //if toggle on page PORT bar hide
 			function portMin(){
 				quickVar();
+				var lastU = document.getElementById('updated');
 				if(homeP.style.visibility === 'hidden'){
 					bar.style.maxwidth = '100px';
 					bar.style.width = '100px';
@@ -241,6 +262,7 @@
 					homeB.style.visibility = 'hidden';
 					portB.style.padding = '20px 14px';
 					portB.style.margin = '0 0 0 0';
+					lastU.style.visibility = 'hidden';
 					console.log("portMin done");
 				}
 			}
@@ -261,7 +283,7 @@
 				<button class="links" id="circB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/circularity/';">Circularity</button>
 				<button class="links" id="runB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/runtime/';">Runtime</button>
 			</div>
-			<div id="updated">
+			<div id="updated" style="visibility: hidden;">
 				<li style="list-style-type:none;">Last Updated:</li>
 				<li style="list-style-type:none;">12:00AM</li>
 				<li style="list-style-type:none;">10/12/2019</li>
@@ -271,7 +293,7 @@
 			<div id="group1">
 				<h1>Markus Lasseigne</h1>
 				<h2>About</h2>
-				<img src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096" id="self"> </a>
+				<img src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096" id="self"></a>
 			</div>
 			<div id="group2">
 				<h3>Student at:</h3>
