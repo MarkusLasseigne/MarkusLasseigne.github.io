@@ -3,6 +3,9 @@
     <head>
 		<title>Home</title>
 		<style>
+			body {
+			    font-family: arial;
+			}
 			#bar {
 				border-right: 1.5px solid gray;
 				background-color: black;
@@ -21,11 +24,9 @@
 				cursor: pointer;
 				text-decoration: none;
 				text-align: center;
-				margin: 0 0 1px 0; 
-				font-family: arial;
-				padding: 20px 25.5px;
-				font-weight: bold;
+				margin: 0 0 1px 0;
 				font-size: 110%;
+				font-weight: bold;
 				color: white;
 				float: left;
 			}
@@ -36,56 +37,47 @@
 				text-decoration: none;
 				text-align: center;
 				margin: 0 0 1px 0;
-				font-family: arial;
-				font-weight: bold;
 				font-size: 110%;
+				font-weight: bold;
 				display: block;
 				color: black;
 			}
-			#projD {
+			#homeB, #portB {
+			    text-align: center;
+			    max-width: 175px;
+			    width: 100px;
+			    height: 75px;
+			}
+			#projD, #boxB, #platB, #circB, #runB {
+			    text-align: center;
 				max-width: 175px;
-				height: 100px;
-			}
-			#home {
-			    background-color: white;
-			    color: black;
-			}
-			#portB {
-				padding: 20px 51.5px;
-			}
-			#boxB {
-				padding: 20px 27.8px;
-			}
-			#platB {
-				padding: 20px 43.5px;
-			}
-			#circB {
-				padding: 20px 44px;
-			}
-			#runB {
-				padding: 20px 52.5px;
+				width: 175px;
+				height: 50px;
 			}
 			#updated {
 			    position: absolute;
-			    font-size: 60%;
+			    font-size: 75%;
 			    color: white;
 			    bottom: 5px;
 			    visibility: hidden;
 			}
 			#homeP, #portP {
 				margin: 0px 0px 0px 100px;
-				width: 50%;
-				height: 55%;
                 background: #EBF5FF;
                 border-radius: 10px;
                 position: absolute;
+                font-size: 90%;
+				float: left;
+				height: 50%;
+				width: 50%;
 			}
-            #group1, #group2 {
+            #group1 {
 				margin: -20px 0px 0px 10px;
 				display: block;
 			}
 			#group2 {
 				margin: -40px 0px 15px 150px;
+				display: block;
 			}
 			#self {
 				background-color: black;
@@ -131,11 +123,12 @@
 						console.log("Loading Home Page");
 						homeP.style.visibility = 'visible';
 						portP.style.visibility = 'hidden';
-						homeD.style.position = 'auto';
-						portD.style.position = 'auto';
 						homeB.style.margin = '0 0 0 0';
-						portB.style.padding = '20px 51.5px';
-						portB.style.margin = '64px 0 0 0';
+						homeB.style.width = '175px';
+					    homeB.style.height = '75px';
+					    portB.style.width = '175px';
+					    portB.style.height = '50px';
+						portB.style.margin = '75px 0 0 0';
 						lastU.style.visibility = 'hidden';
 						homeMin();
 						document.title = "Home";
@@ -168,8 +161,11 @@
 						portP.style.visibility = 'visible';
 						homeD.style.position = 'absolute';
 						portD.style.position = 'absolute';
-						homeB.style.margin = '68px 0 0 0';
-						portB.style.padding = '20px 14px';
+						homeB.style.margin = '75px 0 0 0';
+						homeB.style.width = '175px';
+					    homeB.style.height = '50px';
+					    portB.style.width = '175px';
+					    portB.style.height = '75px';
 						portB.style.margin = '0 0 0 0';
 						lastU.style.visibility = 'hidden';
 						portMin();
@@ -200,9 +196,12 @@
 					bar.style.width = '175px';
 					homeP.style.margin = '0 0 0 175px';
 					portD.style.visibility = 'visible';
-					projD.style.margin = '122px 0 0 0';
+					projD.style.margin = '125px 0 0 0';
 					projD.style.visibility = 'visible';
-					homeB.style.padding = '20px 63.1px';
+					homeB.style.width = '175px';
+					homeB.style.height = '75px';
+					portB.style.width = '175px';
+					portB.style.height = '50px';
 					portB.style.visibility = 'visible';
 					lastU.style.visibility = 'visible';
 					console.log("homebar opening done");
@@ -218,8 +217,11 @@
 					portD.style.visibility = 'hidden';
 					projD.style.visibility = 'hidden';
 					homeP.style.margin = '0 50px 200px 100px';
-					homeB.style.padding = '20px 25.5px';
 					homeB.style.margin = '0 0 0 0';
+					homeB.style.width = '100px';
+					homeB.style.height = '75px';
+					portB.style.width = '100px';
+					portB.style.height = '50px';
 					portB.style.visibility = 'hidden';
 					portB.style.visibility = 'hidden';
 					lastU.style.visibility = 'hidden';
@@ -238,12 +240,16 @@
 					homeD.style.visibility = 'visible';
 					portD.style.margin = '0 0 0 0';
 					projD.style.visibility = 'visible';
-					projD.style.margin = '122px 0 0 0';
+					projD.style.margin = '125px 0 0 0';
 					homeB.style.visibility = 'visible';
-					homeB.style.margin = '62px 0 0 0';
+					homeB.style.position = 'absolute';
+					homeB.style.margin = '75px 0 0 0';
+					homeB.style.width = '175px';
+					homeB.style.height = '50px';
+					portB.style.width = '175px';
+					portB.style.height = '75px';
 					portB.style.margin = '0 0 0 0';
 					portB.style.position = 'absolute';
-					portB.style.padding = '20px 51.5px';
 					lastU.style.visibility = 'visible';
 					console.log("portMin done");
 				}
@@ -260,7 +266,10 @@
 					projD.style.visibility = 'hidden';
 					portP.style.margin = '0 0 0 100px';
 					homeB.style.visibility = 'hidden';
-					portB.style.padding = '20px 14px';
+					homeB.style.width = '100px';
+					homeB.style.height = '50px';
+					portB.style.width = '100px';
+					portB.style.height = '75px';
 					portB.style.margin = '0 0 0 0';
 					lastU.style.visibility = 'hidden';
 					console.log("portMin done");
@@ -280,12 +289,12 @@
 			<div id="projD" style="visibility: hidden;">
 				<button class="links" id="boxB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/bouncing-box/';">Bouncing Box</button>
 				<button class="links" id="platB"  style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/platformer/';">Platformer</button>
-				<button class="links" id="circB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/circularity/';">Circularity</button>
-				<button class="links" id="runB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/runtime/';">Runtime</button>
+				<button class="links" id="circB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/circularity/';">\WIP.Circ/</button>
+				<button class="links" id="runB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/runtime/';">\WIP.Run/</button>
 			</div>
 			<div id="updated" style="visibility: hidden;">
 				<li style="list-style-type:none;">Last Updated:</li>
-				<li style="list-style-type:none;">12:00AM</li>
+				<li style="list-style-type:none;">5PM</li>
 				<li style="list-style-type:none;">10/12/2019</li>
 			</div>
 		</nav>
