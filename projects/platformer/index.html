@@ -17,49 +17,75 @@
         <script src="js/init/player.js"></script>
         <style type="text/css">
             /*Links*/
-            #home, #tips {
+            .buttons {
                 background-color: #202020;
                 text-decoration: none;
                 border-radius: 8px;
                 text-align: center;
-                display: inline;
-                padding: 2px;
+                padding: 4px 4px;
+                cursor: pointer;
                 color: white;
             }
-            #home:hover, #tips:hover {
+            .buttons:hover {
                 background-color: white;
                 text-decoration: none;
                 border-radius: 8px;
                 text-align: center;
-                display: auto;
-                padding: 2px;
+                padding: 4px 4px;
                 color: black;
             }
-            #tip1 {
+            #tip1, #tip2 {
                 visibility: hidden;
             }
-            .game {
-                margin-top: 10px;
+            .links {
+                background-color: #777777;
+                margin: 710px 0 0 0;
+                border-radius: 5px;
+                position: absolute;
+                padding: 5px 5px;
+            }
+            canvas {
+                margin: 0 0 0 0;
+            }
+            h1 {
+                background-color: gray;
+                font-family: arial;
+                border-radius: 5px;
+                padding-right: ;
+                margin: 0 0 0 0;
+                
+            }
+            body {
+                background-color: #444444;
             }
 
         </style>
+        <script>
+            function tipsToggle(t){
+                var proof = document.getElementById('proof');
+                var tip1 = document.getElementById('tip1');
+                var tip2 = document.getElementById('tip2');
+                if(proof.style.visibility === 'hidden'){
+                    proof.style.visibility = 'visible';
+                    tip1.style.visibility = 'visible';
+                    tip2.style.visibility = 'visible';
+                } else if(proof.style.visibility === 'visible'){
+                    proof.style.visibility = 'hidden';
+                    tip1.style.visibility = 'hidden';
+                    tip2.style.visibility = 'hidden';
+                }
+            }
+        </script>
     </head>
     <body>
         <nav>
+            <h1>Platformer</h1>
             <div class="links">
-                <a href="/" id="home">Home</a>
-                <script>
-                    function sw(y,x){
-                        t=document.getElementById(x).style
-                        t.visibility=(y=='on')?'visible':'hidden'
-                    }
-                </script>
-                <button id="tips" onclick=sw('on','tip1')>Tip?</button>
-                <div id="tip1">
-                <li>Step jumps need to be very exact.</li>
-                <li> Walls are one way. </li>
-                <button id="tips" onclick=sw('off','tip1')>No Tips?</button>
-                </div>
+                <button id="home" class="buttons" href="https://markuslasseigne.github.io/index.html" >Back</button>
+                <button id="tips" class="buttons" onclick=tipsToggle('t')>Tips</button>
+                <button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://youtu.be/U-f_ZQdaIg8';">Proof</button>
+                <li style="visibility: hidden;" id="tip1">Step jumps need to be very exact.</li>
+                <li style="visibility: hidden;" id="tip2"> Walls are one way. </li>
             </div>
         </nav>
         <main>
