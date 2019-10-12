@@ -1,169 +1,275 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-		<title>
-			Markus's Home Page
-		</title>
+		<title>Home</title>
 		<style>
-            body {
-				background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-			}
 			#bar {
 				border-right: 1.5px solid gray;
 				background-color: black;
 				position: absolute;
-				display: block;
-				user-select: none;
-				max-width: 160px;
-				width: 75px;
+				display: block; 
+				max-width: 175px;
+				width: 100px;
 				bottom: 0;
 				left: 0;
 				top: 0;
 			}
-			#drawer, a {
+			.links {
 				border: 0 solid gray;
 				border-bottom: 1.5px solid gray;
 				background-color: black;
+				cursor: pointer;
 				text-decoration: none;
 				text-align: center;
-				margin-bottom: 0;
+				margin: 0 0 1px 0; 
 				font-family: arial;
+				padding: 20px 25.5px;
 				font-weight: bold;
-				padding: 24px 10px;
-				font-size: 125%;
-				display: block;
+				font-size: 110%;
 				color: white;
-                left: 0;
+				float: left;
 			}
-			#drawer:hover, a:hover {
+			.links:hover {
 				border: 0 solid black;
 				border-bottom: 1.5px solid gray;
 				background-color: white;
 				text-decoration: none;
 				text-align: center;
-				margin-bottom: 0;
+				margin: 0 0 1px 0;
 				font-family: arial;
 				font-weight: bold;
-				font-size: 125%;
+				font-size: 110%;
 				display: block;
 				color: black;
 			}
-			#links {
-			    margin-top: -40px;
+			#projD {
+				max-width: 175px;
+				height: 100px;
+			}
+			#home {
+			    background-color: white;
+			    color: black;
+			}
+			#portB {
+				padding: 20px 51.5px;
+			}
+			#boxB {
+				padding: 20px 27.8px;
+			}
+			#platB {
+				padding: 20px 43.5px;
+			}
+			#circB {
+				padding: 20px 44px;
+			}
+			#runB {
+				padding: 20px 52.5px;
 			}
 			#updated {
 			    position: absolute;
 			    font-size: 60%;
 			    color: white;
 			    bottom: 5px;
-			    left: 5px;
 			}
-			#main {
-				margin: 0  75px;
-				width: 75%;
-				height: 353.5px;
+			#homeP, #portP {
+				margin: 0px 0px 0px 100px;
+				width: 50%;
+				height: 40%;
                 background: #EBF5FF;
                 border-radius: 10px;
                 position: absolute;
-                user-select: none;
 			}
             #group1, #group2 {
-				margin-top: -20px;
-				margin-left: 5px;
+				margin: -20px 0px 0px 10px;
 				display: block;
 			}
 			#group2 {
-			    margin-left: 150px;
-			    margin-top: -10px;
-			}
-			h2 {
-			    margin-bottom: -10px;
-			    margin-top: -24px;
-			}
-			h3 {
-			    margin-bottom: 0;
-			    margin-top: 6px;
-			}
-			li {
-			    margin-left: -5px;
-			    margin-bottom: -2px;
+				margin: -40px 0px 15px 150px;
 			}
 			#self {
-                background-image: url("https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096");
-                background-position: top 2px left 2px;
-                background-repeat: no-repeat;
-                background-size: 120px 200px;
-                background-color: black;
-				margin: 10px 5px 5px 0;
-                height: 204px;
-                width: 124px;
-                position: absolute;
+				background-color: black;
+				margin: -5px 5px 5px 0;
+				position: absolute;
+				height: 200px;
+				width: 120px;
+				padding: 2px;
+            }
+            #definers {
+                margin: 0 0 0 20px;
             }
 			
 		</style>
 		<script>
-		//Goal, Modularity
-            function toggle(){
-                var links = document.getElementById('links');
-                if(links.style.display === 'block'){
-                    min();
-                    links.style.display = 'none';
-                } else {
-                    max();
-                    links.style.display='block';
-                }
-            }
-			function max(){
+//Goal, Modularity
+
+//call function in a function for definitions in the function
+			function quickVar(){
 				var	bar = document.getElementById('bar');
-				bar.style.width = '160px';
-				var drawer = document.getElementById('drawer');
-				drawer.style.padding='24px 52.2px';
-				var link = document.getElementById('link');
-				link.style.padding='20px 52.2px';
-				var main = document.getElementById('main');
-				main.style.margin='0px 0px 0px 160px';
-				main.style.width='65%';
+				var homeP = document.getElementById('homeP');
+				var portP = document.getElementById('portP');
+				var homeD = document.getElementById('homeD');
+				var portD = document.getElementById('portD');
+				var projD = document.getElementById('projD');
+				var homeB = document.getElementById('homeB');
+				var portB = document.getElementById('portB');
+//if both main and port are the same return to main
+				if(homeP.style.visibility === portP.style.visibility){
+					homeP.style.visibility = 'visible';
+					portP.style.visibility = 'hidden';
+					console.log("incongruent, returning home");
+				}
 			}
-			function min(){
-				var	bar = document.getElementById('bar');
-				bar.style.width='75px';
-				var drawer = document.getElementById('drawer');
-				drawer.style.padding='24px 10px';			
-				var main = document.getElementById('main');
-				main.style.margin='0px 0px 200px 75px';
-				main.style.width='75%';
+//if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
+			function homeToggle(homeT){
+				console.log("home clicked");
+				quickVar();
+				if('homeT'){
+					if(portP.style.visibility === 'visible'){
+						console.log("Loading Home Page");
+						homeP.style.visibility = 'visible';
+						portP.style.visibility = 'hidden';
+						homeD.style.position = 'auto';
+						portD.style.position = 'auto';
+						homeB.style.margin = '0 0 0 0';
+						portB.style.padding = '20px 51.5px';
+						portB.style.margin = '64px 0 0 0';
+						homeMin();
+						document.title = "Home";
+						return;
+					} else if(homeP.style.visibility === 'visible'){
+						if(portD.style.visibility !== 'visible'){
+							console.log("homebar opening");
+							homeMax();
+							return;
+						} else if(portD.style.visibility !== 'hidden'){
+							console.log("homebar closing");
+							homeMin();
+						}
+					}
+				}
 			}
+//if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
+			function portToggle(portT){
+				console.log("port clicked");
+				quickVar();
+				if('portT'){
+					if(homeP.style.visibility === 'visible'){
+						console.log("Loading Port Page");
+						homeP.style.visibility = 'hidden';
+						portP.style.visibility = 'visible';
+						homeD.style.position = 'absolute';
+						portD.style.position = 'absolute';
+						homeB.style.margin = '68px 0 0 0';
+						portB.style.padding = '20px 14px';
+						portB.style.margin = '0 0 0 0';
+						portMin();
+						document.title = "Portfolio";
+						return;
+					} else if(portP.style.visibility === 'visible'){
+						if(homeD.style.visibility !== 'visible'){
+							console.log("portbar opening");
+							portMax();
+							return;
+						} else if(portD.style.visibility !== 'hidden'){
+							console.log("portbar opening");
+							portMin();
+						}
+					}
+				}
+			}
+//if toggle on page HOME bar expand
+			function homeMax(){
+				quickVar();
+				if(portD.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					homeP.style.margin = '0 0 0 175px';
+					portD.style.visibility = 'visible';
+					projD.style.margin = '122px 0 0 0';
+					projD.style.visibility = 'visible';
+					homeB.style.padding = '20px 63.1px';
+					portB.style.visibility = 'visible';
+					console.log("homebar opening done");
+				}
+			}
+//if toggle on page HOME bar hide
+			function homeMin(){
+				quickVar();
+				if(portP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					portD.style.visibility = 'hidden';
+					projD.style.visibility = 'hidden';
+					homeP.style.margin = '0 50px 200px 100px';
+					homeB.style.padding = '20px 25.5px';
+					homeB.style.margin = '0 0 0 0';
+					portB.style.visibility = 'hidden';
+					portB.style.visibility = 'hidden';
+					console.log("home closing done");
+				}
+			}
+//if toggle on page PORT bar expand
+			function portMax(){
+				quickVar();
+				var boxB = document.getElementById('boxB');
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					portP.style.margin = '0 0 0 175px';
+					homeD.style.visibility = 'visible';
+					portD.style.margin = '0 0 0 0';
+					projD.style.visibility = 'visible';
+					projD.style.margin = '122px 0 0 0';
+					homeB.style.visibility = 'visible';
+					homeB.style.margin = '62px 0 0 0';
+					portB.style.margin = '0 0 0 0';
+					portB.style.position = 'absolute';
+					portB.style.padding = '20px 51.5px';
+					console.log("portMin done");
+				}
+			}
+//if toggle on page PORT bar hide
+			function portMin(){
+				quickVar();
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					homeD.style.visibility = 'hidden';
+					portD.style.margin = ' 0 0 0 0';
+					projD.style.visibility = 'hidden';
+					portP.style.margin = '0 0 0 100px';
+					homeB.style.visibility = 'hidden';
+					portB.style.padding = '20px 14px';
+					portB.style.margin = '0 0 0 0';
+					console.log("portMin done");
+				}
+			}
+
 		</script>
 	</head>
-	<body>
+	<body style="background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
 		<nav id="bar">
-			<button type="button" id="drawer" style="padding: 24px 10px" onclick=toggle()>Home</button>
-			<div id="links" style="display: none;">
-				<div id="link">
-					<p id="updated">Last Updated: 10/10/19</p>
-				</div>
-				<div id="link">
-					<a href="https://markuslasseigne.github.io/portfolio.html">Portfolio</a>
-				</div>
-				<div id="link">
-					<a href="https://markuslasseigne.github.io/projects/bouncing-box/">Bouncing Box</a>
-				</div>
-				<div id="link">
-					<a href="https://markuslasseigne.github.io/projects/platformer/">Platformer</a>
-				</div>
-				<div id="link">
-					<a href="https://markuslasseigne.github.io/projects/circularity/">Circularity</a>
-				</div>
-				<div id="link">
-					<a href="https://markuslasseigne.github.io/projects/runtime/">Runtime</a>
-				</div>
+			<div id="homeD">
+				<button class="links" id="homeB"  style="list-style-type:none;" onclick=homeToggle('homeT')>Home</button>
+			</div>
+			<div id="portD" style="visibility: hidden;">
+				<button class="links" id="portB"  style="visibility: hidden;" onclick=portToggle('portT')>Portfolio</button>
+			</div>
+			<div id="projD" style="visibility: hidden;">
+				<button class="links" id="boxB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/bouncing-box/';">Bouncing Box</button>
+				<button class="links" id="platB"  style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/platformer/';">Platformer</button>
+				<button class="links" id="circB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/circularity/';">Circularity</button>
+				<button class="links" id="runB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/runtime/';">Runtime</button>
+			</div>
+			<div>
+				
 			</div>
 		</nav>
-		<main id="main">
+		<main id="homeP" style="visibility: visible;">
 			<div id="group1">
 				<h1>Markus Lasseigne</h1>
 				<h2>About</h2>
-				<div id="self"></div>
+				<img src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096" id="self"> </a>
 			</div>
 			<div id="group2">
 				<h3>Student at:</h3>
@@ -177,6 +283,26 @@
 					<li>Ice Cream</li>
 					<li>Coding</li>
 			</div>
+		</main>
+		<main id="portP" style="visibility: hidden;">
+			<div id="definers">
+                <div id="box">
+                    <h3>Bouncing Box:</h3>
+                    <p>A project that gives the taste of game development on the web.</p>
+                </div>
+                <div id="plat">
+                    <h3>Platformer:</h3>
+                    <p>A cannon-dodging, collectible-grabbing adventure game for HalleBot.</p>
+                </div>
+                <div id="circ">
+                    <h3>Circularity:</h3>
+                    <p>A motion poem using random number generation and velocity, applied to circle shapes.</p>
+                </div>
+                <div id="run">
+                    <h3>Runtime:</h3>
+                    <p>A side-scroller game featuring our own HalleBot!</p>
+                </div>
+            </div>
 		</main>
 	</body>
 </html>
