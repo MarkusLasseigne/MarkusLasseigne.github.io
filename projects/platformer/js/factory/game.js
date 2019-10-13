@@ -26,7 +26,7 @@
         }
         
         if (renderDebug) config.render = render;
-        game = new Phaser.Game(900, 700, Phaser.AUTO, '', config);
+        game = new Phaser.Game(1080, 720, Phaser.AUTO, '', config);
         
         // create namespace on the game //
         game.opspark = {};
