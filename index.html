@@ -2,15 +2,177 @@
 <html>
     <head>
 		<title>Home</title>
+		<script>
+//Goal, Modularity
+//call function in a function for definitions in the function
+			function quickVar(){
+				bar = document.getElementById('bar');
+				homeP = document.getElementById('homeP');
+				portP = document.getElementById('portP');
+                homeD = document.getElementById('homeD');
+				portD = document.getElementById('portD');
+				projD = document.getElementById('projD');
+                homeB = document.getElementById('homeB');
+				portB = document.getElementById('portB');
+				boxB = document.getElementById('boxB');
+				lastU = document.getElementById('updated');
+				console.log("Variables Loaded");
+			}
+//if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
+			function homeToggle(homeT){
+				console.log("home clicked");
+				if('homeT'){
+					quickVar();
+					if(portP.style.visibility === 'visible'){
+						console.log("Loading Home Page");
+						homeP.style.visibility = 'visible';
+						portP.style.visibility = 'hidden';
+						homeB.style.margin = '0 0 0 0';
+						homeB.style.width = '175px';
+						homeB.style.height = '75px';
+						portB.style.width = '175px';
+						portB.style.height = '50px';
+						portB.style.margin = '75px 0 0 0';
+						homeMin();
+						document.title = "Home";
+						return;
+					} else if(homeP.style.visibility === 'visible'){
+						if(portD.style.visibility !== 'visible'){
+							console.log("homebar opening");
+							homeMax();
+							return;
+						} else if(portD.style.visibility !== 'hidden'){
+							console.log("homebar closing");
+							homeMin();
+						}
+					}
+				}
+			}
+//if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
+			function portToggle(portT){
+				console.log("port clicked");
+				if('portT'){
+					quickVar();
+					if(homeP.style.visibility === 'visible'){
+						console.log("Loading Port Page");
+						homeP.style.visibility = 'hidden';
+						portP.style.visibility = 'visible';
+						homeD.style.position = 'absolute';
+						portD.style.position = 'absolute';
+						homeB.style.margin = '75px 0 0 0';
+						homeB.style.width = '175px';
+						homeB.style.height = '50px';
+						portB.style.width = '175px';
+						portB.style.height = '75px';
+						portB.style.margin = '0 0 0 0';
+						portMin();
+						document.title = "Portfolio";
+						return;
+					} else if(portP.style.visibility === 'visible'){
+						if(homeD.style.visibility !== 'visible'){
+							console.log("portbar opening");
+							portMax();
+							return;
+						} else if(portD.style.visibility !== 'hidden'){
+							console.log("portbar closing");
+							portMin();
+						}
+					}
+				}
+			}
+//if toggle on page HOME bar expand
+			function homeMax(){
+				quickVar();
+				if(portD.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					homeP.style.margin = '0 0 0 175px';
+					portD.style.visibility = 'visible';
+					projD.style.margin = '125px 0 0 0';
+					projD.style.visibility = 'visible';
+					homeB.style.width = '175px';
+					homeB.style.height = '75px';
+					portB.style.width = '175px';
+					portB.style.height = '50px';
+					portB.style.visibility = 'visible';
+					lastU.style.visibility = 'visible';
+					console.log("homebar opening done");
+				}
+			}
+//if toggle on page HOME bar hide
+			function homeMin(){
+				quickVar();
+				if(portP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					portD.style.visibility = 'hidden';
+					projD.style.visibility = 'hidden';
+					homeP.style.margin = '0 50px 200px 100px';
+					homeB.style.margin = '0 0 0 0';
+					homeB.style.width = '100px';
+					homeB.style.height = '75px';
+					portB.style.width = '100px';
+					portB.style.height = '50px';
+					portB.style.visibility = 'hidden';
+					portB.style.visibility = 'hidden';
+					lastU.style.visibility = 'hidden';
+					console.log("home closing done");
+				}
+			}
+//if toggle on page PORT bar expand
+			function portMax(){
+				quickVar();
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					portP.style.margin = '0 0 0 175px';
+					homeD.style.visibility = 'visible';
+					portD.style.margin = '0 0 0 0';
+					projD.style.visibility = 'visible';
+					projD.style.margin = '125px 0 0 0';
+					homeB.style.visibility = 'visible';
+					homeB.style.position = 'absolute';
+					homeB.style.margin = '75px 0 0 0';
+					homeB.style.width = '175px';
+					homeB.style.height = '50px';
+					portB.style.width = '175px';
+					portB.style.height = '75px';
+					portB.style.margin = '0 0 0 0';
+					portB.style.position = 'absolute';
+					lastU.style.visibility = 'visible';
+					console.log("portMin done");
+				}
+			}
+//if toggle on page PORT bar hide
+			function portMin(){
+				quickVar();
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					homeD.style.visibility = 'hidden';
+					portD.style.margin = ' 0 0 0 0';
+					projD.style.visibility = 'hidden';
+					portP.style.margin = '0 0 0 100px';
+					homeB.style.visibility = 'hidden';
+					homeB.style.width = '100px';
+					homeB.style.height = '50px';
+					portB.style.width = '100px';
+					portB.style.height = '75px';
+					portB.style.margin = '0 0 0 0';
+					lastU.style.visibility = 'hidden';
+					console.log("portMin done");
+				}
+			}
+		</script>
 		<style>
 			body {
-			    font-family: arial;
+				font-family: arial;
 			}
 			#bar {
 				border-right: 1.5px solid gray;
 				background-color: black;
 				position: absolute;
-				display: block; 
+				display: block;
 				max-width: 175px;
 				width: 100px;
 				bottom: 0;
@@ -43,240 +205,60 @@
 				color: black;
 			}
 			#homeB, #portB {
-			    text-align: center;
-			    max-width: 175px;
-			    width: 100px;
-			    height: 75px;
+				text-align: center;
+				max-width: 175px;
+				width: 100px;
+				height: 75px;
 			}
 			#projD, #boxB, #platB, #circB, #runB {
-			    text-align: center;
+				text-align: center;
 				max-width: 175px;
 				width: 175px;
 				height: 50px;
 			}
 			#updated {
-			    position: absolute;
-			    font-size: 75%;
-			    color: white;
-			    bottom: 5px;
-			    visibility: hidden;
+				position: absolute;
+				font-size: 75%;
+				color: white;
+				bottom: 5px;
+				visibility: hidden;
 			}
 			#homeP, #portP {
 				margin: 0px 0px 0px 100px;
-                background: #EBF5FF;
-                border-radius: 10px;
-                position: absolute;
-                font-size: 90%;
-				float: left;
-				height: 50%;
-				width: 50%;
+				background: #EBF5FF;
+				border-radius: 10px;
+				position: absolute;
+				font-size: 100%;
+				height: 60%;
+				width: 60%;
 			}
-            #group1 {
-				margin: -20px 0px 0px 10px;
-				display: block;
-			}
-			#group2 {
-				margin: -40px 0px 15px 150px;
-				display: block;
+			#name {
+				margin: 5px 0 0 5px;
 			}
 			#self {
 				background-color: black;
-				margin: -5px 5px 5px 0;
-				position: absolute;
+				float: left;
+				margin: 5px 5px 5px 5px;
+				max-height: 60%;
 				height: 200px;
-				width: 120px;
+				width: 130px;
 				padding: 2px;
-            }
-            #definers {
-                margin: 0 0 0 20px;
-            }
-			
+			}
+			#group2 {
+				margin: 5px 0px 5px 0px;
+				float: left;
+				display: block;
+			}
+			#about {
+				margin: 0 0 0 0;
+			}
+			h3 {
+				margin: 0 0 0 0;
+			}
+			#define {
+				margin: 10px 0 0 10px;
+			}
 		</style>
-		<script>
-//Goal, Modularity
-
-//call function in a function for definitions in the function
-			function quickVar(){
-				var	bar = document.getElementById('bar');
-				var homeP = document.getElementById('homeP');
-				var portP = document.getElementById('portP');
-				var homeD = document.getElementById('homeD');
-				var portD = document.getElementById('portD');
-				var projD = document.getElementById('projD');
-				var homeB = document.getElementById('homeB');
-				var portB = document.getElementById('portB');
-				var lastU = document.getElementById('updated');
-//if both main and port are the same return to main
-				if(homeP.style.visibility === portP.style.visibility){
-					homeP.style.visibility = 'visible';
-					portP.style.visibility = 'hidden';
-					console.log("incongruent, returning home");
-				}
-			}
-//if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
-			function homeToggle(homeT){
-				console.log("home clicked");
-				quickVar();
-				var lastU = document.getElementById('updated');
-				if('homeT'){
-					if(portP.style.visibility === 'visible'){
-						console.log("Loading Home Page");
-						homeP.style.visibility = 'visible';
-						portP.style.visibility = 'hidden';
-						homeB.style.margin = '0 0 0 0';
-						homeB.style.width = '175px';
-					    homeB.style.height = '75px';
-					    portB.style.width = '175px';
-					    portB.style.height = '50px';
-						portB.style.margin = '75px 0 0 0';
-						lastU.style.visibility = 'hidden';
-						homeMin();
-						document.title = "Home";
-						return;
-					} else if(homeP.style.visibility === 'visible'){
-						if(portD.style.visibility !== 'visible'){
-							console.log("homebar opening");
-							var lastU = document.getElementById('updated');
-							lastU.style.visibility = 'visible';
-							homeMax();
-							return;
-						} else if(portD.style.visibility !== 'hidden'){
-							console.log("homebar closing");
-							var lastU = document.getElementById('updated');
-							lastU.style.visibility = 'hidden';
-							homeMin();
-						}
-					}
-				}
-			}
-//if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
-			function portToggle(portT){
-				console.log("port clicked");
-				quickVar();
-				var lastU = document.getElementById('updated');
-				if('portT'){
-					if(homeP.style.visibility === 'visible'){
-						console.log("Loading Port Page");
-						homeP.style.visibility = 'hidden';
-						portP.style.visibility = 'visible';
-						homeD.style.position = 'absolute';
-						portD.style.position = 'absolute';
-						homeB.style.margin = '75px 0 0 0';
-						homeB.style.width = '175px';
-					    homeB.style.height = '50px';
-					    portB.style.width = '175px';
-					    portB.style.height = '75px';
-						portB.style.margin = '0 0 0 0';
-						lastU.style.visibility = 'hidden';
-						portMin();
-						document.title = "Portfolio";
-						return;
-					} else if(portP.style.visibility === 'visible'){
-						if(homeD.style.visibility !== 'visible'){
-							console.log("portbar opening");
-							var lastU = document.getElementById('updated');
-							lastU.style.visibility = 'visible';
-							portMax();
-							return;
-						} else if(portD.style.visibility !== 'hidden'){
-							console.log("portbar closing");
-							var lastU = document.getElementById('updated');
-							lastU.style.visibility = 'hidden';
-							portMin();
-						}
-					}
-				}
-			}
-//if toggle on page HOME bar expand
-			function homeMax(){
-				quickVar();
-				var lastU = document.getElementById('updated');
-				if(portD.style.visibility === 'hidden'){
-					bar.style.maxwidth = '175px';
-					bar.style.width = '175px';
-					homeP.style.margin = '0 0 0 175px';
-					portD.style.visibility = 'visible';
-					projD.style.margin = '125px 0 0 0';
-					projD.style.visibility = 'visible';
-					homeB.style.width = '175px';
-					homeB.style.height = '75px';
-					portB.style.width = '175px';
-					portB.style.height = '50px';
-					portB.style.visibility = 'visible';
-					lastU.style.visibility = 'visible';
-					console.log("homebar opening done");
-				}
-			}
-//if toggle on page HOME bar hide
-			function homeMin(){
-				quickVar();
-				var lastU = document.getElementById('updated');
-				if(portP.style.visibility === 'hidden'){
-					bar.style.maxwidth = '100px';
-					bar.style.width = '100px';
-					portD.style.visibility = 'hidden';
-					projD.style.visibility = 'hidden';
-					homeP.style.margin = '0 50px 200px 100px';
-					homeB.style.margin = '0 0 0 0';
-					homeB.style.width = '100px';
-					homeB.style.height = '75px';
-					portB.style.width = '100px';
-					portB.style.height = '50px';
-					portB.style.visibility = 'hidden';
-					portB.style.visibility = 'hidden';
-					lastU.style.visibility = 'hidden';
-					console.log("home closing done");
-				}
-			}
-//if toggle on page PORT bar expand
-			function portMax(){
-				quickVar();
-				var lastU = document.getElementById('updated');
-				var boxB = document.getElementById('boxB');
-				if(homeP.style.visibility === 'hidden'){
-					bar.style.maxwidth = '175px';
-					bar.style.width = '175px';
-					portP.style.margin = '0 0 0 175px';
-					homeD.style.visibility = 'visible';
-					portD.style.margin = '0 0 0 0';
-					projD.style.visibility = 'visible';
-					projD.style.margin = '125px 0 0 0';
-					homeB.style.visibility = 'visible';
-					homeB.style.position = 'absolute';
-					homeB.style.margin = '75px 0 0 0';
-					homeB.style.width = '175px';
-					homeB.style.height = '50px';
-					portB.style.width = '175px';
-					portB.style.height = '75px';
-					portB.style.margin = '0 0 0 0';
-					portB.style.position = 'absolute';
-					lastU.style.visibility = 'visible';
-					console.log("portMin done");
-				}
-			}
-//if toggle on page PORT bar hide
-			function portMin(){
-				quickVar();
-				var lastU = document.getElementById('updated');
-				if(homeP.style.visibility === 'hidden'){
-					bar.style.maxwidth = '100px';
-					bar.style.width = '100px';
-					homeD.style.visibility = 'hidden';
-					portD.style.margin = ' 0 0 0 0';
-					projD.style.visibility = 'hidden';
-					portP.style.margin = '0 0 0 100px';
-					homeB.style.visibility = 'hidden';
-					homeB.style.width = '100px';
-					homeB.style.height = '50px';
-					portB.style.width = '100px';
-					portB.style.height = '75px';
-					portB.style.margin = '0 0 0 0';
-					lastU.style.visibility = 'hidden';
-					console.log("portMin done");
-				}
-			}
-
-		</script>
 	</head>
 	<body style="background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
 		<nav id="bar">
@@ -294,17 +276,15 @@
 			</div>
 			<div id="updated" style="visibility: hidden;">
 				<li style="list-style-type:none;">Last Updated:</li>
-				<li style="list-style-type:none;">10PM</li>
-				<li style="list-style-type:none;">10/12/2019</li>
+				<li style="list-style-type:none;">4PM</li>
+				<li style="list-style-type:none;">10/13/2019</li>
 			</div>
 		</nav>
 		<main id="homeP" style="visibility: visible;">
-			<div id="group1">
-				<h1>Markus Lasseigne</h1>
-				<h2>About</h2>
-				<img src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096" id="self"></a>
-			</div>
+			<h1 id="name">Markus Lasseigne</h1>
+			<img id="self" src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096"></a>
 			<div id="group2">
+				<h2 id="about">About:</h2>
 				<h3>Student at:</h3>
 				    <li>K-12 Online School</li>
 				    <li>Operation Spark</li>
@@ -319,23 +299,23 @@
 		</main>
 		<main id="portP" style="visibility: hidden;">
 			<div id="definers">
-                <div id="box">
-                    <h3>Bouncing Box:</h3>
-                    <p>A project that gives the taste of game development on the web.</p>
-                </div>
-                <div id="plat">
-                    <h3>Platformer:</h3>
-                    <p>A cannon-dodging, collectible-grabbing adventure game for HalleBot.</p>
-                </div>
-                <div id="circ">
-                    <h3>Circularity:</h3>
-                    <p>A motion poem using random number generation and velocity, applied to circle shapes.</p>
-                </div>
-                <div id="run">
-                    <h3>Runtime:</h3>
-                    <p>A side-scroller game featuring our own HalleBot!</p>
-                </div>
-            </div>
+				<div id="box">
+					<h3>Bouncing Box:</h3>
+					<p>A project that gives the taste of game development on the web.</p>
+				</div>
+				<div id="plat">
+					<h3>Platformer:</h3>
+					<p>A cannon-dodging, collectible-grabbing adventure game for HalleBot.</p>
+				</div>
+				<div id="circ">
+					<h3>Circularity:</h3>
+					<p>A motion poem using random number generation and velocity, applied to circle shapes.</p>
+                		</div>
+                		<div id="run">
+                    			<h3>Runtime:</h3>
+                    			<p>A side-scroller game featuring our own HalleBot!</p>
+                		</div>
+			</div>
 		</main>
 	</body>
 </html>
