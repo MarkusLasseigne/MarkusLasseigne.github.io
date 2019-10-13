@@ -5,7 +5,6 @@
     let cannon = window.opspark.cannon;
     
     /**
-
      * Avalible Functions:
      *  cannon.create.onTop(xLocation);
      *  cannon.create.onBottom(xLocation);
@@ -13,9 +12,9 @@
      *  cannon.create.onRight(yLocation);
      */ 
     cannon.init = function (game) {
-        cannon.create.onRight(40)
         cannon.create.onRight(30)
         cannon.create.onRight(20)
-        cannon.create.onLeft(650)
+        cannon.create.onRight(10)
+        cannon.create.onLeft(666)
     };
 })(window);
