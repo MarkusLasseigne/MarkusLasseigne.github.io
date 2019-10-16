@@ -18,12 +18,13 @@
 				lastU = document.getElementById('updated');
 				console.log("Variables Loaded");
 			}
+
+			function toggleB(buttonT){
+                console.log("started");
+				quickVar();
 //if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
-			function homeToggle(homeT){
-				console.log("home clicked");
-				if('homeT'){
-					quickVar();
-					if(portP.style.visibility === 'visible'){
+				if(buttonT === "homeT"){
+                    if(portP.style.visibility === 'visible'){
 						console.log("Loading Home Page");
 						homeP.style.visibility = 'visible';
 						portP.style.visibility = 'hidden';
@@ -36,24 +37,20 @@
 						homeMin();
 						document.title = "Home";
 						return;
-					} else if(homeP.style.visibility === 'visible'){
+					}else if(homeP.style.visibility === 'visible'){
 						if(portD.style.visibility !== 'visible'){
-							console.log("homebar opening");
+							console.log("home bar opening");
 							homeMax();
 							return;
-						} else if(portD.style.visibility !== 'hidden'){
-							console.log("homebar closing");
+						}else if(portD.style.visibility !== 'hidden'){
+							console.log("home bar closing");
 							homeMin();
 						}
 					}
 				}
-			}
 //if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
-			function portToggle(portT){
-				console.log("port clicked");
-				if('portT'){
-					quickVar();
-					if(homeP.style.visibility === 'visible'){
+				if(buttonT === "portT"){
+                    if(homeP.style.visibility === 'visible'){
 						console.log("Loading Port Page");
 						homeP.style.visibility = 'hidden';
 						portP.style.visibility = 'visible';
@@ -70,16 +67,16 @@
 						return;
 					} else if(portP.style.visibility === 'visible'){
 						if(homeD.style.visibility !== 'visible'){
-							console.log("portbar opening");
+							console.log("port bar opening");
 							portMax();
 							return;
 						} else if(portD.style.visibility !== 'hidden'){
-							console.log("portbar closing");
+							console.log("port bar closing");
 							portMin();
 						}
 					}
 				}
-			}
+            }
 //if toggle on page HOME bar expand
 			function homeMax(){
 				quickVar();
@@ -96,7 +93,7 @@
 					portB.style.height = '50px';
 					portB.style.visibility = 'visible';
 					lastU.style.visibility = 'visible';
-					console.log("homebar opening done");
+					console.log("home bar opened");
 				}
 			}
 //if toggle on page HOME bar hide
@@ -116,7 +113,7 @@
 					portB.style.visibility = 'hidden';
 					portB.style.visibility = 'hidden';
 					lastU.style.visibility = 'hidden';
-					console.log("home closing done");
+					console.log("home bar closed");
 				}
 			}
 //if toggle on page PORT bar expand
@@ -140,7 +137,7 @@
 					portB.style.margin = '0 0 0 0';
 					portB.style.position = 'absolute';
 					lastU.style.visibility = 'visible';
-					console.log("portMin done");
+					console.log("port bar opened");
 				}
 			}
 //if toggle on page PORT bar hide
@@ -160,7 +157,7 @@
 					portB.style.height = '75px';
 					portB.style.margin = '0 0 0 0';
 					lastU.style.visibility = 'hidden';
-					console.log("portMin done");
+					console.log("port bar closed");
 				}
 			}
 		</script>
