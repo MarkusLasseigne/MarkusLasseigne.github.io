@@ -48,32 +48,35 @@
 				color: black;
 			}
 			.pos1 {
-				text-align: center;
-                max-width: 175px;
 				visibility: visible;
+				text-align: center;
+                position: absolute;
+                max-width: 175px;
+                margin: 0 0 0 0;
                 width: 100px;
                 height: 75px;
 			}
 			.pos2, .pos3, .pos4, .pos5, .pos6 {
 				text-align: center;
+				position: absolute;
 				visibility: hidden;
 				max-width: 175px;
                 width: 175px;
                 height: 50px;
+                float: left;
 			}
-
 			#updated {
                 position: absolute;
+                visibility: hidden;
                 font-size: 75%;
                 color: white;
                 bottom: 5px;
-                visibility: hidden;
 			}
 			#iFrame {
 				margin: 0px 0px 0px 100px;
-			    border: 0px;
 				max-height: 1080px;
 				height: 800px;
+				border: 0px;
 			    width: 90%;
 			}
 		</style>
