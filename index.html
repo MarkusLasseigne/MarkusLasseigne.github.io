@@ -3,10 +3,10 @@
     <head>
         <title>Home</title>
 		<style>
-            body {
+			body {
 				height: 100%;
 				width: 99%; 
-            }
+			}
 			#leftBar {
 				border-right: 1.5px solid gray;
 				background-color: black;
@@ -54,16 +54,20 @@
 				width: 100px;
 				height: 75px;
 			}
+			#pos1 {
+			    position: absolute;
+			    margin: 0 0 0 0;
+			}
+			.pos2t6 {
+                margin-top: 75px;
+                position: absolute;
+			}
 			.pos2, .pos3, .pos4, .pos5, .pos6 {
-				margin-top: 100px;
 				text-align: center;
 				visibility: hidden;
 				max-width: 175px;
 				width: 175px;
 				height: 50px;
-			}
-			#pos2t6 {
-				margin-top: 100px;
 			}
 			#updated {
 				position: absolute;
@@ -227,7 +231,9 @@
 	<body style=" background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
 		<nav id="leftBar">
 			<div id="butts">
-				<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
+				<div id="pos1">
+					<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
+				</div>
 				<div id="pos2t6">
 					<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("portfolio")>Portfolio</button>
 					<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("bouncing-box")>Bouncing Box</button>
