@@ -4,11 +4,11 @@
         <title>Home</title>
 		<style>
             body {
-                height: 100%;
+				height: 100%;
 				width: 99%; 
             }
 			#leftBar {
-                border-right: 1.5px solid gray;
+				border-right: 1.5px solid gray;
 				background-color: black;
 				position: absolute;
 				display: block; 
@@ -27,7 +27,6 @@
 				list-style-type:none;
 				max-width: 175px;
 				text-align: center;
-				margin: 0 0 1px 0;
 				font-size: 110%;
 				font-weight: bold;
 				color: white;
@@ -41,7 +40,6 @@
 				text-align: center;
 				list-style-type:none;
 				max-width: 175px;
-				margin-top: 0;
 				font-size: 110%;
 				font-weight: bold;
 				display: block;
@@ -50,33 +48,36 @@
 			.pos1 {
 				visibility: visible;
 				text-align: center;
-                position: absolute;
-                max-width: 175px;
-                margin-top: 0;
-                width: 100px;
-                height: 75px;
+				position: absolute;
+				max-width: 175px;
+				margin-top: 0;
+				width: 100px;
+				height: 75px;
 			}
 			.pos2, .pos3, .pos4, .pos5, .pos6 {
 				margin-top: 100px;
 				text-align: center;
 				visibility: hidden;
 				max-width: 175px;
-                width: 175px;
-                height: 50px;
+				width: 175px;
+				height: 50px;
+			}
+			#pos2t6 {
+				margin-top: 100px;
 			}
 			#updated {
-                position: absolute;
-                visibility: hidden;
-                font-size: 75%;
-                color: white;
-                bottom: 5px;
+				position: absolute;
+				visibility: hidden;
+				font-size: 75%;
+				color: white;
+				bottom: 5px;
 			}
 			#iFrame {
 				margin: 0px 0px 0px 100px;
 				max-height: 1080px;
 				height: 800px;
 				border: 0px;
-			    width: 90%;
+				width: 90%;
 			}
 		</style>
 		<script>
@@ -227,11 +228,13 @@
 		<nav id="leftBar">
 			<div id="butts">
 				<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
-				<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("https://markuslasseigne.github.io/portfolio.html")>Portfolio</button>
-				<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("https://markuslasseigne.github.io/projects/bouncing-box/index.html")>Bouncing Box</button>
-				<button name="Platformer" class="pos4" id="platformer" onclick=toggleB("https://markuslasseigne.github.io/projects/platformer/index.html")>Platformer</button>
-				<button name="Circularity" class="pos5" id="circularity" onclick=toggleB("https://markuslasseigne.github.io/projects/circularity/index.html")>\WIP Circ/</button>
-				<button name="Runtime" class="pos6" id="runtime" onclick=toggleB("https://markuslasseigne.github.io/projects/runtime/index.html")>\WIP Run/</button>
+				<div id="pos2t6">
+					<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("portfolio")>Portfolio</button>
+					<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("bouncing-box")>Bouncing Box</button>
+					<button name="Platformer" class="pos4" id="platformer" onclick=toggleB("platformer")>Platformer</button>
+					<button name="Circularity" class="pos5" id="circularity" onclick=toggleB("circularity")>\WIP Circ/</button>
+					<button name="Runtime" class="pos6" id="runtime" onclick=toggleB("runtime")>\WIP Run/</button>
+				</div>
 			</div>
 		</nav>
 		<iframe id="iFrame" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
