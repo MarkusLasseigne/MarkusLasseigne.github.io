@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+		<title>Home</title>
+		<script>
+//Goal, Modularity
+//call function in a function for definitions in the function
+			function quickVar(){
+				bar = document.getElementById('bar');
+				homeP = document.getElementById('homeP');
+				portP = document.getElementById('portP');
+				homeD = document.getElementById('homeD');
+				portD = document.getElementById('portD');
+				projD = document.getElementById('projD');
+				homeB = document.getElementById('homeB');
+				portB = document.getElementById('portB');
+				boxB = document.getElementById('boxB');
+				lastU = document.getElementById('updated');
+				console.log("Variables Loaded");
+			}
+
+			function toggleB(buttonT){
+                console.log("started");
+				quickVar();
+//if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
+				if(buttonT === "homeT"){
+                    if(portP.style.visibility === 'visible'){
+						console.log("Loading Home Page");
+						homeP.style.visibility = 'visible';
+						portP.style.visibility = 'hidden';
+						homeB.style.margin = '0 0 0 0';
+						homeB.style.width = '175px';
+						homeB.style.height = '75px';
+						portB.style.width = '175px';
+						portB.style.height = '50px';
+						portB.style.margin = '75px 0 0 0';
+						homeMin();
+						document.title = "Home";
+						return;
+					}else if(homeP.style.visibility === 'visible'){
+						if(portD.style.visibility !== 'visible'){
+							console.log("home bar opening");
+							homeMax();
+							return;
+						}else if(portD.style.visibility !== 'hidden'){
+							console.log("home bar closing");
+							homeMin();
+						}
+					}
+				}
+//if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
+				if(buttonT === "portT"){
+                    if(homeP.style.visibility === 'visible'){
+						console.log("Loading Port Page");
+						homeP.style.visibility = 'hidden';
+						portP.style.visibility = 'visible';
+						homeD.style.position = 'absolute';
+						portD.style.position = 'absolute';
+						homeB.style.margin = '75px 0 0 0';
+						homeB.style.width = '175px';
+						homeB.style.height = '50px';
+						portB.style.width = '175px';
+						portB.style.height = '75px';
+						portB.style.margin = '0 0 0 0';
+						portMin();
+						document.title = "Portfolio";
+						return;
+					} else if(portP.style.visibility === 'visible'){
+						if(homeD.style.visibility !== 'visible'){
+							console.log("port bar opening");
+							portMax();
+							return;
+						} else if(portD.style.visibility !== 'hidden'){
+							console.log("port bar closing");
+							portMin();
+						}
+					}
+				}
+            }
+//if toggle on page HOME bar expand
+			function homeMax(){
+				quickVar();
+				if(portD.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					homeP.style.margin = '0 0 0 175px';
+					portD.style.visibility = 'visible';
+					projD.style.margin = '125px 0 0 0';
+					projD.style.visibility = 'visible';
+					homeB.style.width = '175px';
+					homeB.style.height = '75px';
+					portB.style.width = '175px';
+					portB.style.height = '50px';
+					portB.style.visibility = 'visible';
+					lastU.style.visibility = 'visible';
+					console.log("home bar opened");
+				}
+			}
+//if toggle on page HOME bar hide
+			function homeMin(){
+				quickVar();
+				if(portP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					portD.style.visibility = 'hidden';
+					projD.style.visibility = 'hidden';
+					homeP.style.margin = '0 50px 200px 100px';
+					homeB.style.margin = '0 0 0 0';
+					homeB.style.width = '100px';
+					homeB.style.height = '75px';
+					portB.style.width = '100px';
+					portB.style.height = '50px';
+					portB.style.visibility = 'hidden';
+					portB.style.visibility = 'hidden';
+					lastU.style.visibility = 'hidden';
+					console.log("home bar closed");
+				}
+			}
+//if toggle on page PORT bar expand
+			function portMax(){
+				quickVar();
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '175px';
+					bar.style.width = '175px';
+					portP.style.margin = '0 0 0 175px';
+					homeD.style.visibility = 'visible';
+					portD.style.margin = '0 0 0 0';
+					projD.style.visibility = 'visible';
+					projD.style.margin = '125px 0 0 0';
+					homeB.style.visibility = 'visible';
+					homeB.style.position = 'absolute';
+					homeB.style.margin = '75px 0 0 0';
+					homeB.style.width = '175px';
+					homeB.style.height = '50px';
+					portB.style.width = '175px';
+					portB.style.height = '75px';
+					portB.style.margin = '0 0 0 0';
+					portB.style.position = 'absolute';
+					lastU.style.visibility = 'visible';
+					console.log("port bar opened");
+				}
+			}
+//if toggle on page PORT bar hide
+			function portMin(){
+				quickVar();
+				if(homeP.style.visibility === 'hidden'){
+					bar.style.maxwidth = '100px';
+					bar.style.width = '100px';
+					homeD.style.visibility = 'hidden';
+					portD.style.margin = ' 0 0 0 0';
+					projD.style.visibility = 'hidden';
+					portP.style.margin = '0 0 0 100px';
+					homeB.style.visibility = 'hidden';
+					homeB.style.width = '100px';
+					homeB.style.height = '50px';
+					portB.style.width = '100px';
+					portB.style.height = '75px';
+					portB.style.margin = '0 0 0 0';
+					lastU.style.visibility = 'hidden';
+					console.log("port bar closed");
+				}
+			}
+		</script>
+		<style>
+			#bar {
+				border-right: 1.5px solid gray;
+				background-color: black;
+				position: absolute;
+				display: block;
+				max-width: 175px;
+				width: 100px;
+				bottom: 0;
+				left: 0;
+				top: 0;
+			}
+			.links {
+				border: 0 solid gray;
+				border-bottom: 1.5px solid gray;
+				background-color: black;
+				cursor: pointer;
+				text-decoration: none;
+				text-align: center;
+				margin: 0 0 1px 0;
+				font-size: 110%;
+				font-weight: bold;
+				color: white;
+				float: left;
+			}
+			.links:hover {
+				border: 0 solid black;
+				border-bottom: 1.5px solid gray;
+				background-color: white;
+				text-decoration: none;
+				text-align: center;
+				margin: 0 0 1px 0;
+				font-size: 110%;
+				font-weight: bold;
+				display: block;
+				color: black;
+			}
+			#homeB, #portB {
+				text-align: center;
+				max-width: 175px;
+				width: 100px;
+				height: 75px;
+			}
+			#projD, #boxB, #platB, #circB, #runB {
+				text-align: center;
+				max-width: 175px;
+				width: 175px;
+				height: 50px;
+			}
+			#updated {
+				position: absolute;
+				visibility: hidden;
+				font-size: 75%;
+				color: white;
+				bottom: 5px;
+			}
+			#homeP, #portP {
+				margin: 0px 0px 0px 100px;
+				font-family: arial;
+                font-size: 100%;
+				background: #EBF5FF;
+				border-radius: 10px;
+				position: absolute;
+				font-size: 100%;
+				height: 60%;
+				width: 60%;
+			}
+			#name {
+				margin: 5px 0 5px 5px;
+			}
+			#self {
+				background-color: black;
+				margin: 5px 5px 5px 5px;
+				max-height: 60%;
+				height: 210px;
+				width: 140px;
+				padding: 2px;
+				float: left;
+			}
+			#group2 {
+				margin: 5px 0px 5px 0px;
+				float: left;
+				display: block;
+			}
+			#about {
+				margin: 0 0 0 0;
+			}
+			h3 {
+				margin: 0 0 0 0;
+			}
+			#define {
+				margin: 10px 0 0 10px;
+			}
+		</style>
+	</head>
+	<body style="background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
+		<nav id="bar">
+			<div id="homeD">
+				<button class="links" id="homeB"  style="list-style-type:none;" onclick=toggleB('homeT')>Home</button>
+			</div>
+			<div id="portD" style="visibility: hidden;">
+				<button class="links" id="portB"  style="visibility: hidden;" onclick=toggleB('portT')>Portfolio</button>
+			</div>
+			<div id="projD" style="visibility: hidden;">
+				<button class="links" id="boxB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/bouncing-box/';">Bouncing Box</button>
+				<button class="links" id="platB"  style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/platformer/';">Platformer</button>
+				<button class="links" id="circB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/circularity/';">\WIP Circ/</button>
+				<button class="links" id="runB" style="list-style-type:none;" onclick="window.location.href = 'https://markuslasseigne.github.io/projects/runtime/';">\WIP Run/</button>
+			</div>
+			<div id="updated" style="visibility: hidden;">
+				<li style="list-style-type:none;">Last Updated:</li>
+				<li style="list-style-type:none;">4PM</li>
+				<li style="list-style-type:none;">10/13/2019</li>
+			</div>
+		</nav>
+		<main id="homeP" style="visibility: visible;">
+			<h1 id="name">Markus Lasseigne</h1>
+			<img id="self" src="https://pbs.twimg.com/media/EGEVa6QUEAAnJkl?format=jpg&name=4096x4096"></a>
+			<div id="group2">
+				<h2 id="about">About:</h2>
+				<h3>Student at:</h3>
+				    <li>K-12 Online School</li>
+				    <li>Operation Spark</li>
+				<h3>Interests:</h3>
+					<li>Gaming</li>
+					<li>Astronomy</li>
+					<li>Science</li>
+					<li>Rockets</li>
+					<li>Ice Cream</li>
+					<li>Coding</li>
+			</div>
+		</main>
+		<main id="portP" style="visibility: hidden;">
+			<div id="define">
+				<div id="box">
+					<h3>Bouncing Box:</h3>
+					<p>A project that gives the taste of game development on the web.</p>
+				</div>
+				<div id="plat">
+					<h3>Platformer:</h3>
+					<p>A cannon-dodging, collectible-grabbing adventure game for HalleBot.</p>
+				</div>
+				<div id="circ">
+					<h3>Circularity:</h3>
+					<p>A motion poem using random number generation and velocity, applied to circle shapes.</p>
+				</div>
+				<div id="run">
+					<h3>Runtime:</h3>
+					<p>A side-scroller game featuring our own HalleBot!</p>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

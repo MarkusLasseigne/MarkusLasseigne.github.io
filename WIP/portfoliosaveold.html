@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+		<title>
+			Markus's Portfolio
+		</title>
+		<style>
+            body {
+				background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+			}
+			#bar {
+				border-right: 1.5px solid gray;
+				background-color: black;
+				position: absolute;
+				display: block; 
+				max-width: 200px;
+				width: 100px;
+				bottom: 0;
+				left: 0;
+				top: 0;
+				user-select: none;
+			}
+			#drawer, a {
+				border: 0 solid gray;
+				border-bottom: 1.5px solid gray;
+				background-color: black;
+				text-decoration: none;
+				text-align: center;
+				margin-bottom: 0;
+				font-family: arial;
+				font-weight: bold;
+				padding: 20px 9px;
+				font-size: 125%;
+				display: block;
+				color: white;
+                left: 0;
+			}
+			#drawer:hover, a:hover {
+				border: 0 solid black;
+				border-bottom: 1.5px solid gray;
+				background-color: white;
+				text-decoration: none;
+				text-align: center;
+				margin-bottom: 0;
+				font-family: arial;
+				font-weight: bold;
+				font-size: 125%;
+				display: block;
+				color: black;
+			}
+			#links {
+			    margin-top: -40px;
+			}
+			#updated {
+			    position: absolute;
+			    font-size: 60%;
+			    color: white;
+			    bottom: 5px;
+			    left: 0;
+			}
+			#main {
+				margin: 0 50px 50px 100px;
+				width: 74%;
+				height: 353.5px;
+                background: #EBF5FF;
+                border-radius: 10px;
+                position: absolute;
+                user-select: none;
+			}
+            #definers {
+                margin-left: 10px;
+                margin-top: -10px;
+            }
+            h3 {
+                margin-bottom: -15px;
+            }
+			
+		</style>
+		<script>
+		//Goal, Modularity
+            function toggle(){
+                var links = document.getElementById('links');
+                if(links.style.display === 'block'){
+                    min();
+                    links.style.display = 'none';
+                } else {
+                    max();
+                    links.style.display='block';
+                }
+            }
+			function max(){
+				var	bar = document.getElementById('bar');
+				bar.style.width = '160px';
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='30px 39px';
+				var link = document.getElementById('link');
+				link.style.padding='20px 40px';
+				var main = document.getElementById('main');
+				main.style.margin='0px 0px 0px 160px';
+				main.style.width='65%';
+			}
+			function min(){
+				var	bar = document.getElementById('bar');
+				bar.style.width='100px';
+				var drawer = document.getElementById('drawer');
+				drawer.style.padding='30px 9px';			
+				var main = document.getElementById('main');
+				main.style.margin='0px 0px 200px 100px';
+				main.style.width='74%';
+			}
+		</script>
+	</head>
+	<body>
+		<nav id="bar">
+			<button type="button" id="drawer" style="padding: 30px 9px" onclick=toggle()>Portfolio</button>
+			<div id="links" style="display: none;">
+				<div id="link">
+					<p id="updated">Last Updated: 10/10/19</p>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/index.html">Home</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/bouncing-box/">Bouncing Box</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/platformer/">Platformer</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/circularity/">Circularity</a>
+				</div>
+				<div id="link">
+					<a href="https://markuslasseigne.github.io/projects/runtime/">Runtime</a>
+				</div>
+			</div>
+		</nav>
+        <main id="main">
+            <div id="definers">
+                <div id="box">
+                    <h3>Bouncing Box:</h3>
+                    <p>A project that gives the taste of game development on the web.</p>
+                </div>
+                <div id="plat">
+                    <h3>Platformer:</h3>
+                    <p>A cannon-dodging, collectible-grabbing adventure game for HalleBot.</p>
+                </div>
+                <div id="circ">
+                    <h3>Circularity:</h3>
+                    <p>A motion poem using random number generation and velocity, applied to circle shapes.</p>
+                </div>
+                <div id="run">
+                    <h3>Runtime:</h3>
+                    <p>A side-scroller game featuring our own HalleBot!</p>
+                </div>
+            </div>
+        </main>
+	</body>
+</html>
