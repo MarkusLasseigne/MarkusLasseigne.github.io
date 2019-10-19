@@ -50,19 +50,12 @@
 				text-align: center;
 				position: absolute;
 				max-width: 175px;
-				margin-top: 0;
+				margin: 0 0 0 0;
 				width: 100px;
 				height: 75px;
 			}
-			#pos1 {
-			    position: absolute;
-			    margin: 0 0 0 0;
-			}
-			.pos2t6 {
-                margin-top: 75px;
-                position: absolute;
-			}
 			.pos2, .pos3, .pos4, .pos5, .pos6 {
+				margin: 75px 0 -75px 0;
 				text-align: center;
 				visibility: hidden;
 				max-width: 175px;
@@ -78,8 +71,8 @@
 			}
 			#iFrame {
 				margin: 0px 0px 0px 100px;
-				max-height: 1080px;
-				height: 800px;
+				max-height: 100%;
+				height: 1000px;
 				border: 0px;
 				width: 90%;
 			}
@@ -112,7 +105,7 @@
 			function toggleB(buttonVal){
 			    var buttonVal;
 				var pos1 = document.getElementsByClassName('pos1');
-                console.log(buttonVal + " load started");
+				console.log(buttonVal + " load started");
 				quickVar();
 				console.log(frame.src);
 				if(buttonVal === frame.src){ 
@@ -231,16 +224,12 @@
 	<body style=" background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
 		<nav id="leftBar">
 			<div id="butts">
-				<div id="pos1">
-					<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
-				</div>
-				<div id="pos2t6">
-					<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("portfolio")>Portfolio</button>
-					<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("bouncing-box")>Bouncing Box</button>
-					<button name="Platformer" class="pos4" id="platformer" onclick=toggleB("platformer")>Platformer</button>
-					<button name="Circularity" class="pos5" id="circularity" onclick=toggleB("circularity")>\WIP Circ/</button>
-					<button name="Runtime" class="pos6" id="runtime" onclick=toggleB("runtime")>\WIP Run/</button>
-				</div>
+				<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
+				<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("portfolio")>Portfolio</button>
+				<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("bouncing-box")>Bouncing Box</button>
+				<button name="Platformer" class="pos4" id="platformer" onclick=toggleB("platformer")>Platformer</button>
+				<button name="Circularity" class="pos5" id="circularity" onclick=toggleB("circularity")>\WIP Circ/</button>
+				<button name="Runtime" class="pos6" id="runtime" onclick=toggleB("runtime")>\WIP Run/</button>
 			</div>
 		</nav>
 		<iframe id="iFrame" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
