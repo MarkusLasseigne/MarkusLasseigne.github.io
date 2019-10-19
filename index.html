@@ -1,13 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Home</title>
+	<head>
+		<title>Home</title>
 		<style>
 			body {
 				height: 100%;
-				max-height: 100%;
 				width: 99%; 
-				max-width: 99%;
 			}
 			#leftBar {
 				border-right: 1.5px solid gray;
@@ -24,7 +22,6 @@
 				border: 0 solid gray;
 				border-bottom: 1.5px solid gray;
 				background-color: black;
-				cursor: pointer;
 				text-decoration: none;
 				list-style-type:none;
 				max-width: 175px;
@@ -43,6 +40,7 @@
 				list-style-type:none;
 				max-width: 175px;
 				font-size: 110%;
+				cursor: pointer;
 				font-weight: bold;
 				display: block;
 				color: black;
@@ -53,6 +51,7 @@
 				position: absolute;
 				max-width: 175px;
 				margin: 0 0 0 0;
+				left: 0;
 				width: 100px;
 				height: 75px;
 			}
@@ -64,18 +63,25 @@
 				width: 175px;
 				height: 50px;
 			}
-			#updated {
-				position: absolute;
+			.posL {
+				color: white;
 				visibility: hidden;
-				font-size: 75%;
+				position: absolute;
+				width: 100px;
+				bottom: 5px;
+				left: 0;
+			}
+			#updated {
+				text-align: left;
 				color: white;
 				bottom: 5px;
 			}
 			#iFrame {
 				margin: 0px 0px 0px 100px;
-				max-height: 100%;
-				height: 1000px;
+				max-height: 90%;
+				height: 900px;
 				border: 0px;
+				max-width: 95%;
 				width: 90%;
 			}
 		</style>
@@ -83,135 +89,169 @@
 //Goal, Modularity
 //todo, code should be done, but once uploaded, fix links to work in code
 //globals
+// iframe link values: 1=home 2=portfolio 3=bouncing-box 4=platformer 5=circularity 6=runtime
+//state 1 = open state 2 = closed
 
-            var buttonVal;
-
-			var state;
-			
+			var buttonV;
+			window.onload = onStar(1);
+			function onStar(starter){
+				if(starter === 1){
+					document.getElementsByTagName('iframe').rvalue = "1";
+				}
+			}
 			function quickVar(){
-				leftBar = document.getElementById('leftBar');
+				leftBar = document.getElementById("leftBar");
+				frame = document.getElementById("iFrame");
 				buttonA = document.getElementsByTagName("button");
 				Home = document.getElementsByName("Home");
-				pos1 = document.getElementsByClassName('pos1');
-				pos2 = document.getElementsByClassName('pos2');
-				pos3 = document.getElementsByClassName('pos3');
-				pos4 = document.getElementsByClassName('pos4');
-				pos5 = document.getElementsByClassName('pos5');
-				pos6 = document.getElementsByClassName('pos6');
-				frame = document.getElementById('iFrame');
-				lastU = document.getElementById('updated');
-				console.log("Variables Loaded");
+				lastU = document.getElementById("updated");
+				pos1 = document.getElementsByClassName("pos1");
+				pos2 = document.getElementsByClassName("pos2");
+				pos3 = document.getElementsByClassName("pos3");
+				pos4 = document.getElementsByClassName("pos4");
+				pos5 = document.getElementsByClassName("pos5");
+				pos6 = document.getElementsByClassName("pos6");
+				posL = document.getElementsByClassName("posL");
 			}
 			quickVar();
 
-			function toggleB(buttonVal){
-			    var buttonVal;
-				var pos1 = document.getElementsByClassName('pos1');
-				console.log(buttonVal + " load started");
-				quickVar();
-				console.log(frame.src);
-				if(buttonVal === frame.src){ 
-					if(leftBar.style.width <= '100px'){
-						barStat("open");
-						return;
-					} else if(leftBar.style.width >= '175px'){
-						barStat("closed");
-						return;
-					}
-				} else if (buttonVal !== frame.src){
-					console.log("Page Loading");
-					document.getElementById('iFrame').src = buttonVal;
-					console.log("switching pos1 to " + buttonVal);
-					switch(buttonVal){
-						case "https://markuslasseigne.github.io/portfolio.html":
-							document.getElementById("portfolio").className = "pos1";
-							document.getElementById("home").className = "pos2";
-							document.getElementById("bouncing-box").className = "pos3";
-							document.getElementById("platformer").className = "pos4";
-							document.getElementById("circularity").className = "pos5";
-							document.getElementById("runtime").className = "pos6";
-							console.log(buttonVal);
-							break;
-						case "https://markuslasseigne.github.io/projects/bouncing-box/index.html":
-							document.getElementById("bouncing-box").className = "pos1";
-							document.getElementById("home").className = "pos2";
-							document.getElementById("portfolio").className = "pos3";
-							document.getElementById("platformer").className = "pos4";
-							document.getElementById("circularity").className = "pos5";
-							document.getElementById("runtime").className = "pos6";
-							break;
-						case "https://markuslasseigne.github.io/projects/platformer/index.html":
-							document.getElementById("platformer").className = "pos1";
-							document.getElementById("home").className = "pos2";
-							document.getElementById("portfolio").className = "pos3";
-							document.getElementById("bouncing-box").className = "pos4";
-							document.getElementById("circularity").className = "pos5";
-							document.getElementById("runtime").className = "pos6";
-							break;
-						case "https://markuslasseigne.github.io/projects/circularity/index.html":
-							document.getElementById("circularity").className = "pos1";
-							document.getElementById("home").className = "pos2";
-							document.getElementById("portfolio").className = "pos3";
-							document.getElementById("bouncing-box").className = "pos4";
-							document.getElementById("platformer").className = "pos5";
-							document.getElementById("runtime").className = "pos6";
-							break;
-						case "https://markuslasseigne.github.io/projects/runtime/index.html":
-							document.getElementById("runtime").className = "pos1";
-							document.getElementById("home").className = "pos2";
-							document.getElementById("portfolio").className = "pos3";
-							document.getElementById("bouncing-box").className = "pos4";
-							document.getElementById("platformer").className = "pos5";
-							document.getElementById("circularity").className = "pos6";
-							break;
-						default:
-							document.getElementById("home").className = "pos1";
-							document.getElementById("portfolio").className = "pos2";
-							document.getElementById("bouncing-box").className = "pos3";
-							document.getElementById("platformer").className = "pos4";
-							document.getElementById("circularity").className = "pos5";
-							document.getElementById("runtime").className = "pos6";
-							console.log(buttonVal);
-					}
-					barStat("closed");
-				}
+			var stateB = 0;
+
+			function buttonT(page){
+			    console.log("started");
+			    console.log(page);
+			    quickVar();
+			    console.log(document.getElementsByTagName('iframe').rvalue);
+			    if(document.getElementsByTagName('iframe').rvalue === page){
+			        if(stateB === 0){
+			            bState(1);
+			            return stateB = 1;
+			        }
+			        if(stateB === 1){
+			            bState(0);
+			            return stateB = 0;
+			        }
+			    }
+			    if(document.getElementById('iFrame').rvalue !== page){
+			        switch(page){
+                        case "1":
+                            document.getElementsByTagName('iframe').rvalue = "1";
+                            document.getElementById("home").className = "pos1";
+                            document.getElementById("portfolio").className = "pos2";
+                            document.getElementById("bouncing-box").className = "pos3";
+                            document.getElementById("platformer").className = "pos4";
+                            document.getElementById("circularity").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            return document.getElementById('iFrame').src = "https://markuslasseigne.github.io/home.html";
+                        case "2":
+                            document.getElementsByTagName('iframe').rvalue = "2";
+                            document.getElementById("portfolio").className = "pos1";
+                            document.getElementById("home").className = "pos2";
+                            document.getElementById("bouncing-box").className = "pos3";
+                            document.getElementById("platformer").className = "pos4";
+                            document.getElementById("circularity").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            return document.getElementById('iFrame').src = "https://markuslasseigne.github.io/portfolio.html";
+                        case "3":
+                            document.getElementsByTagName('iframe').rvalue = "3";
+                            document.getElementById("bouncing-box").className = "pos1";
+                            document.getElementById("home").className = "pos2";
+                            document.getElementById("portfolio").className = "pos3";
+                            document.getElementById("platformer").className = "pos4";
+                            document.getElementById("circularity").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            document.getElementById('iFrame').src = "https://markuslasseigne.github.io/projects/bouncing-box/index.html";
+                        break;
+                        case "4":
+                            document.getElementsByTagName('iframe').rvalue = "4";
+                            document.getElementById("platformer").className = "pos1";
+                            document.getElementById("home").className = "pos2";
+                            document.getElementById("portfolio").className = "pos3";
+                            document.getElementById("bouncing-box").className = "pos4";
+                            document.getElementById("circularity").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            document.getElementById('iFrame').src = "https://markuslasseigne.github.io/projects/platformer/index.html";
+                        break;
+                        case "5":
+                            document.getElementsByTagName('iframe').rvalue = "5";
+                            document.getElementById("circularity").className = "pos1";
+                            document.getElementById("home").className = "pos2";
+                            document.getElementById("portfolio").className = "pos3";
+                            document.getElementById("bouncing-box").className = "pos4";
+                            document.getElementById("platformer").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            document.getElementById('iFrame').src = "https://markuslasseigne.github.io/projects/circularity/index.html";
+                        break;
+                        case "6":
+                            document.getElementsByTagName('iframe').rvalue = "6";
+                            document.getElementById("runtime").className = "pos1";
+                            document.getElementById("home").className = "pos2";
+                            document.getElementById("portfolio").className = "pos3";
+                            document.getElementById("bouncing-box").className = "pos4";
+                            document.getElementById("platformer").className = "pos5";
+                            document.getElementById("circularity").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            document.getElementById('iFrame').src = "https://markuslasseigne.github.io/projects/runtime/index.html";
+                        break;
+                        default:
+                            document.getElementsByTagName('iframe').rvalue = "1";
+                            document.getElementById("home").className = "pos1";
+                            document.getElementById("portfolio").className = "pos2";
+                            document.getElementById("bouncing-box").className = "pos3";
+                            document.getElementById("platformer").className = "pos4";
+                            document.getElementById("circularity").className = "pos5";
+                            document.getElementById("runtime").className = "pos6";
+                            bState(0);
+                            stateB = 0;
+                            return document.getElementById('iFrame').src = "https://markuslasseigne.github.io/home.html";
+                    }
+			    }
 			}
 
-			function barStat(state, buttonVal){
+			function bState(state){
 				quickVar();
-				if(state === "open"){
-					console.log(state);
+				if(state === 1){
 					leftBar.style.maxWidth = "175px";
 					leftBar.style.width = "175px";
 					frame.style.margin = "0 0 0 175px";
 					pos1[0].style.width = "175px";
-					pos1[0].style.margin = "0 0 0 0";
 					pos1[0].style.visibility = "visible";
 					pos2[0].style.visibility = "visible";
 					pos3[0].style.visibility = "visible";
 					pos4[0].style.visibility = "visible";
 					pos5[0].style.visibility = "visible";
 					pos6[0].style.visibility = "visible";
-					console.log("Bar is " + state);
+					posL[0].style.visibility = "visible";
+					console.log("Max Done");
 				}
-				if(state === "closed"){
+				if(state === 0){
 					leftBar.style.maxwidth = "100px";
 					leftBar.style.width = "100px";
 					frame.style.margin = "0 0 0 100px";
 					pos1[0].style.width = "100px";
-					pos1[0].style.margin = "0 0 0 0";
 					pos1[0].style.visibility = "visible";
 					pos2[0].style.visibility = "hidden";
 					pos3[0].style.visibility = "hidden";
 					pos4[0].style.visibility = "hidden";
 					pos5[0].style.visibility = "hidden";
 					pos6[0].style.visibility = "hidden";
-					console.log("Bar is " + state);
+					posL[0].style.visibility = "hidden";
+					console.log("Min Done");
 				}
 			}
-
-
 			
+
 //while current pages button posistion is first
 //if any button pressed while on the buttons page, open or close 
 //else if any button pressed while not on its page, change iframe to button pressed's page
@@ -221,19 +261,24 @@
 //on port button click on any other page
 //switch current iframe element to the portfolio and switch current toggle button to port button
 // else if port button clicked while iframe is portfolio then open the bar
+
 		</script>
 	</head>
 	<body style=" background: url('https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg');">
 		<nav id="leftBar">
 			<div id="butts">
-				<button name="Home" class="pos1" id="home" onclick=toggleB("https://markuslasseigne.github.io/home.html")>Home</button>
-				<button name="Portfolio" class="pos2" id="portfolio" onclick=toggleB("portfolio")>Portfolio</button>
-				<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=toggleB("bouncing-box")>Bouncing Box</button>
-				<button name="Platformer" class="pos4" id="platformer" onclick=toggleB("platformer")>Platformer</button>
-				<button name="Circularity" class="pos5" id="circularity" onclick=toggleB("circularity")>\WIP Circ/</button>
-				<button name="Runtime" class="pos6" id="runtime" onclick=toggleB("runtime")>\WIP Run/</button>
+				<button name="Home" class="pos1" id="home" onclick=buttonT("1")>Home</button>
+				<button name="Portfolio" class="pos2" id="portfolio" onclick=buttonT("2")>Portfolio</button>
+				<button name="Bouncing-Box" class="pos3" id="bouncing-box" onclick=buttonT("3")>Bouncing Box</button>
+				<button name="Platformer" class="pos4" id="platformer" onclick=buttonT("4")>Platformer</button>
+				<button name="Circularity" class="pos5" id="circularity" onclick=buttonT("5")>\WIP Circ/</button>
+				<button name="Runtime" class="pos6" id="runtime" onclick=buttonT("6")>\WIP Run/</button>
+				<div class="posL">
+					<p id="updated">Last Updated:</p>
+					<p id="updated">10/18/2019</p>
+				</div>
 			</div>
 		</nav>
-		<iframe id="iFrame" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
+		<iframe src="https://markuslasseigne.github.io/home.html" id="iFrame" value="1" style="visibility: visible;" name="maincontent"></iframe>
 	</body>
 </html>
