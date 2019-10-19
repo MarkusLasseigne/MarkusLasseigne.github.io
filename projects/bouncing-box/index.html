@@ -29,8 +29,7 @@
             .board {
                 background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
                 user-select: none;
-                width: 1810px;
-                height: 870px;
+                height: 1000px;
             }
             /* Win or Lose Prompt */
             #alertBox {
@@ -83,8 +82,8 @@
                 // jQuery stuff setup for you
 			    var box = jQuery('.box');
     			var board = jQuery('.board');
-    			var boardWidth = jQuery('.board').width();
-    			var boardHeight = jQuery('.board').height();
+    			var boardWidth = window.innerWidth - 105;
+    			var boardHeight = window.innerHeight - 105; 
     	   		board.css = board;
 
     			// Variable declarations 
@@ -168,6 +167,8 @@
     			    speed -= 1.5;
     			    if (speed <= 0) speed = 1.5;
     			    console.log(miss + ' missed');
+    			    boardWidth;
+    			    console.log(boardWidth);
     			    box.text(points);
     			}
     			function doAlert(msg, reText){
@@ -178,24 +179,23 @@
     			    });
     			    alertBox.find(".refresh").click(reText);
     			    alertBox.show();
+    			    clearInterval(interval);
     			}
     			var endCheck = setInterval(endGame, 30);
     			function endGame(){
-    			    if(points >= 10){
+    			    if(points > 9.9){
     			        doAlert("Congrats You Won! Again?");
-    			        points = 12;
+    			        points = 10;
     			        miss -= -5;
     			        box.hide();
-    			        clearInterval(interval);
-    			        return;
+    			        return clearInterval(interval);
     			    }
-    			    if(miss >= 14){
-    			        console.log(miss + ' missed');
+    			    if(miss > 13.9){
     			        doAlert("You've Lost, Try Again?");
     			        points = -14;
-    			        miss = 20;
+    			        miss = 13;
     			        box.hide();
-    			        clearInterval(interval);
+    			        return clearInterval(interval);
     			    }
     			}
             
