@@ -82,8 +82,8 @@
                 // jQuery stuff setup for you
 			    var box = jQuery('.box');
     			var board = jQuery('.board');
-    			var boardWidth = window.innerWidth - 115;
-    			var boardHeight = window.innerHeight - 105; 
+    			var boardWidth = window.innerWidth * 0.99;
+    			var boardHeight = window.innerHeight * 0.99; 
     	   		board.css = board;
 
     			// Variable declarations 
@@ -114,9 +114,11 @@
                 box.css('top', positionY);
                 box.text(points);
 
-    			function update() {
-    				 position += speed * direction;
-    				 positionY += speed * directionY;
+				function update() {
+					position += speed * direction;
+					positionY += speed * directionY;
+					boardHeight = window.innerHeight * 0.99; 
+					boardHeight = window.innerHeight * 0.99;
 //    				 console.log(speed);
 //                     console.log("X position: " + position);
 //                     console.log("Y position: " + positionY);
