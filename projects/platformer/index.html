@@ -20,6 +20,14 @@
             body {
                 background-color: #444444;
             }
+            h1 {
+                background-color: #777777;
+                font-family: arial;
+                border-radius: 5px;
+                padding-right: 100%;
+                padding: 4px;
+                margin: 0 0 0 0;
+            }
             .buttons {
                 background-color: #202020;
                 text-decoration: none;
@@ -39,22 +47,17 @@
             }
             #tip1, #tip2 {
                 visibility: hidden;
-                font-size: 90%;
             }
             .links {
                 background-color: #777777;
-                margin: 0 0 0 1085px;
-                max-height: 60px;
+                margin: -5px 0 0 0;
                 border-radius: 5px;
+                position: absolute;
                 padding-right: 100%;
                 padding: 2px 5px;
             }
-            #inLink {
-                text-decoration: none;
-                padding: 100%;
-            }
             canvas {
-                margin: -65px 0 0 0;
+                margin: 75px 0 0 0;
             }
 
         </style>
@@ -74,18 +77,16 @@
                     tip2.style.visibility = 'hidden';
                 }
             }
-            function proof(){
-                window.open("https://www.youtube.com/embed/dbxrE5AP-UU");
-            }
         </script>
     </head>
     <body>
         <nav>
+            <h1>Platformer</h1>
             <div class="links">
                 <button id="tips" class="buttons" onclick=tipsToggle('t')>Tips</button>
-                <button style="visibility: hidden;" id="proof" onclick="proof()" class="buttons">Proof</button>
+                <button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://youtu.be/U-f_ZQdaIg8';">Proof</button>
                 <li style="visibility: hidden;" id="tip1">Step jumps need to be very exact.</li>
-                <li style="visibility: hidden;" id="tip2"> Walls are one way. </li>
+                <li style="visibility: hidden;" id="tip2">Walls are one way. </li>
             </div>
         </nav>
         <main>
