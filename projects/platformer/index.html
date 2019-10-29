@@ -19,14 +19,16 @@
             /*Links*/
             body {
                 background-color: #444444;
-            }
-            h1 {
-                background-color: #777777;
-                font-family: arial;
-                border-radius: 5px;
-                padding-right: 100%;
-                padding: 4px;
                 margin: 0 0 0 0;
+                height: 84vh;
+                width: 114vh;
+            }
+            .links {
+                background-color: #777777;
+                position: absolute;
+                margin: 720px 0 0 0;
+                border-radius: 5px;
+                padding: 2px 5px;
             }
             .buttons {
                 background-color: #202020;
@@ -48,16 +50,9 @@
             #tip1, #tip2 {
                 visibility: hidden;
             }
-            .links {
-                background-color: #777777;
-                margin: -5px 0 0 0;
-                border-radius: 5px;
-                position: absolute;
-                padding-right: 100%;
-                padding: 2px 5px;
-            }
             canvas {
-                margin: 75px 0 0 0;
+                margin: 0 0 0 0;
+                position: absolute;
             }
 
         </style>
@@ -81,10 +76,9 @@
     </head>
     <body>
         <nav>
-            <h1>Platformer</h1>
             <div class="links">
                 <button id="tips" class="buttons" onclick=tipsToggle('t')>Tips</button>
-                <button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://youtu.be/U-f_ZQdaIg8';">Proof</button>
+                <button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://www.youtube.com/embed/dbxrE5AP-UU';">Proof</button>
                 <li style="visibility: hidden;" id="tip1">Step jumps need to be very exact.</li>
                 <li style="visibility: hidden;" id="tip2">Walls are one way. </li>
             </div>
