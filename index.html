@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Home</title>
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="https://markuslasseigne.github.io/favicon.ico" />
 		<style>
             .bodyS {
                 background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
@@ -118,7 +118,6 @@
 
             //Main Functions
             function bDo(buttP){
-                var frS = document.querySelector("#iFrame").style;
                 var frBS = document.querySelector(".fBounder").style;
                 //SET
                 if(frBS.marginLeft === ""){frBS.marginLeft = 0+"px";}
@@ -134,8 +133,6 @@
             }
 
             function bSw(buttP){
-                var frID = document.querySelector("#iFrame").id;
-                var frSC = document.querySelector("#iFrame").src;
                 switch(buttP.value){
                     case "Home":
                         document.querySelector("#home").className = "P1";
