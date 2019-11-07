@@ -25,6 +25,7 @@
             return score;
         }
 
+
         // XXX: this is a glorious hack in order to get halle because
         // we forgot to pass it in originally
         function getHalle() {

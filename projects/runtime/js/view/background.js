@@ -24,7 +24,9 @@ var background = function (window) {
         
         // container which will be returned
         var background;
-        
+        var sun;
+//        var buildings = [];
+        var mounds = [];
         // ANIMATION VARIABLES HERE:
         
      
@@ -36,17 +38,46 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
+            var backgroundFill = draw.rect(canvasWidth,groundY, '#1199ff' );
             background.addChild(backgroundFill);
             
             // TODO: 3 - Add a moon and starfield
             
+            sun = draw.polyStar(45, 25, 0.18, 0.15, 'yellow','orange',2);
+            sun.x = canvasWidth * 0.05;
+            sun.y = canvasHeight * 0.05;
+            background.addChild(sun);
             
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            var mound;
+            for(var i=0;i<8;i++){
+                var mHeight = Math.floor(Math.random() * (700 - 550 + 1) ) + 600;
+                var mWidth = Math.floor(Math.random() * (900 - 750 + 1) ) + 750;
+                var moundWidth = mWidth;
+                var moundHeight = mHeight;
+                mound = draw.drawEllipse(moundWidth, moundHeight, '#eedd88','#ddbb55',4);
+                console.log(moundWidth);
+                mound.x = moundWidth*0.3*i+1;
+                if(i===0){
+                    mound.x = 0-moundHeight*0.38;
+                } else if(i===7){
+                    mound.x = moundWidth*0.33*i+1;
+                    console.log("8"+i);
+                }
+                console.log(mound.x + " mX");
+                mound.y = groundY-moundHeight*0.4;
+                background.addChild(mound);
+                mounds.push(mound);
+                
+            }
             
             // TODO 4: Part 1 - Add a tree
-            
+            var pageB = draw.rect(canvas.width, 800, 'white','white',1);
+            pageB.y = groundY+20;
+            background.addChild(pageB);
+            var grObj = draw.rect(canvas.width, 25, '#ffee99','#ffee99',1);
+            grObj.y = groundY;
+            background.addChild(grObj);
             
         } // end of render function - DO NOT DELETE
         
@@ -59,11 +90,18 @@ var background = function (window) {
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
-            // TODO 4: Part 2 - Move the tree!
-            
-            
+
             // TODO 5: Part 2 - Parallax
-            
+            sun.x = sun.x + 0.01;
+            if(sun.x < -200){
+                sun.x = canvasWidth;
+            }
+            for(var mI = 0; mI<8;mI++){
+                mounds[mI].x = mounds[mI].x - 1;
+                if(mounds[mI].x < -mounds[mI].width){
+                    mounds[mI].x = canvasWidth;
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         
