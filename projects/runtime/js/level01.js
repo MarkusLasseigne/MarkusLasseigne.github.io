@@ -112,15 +112,13 @@ var level01 = function (window) {
             coinG.y = groundY-150;
             var coinGB = draw.roundRect(50,50,25,'#ffdd22','#ddccaa',5,-25,-25);
             coinG.addChild(coinGB);
-            console.log("ye");
             coinG.velocityX = -2;
             game.addGameItem(coinG);
             coinG.onPlayerCollision = function(){
                 game.increaseScore(10000);
                 coinG.shrink();   
             };
-           
-            
+
         }
         endPedal();
     }

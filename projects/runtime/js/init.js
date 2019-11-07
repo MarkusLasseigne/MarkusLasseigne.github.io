@@ -1,6 +1,5 @@
 var init = function (window) {
     'use strict';
-
     var 
         opspark = window.opspark,
         draw = opspark.draw,

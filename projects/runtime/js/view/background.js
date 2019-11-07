@@ -55,11 +55,11 @@ var background = function (window) {
                 var mWidth = Math.floor(Math.random() * (900 - 750 + 1) ) + 750;
                 var moundWidth = mWidth;
                 var moundHeight = mHeight;
-                mound = draw.drawEllipse(moundWidth, moundHeight, '#eedd88','#ddbb55',4);
+                mound = draw.drawEllipse(moundWidth, moundHeight, '#decd68','#eedd88',5);
                 console.log(moundWidth);
-                mound.x = moundWidth*0.3*i+1;
+                mound.x = moundWidth*0.40*i+1;
                 if(i===0){
-                    mound.x = 0-moundHeight*0.38;
+                    mound.x = 0-moundHeight*0.25;
                 } else if(i===7){
                     mound.x = moundWidth*0.33*i+1;
                     console.log("8"+i);
