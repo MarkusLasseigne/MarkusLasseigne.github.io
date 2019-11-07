@@ -53,10 +53,9 @@
         <script id="index">
             (function(){
                 'use strict';
-                var realWindow = window.parent || window;
-                background(realWindow);
-                level01(realWindow);
-                init(realWindow);
+                background(window.parent);
+                level01(window.parent);
+                init(window.parent);
             })();
         </script>
     </body>
