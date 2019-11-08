@@ -56,15 +56,12 @@ var background = function (window) {
                 var moundWidth = mWidth;
                 var moundHeight = mHeight;
                 mound = draw.drawEllipse(moundWidth, moundHeight, '#decd68','#eedd88',5);
-                console.log(moundWidth);
                 mound.x = moundWidth*0.40*i+1;
                 if(i===0){
                     mound.x = 0-moundHeight*0.25;
                 } else if(i===7){
                     mound.x = moundWidth*0.33*i+1;
-                    console.log("8"+i);
                 }
-                console.log(mound.x + " mX");
                 mound.y = groundY-moundHeight*0.4;
                 background.addChild(mound);
                 mounds.push(mound);

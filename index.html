@@ -90,9 +90,8 @@
 				overflow: hidden;
 				max-height: 99%;
 				max-width: 99%;
-				resize: both;
-				height: 90%;
-				width: 90%;
+				height: 99%;
+				width: 99%;
 			}
         </style>
         <script>
@@ -105,7 +104,7 @@
     //"tag[target]"=<tag target>;
     //id = "#";
     //example: var x = document.getElementById(elementid).querySelectorAll(elements in id)
-
+    
             //Main Variables
             var buttP;
             var Home = "https://markuslasseigne.github.io/home.html";
@@ -235,6 +234,8 @@
                         document.querySelector("#clog").className = "P7";
                         document.querySelector("#iFrame").value = buttP.value;
                         document.querySelector("#iFrame").src= Home;
+                        docemunt.querySelector("#iFrame").contentWindow.document.body.focus();
+                        console.log(docemunt.querySelector("#iFrame").contentWindow.document.body.focus());
                         document.title = "Home";
                         bDo(buttP);
                 }

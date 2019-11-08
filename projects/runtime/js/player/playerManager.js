@@ -56,7 +56,6 @@
         }
         
         function onKeyActivity(e){
-            console.log(window.parent.event);
             e = e || window.event;
             activeKeys[e.keyCode] = e.type === 'keydown';
             
