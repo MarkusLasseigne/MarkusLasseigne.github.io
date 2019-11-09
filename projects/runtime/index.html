@@ -48,12 +48,15 @@
                 width: 100%;   
             }
         </style>
-        <script>
-            function iFoCuS(){
-                window.focus();
-            }
-            
-        </script>
+        <script> window.onLoad = iFoCuS(); function iFoCuS(){window.focus();}</script>
+        <script>//if health === 0 || r pressed reset
+        console.log(window.opspark.createGameManager);
+        var health = window.opspark.createGameManager;
+        console.log(health);
+        if(health < 0){location.reload();}        
+        document.addEventListener('keydown', function(event){if(event.key==='r'){
+            location.reload();
+            console.log(event);} })</script>
     </head>
     <body>
         <div id="main">

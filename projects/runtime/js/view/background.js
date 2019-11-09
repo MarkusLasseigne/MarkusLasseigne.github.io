@@ -25,7 +25,6 @@ var background = function (window) {
         // container which will be returned
         var background;
         var sun;
-//        var buildings = [];
         var mounds = [];
         // ANIMATION VARIABLES HERE:
         
@@ -40,27 +39,27 @@ var background = function (window) {
             // you should modify this to suit your game
             var backgroundFill = draw.rect(canvasWidth,groundY, '#1199ff' );
             background.addChild(backgroundFill);
-            
+
             // TODO: 3 - Add a moon and starfield
-            
-            sun = draw.polyStar(45, 25, 0.18, 0.15, 'yellow','orange',2);
+
+            sun = draw.polyStar(45, 25, 0.18, 0.15, 'yellow','orange',1.5);
             sun.x = canvasWidth * 0.05;
-            sun.y = canvasHeight * 0.05;
+            sun.y = canvasHeight * 0.070;
             background.addChild(sun);
-            
+
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             var mound;
             for(var i=0;i<8;i++){
-                var mHeight = Math.floor(Math.random() * (700 - 550 + 1) ) + 600;
-                var mWidth = Math.floor(Math.random() * (900 - 750 + 1) ) + 750;
+                var mHeight = Math.floor(Math.random() * (900 - 650 + 1) ) + 600;
+                var mWidth = Math.floor(Math.random() * (1000 - 850 + 1) ) + 800;
                 var moundWidth = mWidth;
                 var moundHeight = mHeight;
                 mound = draw.drawEllipse(moundWidth, moundHeight, '#decd68','#eedd88',5);
                 mound.x = moundWidth*0.40*i+1;
                 if(i===0){
-                    mound.x = 0-moundHeight*0.25;
-                } else if(i===7){
-                    mound.x = moundWidth*0.33*i+1;
+                    mound.x = 0-moundHeight*0.15;
+                } else if(i===8){
+                    mound.x = moundWidth*0.4*i+1;
                 }
                 mound.y = groundY-moundHeight*0.4;
                 background.addChild(mound);
@@ -87,19 +86,19 @@ var background = function (window) {
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
-
             // TODO 5: Part 2 - Parallax
             sun.x = sun.x + 0.01;
-            if(sun.x < -200){
-                sun.x = canvasWidth;
+            if(sun.x > canvasWidth+100){
+                sun.x = -100;
             }
+
             for(var mI = 0; mI<8;mI++){
-                mounds[mI].x = mounds[mI].x - 1;
-                if(mounds[mI].x < -mounds[mI].width){
+                mounds[mI].x = mounds[mI].x - 0.85;
+                if(mounds[mI].x <= 0-10*100){
                     mounds[mI].x = canvasWidth;
                 }
             }
-
+            
         } // end of update function - DO NOT DELETE
         
         

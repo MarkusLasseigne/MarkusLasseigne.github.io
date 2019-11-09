@@ -24,8 +24,10 @@
         function getScore() {
             return score;
         }
-
-
+        getHealth = function (){
+            return health;
+        }
+            
         // XXX: this is a glorious hack in order to get halle because
         // we forgot to pass it in originally
         function getHalle() {
@@ -51,6 +53,8 @@
                     // but no easy way to handle this without touching a bunch of code in other places
                     halle.addEventListener("gameover", function() {
                         view.removeChild(halle);
+//                        view.children[16].children = null; works but bad things happen
+//                        console.log(view.children[16].children);
                     });
                     halle.die();
                 }
@@ -58,7 +62,7 @@
         }
 
         hud.setIntegrity(100);
-        hud.updateOf(10000);
+        hud.updateOf(1000);
         
         /* Create a new game item of the given type and hit radius. Each game
            item is a empty createjs container. To draw something for a game item
@@ -271,6 +275,7 @@
         return {
             increaseScore: increaseScore,
             getScore: getScore,
+            getHealth: getHealth,
             changeIntegrity: changeIntegrity,
             createGameItem: createGameItem,
             addGameItem: addGameItem,
