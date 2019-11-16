@@ -3,20 +3,21 @@
     <head>
         <title>Home</title>
         <link rel="icon" type="image/x-icon" href="https://markuslasseigne.github.io/favicon.ico" sizes="16x16 64x64 128x128">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
             .bodyS {
                 background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-                max-height: 100vh;
+                max-height: 100%;
                 max-width: 99.9%;
                 margin: 0 0 0 0;
-                height: 100vh;
-                width: 196vh;
+                height: 100%;
+                width: 100%;
             }
             #topBar {
                 border-bottom: 1px solid white;
                 background-color: #001;
                 position: fixed;
-                height: 50px;
+                height: 3.75vh;
                 width: 100%;
                 top: 0;
             }
@@ -25,17 +26,19 @@
 				background-color: #001;
 				position: fixed;
 				height: 100%;
-				width: 100px;
+				width: 7vw;
 				left: 0;
 			}
 			input {
 			    border-bottom: 1px solid white;
 			    background-color: black;
 			    border: 1px solid white;
+			    margin: 3.75vh 0 -3.75vh 0;
 			    font-weight: bold;
+			    font-size: 0.85vw;
 			    cursor: pointer;
-			    width: 100px;
-			    height: 50px;
+			    width: 100%;
+			    height: 3.7vh;
 			    color: white;
 			    float: left;
 			}
@@ -45,54 +48,38 @@
 			    border: 0 solid white;
 			    cursor: pointer;
 			    color: black;
-			    width: 100px;
-			    height: 50px;
 			    float: left;
 			}
 			.P1, .P1:hover {
                 border-bottom: 1px solid white;
 			    background-color: white;
 			    border: 0 solid white;
-                max-width: 100px;
                 position: fixed;
                 margin: 0 0 0 0;
                 cursor: pointer;
-                width: 100px;
-                height: 50px;
+                font-size: 0.95vw;
+                height: 3.75vh;
+                width: 7vw;
                 color: black;
                 left: 0;
-			}
-			.P2, .P3, .P4, .P5, .P6, .P7 {
-			    margin: 50px 0 -50px 0;
-				max-width: 100px;
-                width: 100px;
-                height: 50px;
-			}
-			.fBounder {
-			    position: absolute;
-			    margin-bottom: 0px;
-			    margin-right: 0px;
-			    margin-left: 0px;
-			    margin-top: 50px;
-			    user-select: none;
-			    max-width: 100%;
-			    max-height: 93%;
-			    width: 100%;
-			    height: 93%;
 			}
 			#iFrame {
 			    background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
 			    border-radius: 0 0 8px 0;
 			    border: 1px solid white;
-			    position: relative;
+			    position: fixed;
+			    top: 3.75vh;
+			    left: 0;
                 min-height: 375px;
 				min-width: 375px;
+				resize: both;
 				overflow: hidden;
-				max-height: 99%;
+				max-height: 94%;
 				max-width: 99%;
-				height: 99%;
-				width: 99%;
+				height: 100%;
+				width: 100%;
 			}
+			
         </style>
         <script>
 //Element Select Refrences
@@ -117,16 +104,24 @@
 
             //Main Functions
             function bDo(buttP){
-                var frBS = document.querySelector(".fBounder").style;
+                var frBS = document.querySelector(".fClass").style;
                 //SET
-                if(frBS.marginLeft === ""){frBS.marginLeft = 0+"px";}
-                if ("P1" === buttP.className){
-                    //OPEN
-                    if(frBS.marginLeft === 0+"px"){console.log("opening"); frBS.marginLeft = 100+"px"; frBS.width = 90.78 + "%";}
-                    //CLOSE
-                    else if(frBS.marginLeft === 100+"px"){console.log("closing"); frBS.marginLeft = 0+"px"; frBS.width = 100 + "%";}
-                    //SWITCH
-                } else if ("P1" !== buttP.className){
+                if(frBS.left === ""){frBS.left = 0+"vw";}
+                if (buttP.className==="P1"){
+                    if(frBS.left === 0+"vw"){//OPEN
+                        console.log("opening");
+                        frBS.left = 7+"vw";
+                        frBS.maxWidth = 92 + "%";
+                    } else if(frBS.left === 7+"vw"){//CLOSE
+                        console.log("closing");
+                        frBS.left = 0+"vw";
+                        frBS.maxWidth = 99 + "%";
+                    }
+                    
+                } else if (buttP.className !== "P1" && frBS.left === 7+"vw"){ //CLOSE&SWITCH
+                    console.log("closing");
+                    frBS.left -= 0+"vw";
+                    frBS.maxWidth = 99 + "%";
                     bSw(buttP);
                 }
             }
@@ -234,8 +229,8 @@
                         document.querySelector("#clog").className = "P7";
                         document.querySelector("#iFrame").value = buttP.value;
                         document.querySelector("#iFrame").src= Home;
-                        docemunt.querySelector("#iFrame").contentWindow.document.body.focus();
-                        console.log(docemunt.querySelector("#iFrame").contentWindow.document.body.focus());
+                        document.querySelector("#iFrame").contentWindow.document.body.focus();
+                        console.log(document.querySelector("#iFrame").contentWindow.document.body.focus());
                         document.title = "Home";
                         bDo(buttP);
                 }
@@ -259,8 +254,6 @@
             <input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
             <input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
         </nav>
-        <div class="fBounder">
-            <iframe id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
-        </div>
+        <iframe class="fClass" id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
 	</body>
 </html>

@@ -68,7 +68,7 @@ var background = function (window) {
             }
             
             // TODO 4: Part 1 - Add a tree
-            var pageB = draw.rect(canvas.width, 800, 'white','white',1);
+            var pageB = draw.rect(canvas.width, 800, '#171500','#171500',1);
             pageB.y = groundY+20;
             background.addChild(pageB);
             var grObj = draw.rect(canvas.width, 25, '#ffee99','#ffee99',1);
