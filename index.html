@@ -7,17 +7,13 @@
 		<style>
             .bodyS {
                 background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-                max-height: 100%;
-                max-width: 99.9%;
                 margin: 0 0 0 0;
-                height: 100%;
-                width: 100%;
             }
             #topBar {
                 border-bottom: 1px solid white;
                 background-color: #001;
                 position: fixed;
-                height: 3.75vh;
+                height: 40px;
                 width: 100%;
                 top: 0;
             }
@@ -26,19 +22,19 @@
 				background-color: #001;
 				position: fixed;
 				height: 100%;
-				width: 7vw;
+				width: 125px;
 				left: 0;
 			}
 			input {
 			    border-bottom: 1px solid white;
 			    background-color: black;
 			    border: 1px solid white;
-			    margin: 3.75vh 0 -3.75vh 0;
+			    margin: 40px 0 -40px 0;
 			    font-weight: bold;
-			    font-size: 0.85vw;
+			    font-size: 0.85em;
 			    cursor: pointer;
 			    width: 100%;
-			    height: 3.7vh;
+			    height: 38px;
 			    color: white;
 			    float: left;
 			}
@@ -58,8 +54,8 @@
                 margin: 0 0 0 0;
                 cursor: pointer;
                 font-size: 0.95vw;
-                height: 3.75vh;
-                width: 7vw;
+                height: 40px;
+                width: 125px;
                 color: black;
                 left: 0;
 			}
@@ -68,14 +64,14 @@
 			    border-radius: 0 0 8px 0;
 			    border: 1px solid white;
 			    position: fixed;
-			    top: 3.75vh;
+			    top: 40px;
 			    left: 0;
                 min-height: 375px;
 				min-width: 375px;
 				resize: both;
 				overflow: hidden;
 				max-height: 94%;
-				max-width: 99%;
+				max-width: 98%;
 				height: 100%;
 				width: 100%;
 			}
@@ -106,21 +102,21 @@
             function bDo(buttP){
                 var frBS = document.querySelector(".fClass").style;
                 //SET
-                if(frBS.left === ""){frBS.left = 0+"vw";}
+                if(frBS.left === ""){frBS.left = 0+"px";}
                 if (buttP.className==="P1"){
-                    if(frBS.left === 0+"vw"){//OPEN
+                    if(frBS.left === 0+"px"){//OPEN
                         console.log("opening");
-                        frBS.left = 7+"vw";
+                        frBS.left = 125+"px";
                         frBS.maxWidth = 92 + "%";
-                    } else if(frBS.left === 7+"vw"){//CLOSE
+                    } else if(frBS.left === 125+"px"){//CLOSE
                         console.log("closing");
-                        frBS.left = 0+"vw";
-                        frBS.maxWidth = 99 + "%";
+                        frBS.left = 0+"px";
+                        frBS.maxWidth = 98 + "%";
                     }
                     
-                } else if (buttP.className !== "P1" && frBS.left === 7+"vw"){ //CLOSE&SWITCH
+                } else if (buttP.className !== "P1" && frBS.left === 125+"px"){ //CLOSE&SWITCH
                     console.log("closing");
-                    frBS.left -= 0+"vw";
+                    frBS.left -= 0+"px";
                     frBS.maxWidth = 99 + "%";
                     bSw(buttP);
                 }
