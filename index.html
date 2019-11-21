@@ -13,7 +13,7 @@
                 border-bottom: 1px solid white;
                 background-color: #001;
                 position: fixed;
-                height: 40px;
+                height: 4.5%;
                 width: 100%;
                 top: 0;
             }
@@ -22,27 +22,27 @@
 				background-color: #001;
 				position: fixed;
 				height: 100%;
-				width: 125px;
+				width: 8%;
 				left: 0;
 			}
 			input {
 			    border-bottom: 1px solid white;
 			    background-color: black;
 			    border: 1px solid white;
-			    margin: 40px 0 -40px 0;
+			    position: relative;
 			    font-weight: bold;
-			    font-size: 0.85em;
 			    cursor: pointer;
-			    width: 100%;
-			    height: 38px;
+			    font-size: 1vw;
 			    color: white;
 			    float: left;
+			    width: 100%;
+			    height: 4%;
+			    top: 4.5%;
 			}
 			input:hover {
 			    border-bottom: 1px solid white;
 			    background-color: white;
 			    border: 0 solid white;
-			    cursor: pointer;
 			    color: black;
 			    float: left;
 			}
@@ -50,30 +50,31 @@
                 border-bottom: 1px solid white;
 			    background-color: white;
 			    border: 0 solid white;
-                position: fixed;
-                margin: 0 0 0 0;
-                cursor: pointer;
-                font-size: 0.95vw;
-                height: 40px;
-                width: 125px;
+			    position: absolute;
+                font-size: 1.15vw;
                 color: black;
+                height: 4.5%;
+                width: 100%;
+                z-index: 0;
                 left: 0;
+                top: 0;
 			}
 			#iFrame {
 			    background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
 			    border-radius: 0 0 8px 0;
 			    border: 1px solid white;
-			    position: fixed;
-			    top: 40px;
-			    left: 0;
-                min-height: 375px;
-				min-width: 375px;
-				resize: both;
-				overflow: hidden;
-				max-height: 94%;
+                min-height: 25%;
+				min-width: 25%;
+				overflow-x: hidden;
+				overflow-y: hidden;
+				position: fixed;
+				max-height: 95%;
 				max-width: 98%;
+				resize: both;
 				height: 100%;
 				width: 100%;
+				top: 4.5%;
+			    left: 0%;
 			}
 			
         </style>
@@ -102,21 +103,20 @@
             function bDo(buttP){
                 var frBS = document.querySelector(".fClass").style;
                 //SET
-                if(frBS.left === ""){frBS.left = 0+"px";}
+                if(frBS.left === ""){frBS.left = 0+"%";}
                 if (buttP.className==="P1"){
-                    if(frBS.left === 0+"px"){//OPEN
+                    if(frBS.left === 0+"%"){//OPEN
                         console.log("opening");
-                        frBS.left = 125+"px";
-                        frBS.maxWidth = 92 + "%";
-                    } else if(frBS.left === 125+"px"){//CLOSE
+                        frBS.left = 8+"%";
+                        frBS.maxWidth = 90 + "%";
+                    } else if(frBS.left === 8+"%"){//CLOSE
                         console.log("closing");
-                        frBS.left = 0+"px";
+                        frBS.left = 0+"%";
                         frBS.maxWidth = 98 + "%";
                     }
-                    
-                } else if (buttP.className !== "P1" && frBS.left === 125+"px"){ //CLOSE&SWITCH
+                } else if (buttP.className !== "P1" && frBS.left === 8+"%"){ //CLOSE&SWITCH
                     console.log("closing");
-                    frBS.left -= 0+"px";
+                    frBS.left -= 0+"%";
                     frBS.maxWidth = 99 + "%";
                     bSw(buttP);
                 }
