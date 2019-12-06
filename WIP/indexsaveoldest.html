@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
+	<head>
 		<title>Home</title>
 		<script>
 //Goal, Modularity
@@ -20,11 +20,11 @@
 			}
 
 			function toggleB(buttonT){
-                console.log("started");
+				console.log("started");
 				quickVar();
 //if toggled and current page port return HOME else if toggled and home min set max else if toggled and home max set min
 				if(buttonT === "homeT"){
-                    if(portP.style.visibility === 'visible'){
+					if(portP.style.visibility === 'visible'){
 						console.log("Loading Home Page");
 						homeP.style.visibility = 'visible';
 						portP.style.visibility = 'hidden';
@@ -50,7 +50,7 @@
 				}
 //if port button click when port page hidden return to port page, else if bar open on click then close bar, or if bar closed on click then open bar with main button port
 				if(buttonT === "portT"){
-                    if(homeP.style.visibility === 'visible'){
+					if(homeP.style.visibility === 'visible'){
 						console.log("Loading Port Page");
 						homeP.style.visibility = 'hidden';
 						portP.style.visibility = 'visible';
@@ -76,7 +76,7 @@
 						}
 					}
 				}
-            }
+			}
 //if toggle on page HOME bar expand
 			function homeMax(){
 				quickVar();
@@ -220,7 +220,7 @@
 			#homeP, #portP {
 				margin: 0px 0px 0px 100px;
 				font-family: arial;
-                font-size: 100%;
+				font-size: 100%;
 				background: #EBF5FF;
 				border-radius: 10px;
 				position: absolute;
@@ -282,8 +282,8 @@
 			<div id="group2">
 				<h2 id="about">About:</h2>
 				<h3>Student at:</h3>
-				    <li>K-12 Online School</li>
-				    <li>Operation Spark</li>
+					<li>K-12 Online School</li>
+					<li>Operation Spark</li>
 				<h3>Interests:</h3>
 					<li>Gaming</li>
 					<li>Astronomy</li>

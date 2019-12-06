@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Home</title>
+	<head>
+		<title>Home</title>
 		<style>
-            .bodyS {
-                background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-                max-height: 100vh;
-                max-width: 99.9%;
-                margin: 0 0 0 0;
-                height: 100vh;
-                width: 196vh;
-            }
-            #topBar {
-                border-bottom: 1px solid white;
-                background-color: #001;
-                position: fixed;
-                height: 50px;
-                width: 100%;
-                top: 0;
-            }
+			.bodyS {
+				background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
+				max-height: 100vh;
+				max-width: 99.9%;
+				margin: 0 0 0 0;
+				height: 100vh;
+				width: 196vh;
+			}
+			#topBar {
+				border-bottom: 1px solid white;
+				background-color: #001;
+				position: fixed;
+				height: 50px;
+				width: 100%;
+				top: 0;
+			}
 			#leftBar {
-                border-right: 0.5px solid white;
+				border-right: 0.5px solid white;
 				background-color: #001;
 				position: fixed;
 				height: 100%;
@@ -28,63 +28,63 @@
 				left: 0;
 			}
 			input {
-			    border-bottom: 1px solid white;
-			    background-color: black;
-			    border: 1px solid white;
-			    font-weight: bold;
-			    cursor: pointer;
-			    width: 100px;
-			    height: 50px;
-			    color: white;
-			    float: left;
+				border-bottom: 1px solid white;
+				background-color: black;
+				border: 1px solid white;
+				font-weight: bold;
+				cursor: pointer;
+				width: 100px;
+				height: 50px;
+				color: white;
+				float: left;
 			}
 			input:hover {
-			    border-bottom: 1px solid white;
-			    background-color: white;
-			    border: 0 solid white;
-			    cursor: pointer;
-			    color: black;
-			    width: 100px;
-			    height: 50px;
-			    float: left;
+				border-bottom: 1px solid white;
+				background-color: white;
+				border: 0 solid white;
+				cursor: pointer;
+				color: black;
+				width: 100px;
+				height: 50px;
+				float: left;
 			}
 			.P1, .P1:hover {
-                border-bottom: 1px solid white;
-			    background-color: white;
-			    border: 0 solid white;
-                max-width: 100px;
-                position: fixed;
-                margin: 0 0 0 0;
-                cursor: pointer;
-                width: 100px;
-                height: 50px;
-                color: black;
-                left: 0;
+				border-bottom: 1px solid white;
+				background-color: white;
+				border: 0 solid white;
+				max-width: 100px;
+				position: fixed;
+				margin: 0 0 0 0;
+				cursor: pointer;
+				width: 100px;
+				height: 50px;
+				color: black;
+				left: 0;
 			}
 			.P2, .P3, .P4, .P5, .P6, .P7 {
-			    margin: 50px 0 -50px 0;
+				margin: 50px 0 -50px 0;
 				max-width: 100px;
-                width: 100px;
-                height: 50px;
+				width: 100px;
+				height: 50px;
 			}
 			.fBounder {
-			    position: absolute;
-			    margin-bottom: 0px;
-			    margin-right: 0px;
-			    margin-left: 0px;
-			    margin-top: 50px;
-			    user-select: none;
-			    max-width: 100%;
-			    max-height: 93%;
-			    width: 100%;
-			    height: 93%;
+				position: absolute;
+				margin-bottom: 0px;
+				margin-right: 0px;
+				margin-left: 0px;
+				margin-top: 50px;
+				user-select: none;
+				max-width: 100%;
+				max-height: 93%;
+				width: 100%;
+				height: 93%;
 			}
 			#iFrame {
-			    background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
-			    border-radius: 0 0 8px 0;
-			    border: 1px solid white;
-			    position: relative;
-                min-height: 375px;
+				background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
+				border-radius: 0 0 8px 0;
+				border: 1px solid white;
+				position: relative;
+				min-height: 375px;
 				min-width: 375px;
 				overflow: hidden;
 				max-height: 99%;
@@ -93,154 +93,154 @@
 				height: 90%;
 				width: 90%;
 			}
-        </style>
-        <script>
+		</style>
+		<script>
 //Element Select Refrences
 //doc.querySelector() Refrences = 1st of all elements
 //doc.querySelectorAll() Refrences = all elements (array-like)
-    //"tag"=<tag>;
-    //"parenttag > childtag"=<Ptag><Ctag>;
-    //"tag.class"=<tag class>;
-    //"tag[target]"=<tag target>;
-    //id = "#";
-    //example: var x = document.getElementById(elementid).querySelectorAll(elements in id)
+	//"tag"=<tag>;
+	//"parenttag > childtag"=<Ptag><Ctag>;
+	//"tag.class"=<tag class>;
+	//"tag[target]"=<tag target>;
+	//id = "#";
+	//example: var x = document.getElementById(elementid).querySelectorAll(elements in id)
 
-            //Main Variables
-            var buttP;
-            var Home = "https://markuslasseigne.github.io/home.html";
-            var Portfolio = "https://markuslasseigne.github.io/portfolio.html";
-            var BouncingBox = "https://markuslasseigne.github.io/projects/bouncing-box/index.html";
-            var Platformer = "https://markuslasseigne.github.io/projects/platformer/index.html";
-            var Circularity = "https://markuslasseigne.github.io/projects/circularity/index.html";
-            var Runtime = "https://markuslasseigne.github.io/projects/runtime/index.html";
-            var ChangeLog = "https://markuslasseigne.github.io/home.html";
+			//Main Variables
+			var buttP;
+			var Home = "https://markuslasseigne.github.io/home.html";
+			var Portfolio = "https://markuslasseigne.github.io/portfolio.html";
+			var BouncingBox = "https://markuslasseigne.github.io/projects/bouncing-box/index.html";
+			var Platformer = "https://markuslasseigne.github.io/projects/platformer/index.html";
+			var Circularity = "https://markuslasseigne.github.io/projects/circularity/index.html";
+			var Runtime = "https://markuslasseigne.github.io/projects/runtime/index.html";
+			var ChangeLog = "https://markuslasseigne.github.io/home.html";
 
-            //Main Functions
-            function bDo(buttP){
-                var frS = document.querySelector("#iFrame").style;
-                var frBS = document.querySelector(".fBounder").style;
-                //SET
-                if(frBS.marginLeft === ""){frBS.marginLeft = 0+"px";}
-                if ("P1" === buttP.className){
-                    //OPEN
-                    if(frBS.marginLeft === 0+"px"){console.log("opening"); frBS.marginLeft = 100+"px"; frBS.width = 90.78 + "%";}
-                    //CLOSE
-                    else if(frBS.marginLeft === 100+"px"){console.log("closing"); frBS.marginLeft = 0+"px"; frBS.width = 100 + "%";}
-                    //SWITCH
-                } else if ("P1" !== buttP.className){
-                    bSw(buttP);
-                }
-            }
+			//Main Functions
+			function bDo(buttP){
+				var frS = document.querySelector("#iFrame").style;
+				var frBS = document.querySelector(".fBounder").style;
+				//SET
+				if(frBS.marginLeft === ""){frBS.marginLeft = 0+"px";}
+				if ("P1" === buttP.className){
+					//OPEN
+					if(frBS.marginLeft === 0+"px"){console.log("opening"); frBS.marginLeft = 100+"px"; frBS.width = 90.78 + "%";}
+					//CLOSE
+					else if(frBS.marginLeft === 100+"px"){console.log("closing"); frBS.marginLeft = 0+"px"; frBS.width = 100 + "%";}
+					//SWITCH
+				} else if ("P1" !== buttP.className){
+					bSw(buttP);
+				}
+			}
 
-            function bSw(buttP){
-                var frID = document.querySelector("#iFrame").id;
-                var frSC = document.querySelector("#iFrame").src;
-                switch(buttP.value){
-                    case "Home":
-                        document.querySelector("#home").className = "P1";
-                        document.querySelector("#port").className = "P2";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src= Home;
-                        document.title = "Home";
-                        bDo(buttP);
-                        break;
-                    case "Portfolio":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P1";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Portfolio;
-                        document.title = "Portfolio";
-                        bDo(buttP);
-                        break;
-                    case "BouncingBox":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P1";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = BouncingBox;
-                        document.title = "BouncingBox";
-                        bDo(buttP);
-                        break;
-                    case "Platformer":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P1";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Platformer;
-                        document.title = "Platformer";
-                        bDo(buttP);
-                        break;
-                    case "Circularity":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P1";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Circularity;
-                        document.title = "Circularity";
-                        bDo(buttP);
-                        break;
-                    case "Runtime":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P6";
-                        document.querySelector("#runt").className = "P1";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Runtime;
-                        document.title = "Runtime";
-                        bDo(buttP);
-                        break;
-                    case "ChangeLog":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P6";
-                        document.querySelector("#runt").className = "P7";
-                        document.querySelector("#clog").className = "P1";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = ChangeLog;
-                        document.title = "ChangeLog";
-                        bDo(buttP);
-                        break;
-                    default:
-                        document.querySelector("#home").className = "P1";
-                        document.querySelector("#port").className = "P2";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src= Home;
-                        document.title = "Home";
-                        bDo(buttP);
-                }
-            }
+			function bSw(buttP){
+				var frID = document.querySelector("#iFrame").id;
+				var frSC = document.querySelector("#iFrame").src;
+				switch(buttP.value){
+					case "Home":
+						document.querySelector("#home").className = "P1";
+						document.querySelector("#port").className = "P2";
+						document.querySelector("#bbox").className = "P3";
+						document.querySelector("#plat").className = "P4";
+						document.querySelector("#circ").className = "P5";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src= Home;
+						document.title = "Home";
+						bDo(buttP);
+						break;
+					case "Portfolio":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P1";
+						document.querySelector("#bbox").className = "P3";
+						document.querySelector("#plat").className = "P4";
+						document.querySelector("#circ").className = "P5";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = Portfolio;
+						document.title = "Portfolio";
+						bDo(buttP);
+						break;
+					case "BouncingBox":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P3";
+						document.querySelector("#bbox").className = "P1";
+						document.querySelector("#plat").className = "P4";
+						document.querySelector("#circ").className = "P5";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = BouncingBox;
+						document.title = "BouncingBox";
+						bDo(buttP);
+						break;
+					case "Platformer":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P3";
+						document.querySelector("#bbox").className = "P4";
+						document.querySelector("#plat").className = "P1";
+						document.querySelector("#circ").className = "P5";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = Platformer;
+						document.title = "Platformer";
+						bDo(buttP);
+						break;
+					case "Circularity":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P3";
+						document.querySelector("#bbox").className = "P4";
+						document.querySelector("#plat").className = "P5";
+						document.querySelector("#circ").className = "P1";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = Circularity;
+						document.title = "Circularity";
+						bDo(buttP);
+						break;
+					case "Runtime":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P3";
+						document.querySelector("#bbox").className = "P4";
+						document.querySelector("#plat").className = "P5";
+						document.querySelector("#circ").className = "P6";
+						document.querySelector("#runt").className = "P1";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = Runtime;
+						document.title = "Runtime";
+						bDo(buttP);
+						break;
+					case "ChangeLog":
+						document.querySelector("#home").className = "P2";
+						document.querySelector("#port").className = "P3";
+						document.querySelector("#bbox").className = "P4";
+						document.querySelector("#plat").className = "P5";
+						document.querySelector("#circ").className = "P6";
+						document.querySelector("#runt").className = "P7";
+						document.querySelector("#clog").className = "P1";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src = ChangeLog;
+						document.title = "ChangeLog";
+						bDo(buttP);
+						break;
+					default:
+						document.querySelector("#home").className = "P1";
+						document.querySelector("#port").className = "P2";
+						document.querySelector("#bbox").className = "P3";
+						document.querySelector("#plat").className = "P4";
+						document.querySelector("#circ").className = "P5";
+						document.querySelector("#runt").className = "P6";
+						document.querySelector("#clog").className = "P7";
+						document.querySelector("#iFrame").value = buttP.value;
+						document.querySelector("#iFrame").src= Home;
+						document.title = "Home";
+						bDo(buttP);
+				}
+			}
 //when any input clicked input calls function and inputs its parameters
 //function determines if input pressed is position 1 or if not position 1
 //if position 1, it determines if leftbar is open or closed, if open then slide iframe left and if closed slide iframe right
@@ -249,19 +249,19 @@
 		</script>
 	</head>
 	<body class="bodyS">
-        <nav id="topBar">
-        </nav>
-        <nav id="leftBar">
-            <input class="P1" type="button" id="home" onclick=bDo(this) value="Home">
-            <input class="P2" type="button" id="port" onclick=bDo(this) value="Portfolio">
-            <input class="P3" type="button" id="bbox" onclick=bDo(this) value="BouncingBox">
-            <input class="P4" type="button" id="plat" onclick=bDo(this) value="Platformer">
-            <input class="P5" type="button" id="circ" onclick=bDo(this) value="Circularity">
-            <input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
-            <input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
-        </nav>
-        <div class="fBounder">
-            <iframe id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
-        </div>
+		<nav id="topBar">
+		</nav>
+		<nav id="leftBar">
+			<input class="P1" type="button" id="home" onclick=bDo(this) value="Home">
+			<input class="P2" type="button" id="port" onclick=bDo(this) value="Portfolio">
+			<input class="P3" type="button" id="bbox" onclick=bDo(this) value="BouncingBox">
+			<input class="P4" type="button" id="plat" onclick=bDo(this) value="Platformer">
+			<input class="P5" type="button" id="circ" onclick=bDo(this) value="Circularity">
+			<input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
+			<input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
+		</nav>
+		<div class="fBounder">
+			<iframe id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
+		</div>
 	</body>
 </html>

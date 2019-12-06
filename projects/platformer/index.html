@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Platformer</title>
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/phaser.min.js"></script>
-        <script src="js/factory/game.js"></script>
-        <script src="js/factory/preload.js"></script>
-        <script src="js/factory/platform.js"></script>
-        <script src="js/factory/collectable.js"></script>
-        <script src="js/factory/cannon.js"></script>
-        <script src="js/factory/player.js"></script>
-        <script src="js/controller/player-manager.js"></script>
-        <script src="js/init/platform.js"></script>
-        <script src="js/init/collectable.js"></script>
-        <script src="js/init/cannon.js"></script>
-        <script src="js/init/player.js"></script>
-        <style type="text/css">
-            /*Links*/
-            body {
-                background-color: #444444;
-                margin: 0 0 0 0;
-                height: 84vh;
-                width: 114vh;
-            }
-            .links {
-                background-color: #777777;
-                position: absolute;
-                margin: 720px 0 0 0;
-                border-radius: 5px;
-                padding: 2px 5px;
-            }
-            .buttons {
-                background-color: #202020;
-                text-decoration: none;
-                border-radius: 8px;
-                text-align: center;
-                padding: 4px 4px;
-                cursor: pointer;
-                color: white;
-            }
-            .buttons:hover {
-                background-color: white;
-                text-decoration: none;
-                border-radius: 8px;
-                text-align: center;
-                padding: 4px 4px;
-                color: black;
-            }
-            #tip1, #tip2 {
-                visibility: hidden;
-            }
-            canvas {
-                margin: 0 0 0 0;
-                position: absolute;
-            }
+	<head>
+		<title>Platformer</title>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/phaser.min.js"></script>
+		<script src="js/factory/game.js"></script>
+		<script src="js/factory/preload.js"></script>
+		<script src="js/factory/platform.js"></script>
+		<script src="js/factory/collectable.js"></script>
+		<script src="js/factory/cannon.js"></script>
+		<script src="js/factory/player.js"></script>
+		<script src="js/controller/player-manager.js"></script>
+		<script src="js/init/platform.js"></script>
+		<script src="js/init/collectable.js"></script>
+		<script src="js/init/cannon.js"></script>
+		<script src="js/init/player.js"></script>
+		<style type="text/css">
+			/*Links*/
+			body {
+				background-color: #444444;
+				margin: 0 0 0 0;
+				height: 84vh;
+				width: 114vh;
+			}
+			.links {
+				background-color: #777777;
+				position: absolute;
+				margin: 720px 0 0 0;
+				border-radius: 5px;
+				padding: 2px 5px;
+			}
+			.buttons {
+				background-color: #202020;
+				text-decoration: none;
+				border-radius: 8px;
+				text-align: center;
+				padding: 4px 4px;
+				cursor: pointer;
+				color: white;
+			}
+			.buttons:hover {
+				background-color: white;
+				text-decoration: none;
+				border-radius: 8px;
+				text-align: center;
+				padding: 4px 4px;
+				color: black;
+			}
+			#tip1, #tip2 {
+				visibility: hidden;
+			}
+			canvas {
+				margin: 0 0 0 0;
+				position: absolute;
+			}
 
-        </style>
-        <script>
-            function tipsToggle(t){
-                var proof = document.getElementById('proof');
-                var tip1 = document.getElementById('tip1');
-                var tip2 = document.getElementById('tip2');
-                var game = document.getElementById('canvas');
-                if(proof.style.visibility === 'hidden'){
-                    proof.style.visibility = 'visible';
-                    tip1.style.visibility = 'visible';
-                    tip2.style.visibility = 'visible';
-                } else if(proof.style.visibility === 'visible'){
-                    proof.style.visibility = 'hidden';
-                    tip1.style.visibility = 'hidden';
-                    tip2.style.visibility = 'hidden';
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <nav>
-            <div class="links">
-                <button id="tips" class="buttons" onclick=tipsToggle('t')>Tips</button>
-                <button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://www.youtube.com/embed/dbxrE5AP-UU';">Proof</button>
-                <li style="visibility: hidden;" id="tip1">Step jumps need to be very exact.</li>
-                <li style="visibility: hidden;" id="tip2">Walls are one way. </li>
-            </div>
-        </nav>
-        <main>
-            <div class="game">
-                <script src="js/index.js"></script>
-            </div>
-        </main>
-        
-    </body>
+		</style>
+		<script>
+			function tipsToggle(t){
+				var proof = document.getElementById('proof');
+				var tip1 = document.getElementById('tip1');
+				var tip2 = document.getElementById('tip2');
+				var game = document.getElementById('canvas');
+				if(proof.style.visibility === 'hidden'){
+					proof.style.visibility = 'visible';
+					tip1.style.visibility = 'visible';
+					tip2.style.visibility = 'visible';
+				} else if(proof.style.visibility === 'visible'){
+					proof.style.visibility = 'hidden';
+					tip1.style.visibility = 'hidden';
+					tip2.style.visibility = 'hidden';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<nav>
+			<div class="links">
+				<button id="tips" class="buttons" onclick=tipsToggle('t')>Tips</button>
+				<button style="visibility: hidden;" id="proof" class="buttons" onclick="window.location.href = 'https://www.youtube.com/embed/dbxrE5AP-UU';">Proof</button>
+				<li style="visibility: hidden;" id="tip1">Step jumps need to be very exact.</li>
+				<li style="visibility: hidden;" id="tip2">Walls are one way. </li>
+			</div>
+		</nav>
+		<main>
+			<div class="game">
+				<script src="js/index.js"></script>
+			</div>
+		</main>
+		
+	</body>
 </html>
