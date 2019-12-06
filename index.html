@@ -6,228 +6,239 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
             .bodyS {
-                background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-                margin: 0 0 0 0;
+                background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
+                margin:0 0 0 0;
             }
             #topBar {
-                border-bottom: 1px solid white;
-                background-color: #001;
-                position: fixed;
-                height: 4.5%;
-                width: 100%;
-                top: 0;
+                border-bottom:1px solid white;
+                background-color:#001;
+                position:fixed;
+                height:4.5%;
+                width:100%;
+                top:0;
             }
 			#leftBar {
-                border-right: 0.5px solid white;
-				background-color: #001;
-				position: fixed;
-				height: 100%;
-				width: 8%;
-				left: 0;
+                border-right:0.5px solid white;
+				background-color:#001;
+				position:fixed;
+				height:100%;
+				width:8%;
+				left:0;
 			}
 			input {
-			    border-bottom: 1px solid white;
-			    background-color: black;
-			    border: 1px solid white;
-			    position: relative;
-			    font-weight: bold;
-			    cursor: pointer;
-			    font-size: 1vw;
-			    color: white;
-			    float: left;
-			    width: 100%;
-			    height: 4%;
-			    top: 4.5%;
+			    border-bottom:1px solid white;
+			    background-color:black;
+			    border:1px solid white;
+			    position:relative;
+			    font-weight:bold;
+			    cursor:pointer;
+			    font-size:1vw;
+			    color:white;
+			    float:left;
+			    width:100%;
+			    height:4%;
+			    top:4.5%;
 			}
 			input:hover {
-			    border-bottom: 1px solid white;
-			    background-color: white;
-			    border: 0 solid white;
-			    color: black;
-			    float: left;
+			    border-bottom:1px solid white;
+			    background-color:white;
+			    border:0 solid white;
+			    color:black;
+			    float:left;
 			}
 			.P1, .P1:hover {
-                border-bottom: 1px solid white;
-			    background-color: white;
-			    border: 0 solid white;
-			    position: absolute;
-                font-size: 1.15vw;
-                color: black;
-                height: 4.5%;
-                width: 100%;
-                z-index: 0;
-                left: 0;
-                top: 0;
+                border-bottom:1px solid white;
+			    background-color:white;
+			    border:0 solid white;
+			    position:absolute;
+                font-size:1.15vw;
+                color:black;
+                height:4.5%;
+                width:100%;
+                z-index:0;
+                left:0;
+                top:0;
 			}
 			#iFrame {
-			    background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
-			    border-radius: 0 0 8px 0;
-			    border: 1px solid white;
-                min-height: 25%;
-				min-width: 25%;
-				overflow-x: hidden;
-				overflow-y: hidden;
-				position: fixed;
-				max-height: 95%;
-				max-width: 98%;
-				resize: both;
-				height: 100%;
-				width: 100%;
-				top: 4.5%;
-			    left: 0%;
+			    background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
+			    border-radius:0 0 8px 0;
+			    border:1px solid white;
+				overflow-x:hidden;
+				overflow-y:hidden;
+				max-width:99.75%;
+                position:fixed;
+                max-height:95%;
+                min-height:25%;
+				min-width:25%;
+                resize:both;
+				height:100%;
+				width:100%;
+				top:4.5%;
+			    left:0%;
 			}
-			
+
         </style>
         <script>
 //Element Select Refrences
-//doc.querySelector() Refrences = 1st of all elements
-//doc.querySelectorAll() Refrences = all elements (array-like)
+//doc.querySelector() Refrences=1st of all elements
+//doc.querySelectorAll() Refrences=all elements (array-like)
     //"tag"=<tag>;
-    //"parenttag > childtag"=<Ptag><Ctag>;
+    //"parenttag>childtag"=<Ptag><Ctag>;
     //"tag.class"=<tag class>;
     //"tag[target]"=<tag target>;
-    //id = "#";
-    //example: var x = document.getElementById(elementid).querySelectorAll(elements in id)
-    
+    //id="#";
+    //example:var x=document.getElementById(elementid).querySelectorAll(elements in id)
+
             //Main Variables
             var buttP;
-            var Home = "https://markuslasseigne.github.io/home.html";
-            var Portfolio = "https://markuslasseigne.github.io/portfolio.html";
-            var BouncingBox = "https://markuslasseigne.github.io/projects/bouncing-box/index.html";
-            var Platformer = "https://markuslasseigne.github.io/projects/platformer/index.html";
-            var Circularity = "https://markuslasseigne.github.io/projects/circularity/index.html";
-            var Runtime = "https://markuslasseigne.github.io/projects/runtime/index.html";
-            var ChangeLog = "https://markuslasseigne.github.io/home.html";
+            var Home="https://markuslasseigne.github.io/home.html";
+            var Portfolio="https://markuslasseigne.github.io/portfolio.html";
+            var BouncingBox="https://markuslasseigne.github.io/projects/bouncing-box/index.html";
+            var Platformer="https://markuslasseigne.github.io/projects/platformer/index.html";
+            var Circularity="https://markuslasseigne.github.io/projects/circularity/index.html";
+            var Runtime="https://markuslasseigne.github.io/projects/runtime/index.html";
+            var ChangeLog="https://markuslasseigne.github.io/home.html";
 
-            //Main Functions
+        //Main Functions
             function bDo(buttP){
-                var frBS = document.querySelector(".fClass").style;
-                //SET
-                if(frBS.left === ""){frBS.left = 0+"%";}
+                var frBS=document.querySelector(".fClass").style;
+            //SET
+                if(frBS.left===""){frBS.left=0+"%";}
                 if (buttP.className==="P1"){
-                    if(frBS.left === 0+"%"){//OPEN
+                //OPEN
+                    if(frBS.left===0+"%"){
                         console.log("opening");
-                        frBS.left = 8+"%";
-                        frBS.maxWidth = 90 + "%";
-                    } else if(frBS.left === 8+"%"){//CLOSE
+                        frBS.left=8+"%";
+                        frBS.maxWidth=91.765+"%";
+                //CLOSE
+                    } else if(frBS.left===8+"%"){
                         console.log("closing");
-                        frBS.left = 0+"%";
-                        frBS.maxWidth = 98 + "%";
+                        frBS.left=0+"%";
+                        frBS.maxWidth=99.75+"%";
                     }
-                } else if (buttP.className !== "P1" && frBS.left === 8+"%"){ //CLOSE&SWITCH
+                //CLOSE&SWITCH
+                } else if (buttP.className!=="P1"&&frBS.left===8+"%"){
                     console.log("closing");
-                    frBS.left -= 0+"%";
-                    frBS.maxWidth = 99 + "%";
+                    frBS.left-=0+"%";
+                    frBS.maxWidth=99.75+"%";
                     bSw(buttP);
                 }
             }
-
+        //Takes button imput and changes current iframe page to button imputs value
             function bSw(buttP){
                 switch(buttP.value){
+            //Switches iframe to Home page
                     case "Home":
-                        document.querySelector("#home").className = "P1";
-                        document.querySelector("#port").className = "P2";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src= Home;
-                        document.title = "Home";
+                        document.querySelector("#home").className="P1";
+                        document.querySelector("#port").className="P2";
+                        document.querySelector("#bbox").className="P3";
+                        document.querySelector("#plat").className="P4";
+                        document.querySelector("#circ").className="P5";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=Home;
+                        document.title="Home";
                         bDo(buttP);
                         break;
+            //Switches iframe to Portdolio page
                     case "Portfolio":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P1";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Portfolio;
-                        document.title = "Portfolio";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P1";
+                        document.querySelector("#bbox").className="P3";
+                        document.querySelector("#plat").className="P4";
+                        document.querySelector("#circ").className="P5";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=Portfolio;
+                        document.title="Portfolio";
                         bDo(buttP);
                         break;
+            //Switches iframe to Bouncing Box page
                     case "BouncingBox":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P1";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = BouncingBox;
-                        document.title = "BouncingBox";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P3";
+                        document.querySelector("#bbox").className="P1";
+                        document.querySelector("#plat").className="P4";
+                        document.querySelector("#circ").className="P5";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=BouncingBox;
+                        document.title="BouncingBox";
                         bDo(buttP);
                         break;
+            //Switches iframe to Platformer page
                     case "Platformer":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P1";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P3";
+                        document.querySelector("#bbox").className="P4";
+                        document.querySelector("#plat").className="P1";
+                        document.querySelector("#circ").className="P5";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
                         document.querySelector("#iFrame").value = buttP.value;
                         document.querySelector("#iFrame").src = Platformer;
                         document.title = "Platformer";
                         bDo(buttP);
                         break;
+            //Switches iframe to Circularity page
                     case "Circularity":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P1";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Circularity;
-                        document.title = "Circularity";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P3";
+                        document.querySelector("#bbox").className="P4";
+                        document.querySelector("#plat").className="P5";
+                        document.querySelector("#circ").className="P1";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=Circularity;
+                        document.title="Circularity";
                         bDo(buttP);
                         break;
+            //Switches iframe to Runtime page
                     case "Runtime":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P6";
-                        document.querySelector("#runt").className = "P1";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = Runtime;
-                        document.title = "Runtime";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P3";
+                        document.querySelector("#bbox").className="P4";
+                        document.querySelector("#plat").className="P5";
+                        document.querySelector("#circ").className="P6";
+                        document.querySelector("#runt").className="P1";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=Runtime;
+                        document.title="Runtime";
                         bDo(buttP);
                         break;
+            //Switches iframe to ChangeLog page [WIP]
                     case "ChangeLog":
-                        document.querySelector("#home").className = "P2";
-                        document.querySelector("#port").className = "P3";
-                        document.querySelector("#bbox").className = "P4";
-                        document.querySelector("#plat").className = "P5";
-                        document.querySelector("#circ").className = "P6";
-                        document.querySelector("#runt").className = "P7";
-                        document.querySelector("#clog").className = "P1";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src = ChangeLog;
-                        document.title = "ChangeLog";
+                        document.querySelector("#home").className="P2";
+                        document.querySelector("#port").className="P3";
+                        document.querySelector("#bbox").className="P4";
+                        document.querySelector("#plat").className="P5";
+                        document.querySelector("#circ").className="P6";
+                        document.querySelector("#runt").className="P7";
+                        document.querySelector("#clog").className="P1";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=ChangeLog;
+                        document.title="ChangeLog";
                         bDo(buttP);
                         break;
+            //Returns iframe to Home page
                     default:
-                        document.querySelector("#home").className = "P1";
-                        document.querySelector("#port").className = "P2";
-                        document.querySelector("#bbox").className = "P3";
-                        document.querySelector("#plat").className = "P4";
-                        document.querySelector("#circ").className = "P5";
-                        document.querySelector("#runt").className = "P6";
-                        document.querySelector("#clog").className = "P7";
-                        document.querySelector("#iFrame").value = buttP.value;
-                        document.querySelector("#iFrame").src= Home;
+                        document.querySelector("#home").className="P1";
+                        document.querySelector("#port").className="P2";
+                        document.querySelector("#bbox").className="P3";
+                        document.querySelector("#plat").className="P4";
+                        document.querySelector("#circ").className="P5";
+                        document.querySelector("#runt").className="P6";
+                        document.querySelector("#clog").className="P7";
+                        document.querySelector("#iFrame").value=buttP.value;
+                        document.querySelector("#iFrame").src=Home;
                         document.querySelector("#iFrame").contentWindow.document.body.focus();
                         console.log(document.querySelector("#iFrame").contentWindow.document.body.focus());
-                        document.title = "Home";
+                        document.title="Home";
                         bDo(buttP);
                 }
             }
@@ -236,7 +247,7 @@
 //if position 1, it determines if leftbar is open or closed, if open then slide iframe left and if closed slide iframe right
 //if position not 1, then it calls function bSw and sends inputs parameters
 //if inputs parameter value is any page value then it switches input order, iframe src and value, title, and minimizes leftbar
-		</script>
+        </script>
 	</head>
 	<body class="bodyS">
         <nav id="topBar">
