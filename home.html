@@ -4,59 +4,65 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			body {
-				background:none;
-				max-height:85vh;
-				max-width:76vw;
-				height:100vh;
+				overflow:hidden;
+				max-height:98vh;
+				max-width:85vw;
 				margin:auto;
+				height:auto;
+				width:100%;
 			}
-			#lazyB {
+			#main {
 				background-color:#EBF5FF;
-				position:absolute;
-				margin:-2% 0 0 9%;
-				border-radius:3%;
-				height:99vh;
-				width:64vw;
-				z-index:-1;
+				border-radius:2%;
+				overflow:hidden;
+				padding:10px;
+				height:95vh;
+				margin:auto;
+				width:100%;
 			}
-			#n1 {
+			#nC1 {
 				user-select:none;
 				margin:0 0 0 0;
 				height:75vh;
+				width:49.9%;
 				float:left;
-				width:37vw;
-				left:4%;
 			}
-			#n2 {
+			#logo {
+				position:absolute;
+				width:7.2vw;
+				height:auto;
+				left:45.6%;
+				top:0.5%;
+			}
+			#nC2 {
 				user-select:none;
-				margin-left:2%;
+				float:right;
 				height:75vh;
-				float:left;
-				width:37vw;
+				width:49.9%;
 			}
 			#fname {
-				text-align:right;
+				text-align:center;
+				font-size:9vw;
 				margin-bottom:0;
 				margin-top:-4%;
 				max-width:100%;
-				font-size:8vw;
 			}
 			#lname {
+				text-align:center;
+				font-size:9vw;
 				margin-bottom:0;
-				text-align:left;
 				margin-top:-4%;
-				font-size:8vw;
 			}
 			#self {
 				background-color:black;
-				margin:-2% 30%;
+				margin:-3% 33%;
 				padding:2px;
 				height:auto;
 				width:55%;
 			}
 			#about {
 				font-size:3.5vw;
-				margin:-16% 0%;
+				margin:-16% 4%;
 			}
 			h2 {
 				margin-bottom:-3%;
@@ -68,25 +74,27 @@
 		</style>
 	</head>
 	<body id="body">
-		<p id="lazyB"></p>
-		<div id="n1">
-			<h1 id="fname">Markus</h1>
-			<img id="self" src="https://pbs.twimg.com/media/EHOWZuNXYAEdvi4?format=jpg&name=small" alt="Me" width="150" height="250">
-		</div>
-		<div id="n2">
-			<h1 id="lname">Lasseigne</h1>
-			<div id="about">
-				<h2>About:</h2>
-				<h3>Student at:</h3>
-					<li>K-12 Online School</li>
-					<li>Operation Spark</li>
-				<h3>Interests:</h3>
-					<li>Gaming</li>
-					<li>Astronomy</li>
-					<li>Science</li>
-					<li>Rockets</li>
-					<li>Ice Cream</li>
-					<li>Coding</li>
+		<div id="main">
+			<img id="logo" src="favicon.ico" alt="logo" width="120" hight="120">
+			<div id="nC1">
+				<h1 id="fname">Markus</h1>
+				<img id="self" src="https://pbs.twimg.com/media/EHOWZuNXYAEdvi4?format=jpg&name=small" alt="Me" width="150" height="250">
+			</div>
+			<div id="nC2">
+				<h1 id="lname">Lasseigne</h1>
+				<div id="about">
+					<h2>About:</h2>
+					<h3>Student at:</h3>
+						<li>K-12 Online School</li>
+						<li>Operation Spark</li>
+					<h3>Interests:</h3>
+						<li>Gaming</li>
+						<li>Astronomy</li>
+						<li>Science</li>
+						<li>Rockets</li>
+						<li>Ice Cream</li>
+						<li>Coding</li>
+				</div>
 			</div>
 		</div>
 	</body>

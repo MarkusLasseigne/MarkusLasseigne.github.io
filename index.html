@@ -21,6 +21,7 @@
 				border-right:0.5px solid white;
 				background-color:#001;
 				position:fixed;
+				min-width:50px;
 				height:100%;
 				width:8%;
 				left:0;
@@ -103,24 +104,40 @@
 			function bDo(buttP){
 				var frBS=document.querySelector(".fClass").style;
 			//SET
-				if(frBS.left===""){frBS.left=0+"%";}
+				if(frBS.left===""){frBS.left="0%";}
 				if (buttP.className==="P1"){
 				//OPEN
-					if(frBS.left===0+"%"){
+					if(frBS.left==="0%"){
+						console.log(window.innerWidth);
+						if(window.innerWidth<=500){
+							frBS.left="10%";
+							frBS.maxWidth="90%";
+						}else if(window.innerWidth<=535){
+							frBS.left="9.4%";
+							frBS.maxWidth="90.4%";
+						}else if(window.innerWidth<=565){
+							frBS.left="9%";
+							frBS.maxWidth="90.6%";
+						}else if(window.innerWidth<=600){
+							frBS.left="8.4%";
+							frBS.maxWidth="91.25%";
+						}else {
+							frBS.left="8%";
+							frBS.maxWidth="91.765%";
+						}
 						console.log("opening");
-						frBS.left=8+"%";
-						frBS.maxWidth=91.765+"%";
+						console.log(frBS.left);
 				//CLOSE
-					} else if(frBS.left===8+"%"){
+					} else if(frBS.left!=="0%"){
 						console.log("closing");
-						frBS.left=0+"%";
-						frBS.maxWidth=99.75+"%";
+						frBS.left="0%";
+						frBS.maxWidth="99.75%";
 					}
 				//CLOSE&SWITCH
-				} else if (buttP.className!=="P1"&&frBS.left===8+"%"){
+				} else if (buttP.className!=="P1"&&frBS.left!=="0%"){
 					console.log("closing");
-					frBS.left-=0+"%";
-					frBS.maxWidth=99.75+"%";
+					frBS.left-="0%";
+					frBS.maxWidth="99.75%";
 					bSw(buttP);
 				}
 			}
@@ -261,6 +278,6 @@
 			<input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
 			<input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
 		</nav>
-		<iframe class="fClass" id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
+		<iframe class="fClass" id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html"></iframe>
 	</body>
 </html>
