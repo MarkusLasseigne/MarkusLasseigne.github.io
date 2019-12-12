@@ -108,7 +108,16 @@
 				if (buttP.className==="P1"){
 				//OPEN
 					if(frBS.left==="0%"){
-						if(window.innerWidth<=500){
+						if(window.innerWidth<=200){
+							frBS.left="26%";
+							frBS.maxWidth="74%";
+						}else if(window.innerWidth<=300){
+							frBS.left="17%";
+							frBS.maxWidth="82.5%";
+						}else if(window.innerWidth<=400){
+							frBS.left="13%";
+							frBS.maxWidth="87%";
+						}else if(window.innerWidth<=500){
 							frBS.left="10%";
 							frBS.maxWidth="90%";
 						}else if(window.innerWidth<=535){
