@@ -15,6 +15,7 @@
 				position:fixed;
 				height:4.5%;
 				width:100%;
+				float:left;
 				top:0;
 			}
 			#leftBar {
@@ -23,6 +24,7 @@
 				position:fixed;
 				min-width:50px;
 				height:100%;
+				float:left;
 				width:8%;
 				left:0;
 			}
@@ -73,6 +75,7 @@
 				min-width:25%;
 				resize:both;
 				height:100%;
+				float:left;
 				width:100%;
 				top:4.5%;
 				left:0%;
@@ -92,13 +95,13 @@
 
 			//Main Variables
 			var buttP;
-			var Home="https://markuslasseigne.github.io/home.html";
-			var Portfolio="https://markuslasseigne.github.io/portfolio.html";
-			var BouncingBox="https://markuslasseigne.github.io/projects/bouncing-box/index.html";
-			var Platformer="https://markuslasseigne.github.io/projects/platformer/index.html";
-			var Circularity="https://markuslasseigne.github.io/projects/circularity/index.html";
-			var Runtime="https://markuslasseigne.github.io/projects/runtime/index.html";
-			var ChangeLog="https://markuslasseigne.github.io/home.html";
+			var Home="/home.html";
+			var Portfolio="/portfolio.html";
+			var BouncingBox="/projects/bouncing-box/index.html";
+			var Platformer="/projects/platformer/index.html";
+			var Circularity="/projects/circularity/index.html";
+			var Runtime="/projects/runtime/index.html";
+			var ChangeLog="/changelog.html";
 
 		//Main Functions
 			function bDo(buttP){
@@ -164,7 +167,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Home;
 						document.title="Home";
-						bDo(buttP);
 						break;
 			//Switches iframe to Portdolio page
 					case "Portfolio":
@@ -178,7 +180,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Portfolio;
 						document.title="Portfolio";
-						bDo(buttP);
 						break;
 			//Switches iframe to Bouncing Box page
 					case "BouncingBox":
@@ -192,7 +193,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=BouncingBox;
 						document.title="BouncingBox";
-						bDo(buttP);
 						break;
 			//Switches iframe to Platformer page
 					case "Platformer":
@@ -203,10 +203,9 @@
 						document.querySelector("#circ").className="P5";
 						document.querySelector("#runt").className="P6";
 						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value = buttP.value;
-						document.querySelector("#iFrame").src = Platformer;
+						document.querySelector("#iFrame").value=buttP.value;
+						document.querySelector("#iFrame").src=Platformer;
 						document.title = "Platformer";
-						bDo(buttP);
 						break;
 			//Switches iframe to Circularity page
 					case "Circularity":
@@ -220,7 +219,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Circularity;
 						document.title="Circularity";
-						bDo(buttP);
 						break;
 			//Switches iframe to Runtime page
 					case "Runtime":
@@ -234,7 +232,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Runtime;
 						document.title="Runtime";
-						bDo(buttP);
 						break;
 			//Switches iframe to ChangeLog page [WIP]
 					case "ChangeLog":
@@ -248,7 +245,6 @@
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=ChangeLog;
 						document.title="ChangeLog";
-						bDo(buttP);
 						break;
 			//Returns iframe to Home page
 					default:
@@ -261,11 +257,9 @@
 						document.querySelector("#clog").className="P7";
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Home;
-						document.querySelector("#iFrame").contentWindow.document.body.focus();
-						console.log(document.querySelector("#iFrame").contentWindow.document.body.focus());
 						document.title="Home";
-						bDo(buttP);
 				}
+			return bDo(buttP);
 			}
 //when any input clicked input calls function and inputs its parameters
 //function determines if input pressed is position 1 or if not position 1
@@ -286,6 +280,6 @@
 			<input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
 			<input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
 		</nav>
-		<iframe class="fClass" id="iFrame" value="Home" src="https://markuslasseigne.github.io/home.html"></iframe>
+		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
 	</body>
 </html>

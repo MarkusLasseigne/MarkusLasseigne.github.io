@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JS EN Test</title>
+        <style>
+            #daCan, body{
+                top:0;
+                left:0;
+                margin:0;
+                width:100vw;
+                height:100vh;
+                user-select: none;
+            }
+            #levels{
+                position:absolute;
+                top:5%;
+                left:37.5vw;
+                border:1px solid black;
+                margin:auto;
+                width:25vw;
+                height:25vh;
+            }
+            .levelB{
+                width:50%;
+                height:42.5%;
+                float:left;
+                font-size:200%;
+            }
+            #LS {
+                text-align:center;
+                margin:0;
+            }
+        </style>
+        <script src="init.js"></script>
+        <script src="levelc1.js"></script>
+        <script>
+            window.addEventListener("keydown", function(event){
+                console.log(event.key);
+                console.log(event.keyCode);
+                if(event.key=="Escape"){
+                    if(document.querySelector("#levels").style.visibility!=="hidden"){
+                        document.querySelector("#levels").style.visibility="hidden";
+                    } else {document.querySelector("#levels").style.visibility="visible";}
+                }
+            })
+        </script></script>
+    </head>
+    <body>
+        <canvas id="daCan"></canvas>
+        <div id="levels">
+            <h1 id="LS">Level Select</h1>
+            <button class="levelB" id="level1" onclick="level1();">Level 1</button>
+            <button class="levelB" id="level2">Level 2</button>
+            <button class="levelB" id="level3">Level 3</button>
+            <button class="levelB" id="level4">Level 4</button>
+        </div>
+    </body>
+</html>
