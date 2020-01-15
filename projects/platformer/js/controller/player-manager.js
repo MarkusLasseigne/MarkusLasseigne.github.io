@@ -29,7 +29,7 @@
         fireKey.onDown.add(fire, player.asset);
         
         function fire() {
-            console.log('playerManager says to fire!');
+//            console.log('playerManager says to fire!');
             player.fire();
         }
         //game.input.keyboard.addKeys({ 'space': Phaser.Keyboard.SPACEBAR});

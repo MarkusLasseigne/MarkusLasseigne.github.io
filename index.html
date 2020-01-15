@@ -136,17 +136,16 @@
 							frBS.left="8%";
 							frBS.maxWidth="91.765%";
 						}
-						console.log("opening");
-						console.log(frBS.left);
+//						console.log("Opening to: " + frBS.left);
 				//CLOSE
 					} else if(frBS.left!=="0%"){
-						console.log("closing");
+//						console.log("Closing");
 						frBS.left="0%";
 						frBS.maxWidth="99.75%";
 					}
 				//CLOSE&SWITCH
 				} else if (buttP.className!=="P1"&&frBS.left!=="0%"){
-					console.log("closing");
+//					console.log("Closing");
 					frBS.left-="0%";
 					frBS.maxWidth="99.75%";
 					bSw(buttP);

@@ -43,22 +43,22 @@ var init = function (window) {
         game.checkCirclePosition = function(circle) {
             //if past RIGHT side of the screen then transport to the LEFT
             if (circle.x > canvas.width + circle.radius * 1.45) {
-                console.log("To Left, " + circle.x);
+ //               console.log("To Left, " + circle.x);
                 circle.x = 0 - circle.radius * 1.2;
             }
             //if past LEFT side of the screen then transport to the RIGHT
             else if (circle.x < 0 - circle.radius * 1.45) {
-                console.log("To Right, " + circle.x);
+//                console.log("To Right, " + circle.x);
                 circle.x = canvas.width + circle.radius * 1.2;
             }
             //if past TOP of the screen then transport to the BOTTOM
             if (circle.y < 0 - circle.radius * 1.45) {
-                console.log("To Bottom, " + circle.y);
+//                console.log("To Bottom, " + circle.y);
                 circle.y = canvas.height + circle.radius * 1.2;
             }
             //if past BOTTOM of the screen then transport to the TOP
             else if (circle.y > canvas.height + circle.radius * 1.45) {
-                console.log("To Top, " + circle.y);
+//                console.log("To Top, " + circle.y);
                 circle.y = 0 - circle.radius * 1.2;
             }
         }

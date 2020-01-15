@@ -72,7 +72,7 @@
 	<body class="board">
 		<div id="alertBox">
 		   <div class="message"></div>
-		   <a href="https://markuslasseigne.github.io/projects/bouncing-box/" class="refresh">Reload(Or Right Click)</a>   
+		   <a href="/projects/bouncing-box/index.html" class="refresh">Reload(Or Right Click)</a>   
 		</div>
 		<!-- HTML for the box -->
 		<div class="box">?</div>
@@ -88,8 +88,7 @@
 				var boardWidth = jQuery('.board').width()-100;
 				var boardHeight = jQuery('.board').height()-100; 
 				board.css = board;
-				console.log(boardWidth);
-				console.log(boardHeight);
+//				console.log(boardWidth+"=width ",boardHeight+"=height");
 
 				// Variable declarations 
 				var position;
@@ -122,28 +121,22 @@
 				function update() {
 					 position += speed * direction;
 					 positionY += speed * directionY;
-//    				 console.log(speed);
-//                     console.log("X position: " + position);
-//                     console.log("Y position: " + positionY);
+//    				 console.log("Speed:"+speed,"Xpos: "+position,"Ypos: "+positionY);
 					 if(position > boardWidth) {
 						direction = -0.8;
-						console.log("Right Wall Hit");
-						console.log("X" + direction);
+//						console.log("Right Wall Hit, sending X - " + direction);
 					 }
 					if(position < 0){
 						direction = +0.8;
-						console.log("Left Wall Hit");
-						console.log("X+" + direction);
+//						console.log("Left Wall Hit, sending X + " + direction);
 					 }
 					if(positionY < 0){
 						directionY = +0.8;
-						console.log("Top Wall Hit");
-						console.log("Y+" + directionY);
+//						console.log("Top Wall Hit, sending Y - " + direction);
 					 }
 					if(positionY > boardHeight){
 						directionY = -0.8;
-						console.log("Bottom Wall Hit");
-						console.log("Y" + directionY);
+//						console.log("Bottom Wall Hit, sending Y + " + direction);
 					 }
 					box.css('left', position);
 					box.css('top', positionY);
@@ -161,7 +154,7 @@
 					direction = directX;
 					directionY = directY;
 					box.text(points);
-					console.log(points + " Got");
+//					console.log(points + " Got");
 				}
 				function handleBoxMiss(){
 					if (miss < 0) miss = 0;
@@ -171,7 +164,7 @@
 					if (speed <= 0) speed = 1.5;
 					speed -= 1.5;
 					if (speed <= 0) speed = 1.5;
-					console.log(miss + ' missed');
+//					console.log(miss + ' missed');
 					box.text(points);
 				}
 				function doAlert(msg, reText){

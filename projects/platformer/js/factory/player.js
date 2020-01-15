@@ -35,7 +35,8 @@
                 onKeyUp: stop,
                 onCursorLeft: run,
                 onCursorRight: run,
-                enter: function() { console.log(`entering ${ name }`); asset.body.setSize(22, 95, 0, -3); },
+                enter: function() { //console.log(`entering ${ name }`); 
+                asset.body.setSize(22, 95, 0, -3); },
                 exit: doNothing,
                 getName: function() { return name; }
             };
@@ -48,7 +49,7 @@
                 state = createState(name);
             state.duck = doNothing;
             state.enter = function() {
-                console.log(`entering ${ name }`);
+//                console.log(`entering ${ name }`);
                 asset.body.setSize(22, 70, 0, -2);
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
@@ -67,7 +68,7 @@
                 state = createState(name);
             state.stop = doNothing;
             state.enter = function() {
-                console.log(`entering ${ name }`);
+//                console.log(`entering ${ name }`);
                 asset.body.setSize(22, 95, 0, -2);
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
@@ -87,7 +88,7 @@
                 state.stop = state.duck = state.fire = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
             state.enter = function() {
-                console.log(`entering ${ name }`);
+//                console.log(`entering ${ name }`);
                 asset.body.setSize(22, 92, 0, -102);
                 asset.x += xOffset;
                 asset.y += yOffset;
@@ -107,7 +108,7 @@
                 state.fire = state.duck = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
             state.enter = function() {
-                console.log(`entering ${ name }`);
+//                console.log(`entering ${ name }`);
                 asset.body.setSize(22, 100, 0, -12);
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
@@ -127,7 +128,7 @@
                 state.fire = state.duck = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
             state.enter = function() {
-                console.log(`entering ${ name }`);
+//                console.log(`entering ${ name }`);
                 asset.body.bounce.y = 0;
                 game.add.tween(asset.body).to( { y: asset.body.y -100 }, 1000, Phaser.Easing.Linear.None, true);
 
@@ -157,7 +158,7 @@
         function die() {
             asset.animations.play('die');
             asset.animations.currentAnim.onComplete.addOnce(function() {
-                console.log('die complete!');
+//                console.log('die complete!');
                 asset.destroy();
             }, this);
             setState(_die);
@@ -180,7 +181,7 @@
             let 
                 duck = animations.duck,
                 onUpdate = function (anim, frame) {
-                console.log(frame.index);
+//                console.log(frame.index);
                 // todo : remove magic number 14 //
                 if (frame.index === 14) {
                     asset.animations.stop();
@@ -193,7 +194,7 @@
             duck.play();
             // asset.animations.play('duck');
             asset.animations.currentAnim.onComplete.addOnce(function onComplete() { 
-                console.log('duck complete');
+//                console.log('duck complete');
                 duck.onUpdate.remove(onUpdate, this);
                 stop();
             }, this);
@@ -217,19 +218,19 @@
                 // todo : fix magic number using mid, you'll have to find it by getting the length of the range of frames //
                 mid = Math.floor(flyingJump.frameTotal / 18.75),
                 origYOffset = asset.body.offset.y;
-                console.log(`total frames: ${flyingJump.frameTotal}`);
-                console.log(`origYOffset : ${origYOffset}`);
+//                console.log(`total frames: ${flyingJump.frameTotal}`);
+//                console.log(`origYOffset : ${origYOffset}`);
             
             asset.body.offset.x += 25 * _direction;
             asset.body.offset.y -= 40;
             asset.body.y -= 40;
             let onUpdate = function (anim, frame) {
-                console.log(frame.index);
+//                console.log(frame.index);
                 if (frame.index < 20) {
-                    console.log(`up y offset: ${asset.body.offset.y}`);
+//                    console.log(`up y offset: ${asset.body.offset.y}`);
                     asset.body.offset.y -= 10;
                 } else {
-                    console.log(`down y offset: ${asset.body.offset.y}`);
+//                    console.log(`down y offset: ${asset.body.offset.y}`);
                     asset.body.offset.x -= 0.4 * _direction;
                     asset.body.offset.y += 0.8;
                 }
@@ -241,7 +242,7 @@
             flyingJump.play();
             setState(_flyingJump);
             asset.animations.currentAnim.onComplete.addOnce(function onComplete() { 
-                console.log('jump complete');
+//                console.log('jump complete');
                 asset.body.offset.y += 5;
                 flyingJump.onUpdate.remove(onUpdate, this);
                 stop();
@@ -256,14 +257,14 @@
             fire.enableUpdate = true;
             let i = 0;
             var onUpdate = function (anim, frame) {
-                console.log(i);
+//                console.log(i);
                 ++i;
             };
             fire.onUpdate.add(onUpdate, this);
             asset.animations.play('fire');
             setState(_fire);
             asset.animations.currentAnim.onComplete.addOnce(function() {
-                console.log('fire complete!');
+//                console.log('fire complete!');
                 fire.onUpdate.remove(onUpdate, this);
                 stop();
             }, this);
@@ -298,7 +299,9 @@
     /**
      * doNothing: Prevents state transitions. 
      */ 
-    function doNothing() { console.log('doing nothing!'); }
+    function doNothing() { 
+//        console.log('doing nothing!'); 
+    }
     
     function init(game) {
         let asset = game.add.sprite(spawnX, spawnY, 'halle');

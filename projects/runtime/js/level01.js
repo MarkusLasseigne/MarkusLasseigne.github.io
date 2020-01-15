@@ -52,7 +52,7 @@ var level01 = function (window) {
             game.addGameItem(enemy);
             enemy.velocityX = -1.99;
             enemy.onPlayerCollision = function(){
-                console.log('The enemy has hit Halle');
+//                console.log('The enemy has hit Halle');
                 game.changeIntegrity(-20);
                 enemy.fadeOut();
             };

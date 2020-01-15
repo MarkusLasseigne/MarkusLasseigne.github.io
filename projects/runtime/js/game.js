@@ -18,7 +18,7 @@
         function increaseScore(amount) {
             score += amount;
             hud.updateScore(amount);
-            console.log("setting score = ",score);
+//            console.log("setting score = ",score);
         }
 
         function getScore() {
@@ -42,7 +42,7 @@
          */
         function changeIntegrity(amount) {
             health = Math.min(health + amount, 100);
-            console.log("setting integrity = ",health);
+//            console.log("setting integrity = ",health);
             hud.setIntegrity(health);
             if(health <= 0) {
                 hud.kill();
