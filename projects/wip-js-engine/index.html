@@ -3,40 +3,38 @@
     <head>
         <title>JS EN Test</title>
         <style>
-            #daCan, body{
-                top:0;
-                left:0;
+            #daCan, body, html{
                 margin:0;
-                width:100vw;
-                height:100vh;
+                width:100%;
+                height:100%;
                 user-select: none;
             }
             #levels{
                 position:absolute;
                 top:5%;
                 left:37.5vw;
-                border:1px solid black;
+                border:5px solid black;
+                background-color:white;
                 margin:auto;
                 width:25vw;
-                height:25vh;
+                height:14vw;
             }
             .levelB{
                 width:50%;
-                height:42.5%;
+                height:42%;
                 float:left;
-                font-size:200%;
+                font-size:2vw;
+                padding:0;
             }
             #LS {
                 text-align:center;
+                font-size:2vw;
                 margin:0;
             }
         </style>
-        <script src="init.js"></script>
-        <script src="levelc1.js"></script>
+        
         <script>
             window.addEventListener("keydown", function(event){
-                console.log(event.key);
-                console.log(event.keyCode);
                 if(event.key=="Escape"){
                     if(document.querySelector("#levels").style.visibility!=="hidden"){
                         document.querySelector("#levels").style.visibility="hidden";
@@ -48,11 +46,13 @@
     <body>
         <canvas id="daCan"></canvas>
         <div id="levels">
-            <h1 id="LS">Level Select</h1>
-            <button class="levelB" id="level1" onclick="level1();">Level 1</button>
-            <button class="levelB" id="level2">Level 2</button>
-            <button class="levelB" id="level3">Level 3</button>
-            <button class="levelB" id="level4">Level 4</button>
+            <p id="LS">Level Select</p>
+            <button class="levelB" id="level1" onclick="document.querySelector('#levels').style.visibility='hidden'; level1();">Level 1</button>
+            <button class="levelB" id="level2" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 2</button>
+            <button class="levelB" id="level3" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 3</button>
+            <button class="levelB" id="level4" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 4</button>
         </div>
+        <script src="refInit.js"></script>
+        <script src="levelc1.js"></script>
     </body>
 </html>
