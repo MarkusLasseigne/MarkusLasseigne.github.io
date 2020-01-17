@@ -1,29 +1,28 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>JS EN Test</title>
         <style>
             #daCan, body, html{
-                margin:0;
-                width:100%;
-                height:100%;
                 user-select: none;
+                height:100%;
+                width:100%;
+                margin:0;
             }
             #levels{
-                position:absolute;
-                top:5%;
-                left:37.5vw;
                 border:5px solid black;
                 background-color:white;
+                position:absolute;
+                left:37.5vw;
                 margin:auto;
-                width:25vw;
                 height:14vw;
+                width:25vw;
+                top:5%;
             }
             .levelB{
-                width:50%;
-                height:42%;
-                float:left;
                 font-size:2vw;
+                float:left;
+                height:42%;
+                width:50%;
                 padding:0;
             }
             #LS {
@@ -32,16 +31,15 @@
                 margin:0;
             }
         </style>
-        
         <script>
             window.addEventListener("keydown", function(event){
                 if(event.key=="Escape"){
                     if(document.querySelector("#levels").style.visibility!=="hidden"){
                         document.querySelector("#levels").style.visibility="hidden";
-                    } else {document.querySelector("#levels").style.visibility="visible";}
+                    }else{document.querySelector("#levels").style.visibility="visible";}
                 }
             })
-        </script></script>
+        </script>
     </head>
     <body>
         <canvas id="daCan"></canvas>
