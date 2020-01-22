@@ -3,31 +3,31 @@
     <head>
         <style>
             #daCan, body, html{
-                user-select: none;
-                height:100%;
                 width:100%;
+                height:100%;
+                user-select: none;
                 margin:0;
             }
             #levels{
+                width:25vw;
+                height:14vw;
                 border:5px solid black;
                 background-color:white;
                 position:absolute;
-                left:37.5vw;
                 margin:auto;
-                height:14vw;
-                width:25vw;
                 top:5%;
+                left:37.5vw;
             }
             .levelB{
+                width:50%;
+                height:42%;
                 font-size:2vw;
                 float:left;
-                height:42%;
-                width:50%;
                 padding:0;
             }
             #LS {
-                text-align:center;
                 font-size:2vw;
+                text-align:center;
                 margin:0;
             }
         </style>
@@ -36,9 +36,12 @@
                 if(event.key=="Escape"){
                     if(document.querySelector("#levels").style.visibility!=="hidden"){
                         document.querySelector("#levels").style.visibility="hidden";
-                    }else{document.querySelector("#levels").style.visibility="visible";}
-                }
-            })
+                    }else{document.querySelector("#levels").style.visibility="visible";}}});
+            window.addEventListener("touchcancelled", function(event){
+                if(document.querySelector("#levels").style.visibility!=="hidden"){
+                    document.querySelector("#levels").style.visibility="hidden";
+                }else{document.querySelector("#levels").style.visibility="visible";}});
+            
         </script>
     </head>
     <body>

@@ -111,10 +111,16 @@
 				if(frBS.left===""){frBS.left="0vw";}//sets if the querySelector needs a "little" help
 				if(buttP.className==="P1"){
 					if(frBS.left==="0vw"){//To OPEN
-						if(window.innerWidth<=320){//mobile open
+						if(window.innerWidth==425){//large mobile open
+							frBS.left="9.5vw";
+							frBS.maxWidth="90vw";
+						}else if(window.innerWidth==375){//medium mobile open
+							frBS.left="11vw";
+							frBS.maxWidth="88.5vw";
+						}else if(window.innerWidth==320){//small mobile open
 							frBS.left="12.5vw";
 							frBS.maxWidth="87vw";
-						}else if(window.innerWidth<=156){//tiny mobile open
+						}else if(window.innerWidth==156){//tiny mobile open
 							frBS.left="25vw";
 							frBS.maxWidth="74.5vw";
 						}else{//regular non-p-tak open
