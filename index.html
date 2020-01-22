@@ -5,82 +5,77 @@
 		<link rel="icon" type="image/x-icon" href="https://markuslasseigne.github.io/favicon.ico" sizes="16x16 64x64 128x128">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			.bodyS {
+			html, body{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				margin:0;
+			}
+			.bodyS{
 				background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-				margin:0 0 0 0;
 			}
-			#topBar {
-				border-bottom:1px solid white;
+			#topBar{
+				width:100%;
+				height:5vh;
 				background-color:#001;
 				position:fixed;
-				height:4.5%;
-				width:100%;
-				float:left;
 				top:0;
 			}
-			#leftBar {
-				border-right:0.5px solid white;
+			#leftBar{
+				width:8vw;
+				min-width:40px;
+				height:100%;
 				background-color:#001;
 				position:fixed;
-				min-width:50px;
-				height:100%;
 				float:left;
-				width:8%;
-				left:0;
-			}
-			input {
-				border-bottom:1px solid white;
-				background-color:black;
-				border:1px solid white;
-				position:relative;
-				font-weight:bold;
-				cursor:pointer;
-				font-size:1vw;
-				color:white;
-				float:left;
-				width:100%;
-				height:4%;
-				top:4.5%;
-			}
-			input:hover {
-				border-bottom:1px solid white;
-				background-color:white;
-				border:0 solid white;
-				color:black;
-				float:left;
-			}
-			.P1, .P1:hover {
-				border-bottom:1px solid white;
-				background-color:white;
-				border:0 solid white;
-				position:absolute;
-				font-size:1.15vw;
-				color:black;
-				height:4.5%;
-				width:100%;
-				z-index:0;
-				left:0;
-				top:0;
-			}
-			#iFrame {
-				background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
-				border-radius:0 0 8px 0;
-				border:1px solid white;
-				overflow-x:hidden;
-				overflow-y:hidden;
-				max-width:99.75%;
-				position:fixed;
-				max-height:95%;
-				min-height:25%;
-				min-width:25%;
-				resize:both;
-				height:100%;
-				float:left;
-				width:100%;
-				top:4.5%;
 				left:0%;
 			}
-
+			input{
+				width:100%;
+				height:4vh;
+				font-size:1vw;
+				font-weight:bold;
+				border:none;
+				border-bottom:1px solid white;
+				background-color:black;
+				color:white;
+				cursor:pointer;
+				position:relative;
+				float:left;
+				top:5vh;
+			}
+			input:hover{
+				background-color:white;
+				color:black;
+				float:left;
+			}
+			.P1, .P1:hover{
+				width:100%;
+				height:5vh;
+				font-size:1.15vw;
+				background-color:white;
+				color:black;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			#iFrame{
+				width:100%;
+				min-width:25vw;
+				max-width:99.5vw;
+				height:100%;
+				min-height:25vh;
+				max-height:94.5vh;
+				resize:both;
+				border-radius:0 0 8px 0;
+				border:1px solid white;
+				overflow:hidden;
+				background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
+				position:fixed;
+				float:left;
+				top:5vh;
+				left:0;
+			}
 		</style>
 		<script>
 //Element Select Refrences
@@ -107,47 +102,29 @@
 			function bDo(buttP){
 				var frBS=document.querySelector(".fClass").style;
 			//SET
-				if(frBS.left===""){frBS.left="0%";}
-				if (buttP.className==="P1"){
+				if(frBS.left===""){frBS.left="0vw";}
+				if(buttP.className==="P1"){
 				//OPEN
-					if(frBS.left==="0%"){
-						if(window.innerWidth<=200){
-							frBS.left="26%";
-							frBS.maxWidth="74%";
-						}else if(window.innerWidth<=300){
-							frBS.left="17%";
-							frBS.maxWidth="82.5%";
-						}else if(window.innerWidth<=400){
-							frBS.left="13%";
-							frBS.maxWidth="87%";
-						}else if(window.innerWidth<=500){
-							frBS.left="10%";
-							frBS.maxWidth="90%";
-						}else if(window.innerWidth<=535){
-							frBS.left="9.4%";
-							frBS.maxWidth="90.4%";
-						}else if(window.innerWidth<=565){
-							frBS.left="9%";
-							frBS.maxWidth="90.6%";
-						}else if(window.innerWidth<=600){
-							frBS.left="8.4%";
-							frBS.maxWidth="91.25%";
-						}else {
-							frBS.left="8%";
-							frBS.maxWidth="91.765%";
+					if(frBS.left==="0vw"){
+						if(window.innerWidth<=156){
+							frBS.left="25vw";
+							frBS.maxWidth="74.5vw";
+						}else{
+							frBS.left="8vw";
+							frBS.maxWidth="91.5vw";
 						}
 //						console.log("Opening to: " + frBS.left);
 				//CLOSE
-					} else if(frBS.left!=="0%"){
+					}else if(frBS.left!=="0vw"){
 //						console.log("Closing");
-						frBS.left="0%";
-						frBS.maxWidth="99.75%";
+						frBS.left="0vw";
+						frBS.maxWidth="99.5vw";
 					}
 				//CLOSE&SWITCH
-				} else if (buttP.className!=="P1"&&frBS.left!=="0%"){
+				}else if(buttP.className!=="P1"&&frBS.left!=="0vw"){
 //					console.log("Closing");
-					frBS.left-="0%";
-					frBS.maxWidth="99.75%";
+					frBS.left+="0vw";
+					frBS.maxWidth="99.5vw";
 					bSw(buttP);
 				}
 			}
@@ -191,7 +168,7 @@
 						document.querySelector("#clog").className="P7";
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=BouncingBox;
-						document.title="BouncingBox";
+						document.title="Bouncing Box";
 						break;
 			//Switches iframe to Platformer page
 					case "Platformer":
@@ -204,7 +181,7 @@
 						document.querySelector("#clog").className="P7";
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=Platformer;
-						document.title = "Platformer";
+						document.title="Platformer";
 						break;
 			//Switches iframe to Circularity page
 					case "Circularity":
@@ -243,7 +220,7 @@
 						document.querySelector("#clog").className="P1";
 						document.querySelector("#iFrame").value=buttP.value;
 						document.querySelector("#iFrame").src=ChangeLog;
-						document.title="ChangeLog";
+						document.title="Change Log";
 						break;
 			//Returns iframe to Home page
 					default:
@@ -260,6 +237,7 @@
 				}
 			return bDo(buttP);
 			}
+//			document.onclick = function(){console.log(InputEvent);};
 //when any input clicked input calls function and inputs its parameters
 //function determines if input pressed is position 1 or if not position 1
 //if position 1, it determines if leftbar is open or closed, if open then slide iframe left and if closed slide iframe right
@@ -268,8 +246,7 @@
 		</script>
 	</head>
 	<body class="bodyS">
-		<nav id="topBar">
-		</nav>
+		<nav id="topBar"></nav>
 		<nav id="leftBar">
 			<input class="P1" type="button" id="home" onclick=bDo(this) value="Home">
 			<input class="P2" type="button" id="port" onclick=bDo(this) value="Portfolio">
