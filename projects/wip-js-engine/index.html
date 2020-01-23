@@ -1,61 +1,93 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <style>
-            #daCan, body, html{
-                width:100%;
-                height:100%;
-                overflow:hidden;
-                user-select: none;
-                margin:0;
-            }
-            #levels{
-                width:25vw;
-                height:14vw;
-                border:5px solid black;
-                overflow:hidden;
-                background-color:white;
-                position:absolute;
-                margin:auto;
-                top:5%;
-                left:37.5vw;
-            }
-            .levelB{
-                width:50%;
-                height:42%;
-                font-size:2vw;
-                float:left;
-                padding:0;
-            }
-            #LS {
-                font:bold 2vw Times, serif;
-                text-align:center;
-                margin:0;
-            }
-        </style>
-        <script>
-            window.addEventListener("keydown", function(event){
-                if(event.key=="Escape"){
-                    if(document.querySelector("#levels").style.visibility!=="hidden"){
-                        document.querySelector("#levels").style.visibility="hidden";
-                    }else{document.querySelector("#levels").style.visibility="visible";}}});
-            window.addEventListener("touchcancelled", function(event){
-                if(document.querySelector("#levels").style.visibility!=="hidden"){
-                    document.querySelector("#levels").style.visibility="hidden";
-                }else{document.querySelector("#levels").style.visibility="visible";}});
+	<head>
+		<style>
+			#daCan, body, html{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				background-color:none;
+				user-select:none;
+				margin:0;
+			}
+			#optCont{
+				width:25vw;
+				height:15vw;
+				border:5px solid black;
+				overflow:hidden;
+				background-color:white;
+				position:absolute;
+				margin:auto;
+				top:5%;
+				left:37.5vw;
+			}
+			#options{
+				width:100%;
+				height:20.5%;
+			}
+			#opttxt{
+				font:bold 2.5vw Times, serif;
+				float:left;
+				margin:0 0 0 0;
+			}
+			#optionB{
+				width:31.25%;
+				height:100%;
+				font:175% arial, sans-serif;
+				float:right;
+				padding:0;
+			}
+			#levels{
+				width:100%;
+				height:80%;
+			}
+			.lvltxt{
+				font:bold 2vw Times, serif;
+				margin:0 0 0 0;
+			}
+
+			.levelB{
+				width:50%;
+				height:40%;
+				font:400% arial, sans-serif;
+				float:left;
+				padding:0;
+			}
+		</style>
+		<script>
+			var keyU=function(){window.addEventListener("keyup",optT);}
+			var keyP=function(){window.addEventListener("keypress",optT);}
+			var keyD=window.addEventListener("keydown",optT);
+			var lClick=window.addEventListener("click",optT);
+			var rClick=window.addEventListener("contextmenu",optT);
+			function optT(event){
+//                console.log(event, event.key);
+				if(event.key=="Escape"||event=="bClose"){
+					if(document.querySelector("#optCont").style.visibility!=="hidden"){
+						document.querySelector("#optCont").style.visibility="hidden";
+					}else{document.querySelector("#optCont").style.visibility="visible";}
+				}
+			}
 //&#9776;⚙️
-        </script>
-    </head>
-    <body>
-        <canvas id="daCan"></canvas>
-        <div id="levels">
-            <p id="LS">Level Select</p>
-            <button class="levelB" id="level1" onclick="document.querySelector('#levels').style.visibility='hidden'; level1();">Level 1</button>
-            <button class="levelB" id="level2" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 2</button>
-            <button class="levelB" id="level3" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 3</button>
-            <button class="levelB" id="level4" onclick="document.querySelector('#levels').style.visibility='hidden';">Level 4</button>
-        </div>
-        <script src="refInit.js"></script>
-        <script src="levelc1.js"></script>
-    </body>
+		</script>
+	</head>
+	<body>
+		<canvas id="daCan"></canvas>
+		<div id="optCont">
+			<div id="options">
+				<p id="opttxt">Options:</p>
+				<button id="optionB" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</button>
+				<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
+			</div>
+			<div id="levels">
+				<p class="lvltxt" id="LS">Level Select:</p>
+				<button class="levelB" id="level1" onclick="optT('bClose'); level1();">Level 1</button>
+				<button class="levelB" id="level2" onclick="optT('bClose');">Level 2</button>
+				<button class="levelB" id="level3" onclick="optT('bClose');">Level 3</button>
+				<button class="levelB" id="level4" onclick="optT('bClose');">Level 4</button>
+			</div>
+		</div>
+		<script src="refInit.js"></script>
+		<script src="levelc1.js"></script>
+	</body>
 </html>
