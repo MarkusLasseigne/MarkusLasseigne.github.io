@@ -77,7 +77,7 @@
         createjs.Ticker.setFPS(60);
         createjs.Ticker.on('tick', _app.update);
         
-        // createjs.Touch.enable(_canvas, true, false);
+//        createjs.Touch.enable(_canvas, true, false);
 
         return _app;
     };

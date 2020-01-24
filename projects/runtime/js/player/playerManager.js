@@ -66,29 +66,29 @@
             }
         }
         
-        function onKeyDown(e) {
-            if (activeKeys[KEYCODE_RIGHT]) {
+        function onKeyDown(e){
+            if(activeKeys[KEYCODE_RIGHT]||activeKeys[KEYCODE_D]){
                 player.jumpfly();
-            } else if (activeKeys[KEYCODE_UP]) {
+            }else if(activeKeys[KEYCODE_UP]||activeKeys[KEYCODE_W]){
                 player.jump();
-            } else if (activeKeys[KEYCODE_Q]) {
+            }else if(activeKeys[KEYCODE_Q]){
                 player.die();
-                setTimeout(function() {
+                setTimeout(function(){
                     document.location.reload()
                     alert("press enter to start over");
                 }, 1100);
-            } else if (activeKeys[KEYCODE_DOWN]) {
+            }else if(activeKeys[KEYCODE_DOWN]||activeKeys[KEYCODE_S]){
                 player.duckin();
-                _state = 'ducking';
+                _state='ducking';
             }
             
-            if (activeKeys[KEYCODE_SPACE]) { 
+            if(activeKeys[KEYCODE_SPACE]){ 
                 player.shoot();
             }
         }
         
-        function onKeyUp(e) {
-            if (_state === 'ducking') {
+        function onKeyUp(e){
+            if (_state === 'ducking'){
                 player.duckout();
                 _state = 'walking';
             }
@@ -105,7 +105,7 @@
             i = 0;
             id = setInterval(function(){
               player.explosion.emit({x: player.x, y: player.y});
-              if (i > 60) {
+              if(i>60){
                   window.clearInterval(id);
                   player.explosion.stop();
                   //space.splice(space.indexOf(player), 1);

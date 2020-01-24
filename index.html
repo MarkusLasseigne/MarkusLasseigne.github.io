@@ -8,16 +8,15 @@
 			html, body{
 				width:100%;
 				height:100%;
+				background:rgba(0,0,0,1) url(startile.png) repeat left top;
 				overflow:hidden;
+				padding:0;
 				margin:0;
-			}
-			.bodyS{
-				background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
 			}
 			#topBar{
 				width:100%;
 				height:5vh;
-				background-color:#001;
+				background-color:rgba(0,0,1,0.88);
 				position:fixed;
 				top:0;
 			}
@@ -25,7 +24,7 @@
 				width:8vw;
 				min-width:40px;
 				height:100%;
-				background-color:#001;
+				background-color:rgba(0,0,1,0.88);
 				position:fixed;
 				float:left;
 				left:0%;
@@ -34,37 +33,41 @@
 				width:100%;
 				height:4vh;
 				font:bold 1vw arial, sans-serif;
-				font-size:1vw;
-				font-weight:bold;
 				border:none;
-				border-bottom:1px solid white;
-				background-color:black;
-				color:white;
+				border-bottom:1px solid rgba(255,255,255,1);
+				background-color:rgba(0,0,1,0.88);
+				color:rgba(255,255,255,1);
 				cursor:pointer;
 				position:relative;
 				float:left;
+				padding:0.5% 1%;
 				top:5vh;
 			}
 			input:hover{
-				background-color:white;
-				color:black;
+				background-color:rgba(255,255,255,1);
+				color:rgba(0,0,0,1);
 				float:left;
 			}
 			.P1, .P1:hover{
 				width:100%;
 				height:5vh;
 				font-size:1.15vw;
-				background-color:white;
-				color:black;
+				background-color:rgba(255,255,255,1);
+				color:rgba(0,0,0,1);
 				position:absolute;
 				top:0;
 				left:0;
 			}
 			.P8{
 				border:none;
-				color:black;
+				color:rgba(0,0,0,1);
 				position:relative;
 				margin-top:67vh;
+			}
+			#optionB{
+				width:auto;
+				height:100%;
+				float:right;
 			}
 			#iFrame{
 				width:100%;
@@ -75,203 +78,21 @@
 				max-height:94.5vh;
 				resize:both;
 				border-radius:0 0 8px 0;
-				border:1px solid white;
+				border:1px solid rgba(255,255,255,1);
+				border-left:0;
 				overflow:hidden;
-				background:black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right bottom;
+				background:rgba(0,0,1,0.88) url(startile.png) repeat right bottom;
 				position:fixed;
 				float:left;
 				top:5vh;
 				left:0;
 			}
 		</style>
-		<script>
-//Element Select Refrences
-//doc.querySelector() Refrences=1st of all elements
-//doc.querySelectorAll() Refrences=all elements (array-like)
-	//"tag"=<tag>;
-	//"parenttag>childtag"=<Ptag><Ctag>;
-	//"tag.class"=<tag class>;
-	//"tag[target]"=<tag target>;
-	//id="#";
-	//example:var x=document.getElementById(elementid).querySelectorAll(elements in id)
-
-			//Main Variables
-			var buttP;
-			var Home="/home.html";
-			var Portfolio="/portfolio.html";
-			var BouncingBox="/projects/bouncing-box/index.html";
-			var Platformer="/projects/platformer/index.html";
-			var Circularity="/projects/circularity/index.html";
-			var Runtime="/projects/runtime/index.html";
-			var ChangeLog="/changelog.html";
-			var SuperSecret="/projects/wip-js-engine/index.html";
-
-		//Main Functions
-			function bDo(buttP){
-				var frBS=document.querySelector(".fClass").style;
-				if(frBS.left===""){frBS.left="0vw";}//sets if the querySelector needs a "little" help
-				if(buttP.className==="P1"){
-					if(frBS.left==="0vw"){//To OPEN
-						if(window.innerWidth==425){//large mobile open
-							frBS.left="9.5vw";
-							frBS.maxWidth="90vw";
-						}else if(window.innerWidth==375){//medium mobile open
-							frBS.left="11vw";
-							frBS.maxWidth="88.5vw";
-						}else if(window.innerWidth==320){//small mobile open
-							frBS.left="12.5vw";
-							frBS.maxWidth="87vw";
-						}else if(window.innerWidth==156){//tiny mobile open
-							frBS.left="25vw";
-							frBS.maxWidth="74.5vw";
-						}else{//regular non-p-tak open
-							frBS.left="8vw";
-							frBS.maxWidth="91.5vw";
-						}
-					}else if(frBS.left!=="0vw"){//CLOSE
-//						console.log("Closing");
-						frBS.left="0vw";
-						frBS.maxWidth="99.5vw";
-					}
-				}else if(buttP.className!=="P1"&&frBS.left!=="0vw"){//to CLOSE&SWITCH
-//					console.log("Closing");
-					frBS.left+="0vw";
-					frBS.maxWidth="99.5vw";
-					bSw(buttP);
-				}
-			}
-		//Takes button imput and changes current iframe page to button imputs value
-			function bSw(buttP){
-				switch(buttP.value){
-			//Switches iframe to Home page
-					case "Home":
-						document.querySelector("#home").className="P1";
-						document.querySelector("#port").className="P2";
-						document.querySelector("#bbox").className="P3";
-						document.querySelector("#plat").className="P4";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Home;
-						document.title="Home";
-						break;
-			//Switches iframe to Portdolio page
-					case "Portfolio":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P1";
-						document.querySelector("#bbox").className="P3";
-						document.querySelector("#plat").className="P4";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Portfolio;
-						document.title="Portfolio";
-						break;
-			//Switches iframe to Bouncing Box page
-					case "BouncingBox":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P3";
-						document.querySelector("#bbox").className="P1";
-						document.querySelector("#plat").className="P4";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=BouncingBox;
-						document.title="Bouncing Box";
-						break;
-			//Switches iframe to Platformer page
-					case "Platformer":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P3";
-						document.querySelector("#bbox").className="P4";
-						document.querySelector("#plat").className="P1";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Platformer;
-						document.title="Platformer";
-						break;
-			//Switches iframe to Circularity page
-					case "Circularity":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P3";
-						document.querySelector("#bbox").className="P4";
-						document.querySelector("#plat").className="P5";
-						document.querySelector("#circ").className="P1";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Circularity;
-						document.title="Circularity";
-						break;
-			//Switches iframe to Runtime page
-					case "Runtime":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P3";
-						document.querySelector("#bbox").className="P4";
-						document.querySelector("#plat").className="P5";
-						document.querySelector("#circ").className="P6";
-						document.querySelector("#runt").className="P1";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Runtime;
-						document.title="Runtime";
-						break;
-			//Switches iframe to ChangeLog page
-					case "ChangeLog":
-						document.querySelector("#home").className="P2";
-						document.querySelector("#port").className="P3";
-						document.querySelector("#bbox").className="P4";
-						document.querySelector("#plat").className="P5";
-						document.querySelector("#circ").className="P6";
-						document.querySelector("#runt").className="P7";
-						document.querySelector("#clog").className="P1";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=ChangeLog;
-						document.title="Change Log";
-						break;
-					case "SuperSecret":
-						document.querySelector("#home").className="P1";
-						document.querySelector("#port").className="P2";
-						document.querySelector("#bbox").className="P3";
-						document.querySelector("#plat").className="P4";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#sss").className="P8";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=SuperSecret;
-						return document.title="You Found A Secret";
-			//Returns iframe to Home page
-					default:
-						document.querySelector("#home").className="P1";
-						document.querySelector("#port").className="P2";
-						document.querySelector("#bbox").className="P3";
-						document.querySelector("#plat").className="P4";
-						document.querySelector("#circ").className="P5";
-						document.querySelector("#runt").className="P6";
-						document.querySelector("#clog").className="P7";
-						document.querySelector("#iFrame").value=buttP.value;
-						document.querySelector("#iFrame").src=Home;
-						document.title="Home";
-				}
-			return bDo(buttP);
-			}
-//			document.onclick = function(){console.log(InputEvent);};
-
-//when any input clicked input calls function and inputs its parameters
-//function determines if input pressed is position 1 or if not position 1
-//if position 1, it determines if leftbar is open or closed, if open then slide iframe left and if closed slide iframe right
-//if position not 1, then it calls function bSw and sends inputs parameters
-//if inputs parameter value is any page value then it switches input order, iframe src and value, title, and minimizes leftbar
-		</script>
 	</head>
 	<body class="bodyS">
-		<nav id="topBar"></nav>
+		<nav id="topBar">
+			<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
+		</nav>
 		<nav id="leftBar">
 			<input class="P1" type="button" id="home" onclick=bDo(this) value="Home">
 			<input class="P2" type="button" id="port" onclick=bDo(this) value="Portfolio">
@@ -283,5 +104,120 @@
 			<input class="P8" type="button" id="sss" onclick=bDo(this) value="SuperSecret">
 		</nav>
 		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
+		<script>
+//Element Select Refrences
+//doc.querySelector() Refrences=1st of all elements
+//doc.querySelectorAll() Refrences=all elements (array-like)
+	//"tag"=<tag>;
+	//"parenttag>childtag"=<Ptag><Ctag>;
+	//"tag.class"=<tag class>;
+	//"tag[target]"=<tag target>;
+	//id="#";
+	//example:var x=document.getElementById(elementid).querySelectorAll(elements in id)
+			
+		//Main Variables
+			var page=document.all; //console.log(page);
+			var pBody=page[6]; //console.log(pBody);
+
+			var pLBar=page[9];
+			var pHome=page[10]; var pPortfolio=page[11]; var pBouncingBox=page[12]; var pPlatformer=page[13];
+			var pCircularity=page[14]; var pRuntime=page[15]; var pChangeLog=page[16]; var pSuperSecret=page[17];
+//			console.log(pHome, pPortfolio, pBouncingBox, pPlatformer, pCircularity, pRuntime, pChangeLog, pSuperSecret);
+			var pFrame=page[18];
+			var pFstyle=pFrame.style;
+
+			var buttP;
+			var Home="/home.html";
+			var Portfolio="/portfolio.html";
+			var BouncingBox="/projects/bouncing-box/index.html";
+			var Platformer="/projects/platformer/index.html";
+			var Circularity="/projects/circularity/index.html";
+			var Runtime="/projects/runtime/index.html";
+			var ChangeLog="/changelog.html";
+			var SuperSecret="/projects/wip-js-engine/index.html";
+			
+			if(window.innerWidth==360){
+				pBody.style.height="600px";
+				pBody.style.maxHeight="600px";
+			}
+
+		//Main Functions
+			function bDo(buttP){
+				if(pFstyle.left===""||null){pFstyle.left="0";}//sets if the selector needs a "little" help
+				if(buttP.className==="P1"){
+					if(pFstyle.left==="0px"){pFstyle.maxWidth="88vw"; pFstyle.left=pLBar.offsetWidth+"px";//To OPEN
+					}else{pFstyle.left="0px"; pFstyle.maxWidth="99.5vw";}
+				}else if(buttP.className!=="P1"&&pFstyle.left!=="0px"){//to CLOSE&SWITCH
+//					console.log("Closing");
+					pFstyle.left="0px";
+					pFstyle.maxWidth="99.5vw";
+					bSw(buttP);
+				}
+			}
+	//Takes button imput and changes current iframe page to button imputs value
+			function bSw(buttP){
+				switch(buttP.value){
+			//Switches iframe to Home page
+					case "Home":
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; bDo(buttP);
+						break;
+			//Switches iframe to Portdolio page
+					case "Portfolio":
+						pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio"; bDo(buttP);
+						break;
+			//Switches iframe to Bouncing Box page
+					case "BouncingBox":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P1"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box"; bDo(buttP);
+						break;
+			//Switches iframe to Platformer page
+					case "Platformer":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P1";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer"; bDo(buttP);
+						break;
+			//Switches iframe to Circularity page
+					case "Circularity":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P1"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity"; bDo(buttP);
+						break;
+			//Switches iframe to Runtime page
+					case "Runtime":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P6"; pRuntime.className="P1"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime"; bDo(buttP);
+						break;
+			//Switches iframe to ChangeLog page
+					case "ChangeLog":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P6"; pRuntime.className="P7"; pChangeLog.className="P1";
+						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log"; bDo(buttP);
+						break;
+					case "SuperSecret":
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7"; pSuperSecret.className="P8";
+						pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="You Found A Secret"; bDo(buttP);
+						break;
+			//Returns iframe to Home page
+					default:
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; bDo(buttP);
+				}
+			}
+//			document.onclick = function(){console.log(InputEvent);};
+
+//when any input clicked input calls function and inputs itself as the parameters
+//function determines if input pressed is in button position 1 or if its not
+//if in position 1, it determines if leftbar is open or closed, if open it then slides the iframe left to close and if closed it slides the iframe right to open
+//if position not 1, then it calls function bSw and sends the previously inputted parameters
+//if inputs parameter value is any page value then it switches input order, iframe src and value, title, and closes the leftbar
+		</script>
 	</body>
 </html>
