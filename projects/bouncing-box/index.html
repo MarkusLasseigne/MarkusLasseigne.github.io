@@ -7,75 +7,71 @@
 
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
-		<!-- BEGIN CSS -->
 		<style>
-			.box {
-				background-image: url("https://www.freeiconspng.com/uploads/world-globe-planet-icon-png-11.png");
-				background-repeat: no-repeat;
-				background-size: 100% 100%;
-				background-color: clear;
-				border-radius: 100%;
-				position: absolute;
-				text-align: center;
-				user-select: none;
-				font-size: 350%;
-				cursor: pointer;
-				display: block;
-				height: 100px;
-				width: 100px;
-				color: black;
-				top: 200px;
-				left: 0px;
+			html, .board{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				background:rgba(0,0,0,1) url("/startile.png") repeat right bottom;
+				margin:0;
 			}
-			.board {
-				background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
-				user-select: none;
-				margin: 0 0 0 0;
-				overflow: hidden;
-				height: 100vh;
+			.box{
+				width:6vw;
+				height:6vw;
+				border-radius:100%;
+				font:5vw arial, sans-serif;
+				background:rgba(0,0,0,0) url("bouncingearth.png") no-repeat;
+				background-size:100%;
+				color:rgba(0,0,0,1);
+				user-select:none;
+				cursor:pointer;
+				position:absolute;
+				display:block;
+				text-align:center;
+				top:200px;
+				left:0px;
 			}
 			/* Win or Lose Prompt */
-			#alertBox {
-				background-color: black;
-				border-radius: 15px;
-				margin-right: 75%;
-				text-align: left;
-				display: none;
-				color: white;
-				height: 75px;
+			#alertBox{
+				height:3.5%;
+				border-radius:5px;
+				background-color:rgba(0,0,0,0.95);
+				color:rgba(255,255,255,1);
+				user-select:none;
+				display:none;
+				text-align:left;
+				float:left;
+				margin:0;
 			}
-			.message {
-				background-color: #232323;
-				border-radius: 10px;            
-				margin-bottom: 8px;
-				font-weight: bold;
-				font-size: 180%;
+			.message{
+				border-radius:10px;  
+				font:bold 160% Times, serif;
+				background-color:rgba(23,23,23,1);
+				user-select:none;
+				float:left;
+				margin-bottom:2%;
 			}
-			.refresh {
-				background-color: #232323;
-				text-decoration: none;
-				border-radius: 5px;
-				font-size: 140%;
-				padding: 2px;
-				color: white;
+			.refresh{
+				border-radius:5px;
+				font-size:140%;
+				padding:2px;
+				background-color:rgba(0,0,0,1);
+				color:rgba(255,255,255,1);
+				float:left;
 			}
-			.refresh:hover {
-				background-color: white;
-				text-decoration: none;
-				border-radius: 5px;
-				font-size: 140%;
-				color: #232323;
-				padding: 2px;
+			.refresh:hover{
+				background-color:rgba(255,255,255,1);
+				color:#232323;
 			}
 	   </style>
 	</head>
 	<body class="board">
 		<div id="alertBox">
 		   <div class="message"></div>
-		   <a href="/projects/bouncing-box/index.html" class="refresh">Reload(Or Right Click)</a>   
+		   <button class="refresh" onclick="location.reload()">Reload</button> 
 		</div>
 		<!-- HTML for the box -->
-		<div class="box">?</div>
+		<div class="box" width="5vw">?</div>
 	   <!-- BEGIN JAVASCRIPT -->
 		<script>
 			(function(){
@@ -83,119 +79,101 @@
 				/* global jQuery */
 
 				// jQuery stuff setup for you
-				var box = jQuery('.box');
-				var board = jQuery('.board');
-				var boardWidth = jQuery('.board').width()-100;
-				var boardHeight = jQuery('.board').height()-100; 
-				board.css = board;
+				var box=$('.box');
+				var boxS=document.querySelector('.box');
+				var board=$('.board');
+				var boardWidth=window.innerWidth;
+				var boardHeight=window.innerHeight; 
+				board.css=board;
 //				console.log(boardWidth+"=width ",boardHeight+"=height");
 
 				// Variable declarations 
-				var position;
-				position = 50;
+				var position; position=50;
 
-				var positionY;
-				positionY = 50;
+				var positionY; positionY=50;
 
-				var direction;
-				direction = 1;
+				var direction; direction=1;
 
-				var directionY;
-				directionY = 1;
+				var directionY; directionY=1;
 
-				var speed;
-				speed = 4;
+				var speed; speed=4;
 
-				var points;
-				if (points < 0) points = 0;
-				points = 0;
+				var points; points=0;
+				if(points<0){points=0;}
 
-				var miss;
-				if (miss < 0) miss = 0;
-				miss = 0;
+				var miss; miss=0;
+				if(miss<0){miss=0;}
 
 				box.css('left', position);
 				box.css('top', positionY);
 				box.text(points);
 
-				function update() {
-					 position += speed * direction;
-					 positionY += speed * directionY;
-//    				 console.log("Speed:"+speed,"Xpos: "+position,"Ypos: "+positionY);
-					 if(position > boardWidth) {
-						direction = -0.8;
-//						console.log("Right Wall Hit, sending X - " + direction);
-					 }
-					if(position < 0){
-						direction = +0.8;
-//						console.log("Left Wall Hit, sending X + " + direction);
-					 }
-					if(positionY < 0){
-						directionY = +0.8;
-//						console.log("Top Wall Hit, sending Y - " + direction);
-					 }
-					if(positionY > boardHeight){
-						directionY = -0.8;
-//						console.log("Bottom Wall Hit, sending Y + " + direction);
-					 }
-					box.css('left', position);
-					box.css('top', positionY);
+				function update(){
+					boardWidth=window.innerWidth;
+					boardHeight=window.innerHeight;
+					if(speed<=2){speed=2}
+					position+=speed*direction;
+					positionY+=speed*directionY;
+//    				console.log("Speed:"+speed,"Xpos: "+position,"Ypos: "+positionY);
+					if(position>boardWidth-boxS.offsetWidth){direction=-0.8;}
+
+					if(position<0){direction=+0.8;}
+
+					if(positionY<0){directionY=+0.8;}
+
+					if(positionY>boardHeight-boxS.offsetWidth){directionY=-0.8;}
+
+					box.css('left',position);
+					box.css('top',positionY);
 				}
-				function handleBoxClicked() {
-					var directX = Math.random() < 0.5 ? -1 : 1;
-					var directY = Math.random() < 0.5 ? -1 : 1;				 
-					if (points < 0) points = 0;
-					points += 2;
-					miss -= 2;
-					if (miss < 0) miss = 0;
-					if (speed <= 0) speed = 1.5;
-					speed += 2;
-					if (speed <= 0) speed = 1.5;
-					direction = directX;
-					directionY = directY;
+				function handleBoxClicked(){
+					var directX=Math.random()<0.5?-1:1;
+					var directY=Math.random()<0.5?-1:1;				 
+					if(points<0){points=0;}
+					points+=2;
+					miss-=2;
+					if(miss<0){miss=0;}
+					speed+=2;
+					direction=directX;
+					directionY=directY;
 					box.text(points);
-//					console.log(points + " Got");
+//					console.log(points+" Got");
 				}
 				function handleBoxMiss(){
-					if (miss < 0) miss = 0;
-					miss += 1;
-					points -= 1;
-					if (points < 0) points = 0;
-					if (speed <= 0) speed = 1.5;
-					speed -= 1.5;
-					if (speed <= 0) speed = 1.5;
-//					console.log(miss + ' missed');
+					if(miss<0){miss=0;}
+					miss+=1;
+					points-=1;
+					if(points<0){points=0;}
+					speed-=1;
+//					console.log(miss+' missed');
 					box.text(points);
 				}
 				function doAlert(msg, reText){
 					var alertBox = $("#alertBox");
 					alertBox.find(".message").text(msg);
-					alertBox.find(".refresh").unbind().click(function(){
-						alertBox.hide();
-					});
+					alertBox.find(".refresh").unbind().click(function(){alertBox.hide();});
 					alertBox.find(".refresh").click(reText);
 					alertBox.show();
 					clearInterval(interval);
 				}
 				var endCheck = setInterval(endGame, 30);
 				function endGame(){
-					if(points > 9.9){
+					if(points>9.9){
 						doAlert("Congrats You Won! Again?");
-						points = 10;
-						miss -= -5;
+						points=10;
+						miss-=-5;
 						box.hide();
 						return clearInterval(interval);
 					}
-					if(miss > 13.9){
+					if(miss>13.9){
 						doAlert("You've Lost, Try Again?");
-						points = -14;
-						miss = 13;
+						points=-14;
+						miss=13;
 						box.hide();
 						return clearInterval(interval);
 					}
 				}
-			
-				var interval = setInterval(update, 16);
+				var interval = setInterval(update, 14);
 
 				box.click(handleBoxClicked);
 				box.dblclick(handleBoxClicked);
