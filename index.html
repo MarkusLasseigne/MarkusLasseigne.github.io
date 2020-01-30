@@ -94,14 +94,14 @@
 			<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
 		</nav>
 		<nav id="leftBar">
-			<input class="P1" type="button" id="home" onclick=bDo(this) value="Home">
-			<input class="P2" type="button" id="port" onclick=bDo(this) value="Portfolio">
-			<input class="P3" type="button" id="bbox" onclick=bDo(this) value="BouncingBox">
-			<input class="P4" type="button" id="plat" onclick=bDo(this) value="Platformer">
-			<input class="P5" type="button" id="circ" onclick=bDo(this) value="Circularity">
-			<input class="P6" type="button" id="runt" onclick=bDo(this) value="Runtime">
-			<input class="P7" type="button" id="clog" onclick=bDo(this) value="ChangeLog">
-			<input class="P8" type="button" id="sss" onclick=bDo(this) value="SuperSecret">
+			<input class="P1" type="button" id="home" onclick="bDo(this)" value="Home">
+			<input class="P2" type="button" id="port" onclick="bDo(this)" value="Portfolio">
+			<input class="P3" type="button" id="bbox" onclick="bDo(this)" value="BouncingBox">
+			<input class="P4" type="button" id="plat" onclick="bDo(this)" value="Platformer">
+			<input class="P5" type="button" id="circ" onclick="bDo(this)" value="Circularity">
+			<input class="P6" type="button" id="runt" onclick="bDo(this)" value="Runtime">
+			<input class="P7" type="button" id="clog" onclick="bDo(this)" value="ChangeLog">
+			<input class="P8" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
 		</nav>
 		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
 		<script>
@@ -148,10 +148,7 @@
 					if(pFstyle.left==="0px"){pFstyle.maxWidth="88vw"; pFstyle.left=pLBar.offsetWidth+"px";//To OPEN
 					}else{pFstyle.left="0px"; pFstyle.maxWidth="99.5vw";}
 				}else if(buttP.className!=="P1"&&pFstyle.left!=="0px"){//to CLOSE&SWITCH
-//					console.log("Closing");
-					pFstyle.left="0px";
-					pFstyle.maxWidth="99.5vw";
-					bSw(buttP);
+					pFstyle.left="0px";	pFstyle.maxWidth="99.5vw"; bSw(buttP);
 				}
 			}
 	//Takes button imput and changes current iframe page to button imputs value
@@ -161,57 +158,56 @@
 					case "Home":
 						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
 						break;
 			//Switches iframe to Portdolio page
 					case "Portfolio":
 						pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio";
 						break;
 			//Switches iframe to Bouncing Box page
 					case "BouncingBox":
 						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P1"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box";
 						break;
 			//Switches iframe to Platformer page
 					case "Platformer":
 						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P1";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer";
 						break;
 			//Switches iframe to Circularity page
 					case "Circularity":
 						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
 						pCircularity.className="P1"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity";
 						break;
 			//Switches iframe to Runtime page
 					case "Runtime":
 						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
 						pCircularity.className="P6"; pRuntime.className="P1"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime";
 						break;
 			//Switches iframe to ChangeLog page
 					case "ChangeLog":
 						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
 						pCircularity.className="P6"; pRuntime.className="P7"; pChangeLog.className="P1";
-						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log";
 						break;
 					case "SuperSecret":
 						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7"; pSuperSecret.className="P8";
-						pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="You Found A Secret"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="You Found A Secret";
 						break;
 			//Returns iframe to Home page
 					default:
 						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pChangeLog.className="P7";
-						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; bDo(buttP);
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
 				}
 			}
-//			document.onclick = function(){console.log(InputEvent);};
 
 //when any input clicked input calls function and inputs itself as the parameters
 //function determines if input pressed is in button position 1 or if its not

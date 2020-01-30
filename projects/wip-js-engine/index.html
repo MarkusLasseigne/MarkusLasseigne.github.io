@@ -55,22 +55,6 @@
 				padding:0;
 			}
 		</style>
-		<script>
-			var keyU=function(){window.addEventListener("keyup",optT);}
-			var keyP=function(){window.addEventListener("keypress",optT);}
-			var keyD=window.addEventListener("keydown",optT);
-			var lClick=window.addEventListener("click",optT);
-			var rClick=window.addEventListener("contextmenu",optT);
-			function optT(event){
-//                console.log(event, event.key);
-				if(event.key=="Escape"||event=="bClose"){
-					if(document.querySelector("#optCont").style.visibility!=="hidden"){
-						document.querySelector("#optCont").style.visibility="hidden";
-					}else{document.querySelector("#optCont").style.visibility="visible";}
-				}
-			}
-//&#9776;⚙️
-		</script>
 	</head>
 	<body>
 		<canvas id="daCan"></canvas>
@@ -90,5 +74,22 @@
 		</div>
 		<script src="refInit.js"></script>
 		<script src="levelc1.js"></script>
+		<script>
+			var keyU=function(){window.addEventListener("keyup",optT);}
+			var keyP=function(){window.addEventListener("keypress",optT);}
+			var keyD=window.addEventListener("keydown",optT);
+			var lClick=window.addEventListener("click",optT);
+			var rClick=window.addEventListener("contextmenu",optT);
+
+			function optT(e){
+				if(e.key=="Escape"||e=="bClose"){
+					var opCSV=document.querySelector("#optCont").style;
+					if(opCSV.visibility!=="hidden"){
+						opCSV.visibility="hidden";
+					}else{opCSV.visibility="visible";}
+				}
+			}
+//&#9776;⚙️
+		</script>
 	</body>
 </html>
