@@ -47,7 +47,7 @@ function updateGame(){
 	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
 	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
 	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
-	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-50;}// ^
+	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-5;}// ^
 	if(refInit.keys && refInit.keys["w"]){player1.speedY=-5;}// w
 	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.1; player1.speedX=0;}// v
 	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.1; player1.speedX=0;}// s
