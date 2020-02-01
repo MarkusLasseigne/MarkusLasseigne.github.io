@@ -2,27 +2,12 @@
 
 'use strict';
 
-/**
- * IN CLASS EXERCISE: MY FIRST TEST
- * 
+/** IN CLASS EXERCISE: MY FIRST TEST
  * The point of this little exercise is to get you familar with how we role with 
- * working on and submitting assignments. You'll code, save, and check the tests.
- */
+ * working on and submitting assignments. You'll code, save, and check the tests. */
 
-/** 
- * Given an input value, print the value to the screen using console.log().
- */
-function print(value){
-  // YOUR CODE BELOW HERE //
-	console.log(value);
-  
-  // YOUR CODE ABOVE HERE //
-}
-
-
-
-
-
+/** Given an input value, print the value to the screen using console.log(). */
+function print(value){console.log(value);}
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
