@@ -2,77 +2,77 @@
 <html>
 	<head>
 		<title>
-			Markus's Portfolio
+			Markus's Old Portfolio
 		</title>
 		<style>
-			body {
-				background-image: url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
+			body{
+				background-image:url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg");
 			}
-			#bar {
-				border-right: 1.5px solid gray;
-				background-color: black;
-				position: absolute;
-				display: block; 
-				max-width: 200px;
-				width: 100px;
-				bottom: 0;
-				left: 0;
-				top: 0;
-				user-select: none;
+			#bar{
+				width:100px;
+				max-width:200px;
+				border-right:1.5px solid gray;
+				background-color:black;
+				user-select:none;
+				position:absolute;
+				display:block;
+				top:0;
+				bottom:0;
+				left:0;
 			}
-			#drawer, a {
-				border: 0 solid gray;
-				border-bottom: 1.5px solid gray;
-				background-color: black;
-				text-decoration: none;
-				text-align: center;
-				margin-bottom: 0;
-				font-family: arial;
-				font-weight: bold;
-				padding: 20px 9px;
-				font-size: 125%;
-				display: block;
-				color: white;
-				left: 0;
+			#drawer, a{
+				font-weight:bold;
+				font-size:125%;
+				padding:20px 9px;
+				border:0 solid gray;
+				color:white;
+				border-bottom:1.5px solid gray;
+				background-color:black;
+				text-decoration:none;
+				font-family:arial;
+				display:block;
+				text-align:center;
+				margin-bottom:0;
+				left:0;
 			}
-			#drawer:hover, a:hover {
-				border: 0 solid black;
-				border-bottom: 1.5px solid gray;
-				background-color: white;
-				text-decoration: none;
-				text-align: center;
-				margin-bottom: 0;
-				font-family: arial;
-				font-weight: bold;
-				font-size: 125%;
-				display: block;
-				color: black;
+			#drawer:hover, a:hover{
+				font-size:125%;
+				font-weight:bold;
+				border:0 solid black;
+				border-bottom:1.5px solid gray;
+				color:black;
+				background-color:white;
+				text-decoration:none;
+				font-family:arial;
+				text-align:center;
+				display:block;
+				margin-bottom:0;
 			}
-			#links {
-				margin-top: -40px;
+			#links{
+				margin-top:-40px;
 			}
-			#updated {
-				position: absolute;
-				font-size: 60%;
-				color: white;
-				bottom: 5px;
-				left: 0;
+			#updated{
+				font-size:60%;
+				color:white;
+				position:absolute;
+				bottom:5px;
+				left:0;
 			}
-			#main {
-				margin: 0 50px 50px 100px;
-				width: 74%;
-				height: 353.5px;
-				background: #EBF5FF;
-				border-radius: 10px;
-				position: absolute;
-				user-select: none;
+			#main{
+				width:74%;
+				height:353.5px;
+				border-radius:10px;
+				background:#EBF5FF;
+				margin:0 50px 50px 100px;
+				position:absolute;
+				user-select:none;
 			}
-			#definers {
-				margin-left: 10px;
-				margin-top: -10px;
+			#definers{
+				margin-left:10px;
+				margin-top:-10px;
 			}
-			h3 {
-				margin-bottom: -15px;
+			h3{
+				margin-bottom:-15px;
 			}
 			
 		</style>
@@ -80,17 +80,17 @@
 		//Goal, Modularity
 			function toggle(){
 				var links = document.getElementById('links');
-				if(links.style.display === 'block'){
+				if(links.style.display==='block'){
 					min();
-					links.style.display = 'none';
-				} else {
+					links.style.display='none';
+				}else{
 					max();
 					links.style.display='block';
 				}
 			}
 			function max(){
 				var	bar = document.getElementById('bar');
-				bar.style.width = '160px';
+				bar.style.width='160px';
 				var drawer = document.getElementById('drawer');
 				drawer.style.padding='30px 39px';
 				var link = document.getElementById('link');
@@ -112,7 +112,7 @@
 	</head>
 	<body>
 		<nav id="bar">
-			<button type="button" id="drawer" style="padding: 30px 9px" onclick=toggle()>Portfolio</button>
+			<button type="button" id="drawer" style="padding: 30px 9px" onclick="toggle()">Portfolio</button>
 			<div id="links" style="display: none;">
 				<div id="link">
 					<p id="updated">Last Updated: 10/10/19</p>

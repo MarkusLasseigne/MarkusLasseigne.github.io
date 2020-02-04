@@ -2,270 +2,224 @@
 <html>
 	<head>
 		<title>Home</title>
-		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="https://markuslasseigne.github.io/favicon.ico" sizes="16x16 64x64 128x128">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			#page {
-				background: black url("https://scitechdaily.com/images/A-Spin-Down-Clock-for-Cool-Stars-from-Observations-of-a-2.5-Billion-Year-Old-Cluster.jpg") repeat right top;
-				margin: 0 0 0 0;
-				height: 82vh;
-				max-width: 89%;
+			html, body{
+				width:100%;
+				height:100%;
+				background:rgba(0,0,0,1) url(startile.png) repeat left top;
+				overflow:hidden;
+				padding:0;
+				margin:0;
 			}
-			#leftBar {
-				border-right: 1.5px solid gray;
-				background-color: black;
-				position: absolute;
-				display: block; 
-				max-width: 175px;
-				width: 100px;
-				height: 100%;
-				left: 0;
-				top: 0;
+			#topBar{
+				width:100%;
+				height:5vh;
+				background-color:rgba(0,0,1,0.88);
+				position:fixed;
+				top:0;
 			}
-			button {
-				border: 0 solid gray;
-				border-bottom: 1.5px solid gray;
-				background-color: black;
-				text-decoration: none;
-				list-style-type:none;
-				max-width: 175px;
-				text-align: center;
-				font-size: 110%;
-				font-weight: bold;
-				color: white;
-				float: left;
+			#leftBar{
+				width:8vw;
+				min-width:40px;
+				height:100%;
+				background-color:rgba(0,0,1,0.88);
+				position:fixed;
+				float:left;
+				left:0%;
 			}
-			button:hover {
-				border: 0 solid #676;
-				border-bottom: 1.5px solid #676;
-				background-color: white;
-				text-decoration: none;
-				text-align: center;
-				list-style-type:none;
-				max-width: 175px;
-				font-size: 110%;
-				cursor: pointer;
-				font-weight: bold;
-				display: block;
-				color: black;
+			input{
+				width:100%;
+				height:4vh;
+				font:bold 1vw arial, sans-serif;
+				border:none;
+				border-bottom:1px solid rgba(255,255,255,1);
+				background-color:rgba(0,0,1,0.88);
+				color:rgba(255,255,255,1);
+				cursor:pointer;
+				position:relative;
+				float:left;
+				padding:0.5% 1%;
+				top:5vh;
 			}
-			.pos1 {
-				visibility: visible;
-				text-align: center;
-				position: absolute;
-				max-width: 175px;
-				margin: 0 0 0 0;
-				left: 0;
-				width: 100px;
-				height: 75px;
+			input:hover{
+				background-color:rgba(255,255,255,1);
+				color:rgba(0,0,0,1);
+				float:left;
 			}
-			.pos2, .pos3, .pos4, .pos5, .pos6 {
-				margin: 75px 0 -75px 0;
-				text-align: center;
-				visibility: hidden;
-				max-width: 175px;
-				width: 175px;
-				height: 50px;
+			.P1, .P1:hover{
+				width:100%;
+				height:5vh;
+				font-size:1.15vw;
+				background-color:rgba(255,255,255,1);
+				color:rgba(0,0,0,1);
+				position:absolute;
+				top:0;
+				left:0;
 			}
-			.posL {
-				color: white;
-				visibility: hidden;
-				position: absolute;
-				width: 100px;
-				bottom: 5px;
-				left: 0;
+			input#sss{
+				border:none;
+				color:rgba(0,0,0,1);
+				position:relative;
+				top:67.5vh;
 			}
-			.updated {
-				text-align: left;
-				color: white;
-				bottom: 5px;
+			#optionB{
+				width:auto;
+				height:100%;
+				float:right;
 			}
-			#iFrame {
-				margin: 4px 0px 0px 105px;
-				max-height: 100%;
-				max-width: 100%;
-				min-height: 375px;
-				min-width: 375px;
-				height: 75%;
-				width: 50%;
-				border: 1px solid #777;
-				border-radius: 5px;
-				resize: both;
-				overflow: hidden;
+			#iFrame{
+				width:100%;
+				min-width:25vw;
+				max-width:99.5vw;
+				height:100%;
+				min-height:25vh;
+				max-height:94.5vh;
+				resize:both;
+				border-radius:0 0 8px 0;
+				border:1px solid rgba(255,255,255,1);
+				border-left:0;
+				overflow:hidden;
+				background:rgba(0,0,1,0.88) url(startile.png) repeat right bottom;
+				position:fixed;
+				float:left;
+				top:5vh;
+				left:0;
 			}
 		</style>
-		<script>
-//Goal, Modularity
-//ToDo: fix buttons to work with or in arrays, fix links to work in code
-//iframe link values: 1=home 2=portfolio 3=bouncing-box 4=platformer 5=circularity 6=runtime
-//bar states, state 1 = open state 2 = closed
-
-			//General Variables
-				barLeft = document.getElementById("leftBar");
-			var Home = "https://markuslasseigne.github.io/home.html";
-			var Portfolio = "https://markuslasseigne.github.io/portfolio.html";
-			var BouncingBox = "https://markuslasseigne.github.io/projects/bouncing-box/index.html";
-			var Platformer = "https://markuslasseigne.github.io/projects/platformer/index.html";
-			var Circularity = "https://markuslasseigne.github.io/projects/circularity/index.html";
-			var Runtime = "https://markuslasseigne.github.io/projects/runtime/index.html";
-				updated =document.getElementsByName("updated");
-			var Updated = ["Updated"];
-			var lBar = [Home, Portfolio, BouncingBox, Platformer, Circularity, Runtime, Updated];
-			var buttonT;
-			var barState = "closed";
-
-//Main Functions
-			function buttonIn(buttonT){
-				currentP = document.getElementById('iFrame').src;
-				if(buttonT === currentP){
-					if(barState === "closed"){
-						console.log("bar opening");
-						return objDo("open");
-					}
-					if(barState === "open"){
-						console.log("bar closing");
-						return objDo("closed");
-					}
-				}
-				if(buttonT !== currentP){
-					return frameS(buttonT);
-				}
-			}
-
-			function objDo(Objective){
-				barLeft = document.getElementById("leftBar");
-				frame = document.getElementById('iFrame');
-				poS1 = document.getElementsByClassName("pos1");
-				poS2 = document.getElementsByClassName("pos2");
-				poS3 = document.getElementsByClassName("pos3");
-				poS4 = document.getElementsByClassName("pos4");
-				poS5 = document.getElementsByClassName("pos5");
-				poS6 = document.getElementsByClassName("pos6");
-				poSL = document.getElementsByClassName("posL");
-				if(Objective === "open"){
-					barLeft.style.maxWidth = "175px";
-					barLeft.style.width = "175px";
-					frame.style.margin = "4px 0 0 180px";
-					poS1[0].style.width = "175px";
-					poS1[0].style.visibility = "visible";
-					poS2[0].style.visibility = "visible";
-					poS3[0].style.visibility = "visible";
-					poS4[0].style.visibility = "visible";
-					poS5[0].style.visibility = "visible";
-					poS6[0].style.visibility = "visible";
-					poSL[0].style.visibility = "visible";
-					barState = "open";
-					console.log("Max Done");
-				}
-				if(Objective === "closed"){
-					barLeft.style.maxwidth = "100px";
-					barLeft.style.width = "100px";
-					frame.style.margin = "4px 0 0 105px";
-					poS1[0].style.width = "100px";
-					poS1[0].style.visibility = "visible";
-					poS2[0].style.visibility = "hidden";
-					poS3[0].style.visibility = "hidden";
-					poS4[0].style.visibility = "hidden";
-					poS5[0].style.visibility = "hidden";
-					poS6[0].style.visibility = "hidden";
-					poSL[0].style.visibility = "hidden";
-					barState = "closed";
-					console.log("Min Done");
-				}
-			}
-
-			function frameS(buttonT){
-				switch(buttonT){
-					case Home: 
-						document.getElementById("Home").className = "pos1";
-						document.getElementById("Portfolio").className = "pos2";
-						document.getElementById("Bouncing-Box").className = "pos3";
-						document.getElementById("Platformer").className = "pos4";
-						document.getElementById("Circularity").className = "pos5";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Home";
-						return document.getElementById('iFrame').src = Home;
-					case Portfolio: 
-						document.getElementById("Portfolio").className = "pos1";
-						document.getElementById("Home").className = "pos2";
-						document.getElementById("Bouncing-Box").className = "pos3";
-						document.getElementById("Platformer").className = "pos4";
-						document.getElementById("Circularity").className = "pos5";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Portfolio";
-						return document.getElementById('iFrame').src = Portfolio;
-					case BouncingBox:
-						document.getElementById("Home").className = "pos2";
-						document.getElementById("Portfolio").className = "pos3";
-						document.getElementById("Bouncing-Box").className = "pos1";
-						document.getElementById("Platformer").className = "pos4";
-						document.getElementById("Circularity").className = "pos5";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Bouncing-Box";
-						return document.getElementById('iFrame').src = BouncingBox;
-					case Platformer:
-						document.getElementById("Home").className = "pos2";
-						document.getElementById("Portfolio").className = "pos3";
-						document.getElementById("Bouncing-Box").className = "pos4";
-						document.getElementById("Platformer").className = "pos1";
-						document.getElementById("Circularity").className = "pos5";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Platformer";
-						return document.getElementById('iFrame').src = Platformer;
-					case Circularity:
-						document.getElementById("Home").className = "pos2";
-						document.getElementById("Portfolio").className = "pos3";
-						document.getElementById("Bouncing-Box").className = "pos4";
-						document.getElementById("Platformer").className = "pos5";
-						document.getElementById("Circularity").className = "pos1";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Circularity";
-						return document.getElementById('iFrame').src = Circularity;
-					case Runtime:
-						document.getElementById("Home").className = "pos2";
-						document.getElementById("Portfolio").className = "pos3";
-						document.getElementById("Bouncing-Box").className = "pos4";
-						document.getElementById("Platformer").className = "pos5";
-						document.getElementById("Circularity").className = "pos6";
-						document.getElementById("Runtime").className = "pos1";
-						objDo("closed"); window.document.title = "Runtime";
-						return document.getElementById('iFrame').src = Runtime;
-					default: 
-						document.getElementById("Home").className = "pos1";
-						document.getElementById("Portfolio").className = "pos2";
-						document.getElementById("Bouncing-Box").className = "pos3";
-						document.getElementById("Platformer").className = "pos4";
-						document.getElementById("Circularity").className = "pos5";
-						document.getElementById("Runtime").className = "pos6";
-						objDo("closed"); window.document.title = "Home";
-						return document.getElementById('iFrame').src = Home;
-				}
-			}
-
-//while current pages button posistion is first
-//if any button pressed while on the buttons page, open or close 
-//else if any button pressed while not on its page, change iframe to button pressed's page
-
-//on port button click on any other page
-//switch current iframe element to the portfolio and switch current toggle button to port button
-// else if port button clicked while iframe is portfolio then open the bar
-
-		</script>
 	</head>
-	<body id="page">
-		<nav id="leftBar">
-			<div id="butts">
-				<button class="pos1" id="Home" onclick=buttonIn(Home)>Home</button>
-				<button class="pos2" id="Portfolio" onclick=buttonIn(Portfolio)>Portfolio</button>
-				<button class="pos3" id="Bouncing-Box" onclick=buttonIn(BouncingBox)>Bouncing Box</button>
-				<button class="pos4" id="Platformer" onclick=buttonIn(Platformer)>Platformer</button>
-				<button class="pos5" id="Circularity" onclick=buttonIn(Circularity)>Circularity</button>
-				<button class="pos6" id="Runtime" onclick=buttonIn(Runtime)>\WIP Run/</button>
-				<div class="posL">
-					<p id="updated">Last Updated:</p>
-					<p id="updated">10/28/2019</p>
-				</div>
-			</div>
+	<body class="bodyS">
+		<nav id="topBar">
+			<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
 		</nav>
-		<iframe id="iFrame" value="1" src="https://markuslasseigne.github.io/home.html" style="visibility: visible;"></iframe>
+		<nav id="leftBar">
+			<input class="P1" type="button" id="home" onclick="bDo(this)" value="Home">
+			<input class="P2" type="button" id="port" onclick="bDo(this)" value="Portfolio">
+			<input class="P3" type="button" id="bbox" onclick="bDo(this)" value="BouncingBox">
+			<input class="P4" type="button" id="plat" onclick="bDo(this)" value="Platformer">
+			<input class="P5" type="button" id="circ" onclick="bDo(this)" value="Circularity">
+			<input class="P6" type="button" id="runt" onclick="bDo(this)" value="Runtime">
+			<input class="P7" type="button" id="spad" onclick="bDo(this)" value="ScratchPad">
+			<input class="P8" type="button" id="clog" onclick="bDo(this)" value="ChangeLog">
+			<input class="P9" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
+		</nav>
+		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
+		<script>
+//Element Select Refrences
+//doc.querySelector() Refrences=1st of all elements
+//doc.querySelectorAll() Refrences=all elements (array-like)
+	//"tag"=<tag>;
+	//"parenttag>childtag"=<Ptag><Ctag>;
+	//"tag.class"=<tag class>;
+	//"tag[target]"=<tag target>;
+	//id="#";
+	//example:var x=document.getElementById(elementid).querySelectorAll(elements in id)
+			
+		//Main Variables
+			var page=document.all; //console.log(page);
+			var pBody=page[6]; //console.log(pBody);
+
+			var pLBar=page[9];
+			var pHome=page[10]; var pPortfolio=page[11]; var pBouncingBox=page[12]; var pPlatformer=page[13];
+			var pCircularity=page[14]; var pRuntime=page[15]; var pScratchPad=page[16]; var pChangeLog=page[17]; var pSuperSecret=page[18];
+//			console.log(pHome, pPortfolio, pBouncingBox, pPlatformer, pCircularity, pRuntime, pChangeLog, pSuperSecret);
+			var pFrame=page[19];
+			var pFstyle=pFrame.style;
+
+			var buttP;
+			var Home="/home.html";
+			var Portfolio="/portfolio.html";
+			var BouncingBox="/projects/bouncing-box/index.html";
+			var Platformer="/projects/platformer/index.html";
+			var Circularity="/projects/circularity/index.html";
+			var Runtime="/projects/runtime/index.html";
+			var ScratchPad="/projects/scratch-pad-strings/index.html";
+			var ChangeLog="/changelog.html";
+			var SuperSecret="/projects/wip-js-engine/index.html";
+			
+			if(window.innerWidth==360){
+				pBody.style.height="600px";
+				pBody.style.maxHeight="600px";
+			}
+
+		//Main Functions
+			function bDo(buttP){
+				if(pFstyle.left===""||null){pFstyle.left="0";}//sets if the selector needs a "little" help
+				if(buttP.className==="P1"){
+					if(pFstyle.left==="0px"){pFstyle.maxWidth="88vw"; pFstyle.left=pLBar.offsetWidth+"px";//To OPEN
+					}else{pFstyle.left="0px"; pFstyle.maxWidth="99.5vw";}
+				}else if(buttP.className!=="P1"&&pFstyle.left!=="0px"){//to CLOSE&SWITCH
+					pFstyle.left="0px";	pFstyle.maxWidth="99.5vw"; bSw(buttP);
+				}
+			}
+	//Takes button imput and changes current iframe page to button imputs value
+			function bSw(buttP){
+				switch(buttP.value){
+			//Switches iframe to Home page
+					case "Home":
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
+						break;
+			//Switches iframe to Portdolio page
+					case "Portfolio":
+						pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio";
+						break;
+			//Switches iframe to Bouncing Box page
+					case "BouncingBox":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P1"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box";
+						break;
+			//Switches iframe to Platformer page
+					case "Platformer":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P1";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer";
+						break;
+			//Switches iframe to Circularity page
+					case "Circularity":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P1"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity";
+						break;
+			//Switches iframe to Runtime page
+					case "Runtime":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P6"; pRuntime.className="P1"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime";
+						break;
+					case "ScratchPad":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P6"; pRuntime.className="P7"; pScratchPad.className="P1"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=ScratchPad; document.title="Scratch-Pad";
+						break;
+			//Switches iframe to ChangeLog page
+					case "ChangeLog":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
+						pCircularity.className="P6"; pRuntime.className="P7"; pChangeLog.className="P1"; pScratchPad.className="P8";
+						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log";
+						break;
+					case "SuperSecret":
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pSuperSecret.className="P9"; pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="You Found A Secret";
+						break;
+			//Returns iframe to Home page
+					default:
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
+						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
+				}
+			}
+//when any input clicked input calls function and inputs itself as the parameters
+//function determines if input pressed is in button position 1 or if its not
+//if in position 1, it determines if leftbar is open or closed, if open it then slides the iframe left to close and if closed it slides the iframe right to open
+//if position not 1, then it calls function bSw and sends the previously inputted parameters
+//if inputs parameter value is any page value then it switches input order, iframe src and value, title, and closes the leftbar
+		</script>
 	</body>
 </html>
