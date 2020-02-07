@@ -1,31 +1,25 @@
 var statObjs=[];
 var cHeight=window.innerHeight;
 var cWidth=window.innerWidth;
-var skyBack, ground;
+var skyBack, ground, frameTxt;
 var wallT, wallT1, wallT2, wallT3, wallT4;
 var player1;
-var level1 = function(){
-	refInit.start("2d", "left");
-	var y; y=cHeight-100; // V (type|width|height|x|y|color)
-	skyBack = new refInit.draw("", cWidth, cHeight, 0, 0, "rgba(100,240,240,0.88)");
-	ground = new refInit.draw("static", cWidth*1.2, 100, 0, y, "rgba(0,180,0,1)");
-	wallT = new refInit.draw("static", 100, 50, 100, y-50, "rgba(0,0,0,1)");
-	wallT1 = new refInit.draw("static", 50, 10, 150, y-100, "rgba(0,0,0,1)");
-	wallT2 = new refInit.draw("static", 10, 120, 200, y-120, "rgba(0,0,0,1)");
-	wallT3 = new refInit.draw("static", 100, 10, 260, y-130, "rgba(0,0,0,1)");
-	wallT4 = new refInit.draw("static", 10, 40, 300, y-180, "rgba(0,0,0,1)");
-	
-	player1 = new refInit.draw("player", 40, 120, 20, y+100, "rgba(0,0,0,1)");
-	player1.gravity=1;
-};
-function updateGame(){
+
+function everyinterval(n){if((refInit.frameNo/n) % 1==0){return true;}return false;}
+
+function updateGame1(){
 	var x, y, height, gap, minHeight, maxHeight, minGap, maxGap;
-	refInit.clear(); refInit.frameNo+=1; //console.log(refInit.frameNo);
-	if(refInit.frameNo==1){
+	refInit.clear();
+	if(refInit.frameNo>=60){
+		refInit.frameNo=0;
+	}else if(refInit.frameNo==0){
 		statObjs.push(ground); statObjs.push(wallT);
 		statObjs.push(wallT1); statObjs.push(wallT2);
 		statObjs.push(wallT3); statObjs.push(wallT4);
 	}
+//	console.log(refInit.frameNo);
+
+	refInit.frameNo+=1;
 	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
 	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
 	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
@@ -46,12 +40,26 @@ function updateGame(){
 	wallT3.update();
 	wallT4.update();
 	ground.update();
+//	frameTxt.update();
 	player1.update();
-//	console.clear();
 }
-function everyinterval(n){
-	if((refInit.frameNo/n) % 1==0){return true;}
-	return false;}
+
+var level1 = function(){
+	if(refInit.frameNo!==undefined){refInit.clear();}
+	refInit.start("2d", "left", updateGame1);
+	var y; y=cHeight-100; // V (type|width|height|x|y|color)
+	skyBack = new refInit.draw("", cWidth, cHeight, 0, 0, "rgba(100,240,240,0.88)");
+//	frameTxt = new refInit.draw("text", 500, 500, 100, y-200, "rgba(0,0,0,1)", "test");
+	ground = new refInit.draw("static", cWidth*1.2, 100, 0, y, "rgba(0,180,0,1)");
+	wallT = new refInit.draw("static", 100, 50, 100, y-50, "rgba(0,0,0,1)");
+	wallT1 = new refInit.draw("static", 50, 10, 150, y-100, "rgba(0,0,0,1)");
+	wallT2 = new refInit.draw("static", 10, 120, 200, y-120, "rgba(0,0,0,1)");
+	wallT3 = new refInit.draw("static", 100, 10, 260, y-130, "rgba(0,0,0,1)");
+	wallT4 = new refInit.draw("static", 10, 40, 300, y-180, "rgba(0,0,0,1)");
+	
+	player1 = new refInit.draw("player", 40, 120, 20, y+100, "rgba(0,0,0,1)");
+	player1.gravity=1;
+};
 
 //	if(refInit.keys && refInit.keys[37]){player1.speedX=-2;}// <
 //	if(refInit.keys && refInit.keys[65]){player1.speedX=-2;}// a

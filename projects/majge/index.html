@@ -46,7 +46,6 @@
 				font:bold 2vw Times, serif;
 				margin:0;
 			}
-
 			.levelB{
 				width:50%;
 				height:46%;
@@ -54,9 +53,13 @@
 				float:left;
 				padding:0;
 			}
+			#imgH{
+				position:absolute;
+			}
 		</style>
 	</head>
 	<body>
+		<img id="imgH" src="/projects/bouncingearth.png" style="visibility:hidden;">
 		<canvas id="daCan"></canvas>
 		<div id="optCont">
 			<div id="options">
@@ -67,13 +70,14 @@
 			<div id="levels">
 				<p class="lvltxt" id="LS">Level Select:</p>
 				<button class="levelB" id="level1" onclick="optT('bClose'); level1();">Level 1</button>
-				<button class="levelB" id="level2" onclick="optT('bClose');">Level 2</button>
+				<button class="levelB" id="level2" onclick="optT('bClose'); level2();">Level 2</button>
 				<button class="levelB" id="level3" onclick="optT('bClose');">Level 3</button>
 				<button class="levelB" id="level4" onclick="optT('bClose');">Level 4</button>
 			</div>
 		</div>
 		<script src="refInit.js"></script>
 		<script src="levelc1.js"></script>
+		<script src="levelc2.js"></script>
 		<script>
 			var keyU=function(){window.addEventListener("keyup",optT);}
 			var keyP=function(){window.addEventListener("keypress",optT);}

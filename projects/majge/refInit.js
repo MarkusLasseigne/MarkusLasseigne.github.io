@@ -1,6 +1,17 @@
+function clearArc(context, x, y, radius, color){
+	context.save();
+	context.globalCompositeOperation = 'destination-out';
+	context.beginPath();
+	context.arc(x, y, radius, 0, 2 * Math.PI, false);
+	context.fill();
+	context.restore();
+	ctx.arc(this.x+10, this.y+200, this.width*0.5, 0, 2*Math.PI, false);
+	ctx.fill();
+}
+function movement(){}
 var refInit = {
 	canvas: document.querySelector("#daCan"),
-	start: function(dimention, direction, dW, dH){
+	start: function(dimention, direction, ufunct, dW, dH){
 		clearInterval(this.interval);
 		window.addEventListener('keydown', function(e){
 			e.preventDefault();
@@ -19,21 +30,21 @@ var refInit = {
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d down-facing time!");
-				this.interval=setInterval(updateGame, 16);
+				this.interval=setInterval(ufunct, 16);
 			}else if(direction=="left"){
 				this.canvas.width=dW || window.innerWidth;
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d left-on time!");
-				this.interval=setInterval(updateGame, 16);
+				this.interval=setInterval(ufunct, 16);
 			}else if(direction=="forward"){
 				this.canvas.width=dW || window.innerWidth;
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d first person time!");
-				this.interval=setInterval(updateGame, 16);
+				this.interval=setInterval(ufunct, 16);
 			}
 		}else if(dimention=="3d"){
 		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
@@ -42,7 +53,7 @@ var refInit = {
 	stop: function(){clearInterval(this.interval); return location.reload();},  
 	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);},
 	/** draw (type|width|height|x|y|color) */
-	draw: function(type, width, height, x, y, color){
+	draw: function(type, width, height, x, y, color, iSrc, text){
 		this.type=type;
 		this.x=x;
 		this.width=width;
@@ -55,6 +66,8 @@ var refInit = {
 		this.gravitySpeed=0;
 		this.health=100;
 		this.score=0;
+		this.text=text;
+		this.iSrc=iSrc;
 
 		this.leftPos=x;
 		this.rightPos=this.leftPos-this.width/1.2;
@@ -75,8 +88,15 @@ var refInit = {
 				ctx.fillStyle=color;
 				clearArc(ctx, this.x+20, this.y+20, this.width*0.5, "black");
 				this.newPos();
-			}
-			else if(this.type=="text"){
+			}else if(this.type=="pict"){
+				var imG = new Image();
+				imG.onload=animate;
+				imG.src=this.iSrc;
+				function animate(){ctx.drawImage(imG, x, y);}
+				if(refInit.frameNo>=1){imG.style.visibility="visible";}
+				else{imG.style.visibility="hidden";}
+			}else if(this.type=="text"){
+//				console.log(this.text);
 				ctx.font=this.width+" "+this.height;
 				ctx.fillStyle=color;
 				ctx.fillText(this.text, this.x, this.y);
@@ -107,26 +127,26 @@ var refInit = {
 				// 	&& (myLeft<=otRight-5))
 				// 		{player1.pHitBottom(otTop);}//my bottom collide
 		
-				if(myLeft<=otRight //everything left of myLeft
+				if(myLeft<otRight //everything left of myLeft
 				&& !(myLeft<otRight-2)//nothing left of myLeft
-				&& !(myLeft>otRight+2) //nothin right of myLeft
+				&& !(myLeft>otRight+2) //nothing right of myLeft
 				&& (myTop<=otBottom-1)
 				&& (myBottom>=otTop+1))
 					{player1.pHitLeft(otRight);}//my left collide
-				else if(myRight>=otLeft//everything right of myRight
+				else if(myRight>otLeft//everything right of myRight
 				&& !(myRight>otLeft+2)//nothing right of myRight
 				&& !(myRight<otLeft-2)//nothing left of myRight
 				&& (myTop<=otBottom-1)
 				&& (myBottom>=otTop+1))
 					{player1.pHitRight(otLeft);}//my right collide
 
-				if(myTop<=otBottom//everything above myTop
+				if(myTop<otBottom//everything above myTop
 				&& !(myTop<otBottom-6)//nothing above myTop
 				&& !(myTop>otBottom+2)//nothing below myTop
 				&& (myRight>=otLeft+1)
 				&& (myLeft<=otRight-1))
 					{player1.pHitTop(otBottom);}//my top collide
-				else if(this.bottomPos>=otTop//everything below myBottom
+				else if(this.bottomPos>otTop//everything below myBottom
 				&& !(myBottom>otTop+6)//nothing below myBottom
 				&& !(myBottom<otTop-2)//nothing above myBottom
 				&& (myRight>=otLeft+1)
@@ -135,7 +155,7 @@ var refInit = {
 			}
 		}
 		this.pHitBottom = function(whaBot){
-			console.log("Player Bottom Coll");
+//			console.log("Player Bottom Coll");
 			this.speedX=0;
 //			if(statObjs.speedX>0){console.log(statObjs);this.speedX=statObjs.speedX;}
 			this.speedY=0;
@@ -143,18 +163,18 @@ var refInit = {
 			this.gravitySpeed=0;
 		}
 		this.pHitTop = function(whaBot){
-			console.log("Player Top Coll");
+//			console.log("Player Top Coll");
 			this.gravitySpeed+=0.2;
 			this.y=whaBot;
 			this.speedY=0.2;
 		}
 		this.pHitLeft = function(whaBot){
-			console.log("Player Left Coll");
+//			console.log("Player Left Coll");
 			this.speedX=0;
 			this.x=whaBot;
 		}
 		this.pHitRight = function(whaBot){
-			console.log("Player Right Coll");
+//			console.log("Player Right Coll");
 			this.speedX=0;
 			this.x=whaBot-this.width;
 		}
@@ -169,14 +189,4 @@ var refInit = {
 		}
 	}
 }
-function clearArc(context, x, y, radius, color){
-	context.save();
-	context.globalCompositeOperation = 'destination-out';
-	context.beginPath();
-	context.arc(x, y, radius, 0, 2 * Math.PI, false);
-	context.fill();
-	context.restore();
-	ctx.arc(this.x+10, this.y+200, this.width*0.5, 0, 2*Math.PI, false);
-	ctx.fill();
-  }
 //used a lot from: https://www.w3schools.com/graphics/game_intro.asp and https://www.w3schools.com/tags/ref_canvas.asp
