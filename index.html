@@ -26,6 +26,7 @@
 				height:100%;
 				background-color:rgba(0,0,1,0.88);
 				position:fixed;
+				overflow-y:auto;
 				float:left;
 				left:0%;
 			}
@@ -38,10 +39,10 @@
 				background-color:rgba(0,0,1,0.88);
 				color:rgba(255,255,255,1);
 				cursor:pointer;
-				position:relative;
 				float:left;
 				padding:0.5% 1%;
-				top:5vh;
+				margin-top:5vh;
+				margin-bottom:-5vh;
 			}
 			input:hover{
 				background-color:rgba(255,255,255,1);
@@ -55,14 +56,14 @@
 				background-color:rgba(255,255,255,1);
 				color:rgba(0,0,0,1);
 				position:absolute;
+				z-index:0;
+				margin:0;
 				top:0;
 				left:0;
 			}
 			input#sss{
 				border:none;
 				color:rgba(0,0,0,1);
-				position:relative;
-				top:67.5vh;
 			}
 			#optionB{
 				width:auto;
@@ -100,9 +101,11 @@
 			<input class="P4" type="button" id="plat" onclick="bDo(this)" value="Platformer">
 			<input class="P5" type="button" id="circ" onclick="bDo(this)" value="Circularity">
 			<input class="P6" type="button" id="runt" onclick="bDo(this)" value="Runtime">
-			<input class="P7" type="button" id="spad" onclick="bDo(this)" value="ScratchPad">
-			<input class="P8" type="button" id="clog" onclick="bDo(this)" value="ChangeLog">
-			<input class="P9" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
+			<input class="P7" type="button" id="sps" onclick="bDo(this)" value="SPStrings">
+			<input class="P8" type="button" id="spl" onclick="bDo(this)" value="SPLoops">
+			<input class="P9" type="button" id="spc" onclick="bDo(this)" value="SPConditions">
+			<input class="P10" type="button" id="clog" onclick="bDo(this)" value="ChangeLog">
+			<input class="P11" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
 		</nav>
 		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
 		<script>
@@ -122,9 +125,10 @@
 
 			var pLBar=page[9];
 			var pHome=page[10]; var pPortfolio=page[11]; var pBouncingBox=page[12]; var pPlatformer=page[13];
-			var pCircularity=page[14]; var pRuntime=page[15]; var pScratchPad=page[16]; var pChangeLog=page[17]; var pSuperSecret=page[18];
+			var pCircularity=page[14]; var pRuntime=page[15]; var pSPS=page[16]; var pSPL=page[17];
+			var pSPC=page[18]; var pChangeLog=page[19]; var pSuperSecret=page[20];
 //			console.log(pHome, pPortfolio, pBouncingBox, pPlatformer, pCircularity, pRuntime, pChangeLog, pSuperSecret);
-			var pFrame=page[19];
+			var pFrame=page[21];
 			var pFstyle=pFrame.style;
 
 			var buttP;
@@ -134,7 +138,9 @@
 			var Platformer="/projects/platformer/index.html";
 			var Circularity="/projects/circularity/index.html";
 			var Runtime="/projects/runtime/index.html";
-			var ScratchPad="/projects/scratch-pad-strings/index.html";
+			var SPStrings="/projects/scratch-pad-strings/index.html";
+			var SPLoops="/projects/scratch-pad-loops/index.html";
+			var SPConditions="/projects/scratch-pad-conditionals/index.html";
 			var ChangeLog="/changelog.html";
 			var SuperSecret="/projects/majge/index.html";
 			
@@ -158,60 +164,85 @@
 				switch(buttP.value){
 			//Switches iframe to Home page
 					case "Home":
-						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3";
+						pPlatformer.className="P4";	pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
 						break;
 			//Switches iframe to Portdolio page
 					case "Portfolio":
-						pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3"; pPlatformer.className="P4";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3";
+						pPlatformer.className="P4";	pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio";
 						break;
 			//Switches iframe to Bouncing Box page
 					case "BouncingBox":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P1"; pPlatformer.className="P4";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P1";
+						pPlatformer.className="P4"; pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box";
 						break;
 			//Switches iframe to Platformer page
 					case "Platformer":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P1";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P1"; pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer";
 						break;
 			//Switches iframe to Circularity page
 					case "Circularity":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
-						pCircularity.className="P1"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5";	pCircularity.className="P1"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity";
 						break;
 			//Switches iframe to Runtime page
 					case "Runtime":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
-						pCircularity.className="P6"; pRuntime.className="P1"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5"; pCircularity.className="P6"; pRuntime.className="P1";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime";
 						break;
-					case "ScratchPad":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
-						pCircularity.className="P6"; pRuntime.className="P7"; pScratchPad.className="P1"; pChangeLog.className="P8";
-						pFrame.value=buttP.value; pFrame.src=ScratchPad; document.title="Scratch-Pad";
+			//Switches iframe to Scratch Pad Strings page
+					case "SPStrings":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5"; pCircularity.className="P6"; pRuntime.className="P7";
+						pSPS.className="P1"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
+						pFrame.value=buttP.value; pFrame.src=SPStrings; document.title="Scratch-Pad-Strings";
+						break;
+			//Switches iframe to Scratch Pad Loops page
+					case "SPLoops":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5";	pCircularity.className="P6"; pRuntime.className="P7";
+						pSPS.className="P8"; pSPL.className="P1"; pSPC.className="P9"; pChangeLog.className="P10";
+						pFrame.value=buttP.value; pFrame.src=SPLoops; document.title="Scratch-Pad-Loops";
+						break;
+			//Switches iframe to Scratch Pad Conditionals page
+					case "SPConditions":
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5"; pCircularity.className="P6"; pRuntime.className="P7";
+						pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P1"; pChangeLog.className="P10";
+						pFrame.value=buttP.value; pFrame.src=SPConditions; document.title="Scratch-Pad-Loops";
 						break;
 			//Switches iframe to ChangeLog page
 					case "ChangeLog":
-						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4"; pPlatformer.className="P5";
-						pCircularity.className="P6"; pRuntime.className="P7"; pChangeLog.className="P1"; pScratchPad.className="P8";
+						pHome.className="P2"; pPortfolio.className="P3"; pBouncingBox.className="P4";
+						pPlatformer.className="P5";	pCircularity.className="P6"; pRuntime.className="P7";
+						pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10"; pChangeLog.className="P1";
 						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log";
 						break;
 					case "SuperSecret":
-						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
-						pSuperSecret.className="P9"; pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="Project Majg'e";
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3";
+						pPlatformer.className="P4";	pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
+						pSuperSecret.className="P11"; pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="Project Majg'e";
 						break;
 			//Returns iframe to Home page
 					default:
-						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3"; pPlatformer.className="P4";
-						pCircularity.className="P5"; pRuntime.className="P6"; pScratchPad.className="P7"; pChangeLog.className="P8";
+						pHome.className="P1"; pPortfolio.className="P2"; pBouncingBox.className="P3";
+						pPlatformer.className="P4";	pCircularity.className="P5"; pRuntime.className="P6";
+						pSPS.className="P7"; pSPL.className="P8"; pSPC.className="P9"; pChangeLog.className="P10";
 						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
 				}
 			}
