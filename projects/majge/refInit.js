@@ -8,7 +8,19 @@ function clearArc(context, x, y, radius, color){
 	ctx.arc(this.x+10, this.y+200, this.width*0.5, 0, 2*Math.PI, false);
 	ctx.fill();
 }
-function movement(){}
+
+function movement(typeIn1){
+	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
+	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
+	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
+	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
+	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
+	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
+	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
+	if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
+	if(player1.x>cWidth){player1.x=0-player1.width;}else if(player1.x<0-player1.width){player1.x=cWidth}
+}
+
 var refInit = {
 	canvas: document.querySelector("#daCan"),
 	start: function(dimention, direction, ufunct, dW, dH){
@@ -17,6 +29,7 @@ var refInit = {
 			e.preventDefault();
 			refInit.keys = (refInit.keys || []);
 			refInit.keys[e.key] = (e.type == "keydown");
+//			console.log(e);
 			optT(e);
 		})
 		window.addEventListener('keyup', function(e){
@@ -189,4 +202,5 @@ var refInit = {
 		}
 	}
 }
+
 //used a lot from: https://www.w3schools.com/graphics/game_intro.asp and https://www.w3schools.com/tags/ref_canvas.asp

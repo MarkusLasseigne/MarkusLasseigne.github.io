@@ -17,18 +17,8 @@ function updateGame1(){
 		statObjs.push(wallT1); statObjs.push(wallT2);
 		statObjs.push(wallT3); statObjs.push(wallT4);
 	}
-//	console.log(refInit.frameNo);
-
 	refInit.frameNo+=1;
-	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
-	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
-	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
-	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
-	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
-	if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
-	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.1; player1.speedX=0;}// v
-	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.1; player1.speedX=0;}// s
-	if(player1.x>cWidth){player1.x=0-player1.width;}else if(player1.x<0-player1.width){player1.x=cWidth}
+	movement();
 	for(var i=0; i<statObjs.length; i+=1){
 //		statObjs[i].x+=-0.8;
 		statObjs[i].update();
@@ -56,21 +46,6 @@ var level1 = function(){
 	wallT2 = new refInit.draw("static", 10, 120, 200, y-120, "rgba(0,0,0,1)");
 	wallT3 = new refInit.draw("static", 100, 10, 260, y-130, "rgba(0,0,0,1)");
 	wallT4 = new refInit.draw("static", 10, 40, 300, y-180, "rgba(0,0,0,1)");
-	
 	player1 = new refInit.draw("player", 40, 120, 20, y+100, "rgba(0,0,0,1)");
 	player1.gravity=1;
 };
-
-//	if(refInit.keys && refInit.keys[37]){player1.speedX=-2;}// <
-//	if(refInit.keys && refInit.keys[65]){player1.speedX=-2;}// a
-//	if(refInit.keys && refInit.keys[39]){player1.speedX=2;}// >
-//	if(refInit.keys && refInit.keys[68]){player1.speedX=2;}// d
-//	if(refInit.keys && refInit.keys[38]){player1.speedY=-5;}// ^
-//	if(refInit.keys && refInit.keys[87]){player1.speedY=-5;}// w
-//	if(refInit.keys && refInit.keys[40]){player1.speedY=0.1; player1.speedX=0;}// v
-//	if(refInit.keys && refInit.keys[83]){player1.speedY=0.1; player1.speedX=0;}// s
-
-//if(refInit.key && refInit.key=="w"||refInit.key=="ArrowUp"){player1.speedY=-5;}// w
-//if(refInit.key && refInit.key=="a"||refInit.key=="ArrowLeft"){player1.speedX=-2;}// a
-//if(refInit.key && refInit.key=="s"||refInit.key=="ArrowDown"){player1.speedY=0.1; player1.speedX=0;}// s
-//if(refInit.key && refInit.key=="d"||refInit.key=="ArrowRight"){player1.speedX=2;}// d
