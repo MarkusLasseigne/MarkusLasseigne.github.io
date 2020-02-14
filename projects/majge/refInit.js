@@ -23,8 +23,9 @@ function movement(typeIn1){
 
 var refInit = {
 	canvas: document.querySelector("#daCan"),
-	start: function(dimention, direction, ufunct, dW, dH){
+	start: function(dimention, direction, ufunct, int, dW, dH){
 		clearInterval(this.interval);
+		int = (null) ? 16 : int;
 		window.addEventListener('keydown', function(e){
 			e.preventDefault();
 			refInit.keys = (refInit.keys || []);
@@ -43,21 +44,21 @@ var refInit = {
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d down-facing time!");
-				this.interval=setInterval(ufunct, 16);
+				this.interval=setInterval(ufunct, int);
 			}else if(direction=="left"){
 				this.canvas.width=dW || window.innerWidth;
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d left-on time!");
-				this.interval=setInterval(ufunct, 16);
+				this.interval=setInterval(ufunct, int);
 			}else if(direction=="forward"){
 				this.canvas.width=dW || window.innerWidth;
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
 				console.log("2d first person time!");
-				this.interval=setInterval(ufunct, 16);
+				this.interval=setInterval(ufunct, int);
 			}
 		}else if(dimention=="3d"){
 		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
@@ -103,11 +104,13 @@ var refInit = {
 				this.newPos();
 			}else if(this.type=="pict"){
 				var imG = new Image();
-				imG.onload=animate;
 				imG.src=this.iSrc;
-				function animate(){ctx.drawImage(imG, x, y);}
-				if(refInit.frameNo>=1){imG.style.visibility="visible";}
-				else{imG.style.visibility="hidden";}
+				imG.id="imgH";
+				imG.fillStyle=color;
+				imG.width=width;
+				imG.onload = function animate(){ctx.drawImage(imG, x, y);}
+
+
 			}else if(this.type=="text"){
 //				console.log(this.text);
 				ctx.font=this.width+" "+this.height;
@@ -140,63 +143,62 @@ var refInit = {
 				// 	&& (myLeft<=otRight-5))
 				// 		{player1.pHitBottom(otTop);}//my bottom collide
 		
-				if(myLeft<otRight //everything left of myLeft
+				if(myLeft-2<otRight //everything left of myLeft
 				&& !(myLeft<otRight-2)//nothing left of myLeft
 				&& !(myLeft>otRight+2) //nothing right of myLeft
-				&& (myTop<=otBottom-1)
-				&& (myBottom>=otTop+1))
-					{player1.pHitLeft(otRight);}//my left collide
-				else if(myRight>otLeft//everything right of myRight
+				&& (myTop<=otBottom-0.5)
+				&& (myBottom>=otTop+0.5))
+					{player1.pHitLeft(statObjs[i]);}//my left collide
+				else if(myRight+2>otLeft//everything right of myRight
 				&& !(myRight>otLeft+2)//nothing right of myRight
 				&& !(myRight<otLeft-2)//nothing left of myRight
-				&& (myTop<=otBottom-1)
-				&& (myBottom>=otTop+1))
-					{player1.pHitRight(otLeft);}//my right collide
+				&& (myTop<=otBottom-0.5)
+				&& (myBottom>=otTop+0.5))
+					{player1.pHitRight(statObjs[i]);}//my right collide
 
-				if(myTop<otBottom//everything above myTop
+				if(myTop-2<otBottom//everything above myTop
 				&& !(myTop<otBottom-6)//nothing above myTop
 				&& !(myTop>otBottom+2)//nothing below myTop
-				&& (myRight>=otLeft+1)
-				&& (myLeft<=otRight-1))
-					{player1.pHitTop(otBottom);}//my top collide
-				else if(this.bottomPos>otTop//everything below myBottom
+				&& (myRight>=otLeft+0.5)
+				&& (myLeft<=otRight-0.5))
+					{player1.pHitTop(statObjs[i]);}//my top collide
+				else if(this.bottomPos+2>otTop//everything below myBottom
 				&& !(myBottom>otTop+6)//nothing below myBottom
 				&& !(myBottom<otTop-2)//nothing above myBottom
-				&& (myRight>=otLeft+1)
-				&& (myLeft<=otRight-1))
-					{player1.pHitBottom(otTop);}//my bottom collide
+				&& (myRight>=otLeft+0.5)
+				&& (myLeft<=otRight-0.5))
+					{player1.pHitBottom(statObjs[i]);}//my bottom collide
 			}
 		}
 		this.pHitBottom = function(whaBot){
-//			console.log("Player Bottom Coll");
-			this.speedX=0;
-//			if(statObjs.speedX>0){console.log(statObjs);this.speedX=statObjs.speedX;}
-			this.speedY=0;
-			this.y=whaBot-player1.height;
 			this.gravitySpeed=0;
+			this.speedY=0;
+			this.speedX=0;
+			this.y=whaBot.topPos-this.height;
+//			console.log("Player Bottom Coll");
 		}
 		this.pHitTop = function(whaBot){
-//			console.log("Player Top Coll");
 			this.gravitySpeed+=0.2;
-			this.y=whaBot;
 			this.speedY=0.2;
+			this.y=whaBot.bottomPos+this.height*0.152;
+//			console.log("Player Top Coll");
 		}
 		this.pHitLeft = function(whaBot){
-//			console.log("Player Left Coll");
 			this.speedX=0;
-			this.x=whaBot;
+			this.x=whaBot.rightPos+this.width*0.46;
+//			console.log("Player Left Coll");
 		}
 		this.pHitRight = function(whaBot){
-//			console.log("Player Right Coll");
+			this.x=whaBot.leftPos-this.width;
 			this.speedX=0;
-			this.x=whaBot-this.width;
+//			console.log("Player Right Coll");
 		}
 		this.hitBottom = function(){
 			var rockbottom=refInit.canvas.height-this.height*1.83;
 			if(this.y>=rockbottom){
+				this.gravitySpeed=0;
 				this.speedY=0;
 				this.speedX=0;
-				this.gravitySpeed=0;
 				this.y=rockbottom;
 			}
 		}
