@@ -5,7 +5,7 @@ function capitalizeWord(string){
 
 // Function 2 - Capitalize All Words /////////////////////////////////
 function capitalizeAllWords(string){
-	string = string.toLowerCase()
+	string=string.toLowerCase()
 		.split(' ')
 		.map((s)=>s.charAt(0).toUpperCase() + s.substring(1))
 		.join(' ');
@@ -15,19 +15,19 @@ function capitalizeAllWords(string){
 // Function 3 - Welcome Message //////////////////////////////////////
 function welcomeMessage(object){
 	var ocName=capitalizeWord(object.name);
-	return "Welcome "+ocName+"!";
+	return "Welcome "+ ocName +"!";
 }
 
 // Function 4 - Profile Info /////////////////////////////////////////
 function profileInfo(object){
-	var coN = capitalizeAllWords(object.name);
-	var coS = capitalizeAllWords(object.species);
-	return coN+" is a "+coS;
+	var coN=capitalizeAllWords(object.name);
+	var coS=capitalizeAllWords(object.species);
+	return coN +" is a "+ coS;
 }
 
 // Function 5 - Has Words ///////////////////////////////////////////
 function hasWord(string, word){
-	var sHW=(string.search(word)===-1)? false : true; return sHW;
+	var sHW=(string.search(word)== -1)?false : true; return sHW;
 }
 
 // Function 6 - Add Friend //////////////////////////////////////////
@@ -38,14 +38,13 @@ function addFriend(name, object){
 // Function 7 - Is Friend ///////////////////////////////////////////
 function isFriend(name, object){
 	if(object.friends==undefined||name==undefined){return false;}
-	var oF = (object.friends.indexOf(name) > -1); return oF;
+	var oF=(object.friends.indexOf(name)> -1); return oF;
 }
 
 // Function 8 - Update Object ///////////////////////////////////////
 function updateObject(object, key, value){
 	for(var keyN in object){
-		if(keyN==key){object[keyN]=value;}
-		else{object[key]=value}
+		uOI=(keyN==key)?object[keyN]=value : object[key]=value;
 	}
 }
 
@@ -55,14 +54,7 @@ function removeProperties(object, array){
 }
 
 // Function 10 - Dedup ///////////////////////////////////////////////
-function dedup(array){
-	var notDupe = [];
-	for(var i=0;i<array.length;i++){
-		notDupe.join();
-		array[i]
-	}
-	return array;
-}
+function dedup(array){return array.filter((a,b)=>array.indexOf(a)==b);}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
