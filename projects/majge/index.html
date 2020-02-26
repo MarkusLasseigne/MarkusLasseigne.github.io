@@ -11,7 +11,7 @@
 				user-select:none;
 				margin:0;
 			}
-			#optCont{
+			#nOptC{
 				width:30vw;
 				height:20vw;
 				border:5px solid rgba(0,0,0,0.85);
@@ -22,59 +22,56 @@
 				top:5%;
 				left:37.5vw;
 			}
-			#options{
-				width:100%;
-				height:15%;
-			}
-			#opttxt{
-				font:bold 2.5vw Times, serif;
-				float:left;
-				margin:0;
-			}
-			#optionB{
-				width:30%;
-				height:100%;
-				font:1.5vw arial, sans-serif;
-				float:right;
-				padding:0;
-			}
-			#levels{
-				width:100%;
-				height:80%;
-			}
 			.lvltxt{
 				font:bold 2vw Times, serif;
 				margin:0;
 			}
-			.levelB{
-				width:50%;
-				height:46%;
-				font:3vw arial, sans-serif;
-				float:left;
+			.bSt{
+				max-width:25%;
+				font:1.5vw arial, sans-serif;
+				border:1px solid rgba(0,0,0,1);
+				cursor:pointer;
 				padding:0;
+			}
+			.bSt:hover{
+				background-color:rgba(240,240,240,0.85);
 			}
 			#imgH{
 				position:absolute;
+			}
+			#prName{
+				width:100%;
+				font:bold 2vw arial, sans-serif;
+				text-align:center;
+				padding:0;
+			}
+			.optH{
+				font:bold 2vw arial, sans-serif;
 			}
 		</style>
 	</head>
 	<body>
 		<img id="imgH" src="/projects/bouncingearth.png" style="visibility:hidden;">
 		<canvas id="daCan"></canvas>
-		<div id="optCont">
-			<div id="options">
-				<p id="opttxt">Options:</p>
-				<button id="optionB" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</button>
-				<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
-			</div>
-			<div id="levels">
-				<p class="lvltxt" id="LS">Level Select:</p>
-				<button class="levelB" id="level1" onclick="optT('bClose'); level1();">Level 1</button>
-				<button class="levelB" id="level2" onclick="optT('bClose'); level2();">Level 2</button>
-				<button class="levelB" id="level3" onclick="optT('bClose');">Level 3</button>
-				<button class="levelB" id="level4" onclick="optT('bClose');">Level 4</button>
-			</div>
-		</div>
+		<table id="nOptC">
+			<tr id="prName">
+				<th id="prName">Project Majg'e</th>
+			</tr>
+			<tr>
+				<th class="optH">Options:</th>
+			</tr>
+			<tr>
+				<td class="bSt" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</td>
+				<td class="bSt" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</td>
+			</tr>
+			<tr>
+				<th class="optH">Levels:</th>
+			</tr>
+			<tr>
+				<td class="bSt" id="demo1" onclick="optT('bClose'); level1();">Demo-1</td>
+				<td class="bSt" onclick="optT('bClose'); level2();">BouncingTest</td>
+			</tr>
+		</table>
 		<script src="refInit.js"></script>
 		<script src="levelc1.js"></script>
 		<script src="levelc2.js"></script>
@@ -87,7 +84,7 @@
 
 			function optT(e){
 				if(e.key=="Escape"||e=="bClose"){
-					var opCSV=document.querySelector("#optCont").style;
+					var opCSV=document.querySelector("#nOptC").style;
 					if(opCSV.visibility!=="hidden"){
 						opCSV.visibility="hidden";
 					}else{opCSV.visibility="visible";}

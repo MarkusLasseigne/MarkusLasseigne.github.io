@@ -110,43 +110,24 @@
 			<input class="P16" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
 		</nav>
 		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
-		<script> //To add, 1: input button, 2: src var, 3: new switch.
-//Element Select Refrences
-//doc.querySelector() Refrences=1st of all elements
-//doc.querySelectorAll() Refrences=all elements (array-like)
-	//"tag"=<tag>;
-	//"parenttag>childtag"=<Ptag><Ctag>;
-	//"tag.class"=<tag class>;
-	//"tag[target]"=<tag target>;
-	//id="#";
-	//example:var x=document.getElementById(elementid).querySelectorAll(elements in id)
-			
-		//Main Variables
+		<script> //To add new button, 1: input button, 2: src var, 3: new switch.
+			if(window.innerWidth==360){pBody.style.height="600px"; pBody.style.maxHeight="600px";}
+			/**Main Variables*/
 			var page=document.all; //console.log(page);
-			for(var i=0; i<page.length;i++){
-				var vp = page[i];
-			}
 			var pBody=page[6]; var pLBar=page[9]; //console.log(pBody);
 
-			var pHome=page[10]; var pPortfolio=page[11]; var pBouncingBox=page[12]; var pPlatformer=page[13]; var pCircularity=page[14];
-			var pRuntime=page[15]; var pSPS=page[16]; var pSPL=page[17]; var pSPC=page[18]; var ptGuru=page[19];
-			var pfGuru=page[20]; var pChangeLog=page[21]; var pSuperSecret=page[22];
+			var pHome=page[10]; var Home="/home.html"; var pPortfolio=page[11]; var Portfolio="/portfolio.html";
+			var pBouncingBox=page[12]; var BouncingBox="/projects/bouncing-box/index.html"; var pPlatformer=page[13]; var Platformer="/projects/platformer/index.html";
+			var pCircularity=page[14]; var Circularity="/projects/circularity/index.html"; var pRuntime=page[15]; var Runtime="/projects/runtime/index.html";
+			var pSPS=page[16]; var SPStrings="/projects/scratch-pad-strings/index.html"; var pSPL=page[17]; var SPLoops="/projects/scratch-pad-loops/index.html";
+			var pSPC=page[18]; var SPConditions="/projects/scratch-pad-conditionals/index.html"; var ptGuru=page[19]; var TestGuru="/projects/test-guru/index.html";
+			var pfGuru=page[20];  var FunctionGuru="/projects/function-guru/index.html"; var pChangeLog=page[21]; var ChangeLog="/changelog.html";
+			var pSuperSecret=page[22]; var SuperSecret="/projects/majge/index.html";
 //			console.log(pHome, pPortfolio, pBouncingBox, pPlatformer, pCircularity, pRuntime, pChangeLog, pSuperSecret, ptGuru, pfGuru);
 			var pFrame=page[23];
 			var pFstyle=pFrame.style;
 
 			var buttP;
-			var Home="/home.html"; var Portfolio="/portfolio.html";	var BouncingBox="/projects/bouncing-box/index.html";
-			var Platformer="/projects/platformer/index.html"; var Circularity="/projects/circularity/index.html";
-			var Runtime="/projects/runtime/index.html"; var SPStrings="/projects/scratch-pad-strings/index.html";
-			var SPLoops="/projects/scratch-pad-loops/index.html"; var SPConditions="/projects/scratch-pad-conditionals/index.html";
-			var TestGuru="/projects/test-guru/index.html"; var FunctionGuru="/projects/function-guru/index.html";
-			var ChangeLog="/changelog.html"; var SuperSecret="/projects/majge/index.html";
-			
-			if(window.innerWidth==360){
-				pBody.style.height="600px";
-				pBody.style.maxHeight="600px";
-			}
 
 		//Main Functions
 			function bDo(buttP){
@@ -166,7 +147,7 @@
 						pCircularity.className="P5"; pRuntime.className="P6"; pSPS.className="P7"; pSPL.className="P8";
 						pSPC.className="P9"; ptGuru.className="P10"; pfGuru.className="P11"; pChangeLog.className="P15";
 						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; break;
-				// Switches iframe to Portdolio page
+				// Switches iframe to Portfolio page
 					case "Portfolio": pHome.className="P2"; pPortfolio.className="P1"; pBouncingBox.className="P3"; pPlatformer.className="P4";
 						pCircularity.className="P5"; pRuntime.className="P6"; pSPS.className="P7"; pSPL.className="P8";
 						pSPC.className="P9"; ptGuru.className="P10"; pfGuru.className="P11"; pChangeLog.className="P15";
