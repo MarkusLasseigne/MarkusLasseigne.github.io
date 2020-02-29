@@ -10,7 +10,7 @@
         "recordings": [
             {"title": "Eastern Rebellion", "artist": "Cedar Walton", "release": "Timeless", "year": 1976, "art": "images/album/eastern-rebellion.jpg"},
             {"title": "Soul Food", "artist": "Bobby Timmons", "release": "Prestige", "year": 1966, "art": "images/album/soul-food.jpg"},
-            {"title": "A Swingin' Affair", "artist": "Dexter Gordon", "release": "Blue Note", "year": 1962, "art": "images/album/a-swingin-affair.jpg"},
+            {"title": "A Swingin Affair", "artist": "Dexter Gordon", "release": "Blue Note", "year": 1962, "art": "images/album/a-swingin-affair.jpg"},
             {"title": "Rejoice", "artist": "Pharoah Sanders", "release": "Theresa", "year": 1981, "art": "images/album/rejoice.jpg"},
             {"title": "Our Man in Jazz", "artist": "Sonny Rollins", "release": "RCA Victor", "year": 1965, "art": "images/album/our-man-in-jazz.jpg"},
             {"title": "The Sidewinder", "artist": "Lee Morgan", "release": "Blue Note", "year": 1963, "art": "images/album/the-sidewinder.jpg"},
