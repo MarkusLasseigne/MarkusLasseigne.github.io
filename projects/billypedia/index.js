@@ -7,7 +7,7 @@ $(document).ready(function(){
 		let billyData = data.images.billy;
 		let riderData = data.rider;
 		var billyI=0;
-		$('#list-top-rated').append($('<div id="image-container-top-rated" class="image-container">')
+		$('#header-top-rated').append($('<div id="image-container-top-rated" class="image-container">')
 			.append($('<img id="top-rated-image" class="image">').attr("src", topData[0].art)));
 		topData.map(x =>$('#list-top-rated')
 			.append($('<li>')

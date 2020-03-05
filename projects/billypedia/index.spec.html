@@ -7,17 +7,24 @@
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
 		<style>
 			html, body{
-				width:99vw;
+				width:100vw;
 				height:auto;
 				background-color:rgba(248,248,250,0.7);
+				user-select:none;
 				margin:0;
 			}
-			.test{
-				background:white;
+			.test{background:rgba(255,255,255,0.7);}
+
+			.suite, .passes, .pass, .failures, .duration{
+				background-color:rgba(0,0,0,0);
+				color:rgba(0,0,0,1);
 			}
-			.hidden{
-				display:none;
+			.fail{background-color:rgba(0,0,0,0);}
+			.suite:hover, .passes:hover, .failures:hover, .duration:hover, .pass:hover, .fail:hover{
+				background-color:rgba(0,0,0,0);
 			}
+
+			.hidden{display:none;}
 		</style>
 	</head>
 	<body class="test">

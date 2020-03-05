@@ -1,101 +1,101 @@
 body{
-    background:rgba(200, 220, 220, 0.4);
-    color:rgb(45, 45, 45);
-    font-family:arial;
-    padding:0;
-    margin:0;
+	background:rgba(200, 220, 220, 0.4);
+	color:rgb(45, 45, 45);
+	font-family:arial;
+	padding:0;
+	margin:0;
 }
 header{
-    font-size:1.5em;
-    font-weight:bold;
+	font-size:1.5em;
+	font-weight:bold;
 }
 
 [id=all-contents]{
-    max-width:800px;
-    margin:auto;
-    user-select:none;
+	max-width:800px;
+	margin:auto;
+	user-select:none;
 }
 
 /* navigation menu */
 nav{
-    background:rgba(20, 20, 20, 0.92);
-    margin:0 auto;
-    display:flex;
-    padding:10px;
+	background:rgba(20, 20, 20, 0.92);
+	margin:0 auto;
+	display:flex;
+	padding:10px;
 }
 
 nav header {
-    display: flex;
-    align-items: center;
-    color:rgb(255, 255, 255);
-    flex: 1;
+	display: flex;
+	align-items: center;
+	color:rgb(255, 255, 255);
+	flex: 1;
 }
 
 nav ul {
-    -moz-padding-start: 0;
-    -webkit-padding-start: 0;
-    list-style-image: none;
+	-moz-padding-start: 0;
+	-webkit-padding-start: 0;
+	list-style-image: none;
 }
 
 nav li{
-    display:inline-block;
-    padding:0 10px;
-    font-size:1.2em;
-    border-radius:5px;
+	display:inline-block;
+	padding:0 10px;
+	font-size:1.2em;
+	border-radius:5px;
 }
 
 nav a {
-    text-decoration: none;
-    color:#fff;
+	text-decoration: none;
+	color:#fff;
 }
 
 /* main container area beneath menu */
 
 main{
-    background:rgba(250, 250, 240, 0.9);
-    display:flex;
+	background:rgba(250, 250, 240, 0.9);
+	display:flex;
 }
 [class=sidebar]{
-    margin-right:10px;
-    padding:10px;
+	margin-right:10px;
+	padding:10px;
 }
 [class=sidebar] img{
-    width:200px;
-    padding:0;
+	width:200px;
+	padding:0;
 }
 [class=sidebar] ul{
-    padding:0;
+	padding:0;
 }
 [class=sidebar] li{
-    margin-left:10px;
+	margin-left:10px;
 }
 li{
-    background-color:rgba(50,50,50,0.9);
-    color:rgba(200,200,200,1);
-    border-radius:0 5px 5px 0px;
-    cursor:pointer;
+	background-color:rgba(50,50,50,0.9);
+	color:rgba(200,200,200,1);
+	border-radius:0 5px 5px 0px;
+	cursor:pointer;
 }
 li:hover{
-    background-color:rgba(100,100,100,0.8);
+	background-color:rgba(100,100,100,0.8);
 }
 [class=content]{
-    flex:1;
-    padding:4px;
-    padding-top:0;
-    margin-right:10px;
+	flex:1;
+	padding:4px;
+	padding-top:0;
+	margin-right:10px;
 }
 
 [class=discography] header{
-    font-size:1.25em;
+	font-size:1.25em;
 }
 
 #image-billy{
-    border:2px solid;
-    border-color:rgba(255, 255, 255, 1);
-    cursor:pointer; cursor:hand;
+	border:2px solid;
+	border-color:rgba(255, 255, 255, 1);
+	cursor:pointer; cursor:hand;
 }
 .rider{
-    max-width:800px;
-    background:rgba(220, 220, 220, 0.9);
-    margin:auto;
+	max-width:800px;
+	background:rgba(220, 220, 220, 0.9);
+	margin:auto;
 }

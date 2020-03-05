@@ -24,7 +24,7 @@ describe('Billypedia', function () {
 	});
 	
 	it('should have five top rated titles', function () {
-		expect($('#list-top-rated > *').length).to.equal(5); //<this guy right here officer!
+		expect($('#list-top-rated > *').length).to.equal(5);
 		expect($('#list-top-rated > li').length).to.equal(5);
 		expect($('#list-top-rated > li.top-rated').length).to.equal(5);
 	});
