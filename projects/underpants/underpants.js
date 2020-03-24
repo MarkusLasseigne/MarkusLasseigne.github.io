@@ -4,13 +4,7 @@
 'use strict';
 
 var _ = {};
-
-
-/**
-* START OF OUR LIBRARY!
-* Implement each function below it's instructions
-*/
-
+/** START OF OUR LIBRARY! * Implement each function below it's instructions */
 /** _.identity
 * Arguments:
 *   1) Any value
@@ -20,8 +14,7 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
-
+_.identity = function(valIn){return valIn;};
 /** _.typeOf
 * Arguments:
 *   1) Any value
@@ -41,8 +34,12 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
-
+_.typeOf = function(valIn){
+	if(valIn===undefined){return "undefined";}
+	else if(valIn===null){return "null";}
+	else if(Array.isArray(valIn)){return "array";}
+	else{return typeof valIn;}
+};
 /** _.first
 * Arguments:
 *   1) An array
@@ -60,7 +57,14 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(arr, num){
+	let tempArr=[];
+	if(!Array.isArray(arr)||num<0){return [];}
+	if(!num){return arr[0];}
+	if(num>arr.length){return arr;}
+	for(let i=0;i<num;i++){tempArr.push(arr[i]);}
+	return tempArr;
+};
 
 /** _.last
 * Arguments:
@@ -79,7 +83,14 @@ var _ = {};
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(arr, num){
+	let tempArr=[];
+	if(!Array.isArray(arr)||num<0){return [];}
+	if(!num){return arr[arr.length-1];}
+	if(num>arr.length){return arr;}
+	for(let i=arr.length-1;i>0;i--){tempArr[i-1]=arr[i];}
+	return tempArr;
+};
 
 /** _.indexOf
 * Arguments:
@@ -96,7 +107,13 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(arr, val){
+	let tempArr=[];
+	for(let i=0;i<arr.length;i++){
+		if(arr[i]===val){tempArr.push(arr[i]); return i;}
+	}
+	if(tempArr.length===0){return -1;}
+};
 
 /** _.contains
 * Arguments:
@@ -112,7 +129,10 @@ var _ = {};
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(arr, val){
+	for(let i=0;i<arr.length;i++){if(arr[i]===val){return true;}}
+	return false;
+};
 
 /** _.each
 * Arguments:
@@ -129,7 +149,13 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(coll, fun){
+	if(Array.isArray(coll)){
+		for(let i=0;i<coll.length;i++){fun(coll[i], i, coll);}
+	}else if(typeof coll==="object"){
+		for(var key in coll){fun(coll[key],key,coll);}
+	}
+};
 
 /** _.unique
 * Arguments:
@@ -140,7 +166,12 @@ var _ = {};
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(arr){
+	let tempArr=[];
+	for(let i=0;i<arr.length;i++){
+		if(_.indexOf(arr, arr[i])===i){tempArr.push(arr[i]);}
+	}return tempArr;
+};
 
 /** _.filter
 * Arguments:
@@ -155,9 +186,13 @@ var _ = {};
 * Examples:
 *   _.filter([1,2,3,4,5], function(x){return x%2 === 0}) -> [2,4]
 * Extra Credit:
-*   use _.each in your implementation
-*/
-
+*   use _.each in your implementation*/
+_.filter = function(arr, fun){
+	let tempArr=[];
+	for(let i=0;i<arr.length;i++){
+		if(fun(arr[i],i,arr)){tempArr.push(arr[i]);}
+	}return tempArr;
+};
 
 /** _.reject
 * Arguments:
@@ -171,7 +206,12 @@ var _ = {};
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(arr, fun){
+	let tempArr=[];
+	for(let i=0;i<arr.length;i++){
+		if(!fun(arr[i],i,arr)){tempArr.push(arr[i]);}
+	}return tempArr;
+};
 
 /** _.partition
 * Arguments:
@@ -189,9 +229,16 @@ var _ = {};
 *   _.partition([1,2,3,4,5], function(element,index,arr){
 *     return element % 2 === 0;
 *   }); -> [[2,4],[1,3,5]]
-}
-*/
-
+}*/
+_.partition = function(arr, fun){
+	let kTArr=[]; let tTArr=[]; let fTArr=[];
+	for(let key in arr){
+		if(fun(arr[key],key,arr)){tTArr.push(arr[key]);
+		}else{fTArr.push(arr[key])}
+	}
+	kTArr.push(tTArr, fTArr);
+	return kTArr;
+};
 
 /** _.map
 * Arguments:
@@ -208,7 +255,14 @@ var _ = {};
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(coll, fun){
+	let tempArr=[];
+	for(let key in coll){
+		if(Array.isArray(coll)){
+			tempArr.push(fun(coll[key],key,coll));
+		}else{tempArr.push(fun(coll[key],key,coll));}
+	}return tempArr;
+};
 
 /** _.pluck
 * Arguments:
@@ -220,7 +274,14 @@ var _ = {};
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function(arr,prop){
+	let tempArr=[];
+	for(let i=0;i<arr.length;i++){
+		let tempI = arr[i];
+		tempArr.push(tempI[prop]);
+	}
+	return tempArr;
+};
 
 /** _.every
 * Arguments:
@@ -242,7 +303,20 @@ var _ = {};
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(coll, fun){
+	let tempArr=[];
+	if(fun){
+		for(let key in coll){
+			let tIf=(fun(coll[key],key,coll))? tempArr.push(true):tempArr.push(false);
+		}
+	}else if(!fun){
+		for(let key in coll){
+			let tIf=(coll[key])? tempArr.push(true):tempArr.push(false);
+		}
+	}
+	var rBool=(_.contains(tempArr, false))? false:true;
+	return rBool;
+};
 
 /** _.some
 * Arguments:
@@ -264,7 +338,20 @@ var _ = {};
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(coll, fun){
+	let tempArr=[];
+	if(fun){
+		for(let key in coll){
+			let tIf=(fun(coll[key],key,coll))? tempArr.push(true):tempArr.push(false);
+		}
+	}else if(!fun){
+		for(let key in coll){
+			let tIf=(coll[key])? tempArr.push(true):tempArr.push(false);
+		}
+	}
+	var rBool=(_.contains(tempArr, true))? true:false;
+	return rBool;
+};
 
 /** _.reduce
 * Arguments:
@@ -284,7 +371,12 @@ var _ = {};
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(arr, fun, seed){
+	var i=0;
+	var last=(seed===undefined)? last=arr[i++]:last=seed;
+	for(;i<arr.length;i++){last=fun(last, arr[i], i);}
+	return last;
+};
 
 /** _.extend
 * Arguments:
@@ -300,6 +392,14 @@ var _ = {};
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(){
+	var fAO=arguments[0];
+	for(let i=0;i<arguments.length;i++){
+		var arC=arguments[i];
+		for(let key in arC){fAO[key]=arC[key];}
+	}
+	return fAO;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
@@ -307,6 +407,6 @@ var _ = {};
 
 if((typeof process !== 'undefined') &&
    (typeof process.versions.node !== 'undefined')) {
-    // here, export any references you need for tests //
-    module.exports = _;
+	// here, export any references you need for tests //
+	module.exports = _;
 }
