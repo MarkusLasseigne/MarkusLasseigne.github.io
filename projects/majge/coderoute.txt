@@ -1,4 +1,4 @@
-[Definitely Work in Progress]
+[Definitely Work in Progress, including this]
 Select a level button from the index page, activating the selected level's js file (levelc#.js) functions and closes the menu
 the level functions then define and draw the players attributes, shapes and standard properties, along with all other objects in-game
 it then calls the refInit canvas start function with the games properties, initializing based on the game type, defining the canvas size (another possible input, default sets to inner browser resolution),

@@ -4,12 +4,12 @@ clearArc = function(cotx, x, y, radius, color){
 	cotx.globalCompositeOperation = 'destination-out';
 	cotx.beginPath();
 	ctx.fillStyle=color;
-	cotx.arc(x, y, radius, 0, 2 * Math.PI, false);
+	ctx.arc(x, y, radius, 0, 2 * Math.PI, false);
 	cotx.restore();
-	cotx.arc(this.x+10, this.y+200, this.width*0.5, 0, 2*Math.PI, false);
+	cotx.arc(this.x, this.y, this.width, 0, 2*Math.PI, false);
 	cotx.fill();
 };
-function movement(typeIn1){
+function movement(){
 	if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;}
 	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
 	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
@@ -24,7 +24,7 @@ var refInit = {
 	canvas: document.querySelector("#daCan"),
 	start: function(dimention, direction, ufunct, int, dW, dH){
 		clearInterval(this.interval);
-		int = (null) ? 16 : int;
+		int=(null)? 16:int;
 		window.addEventListener('keydown', function(e){
 			e.preventDefault();
 			refInit.keys = (refInit.keys || []);
@@ -63,8 +63,8 @@ var refInit = {
 		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
 		}else{console.warn("No Dimention Found");}
 	},
-	stop: function(){clearInterval(this.interval); return location.reload();},  
-	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);},
+	stop: function(){clearInterval(this.interval); return window.reload();},  
+	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); frI=(refInit.frameNo>=60)? refInit.frameNo=1:refInit.frameNo+=1;},
 	/** * refInit.draw( type | width | height | x-position | y-position | color | image-src | text | text-font ) */
 	draw: function(type, width, height, x, y, color, iSrc, text, font){
 		this.type=type;
@@ -97,7 +97,7 @@ var refInit = {
 				ctx.fillStyle=color;
 				ctx.rotate(this.rotation);
 				ctx.fillRect(this.x, this.y, this.width, this.height);
-			}else if(this.type=="player"){
+			}else if(this.type=="player"){//standard static player
 				ctx.fillStyle="rgba(0,0,0,0.08)";
 				shad = ctx.fillRect(this.x, this.y+20, this.width, this.height*0.888);
 				ctx.fillStyle=color;
@@ -109,21 +109,29 @@ var refInit = {
 				lLeg = ctx.fillRect(this.x, this.y+72, this.width*0.485, this.height*0.4);
 				rLeg = ctx.fillRect(this.x+20.5, this.y+72, this.width*0.485, this.height*0.4);
 				this.newPos();
-			}else if(this.type=="pict"){
+			}else if(this.type=="pict"){//movable picture *doesn't work*
 				var imG = new Image();
 				imG.src=this.iSrc;
 				imG.id="imgH";
-				imG.onload = function animate(){refInit.clear(); ctx.drawImage(imG, x, y);};
+				console.log(refInit.frameNo);
+				imG.onload = function animate(){refInit.clear(); if(refInit.frameNo>0){ctx.drawImage(imG, x, y);}};
 				ctx.fillStyle=color;
 				ctx.width=this.width/2;
 				ctx.height=this.height/2;
+				if(this.text){
+
+				}
 				this.newPos();
-			}else if(this.type=="sText"){
+			}else if(this.type=="sText"){//player score text
 //				console.log(this.text);
 				ctx.font= (this.width/3.4)+"px "+font;
 				ctx.fillStyle=color;
 				this.text="Score: "+player1.score;
 				ctx.fillText(this.text, this.x, this.y+12);
+			}else if(this.type=="coin"){//coin
+				this.score=1;
+				ctx.fillStyle=color;
+				clearArc(ctx, this.x+this.width*0.475, this.y, this.width*0.475, color);
 			}else{
 				ctx.fillStyle=color;
 				ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -174,10 +182,8 @@ var refInit = {
 //			console.log("Player Bottom Coll");
 			if(whaBot.type=="coin"){
 				whaBot.health=-0;
-				if(whaBot!==null){
-					player1.score+=1
-					whaBot=null;
-				}else{return;}
+				player1.score+=whaBot.score;
+				whaBot.score=0;
 			}else{
 				this.gravitySpeed=0;
 				this.speedY=0;
@@ -189,10 +195,8 @@ var refInit = {
 //			console.log("Player Top Coll");
 			if(whaBot.type=="coin"){
 				whaBot.health=-0;
-				if(whaBot!==null){
-					player1.score+=1
-					whaBot=null;
-				}else{return;}
+				player1.score+=whaBot.score;
+				whaBot.score=0;
 			}else{
 				this.gravitySpeed+=0.2;
 				this.speedY=0.2;
@@ -202,28 +206,25 @@ var refInit = {
 		this.pHitLeft = function(whaBot){
 //			console.log("Player Left Coll");
 			if(whaBot.type=="coin"){
-				console.log(refInit.canvas.context);
 				whaBot.health=-0;
-				if(whaBot!==null){
-					player1.score+=1
-					whaBot=null;
-				}else{return;}
+				player1.score+=whaBot.score;
+				whaBot.score=0;
 			}else{
 				this.x=whaBot.rightPos;
 				this.speedX=0;
+				this.speedY*=0.98;
 			}
 		}
 		this.pHitRight = function(whaBot){
 //			console.log("Player Right Coll");
 			if(whaBot.type=="coin"){
 				whaBot.health=-0;
-				if(whaBot!==null){
-					player1.score+=1
-					whaBot=null;
-				}else{return;}
+				player1.score+=whaBot.score;
+				whaBot.score=0;
 			}else{
 				this.x=whaBot.leftPos-this.width;
 				this.speedX=0;
+				this.speedY*=0.98;
 			}
 		}
 		this.hitBottom = function(){

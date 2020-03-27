@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			#daCan, body, html{
+			html, body, #daCan{
 				width:100%;
 				height:100%;
 				overflow:hidden;
@@ -12,15 +12,28 @@
 				margin:0;
 			}
 			#nOptC{
-				width:30vw;
-				height:20vw;
-				border:5px solid rgba(0,0,0,0.85);
+				width:20vw;
+				height:25vw;
+				border:0.5em solid rgba(0,0,0,1);
 				overflow:hidden;
-				background-color:rgba(255,255,255,0.85);
+				background-color:rgba(255,255,255,0.9);
 				position:absolute;
-				margin:middle;
+				margin:0;
 				top:5%;
-				left:37.5vw;
+				left:15%;
+			}
+			#pName{
+				width:100%;
+				font:bold 2.75vw arial, sans-serif;
+				text-align:left;
+				padding:0;
+			}
+			.optH{
+				font:bold 2.5vw arial, sans-serif;
+				text-align:left;
+			}
+			.optH:hover{
+				background-color:rgba(200, 200, 200, 0.75);
 			}
 			.lvltxt{
 				font:bold 2vw Times, serif;
@@ -31,22 +44,15 @@
 				font:1.5vw arial, sans-serif;
 				border:1px solid rgba(0,0,0,1);
 				cursor:pointer;
-				padding:0;
-			}
-			.bSt:hover{
-				background-color:rgba(240,240,240,0.85);
-			}
-			#imgH{
-				position:absolute;
-			}
-			#prName{
-				width:100%;
-				font:bold 2vw arial, sans-serif;
+				visibility:visible;
 				text-align:center;
 				padding:0;
 			}
-			.optH{
-				font:bold 2vw arial, sans-serif;
+			.bSt:hover{
+				background-color:rgba(240,240,240,0.8);
+			}
+			#imgH{
+				position:absolute;
 			}
 		</style>
 	</head>
@@ -55,29 +61,51 @@
 		<canvas id="daCan"></canvas>
 		<table id="nOptC">
 			<tr id="prName">
-				<th id="prName">Project Majg'e</th>
+				<th id="pName" colspan="2">Project Majg'e</th>
 			</tr>
 			<tr>
-				<th class="optH">Options:</th>
-			</tr>
-			<tr>
-				<td class="bSt" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</td>
-				<td class="bSt" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</td>
-			</tr>
-			<tr>
-				<th class="optH">Levels:</th>
+				<th class="optH" colspan="2" onclick="levelT();">Levels</th>
 			</tr>
 			<tr>
 				<td class="bSt" id="demo1" onclick="optT('bClose'); level1();">Demo-1</td>
-				<td class="bSt" onclick="optT('bClose'); level2();">BouncingTest</td>
+			</tr>
+			<tr>
+				<td class="bSt" id="demo2" onclick="optT('bClose'); level2();">BouncingTest</td>
+			</tr>
+			<tr>
+				<th class="optH" colspan="2" onclick="optionT();">Options</th>
+			</tr>
+			<tr>
+				<td class="bSt" id="opt1" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</td>
+			</tr>
+			<tr>
+				<td class="bSt" id="opt2" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</td>
 			</tr>
 		</table>
 		<script src="refInit.js"></script>
 		<script src="levelc1.js"></script>
 		<script src="levelc2.js"></script>
 		<script>
-			var keyU=function(){window.addEventListener("keyup",optT);}
-			var keyP=function(){window.addEventListener("keypress",optT);}
+			var levelT=function(){
+				if(document.querySelector("#demo1").style.visibility==="visible" && document.querySelector("#demo2").style.visibility==="visible"){
+					document.querySelector("#demo1").style.visibility="hidden";
+					document.querySelector("#demo2").style.visibility="hidden";
+				}else{
+					document.querySelector("#demo1").style.visibility="visible";
+					document.querySelector("#demo2").style.visibility="visible";
+				}
+			};
+			var optionT=function(){
+				if(document.querySelector("#opt1").style.visibility==="visible" && document.querySelector("#opt2").style.visibility==="visible"){
+					document.querySelector("#opt1").style.visibility="hidden";
+					document.querySelector("#opt2").style.visibility="hidden";
+				}else{
+					document.querySelector("#opt1").style.visibility="visible";
+					document.querySelector("#opt2").style.visibility="visible";
+				}
+			};
+			var keyU=function(){window.addEventListener("keyup",optT);};
+			var keyP=function(){window.addEventListener("keypress",optT);};
 			var keyD=window.addEventListener("keydown",optT);
 			var lClick=window.addEventListener("click",optT);
 			var rClick=window.addEventListener("contextmenu",optT);
@@ -87,7 +115,17 @@
 					var opCSV=document.querySelector("#nOptC").style;
 					if(opCSV.visibility!=="hidden"){
 						opCSV.visibility="hidden";
-					}else{opCSV.visibility="visible";}
+						document.querySelector("#demo1").style.visibility="hidden";
+						document.querySelector("#demo2").style.visibility="hidden";
+						document.querySelector("#opt1").style.visibility="hidden";
+						document.querySelector("#opt2").style.visibility="hidden";
+					}else{
+						opCSV.visibility="visible";
+						document.querySelector("#demo1").style.visibility="visible";
+						document.querySelector("#demo2").style.visibility="visible";
+						document.querySelector("#opt1").style.visibility="visible";
+						document.querySelector("#opt2").style.visibility="visible";
+					}
 				}
 				if(e.key=="r"||e.key=="F5"){
 					location.reload();
