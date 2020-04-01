@@ -181,6 +181,10 @@ var refInit = {
 		this.pHitBottom = function(whaBot){
 //			console.log("Player Bottom Coll");
 			if(whaBot.type=="coin"){
+				if(!(player.score>=2)){
+					var x = document.querySelector("#coinS");
+					x.play();
+				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
 				whaBot.score=0;
@@ -194,6 +198,10 @@ var refInit = {
 		this.pHitTop = function(whaBot){
 //			console.log("Player Top Coll");
 			if(whaBot.type=="coin"){
+				if(!(player1.score>=2)){
+					var x = document.querySelector("#coinS");
+					x.play();
+				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
 				whaBot.score=0;
@@ -206,6 +214,13 @@ var refInit = {
 		this.pHitLeft = function(whaBot){
 //			console.log("Player Left Coll");
 			if(whaBot.type=="coin"){
+				if(!(player1.score>=2)){
+					var x = document.querySelector("#coinS");
+					x.play();
+				}else{
+					let x = document.querySelector("#rickA");
+					x.play();
+				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
 				whaBot.score=0;
@@ -218,6 +233,10 @@ var refInit = {
 		this.pHitRight = function(whaBot){
 //			console.log("Player Right Coll");
 			if(whaBot.type=="coin"){
+				if(!(player1.score>=2)){
+					var x = document.querySelector("#coinS");
+					x.play();
+				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
 				whaBot.score=0;
