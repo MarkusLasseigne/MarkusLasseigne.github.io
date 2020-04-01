@@ -183,6 +183,7 @@ var refInit = {
 			if(whaBot.type=="coin"){
 				if(!(player.score>=2)){
 					var x = document.querySelector("#coinS");
+					x.volume=0.4;
 					x.play();
 				}
 				whaBot.health=-0;
@@ -200,6 +201,7 @@ var refInit = {
 			if(whaBot.type=="coin"){
 				if(!(player1.score>=2)){
 					var x = document.querySelector("#coinS");
+					x.volume=0.4;
 					x.play();
 				}
 				whaBot.health=-0;
@@ -216,9 +218,11 @@ var refInit = {
 			if(whaBot.type=="coin"){
 				if(!(player1.score>=2)){
 					var x = document.querySelector("#coinS");
+					x.volume=0.4;
 					x.play();
 				}else{
 					let x = document.querySelector("#rickA");
+					x.volume=0.2;
 					x.play();
 				}
 				whaBot.health=-0;
@@ -235,6 +239,7 @@ var refInit = {
 			if(whaBot.type=="coin"){
 				if(!(player1.score>=2)){
 					var x = document.querySelector("#coinS");
+					x.volume=0.4;
 					x.play();
 				}
 				whaBot.health=-0;
