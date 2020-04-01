@@ -224,10 +224,6 @@ var refInit = {
 					var x = document.querySelector("#coinS");
 					x.volume=0.4;
 					x.play();
-				}else if(player1.score>=2){
-					let x = document.querySelector("#rickA");
-					x.volume=0.15;
-					x.play();
 				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;

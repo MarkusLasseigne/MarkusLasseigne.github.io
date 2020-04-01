@@ -109,6 +109,7 @@
 			<input class="P12" type="button" id="fgu" onclick="bDo(this)" value="FunctionGuru">
 			<input class="P13" type="button" id="bpe" onclick="bDo(this)" value="Billypedia">
 			<input class="P14" type="button" id="udp" onclick="bDo(this)" value="Underpants">
+			<input class="P15" type="button" id="lgf" onclick="bDo(this)" value="Lodown">
 			<input class="P16" type="button" id="sss" onclick="bDo(this)" value="SuperSecret">
 		</nav>
 		<iframe class="fClass" id="iFrame" value="Home" src="/home.html" 'SameSite=None' 'Secure'></iframe>
@@ -124,10 +125,10 @@
 			var pSPS=page[17]; var SPStrings="/projects/scratch-pad-strings/index.html"; var pSPL=page[18]; var SPLoops="/projects/scratch-pad-loops/index.html";
 			var pSPC=page[19]; var SPConditions="/projects/scratch-pad-conditionals/index.html"; var ptGuru=page[20]; var TestGuru="/projects/test-guru/index.html";
 			var pfGuru=page[21]; var FunctionGuru="/projects/function-guru/index.html"; var pBillypedia=page[22]; var Billypedia="/projects/billypedia";
-			var pUnder=page[23]; var Underpants="/projects/underpants/index.html";
-			var pSuperSecret=page[24]; var SuperSecret="/projects/majge/index.html";
+			var pUnder=page[23]; var Underpants="/projects/underpants/index.html"; var pLodown=page[24]; var Lodown="/projects/lodown/index.html";
+			var pSuperSecret=page[25]; var SuperSecret="/projects/majge/index.html";
 //			console.log(pHome, pPortfolio, pBouncingBox, pPlatformer, pCircularity, pRuntime, pChangeLog, pSuperSecret, ptGuru, pfGuru);
-			var pFrame=page[25];
+			var pFrame=page[26];
 			var pFstyle=pFrame.style;
 
 			var buttP;
@@ -150,99 +151,104 @@
 						pBouncingBox.className="P4"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home"; break;
+						pLodown.className="P15"; pFrame.src=Home; break;
 				// Switches iframe to Portfolio page
 					case "Portfolio": pHome.className="P2"; pPortfolio.className="P1"; pChangeLog.className="P3";
 						pBouncingBox.className="P4"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Portfolio;	document.title="Portfolio";	break;
+						pLodown.className="P15"; pFrame.src=Portfolio; break;
 				//Switches iframe to ChangeLog page
 					case "ChangeLog": pHome.className="P2"; pPortfolio.className="P3";  pChangeLog.className="P1";
 						pBouncingBox.className="P4"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=ChangeLog; document.title="Change Log"; break;
+						pLodown.className="P15"; pFrame.src=ChangeLog; break;
 				// Switches iframe to Bouncing Box page
 					case "BouncingBox":	pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P1"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=BouncingBox; document.title="Bouncing Box"; break;
+						pLodown.className="P15"; pFrame.src=BouncingBox; break;
 				// Switches iframe to Platformer page
 					case "Platformer": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P1"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Platformer; document.title="Platformer"; break;
+						pLodown.className="P15"; pFrame.src=Platformer; break;
 				// Switches iframe to Circularity page
 					case "Circularity":	pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P1";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Circularity; document.title="Circularity";	break;
+						pLodown.className="P15"; pFrame.src=Circularity; break;
 				// Switches iframe to Runtime page
 					case "Runtime":	pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P1"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Runtime; document.title="Runtime"; break;
+						pLodown.className="P15"; pFrame.src=Runtime; break;
 				//Switches iframe to Scratch Pad Strings page
 					case "SPStrings": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P1"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=SPStrings; document.title="Scratch-Pad-Strings"; break;
+						pLodown.className="P15"; pFrame.src=SPStrings; break;
 				//Switches iframe to Scratch Pad Loops page
 					case "SPLoops":	pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P1"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=SPLoops; document.title="Scratch-Pad-Loops"; break;
+						pLodown.className="P15"; pFrame.src=SPLoops; break;
 				//Switches iframe to Scratch Pad Conditionals page
 					case "SPConditions": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10"; pSPC.className="P1";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=SPConditions; document.title="Scratch-Pad-Loops"; break;
+						pLodown.className="P15"; pFrame.src=SPConditions; break;
 				//Switches iframe to Test Guru page
 					case "TestGuru": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10";	pSPC.className="P11";
 						ptGuru.className="P1"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=TestGuru; document.title="Test Guru"; break;
+						pLodown.className="P15"; pFrame.src=TestGuru; break;
 				//Switches iframe to Function Guru page
 					case "FunctionGuru": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10";	pSPC.className="P11";
 						ptGuru.className="P12"; pfGuru.className="P1"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=FunctionGuru; document.title="Function Guru"; break;
+						pLodown.className="P15"; pFrame.src=FunctionGuru; break;
 				//Switches iframe to Billypedia page
 					case "Billypedia": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4";
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10"; pSPC.className="P11";
 						ptGuru.className="P12"; pfGuru.className="P13"; pBillypedia.className="P1"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Billypedia; document.title="Billypedia"; break;
+						pLodown.className="P15"; pFrame.src=Billypedia; break;
 				//Switches iframe to Underpants page	
 					case "Underpants": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4"; 
 						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
 						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10";	pSPC.className="P11";
 						ptGuru.className="P12"; pfGuru.className="P13"; pBillypedia.className="P14"; pUnder.className="P1";
-						pFrame.value=buttP.value; pFrame.src=Underpants; document.title="Underpants"; break;
+						pLodown.className="P15"; pFrame.src=Underpants; break;
+					case "Lodown": pHome.className="P2"; pPortfolio.className="P3"; pChangeLog.className="P4"; 
+						pBouncingBox.className="P5"; pPlatformer.className="P6"; pCircularity.className="P7";
+						pRuntime.className="P8"; pSPS.className="P9"; pSPL.className="P10";	pSPC.className="P11";
+						ptGuru.className="P12"; pfGuru.className="P13"; pBillypedia.className="P14"; pUnder.className="P15";
+						pLodown.className="P1"; pFrame.src=Lodown; break;
 				//Switches iframe to Project Majg'e page
 					case "SuperSecret":	pHome.className="P1"; pPortfolio.className="P2"; pChangeLog.className="P3";
 						pBouncingBox.className="P4"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pSuperSecret.className="P16"; pFrame.value=buttP.value; pFrame.src=SuperSecret; document.title="Project Majg'e";
-						break;
+						pLodown.className="P15"; pSuperSecret.className="P16"; pFrame.src=SuperSecret; break;
 				//Returns iframe to Home page
 					default: pHome.className="P1"; pPortfolio.className="P2"; pChangeLog.className="P3";
 						pBouncingBox.className="P4"; pPlatformer.className="P5"; pCircularity.className="P6";
 						pRuntime.className="P7"; pSPS.className="P8"; pSPL.className="P9"; pSPC.className="P10";
 						ptGuru.className="P11"; pfGuru.className="P12"; pBillypedia.className="P13"; pUnder.className="P14";
-						pFrame.value=buttP.value; pFrame.src=Home; document.title="Home";
+						pLodown.className="P15"; pFrame.src=Home;
 				}
+				pFrame.value=buttP.value; document.title=buttP.value;
 			}
 //when any input clicked input calls function and inputs itself as the parameters
 //function determines if input pressed is in button position 1 or if its not
