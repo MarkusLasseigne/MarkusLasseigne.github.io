@@ -1,5 +1,13 @@
 [Definitely Work in Progress, including this]
-Select a level button from the index page, activating the selected level's js file (levelc#.js) functions and closes the menu
-the level functions then define and draw the players attributes, shapes and standard properties, along with all other objects in-game
-it then calls the refInit canvas start function with the games properties, initializing based on the game type, defining the canvas size (another possible input, default sets to inner browser resolution),
-then calls the game updater at an interval of 20, giving animation by clearing the board, setting whatever movement, the then calls the update functions of all on the board. 
+[Index]:
+Sets up the file paths of the RefInit, and Level# scripts and the main menu and its scripts.
+Loads any other images or sounds needed for the games.
+[RefInit]:
+Stores the backbone functions to how everything works while remaining modular enough to work with hundreds of game types.
+When the refInit start function is called it first clears the canvas.
+It then sets the canvas context according to the arguments given.
+It then starts an update interval for the inputed update function at either the interval given or default 16.
+[Level#]:
+Stores all the games objects and the games runtime update function.
+Calls to start the RefInit object with its game type, its update function, and its update interval.
+Pushes any colidable object or object that has to update to an updatable array other than the player, and also draws each objects shape.

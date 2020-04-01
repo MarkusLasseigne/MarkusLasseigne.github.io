@@ -137,6 +137,7 @@ var refInit = {
 				ctx.fillRect(this.x, this.y, this.width, this.height);
 			}
 		}
+		/**Collision and Gravity Rules*/
 		this.newPos = function(){
 			this.gravitySpeed+=this.gravity*0.2;
 			this.x+=this.speedX;
@@ -178,10 +179,11 @@ var refInit = {
 					{player1.pHitBottom(statObjs[i]);}//my bottom collide
 			}
 		}
+		/**Player Sides Collision Physics*/
 		this.pHitBottom = function(whaBot){
 //			console.log("Player Bottom Coll");
 			if(whaBot.type=="coin"){
-				if(!(player.score>=2)){
+				if(whaBot.score>0){
 					var x = document.querySelector("#coinS");
 					x.volume=0.4;
 					x.play();
@@ -196,10 +198,11 @@ var refInit = {
 				this.y=whaBot.topPos-this.height;
 			}
 		}
+		/**Player Sides Collision Physics*/
 		this.pHitTop = function(whaBot){
 //			console.log("Player Top Coll");
 			if(whaBot.type=="coin"){
-				if(!(player1.score>=2)){
+				if(whaBot.score>0){
 					var x = document.querySelector("#coinS");
 					x.volume=0.4;
 					x.play();
@@ -213,16 +216,17 @@ var refInit = {
 				this.y=whaBot.bottomPos;
 			}
 		}
+		/**Player Sides Collision Physics*/
 		this.pHitLeft = function(whaBot){
 //			console.log("Player Left Coll");
 			if(whaBot.type=="coin"){
-				if(!(player1.score>=2)){
+				if(whaBot.score>0){
 					var x = document.querySelector("#coinS");
 					x.volume=0.4;
 					x.play();
-				}else{
+				}else if(player1.score>=2){
 					let x = document.querySelector("#rickA");
-					x.volume=0.2;
+					x.volume=0.15;
 					x.play();
 				}
 				whaBot.health=-0;
@@ -234,10 +238,11 @@ var refInit = {
 				this.speedY*=0.98;
 			}
 		}
+		/**Player Sides Collision Physics*/
 		this.pHitRight = function(whaBot){
 //			console.log("Player Right Coll");
 			if(whaBot.type=="coin"){
-				if(!(player1.score>=2)){
+				if(whaBot.score>0){
 					var x = document.querySelector("#coinS");
 					x.volume=0.4;
 					x.play();
@@ -251,6 +256,7 @@ var refInit = {
 				this.speedY*=0.98;
 			}
 		}
+		/**Player Ground Collision*/
 		this.hitBottom = function(){
 			var rockbottom=refInit.canvas.height-this.height*1.83;
 			if(this.y>=rockbottom){
