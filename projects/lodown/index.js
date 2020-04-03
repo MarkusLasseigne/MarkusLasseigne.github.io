@@ -333,4 +333,7 @@ function each(collection, action) {
         }
     }
 }
-module.exports.each = each;
+if((typeof process !== 'undefined') &&
+   (typeof process.versions.node !== 'undefined')) {
+	module.exports.each = each;
+}
