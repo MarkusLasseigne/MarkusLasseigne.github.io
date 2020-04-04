@@ -1,4 +1,5 @@
-[{
+'use strict';
+var data = [{
   "_id": "555e4125afb26872ac1cb814",
   "index": 0,
   "guid": "e7bd5b56-43d3-41cb-9742-aee4408a36c2",
@@ -87,7 +88,7 @@
   "registered": "2014-11-15T07:22:23 +06:00",
   "latitude": 70.637542,
   "longitude": 38.023956,
-  "tags": ["laborum", "esse", "occaecat", "id", "ea", "non", "ea"],
+  "tags": ["laborum", "esse", "occaecat", "id", "ea", "non"],
   "friends": [{
     "id": 0,
     "name": "Cheryl Kent"
@@ -227,7 +228,7 @@
   "registered": "2015-03-05T19:47:37 +06:00",
   "latitude": 72.253186,
   "longitude": -23.777045,
-  "tags": ["dolore", "Lorem", "velit", "pariatur", "aliqua", "veniam", "aute"],
+  "tags": ["dolore", "Lorem", "velit", "pariatur", "aliqua", "veniam"],
   "friends": [{
     "id": 0,
     "name": "Torres Nguyen"
@@ -250,10 +251,10 @@
   "isActive": true,
   "balance": "$1,253.63",
   "picture": "http://placehold.it/32x32",
-  "age": 22,
+  "age": 23,
   "eyeColor": "green",
   "name": "Doris Smith",
-  "gender": "transgender",
+  "gender": "non-binary",
   "company": "BLEENDOT",
   "email": "dorissmith@bleendot.com",
   "phone": "+1 (976) 432-3644",
@@ -279,3 +280,9 @@
   "greeting": "Hello, Doris Smith! You have 10 unread messages.",
   "favoriteFruit": "banana"
 }]
+
+if((typeof process !== 'undefined') &&
+   (typeof process.versions.node !== 'undefined')) {
+	// here, export any references you need for tests //
+	module.exports = data;
+}
