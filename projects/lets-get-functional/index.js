@@ -16,9 +16,30 @@
 *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
 */
 
+/** _.identity();
+** Input: A value.
+** Objectives: Return a value unchanged.
+** Output: Input value returned. */
+
+/** _.typeOf();
+** Input: A value.
+** Objectives: Return string of the true data type of a value.
+** Output: Returned string of inputted value type. */
+
+/** _.first();
+** Arguments: (An array, A number)
+** Objectives:
+*   1) If <array> is not an array, return []
+*   2) If <number> is not given or not a number, return just the first element in <array>.
+*   3) Otherwise, return the first <number> items of <array>
+** Edge Cases:
+*   1) What if <number> is negative?
+*   2) What if <number> is greater than <array>.length?
+*/
+
 /** maleCount();
-** Objective: Find the number of male customers.
 ** Input: An Array.
+** Objective: Find the number of male customers.
 ** Output: A Number.
 ** Constraints: use _.filter(); */
 var maleCount = function(arr){
@@ -31,8 +52,8 @@ var maleCount = function(arr){
 };
 
 /** femaleCount();
-** Objective: Find the number of female customers.
 ** Input: An Array.
+** Objective: Find the number of female customers.
 ** Output: A Number.
 ** Constraints: use _.reduce() */
 var femaleCount = function(arr){
@@ -45,8 +66,8 @@ var femaleCount = function(arr){
 };
 
 /** oldestCustomer();
-** Objective: Find the oldest customer's name.
 ** Input: An Array.
+** Objective: Find the oldest customer's name.
 ** Output: A String. */
 var oldestCustomer = function(arr){
 	let ages = _.pluck(arr,"age");
@@ -57,8 +78,8 @@ var oldestCustomer = function(arr){
 };
 
 /** youngestCustomer();
-** Objective: Find the youngest customer's name.
 ** Input: An Array.
+** Objective: Find the youngest customer's name.
 ** Output: A String. */
 var youngestCustomer = function(arr){
 	let ages = _.pluck(arr,"age");
@@ -68,12 +89,12 @@ var youngestCustomer = function(arr){
 };
 
 /** averageBalance();
-** Objective: Find the average balance of all customers.
 ** Input: An Array.
+** Objective: Find the average balance of all customers.
 ** Output: A Number. */
 var averageBalance = function(arr){
 	let bals = _.pluck(arr,"balance");
-	let avg = 0;
+	let avg=0;
 	for(let i=0;i<bals.length;i++){
 		var bal = Number(bals[i].replace(/[^0-9.]+/g, ""));
 		avg+=bal;
@@ -82,40 +103,74 @@ var averageBalance = function(arr){
 };
 
 /** firstLetterCount();
-** Objective: Find how many customer's names begin with a given letter.
 ** Input: An Array, A Letter.
+** Objective: Find how many customer's names begin with a given letter.
 ** Output: A Number. */
 var firstLetterCount = function(arr, letter){
-
+	let names = _.pluck(arr, "name");
+	let tot=0;
+	for(let i=0;i<names.length;i++){
+		let nameC = names[i];
+		if(nameC[0]===letter||nameC[0]===letter.toUpperCase()){tot+=1;}
+	}
+	return tot;
 };
 
 /** friendFirstLetterCount();
-** Objective: Find how many friends of a given customer have names that starts with a given letter.
 ** Input: An Array, A Customer, A Letter.
+** Objective: Find how many friends of a given customer have names that starts with a given letter.
 ** Output: A Number. */
 var friendFirstLetterCount = function(arr, customer, letter){
-
+	let names = _.pluck(arr, "name");
+	let cIndex=0;
+	let tot=0;
+	for(let i=0;i<names.length;i++){
+		if(names[i]===customer){cIndex=i;}
+	}
+	let cusFrens = arr[cIndex].friends;
+	let frens = _.pluck(cusFrens, "name");
+	for(let i=0;i<frens.length;i++){
+		let fNameC = frens[i];
+		if(fNameC[0]===letter||fNameC[0]===letter.toUpperCase()){tot+=1;}
+	}
+	return tot;
 };
 
 /** friendsCount();
-** Objective: Find the customers' names that have a given customer's name in their friends list.
 ** Input: An Array, A Name.
+** Objective: Find the customers' names that have a given customer's name in their friends list.
 ** Output: An Array. */
 var friendsCount = function(arr, name){
-
+	let rArr=[];
+	let uNames = _.pluck(arr, "name");
+	let frArr = _.pluck(arr, "friends");
+	let tempI = 0;
+	for(let i=0;i<frArr.length;i++){
+		let infArr = _.pluck(frArr[i], "name");
+		for(let I=0;I<infArr.length;I++){
+			if(name===infArr[I]){
+				tempI=i;
+				rArr.push(uNames[tempI]);
+			}
+		}
+	}
+	return rArr;
 };
 
 /** topThreeTags();
-** Objective: Find the top three most common tags among all customers' associated tags.
 ** Input: An Array.
+** Objective: Find the top three most common tags among all customers' associated tags.
 ** Output: An Array. */
 var topThreeTags = function(arr){
-
+	let tags = _.pluck(arr, "tags");
+	for(let i=0;i<tags.length;i++){
+		
+	}
 };
 
 /** genderCount();
-** Objective: Create a summary of genders.
 ** Input: An Array.
+** Objective: Create a summary of genders.
 ** Output: An object of the genders and their count.
 ** Constraints: use _.reduce(); */
 var genderCount = function(arr){
