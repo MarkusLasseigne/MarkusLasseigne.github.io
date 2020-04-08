@@ -6,34 +6,24 @@
 var _ = {};
 /** START OF OUR LIBRARY! * Implement each function below it's instructions */
 
-/** _.identity
-** Arguments: (Any value)
-** Objectives:
-*   1) Returns <value> unchanged
-*/
+/** _.identity();
+** Input: A value.
+** Objectives: Return a value unchanged.
+** Output: Input value returned. */
 _.identity = function(valIn){return valIn;};
-/** _.typeOf
-** Arguments: (Any value)
-** Objectives:
-*   1) Return the type of <value> as a string
-*       Types are one of:
-*          - "string"
-*          - "array"
-*          - "object"
-*          - "undefined"
-*          - "number"
-*          - "boolean"
-*          - "null"
-*          - "function"
-*/
+
+/** _.typeOf();
+** Input: A value.
+** Objectives: Return string of the true data type of a value.
+** Output: Returned string of inputted value type. */
 _.typeOf = function(valIn){
 	if(valIn===undefined){return "undefined";}
 	else if(valIn===null){return "null";}
 	else if(Array.isArray(valIn)){return "array";}
 	else{return typeof valIn;}
 };
-/** _.first
-** Arguments: (An array, A number)
+/** _.first();
+** Input: An array, A number.
 ** Objectives:
 *   1) If <array> is not an array, return []
 *   2) If <number> is not given or not a number, return just the first element in <array>.
@@ -51,8 +41,8 @@ _.first = function(arr, num){
 	return tempArr;
 };
 
-/** _.last
-** Arguments: (An array, A number)
+/** _.last();
+** Input: An array, A number.
 ** Objectives:
 *   1) If <array> is not an array, return []
 *   2) If <number> is not given or not a number, return just the last element in <array>.
@@ -70,8 +60,8 @@ _.last = function(arr, num){
 	return tempArr;
 };
 
-/** _.indexOf
-** Arguments: (An array, A value)
+/** _.indexOf();
+** Input: An array, A value.
 ** Objectives:
 *   1) Return the index of <array> that is the first occurrance of <value>
 *   2) Return -1 if <value> is not in <array>
@@ -88,8 +78,8 @@ _.indexOf = function(arr, val){
 	if(tempArr.length===0){return -1;}
 };
 
-/** _.contains
-** Arguments: (An array, A value)
+/** _.contains():
+** Input: An array, A value.
 ** Objectives:
 *   1) Return true if <array> contains <value>
 *   2) Return false otherwise
@@ -103,15 +93,9 @@ _.contains = function(arr, val){
 	return false;
 };
 
-/** _.each
-** Arguments: (A collection, A function)
-** Objectives:
-*   1) if <collection> is an array, call <function> once for each element
-*      with the arguments:
-*         the element, it's index, <collection>
-*   2) if <collection> is an object, call <function> once for each property
-*      with the arguments:
-*         the property's value, it's key, <collection>
+/** _.each();
+** Input: A collection, A function.
+** Objectives: Take any collection and call the given function with each element in the collection.
 */
 _.each = function(coll, fun){
 	if(Array.isArray(coll)){
@@ -121,8 +105,8 @@ _.each = function(coll, fun){
 	}
 };
 
-/** _.unique
-** Arguments: (An array)
+/** _.unique();
+** Input: An array.
 ** Objectives:
 *   1) Return a new array of all elements from <array> with duplicates removed
 *   2) Use _.indexOf() from above
@@ -134,7 +118,7 @@ _.unique = function(arr){
 	}return tempArr;
 };
 
-/** _.filter
+/** _.filter();
 ** Arguments: (An array, A function)
 ** Objectives:
 *   1) call <function> for each element in <array> passing the arguments:
@@ -151,7 +135,7 @@ _.filter = function(arr, fun){
 	}return tempArr;
 };
 
-/** _.reject
+/** _.reject();
 ** Arguments: (An array, A function)
 ** Objectives:
 *   1) call <function> for each element in <array> passing the arguments:
@@ -166,7 +150,7 @@ _.reject = function(arr, fun){
 	}return tempArr;
 };
 
-/** _.partition
+/** _.partition();
 ** Arguments: (An array, A function)
 ** Objectives:
 *   1) Call <function> for each element in <array> passing it the arguments:
@@ -187,7 +171,7 @@ _.partition = function(arr, fun){
 	return kTArr;
 };
 
-/** _.map
+/** _.map();
 ** Arguments: (A collection, A function)
 ** Objectives:
 *   1) call <function> for each element in <collection> passing the arguments:
@@ -207,7 +191,7 @@ _.map = function(coll, fun){
 	}return tempArr;
 };
 
-/** _.pluck
+/** _.pluck();
 ** Arguments: (An array of objects, A property)
 ** Objectives:
 *   1) Return an array containing the value of <property> for every element in <array>
@@ -222,7 +206,7 @@ _.pluck = function(arr,prop){
 	return tempArr;
 };
 
-/** _.every
+/** _.every();
 ** Arguments: (A collection, A function)
 ** Objectives:
 *   1) Call <function> for every element of <collection> with the paramaters:
@@ -252,7 +236,7 @@ _.every = function(coll, fun){
 	return rBool;
 };
 
-/** _.some
+/** _.some();
 ** Arguments: (A collection, A function)
 ** Objectives:
 *   1) Call <function> for every element of <collection> with the paramaters:
@@ -282,7 +266,7 @@ _.some = function(coll, fun){
 	return rBool;
 };
 
-/** _.reduce
+/** _.reduce();
 ** Arguments: (An array, A function, A seed)
 ** Objectives:
 *   1) Call <function> for every element in <collection> passing the arguments:
@@ -302,7 +286,7 @@ _.reduce = function(arr, fun, seed){
 	return last;
 };
 
-/** _.extend
+/** _.extend();
 ** Arguments: (An Object, An Object, ...Possibly more objects)
 ** Objectives:
 *   1) Copy properties from <object 2> to <object 1>
