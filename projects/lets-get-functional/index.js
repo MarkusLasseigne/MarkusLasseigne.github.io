@@ -162,10 +162,18 @@ var friendsCount = function(arr, name){
 ** Objective: Find the top three most common tags among all customers' associated tags.
 ** Output: An Array. */
 var topThreeTags = function(arr){
-	let tags = _.pluck(arr, "tags").sort();
-	for(let i=0;i<tags.length;i++){
-		
-	}
+	let tags = _.pluck(arr, "tags");
+	let count={}; let tArr=[]; let fArr=[];
+	tags.forEach(function(i){i.forEach(function(i){tArr.push(i);});});
+	tArr.sort();
+	let high=0;
+	tArr.forEach(function(i){
+		count[i]=(count[i]||0)+1;
+		if(count[i]>=high){high=count[i];}
+		if(high===count[i]){fArr.push(i);}
+	});
+	let ufArr = _.unique(fArr);
+	return ufArr;
 };
 
 /** genderCount();
@@ -174,7 +182,10 @@ var topThreeTags = function(arr){
 ** Output: An object of the genders and their count.
 ** Constraints: use _.reduce(); */
 var genderCount = function(arr){
-
+	let g = _.pluck(arr,"gender");
+	let gO={};
+	g.forEach(function(i){gO[i]=(gO[i]||0)+1;});
+	return gO;
 };
 
 //////////////////////////////////////////////////////////////////////
