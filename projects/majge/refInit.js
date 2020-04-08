@@ -10,15 +10,33 @@ clearArc = function(cotx, x, y, radius, color){
 	cotx.fill();
 };
 function movement(){
-	if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;}
-	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
-	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
-	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
-	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
-	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
-	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
-	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
-	if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
+	for(let i=0;i<arguments.length;i++){
+		switch(arguments[i]){
+			case "sL=sR":
+				if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;};
+			case "arrows":
+				if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
+				if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
+				if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
+				if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
+				;
+			case "wasd":
+				if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
+				if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
+				if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
+				if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
+				;
+		}
+	}
+//	if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;}
+//	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
+//	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
+//	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
+//	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
+//	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
+//	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
+//	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
+//	if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
 }
 var refInit = {
 	canvas: document.querySelector("#daCan"),
