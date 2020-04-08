@@ -162,7 +162,7 @@ var friendsCount = function(arr, name){
 ** Objective: Find the top three most common tags among all customers' associated tags.
 ** Output: An Array. */
 var topThreeTags = function(arr){
-	let tags = _.pluck(arr, "tags");
+	let tags = _.pluck(arr, "tags").sort();
 	for(let i=0;i<tags.length;i++){
 		
 	}
