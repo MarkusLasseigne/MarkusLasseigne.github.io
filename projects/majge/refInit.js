@@ -9,34 +9,32 @@ clearArc = function(cotx, x, y, radius, color){
 	cotx.arc(this.x, this.y, this.width, 0, 2*Math.PI, false);
 	cotx.fill();
 };
-function movement(){
+function movement(){//"sL=sR"
 	for(let i=0;i<arguments.length;i++){
 		switch(arguments[i]){
 			case "sL=sR":
-				if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;};
+				if(arguments[0].x>=cWidth){arguments[0].x=0-arguments[0].width;}
+				else if(arguments[0].x+arguments[0].width<0){arguments[0].x=cWidth;}
+				break;
+			case "sLB":if(arguments[0].x<0){arguments[0].x=0;} break;
+			case "sRB":if(arguments[0].x>=cWidth-arguments[0].width){arguments[0].x=cWidth-arguments[0].width;} break;
+			case "sBB":if(arguments[0].y>=cHeight-arguments[0].height){arguments[0].y=cHeight-arguments[0].height;} break;
+			case "sUB":if(arguments[0].y<0){arguments[0].y=0;} break;
+			case "space":if(refInit.keys && refInit.keys[" "]){arguments[0].speedY=-8;} break;
 			case "arrows":
-				if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
-				if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
-				if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
-				if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
-				;
+				if(refInit.keys && refInit.keys["ArrowLeft"]){arguments[0].speedX=-2;}
+				if(refInit.keys && refInit.keys["ArrowRight"]){arguments[0].speedX=2;}
+				if(refInit.keys && refInit.keys["ArrowDown"]){arguments[0].speedY=0.5; arguments[0].speedX/=4;}
+				if(refInit.keys && refInit.keys["ArrowUp"]){arguments[0].speedY=-4.6;}
+				break;
 			case "wasd":
-				if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
-				if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
-				if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
-				if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
-				;
+				if(refInit.keys && refInit.keys["a"]){arguments[0].speedX=-2.2;}
+				if(refInit.keys && refInit.keys["d"]){arguments[0].speedX=2.2;}
+				if(refInit.keys && refInit.keys["s"]){arguments[0].speedY=0.5; arguments[0].speedX/=4;}
+				if(refInit.keys && refInit.keys["w"]){arguments[0].speedY=-4.6;}
+				break;
 		}
 	}
-//	if(player1.x>=cWidth){player1.x=0-player1.width;}else if(player1.x+player1.width<0){player1.x=cWidth;}
-//	if(refInit.keys && refInit.keys["ArrowLeft"]){player1.speedX=-2;}// <
-//	if(refInit.keys && refInit.keys["a"]){player1.speedX=-2;}// a
-//	if(refInit.keys && refInit.keys["ArrowRight"]){player1.speedX=2;}// >
-//	if(refInit.keys && refInit.keys["d"]){player1.speedX=2;}// d
-//	if(refInit.keys && refInit.keys["ArrowDown"]){player1.speedY=0.5; player1.speedX/=4;}// v
-//	if(refInit.keys && refInit.keys["s"]){player1.speedY=0.5; player1.speedX/=4;}// s
-//	if(refInit.keys && refInit.keys["ArrowUp"]){player1.speedY=-4.6;}// ^
-//	if(refInit.keys && refInit.keys["w"]){player1.speedY=-4.6;}// w
 }
 var refInit = {
 	canvas: document.querySelector("#daCan"),
@@ -49,11 +47,11 @@ var refInit = {
 			refInit.keys[e.key] = (e.type == "keydown");
 //			console.log(e);
 			optT(e);
-		})
+		});
 		window.addEventListener('keyup', function(e){
 			refInit.keys[e.key] = (e.type == "keydown");
 			optT(e);
-		})
+		});
 		if(dimention=="2d"){
 			if(direction=="down"){
 				var cWidth = this.canvas.width=dW || window.innerWidth;
@@ -111,11 +109,11 @@ var refInit = {
 		this.update = function(){
 			if(this.health<=0){return;}
 			ctx=refInit.context;
-			if(this.type=="static"){ 
+			if(this.type==="static"){ 
 				ctx.fillStyle=color;
 				ctx.rotate(this.rotation);
 				ctx.fillRect(this.x, this.y, this.width, this.height);
-			}else if(this.type=="player"){//standard static player
+			}else if(this.type==="player"){//standard static player
 				ctx.fillStyle="rgba(0,0,0,0.08)";
 				shad = ctx.fillRect(this.x, this.y+20, this.width, this.height*0.888);
 				ctx.fillStyle=color;
@@ -127,7 +125,7 @@ var refInit = {
 				lLeg = ctx.fillRect(this.x, this.y+72, this.width*0.485, this.height*0.4);
 				rLeg = ctx.fillRect(this.x+20.5, this.y+72, this.width*0.485, this.height*0.4);
 				this.newPos();
-			}else if(this.type=="pict"){//movable picture *doesn't work*
+			}else if(this.type==="pict"){//movable picture *doesn't work*
 				var imG = new Image();
 				imG.src=this.iSrc;
 				imG.id="imgH";
@@ -136,20 +134,23 @@ var refInit = {
 				ctx.fillStyle=color;
 				ctx.width=this.width/2;
 				ctx.height=this.height/2;
-				if(this.text){
-
-				}
 				this.newPos();
-			}else if(this.type=="sText"){//player score text
+			}else if(this.type==="text"){//text
+				ctx.font=(((this.height+this.width)/2))+"px "+font;
+				ctx.fillStyle=color;
+				this.text=text;
+				ctx.fillText(this.text, this.x-(this.width*2), this.y-(this.height*2));
+			}else if(this.type==="sText"){//player score text
 //				console.log(this.text);
 				ctx.font= (this.width/3.4)+"px "+font;
 				ctx.fillStyle=color;
 				this.text="Score: "+player1.score;
 				ctx.fillText(this.text, this.x, this.y+12);
-			}else if(this.type=="coin"){//coin
+			}else if(this.type==="coin"){//coin
 				this.score=1;
+				let radi=(width*height)/((width+height)*0.99899);
 				ctx.fillStyle=color;
-				clearArc(ctx, this.x+this.width*0.475, this.y, this.width*0.475, color);
+				clearArc(ctx, this.x+radi, this.y+radi*0.8, radi, color);
 			}else{
 				ctx.fillStyle=color;
 				ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -158,7 +159,7 @@ var refInit = {
 		/**Collision and Gravity Rules*/
 		this.newPos = function(){
 			this.gravitySpeed+=this.gravity*0.2;
-			this.x+=this.speedX;
+			this.x+=this.speedX*0.9;
 			this.y+=this.speedY+this.gravitySpeed;
 			this.hitBottom();
 			for(var i=0; i<statObjs.length; i+=1){
@@ -197,14 +198,24 @@ var refInit = {
 					{player1.pHitBottom(statObjs[i]);}//my bottom collide
 			}
 		}
+		/**Player Ground Collision*/
+		this.hitBottom = function(){
+			var rockbottom=refInit.canvas.height-this.height*1.83;
+			if(this.y>=rockbottom){
+				this.gravitySpeed=0;
+				this.speedY=0;
+				this.speedX/=4;
+				this.y=rockbottom;
+			}
+		}
 		/**Player Sides Collision Physics*/
 		this.pHitBottom = function(whaBot){
 //			console.log("Player Bottom Coll");
 			if(whaBot.type=="coin"){
 				if(whaBot.score>0){
-					var x = document.querySelector("#coinS");
-					x.volume=0.4;
-					x.play();
+					var c = document.querySelector("#coinS");
+					c.volume=0.4;
+					c.play();
 				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
@@ -212,7 +223,7 @@ var refInit = {
 			}else{
 				this.gravitySpeed=0;
 				this.speedY=0;
-				this.speedX=0;
+				this.speedX/=4;
 				this.y=whaBot.topPos-this.height;
 			}
 		}
@@ -221,9 +232,9 @@ var refInit = {
 //			console.log("Player Top Coll");
 			if(whaBot.type=="coin"){
 				if(whaBot.score>0){
-					var x = document.querySelector("#coinS");
-					x.volume=0.4;
-					x.play();
+					var c = document.querySelector("#coinS");
+					c.volume=0.4;
+					c.play();
 				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
@@ -239,9 +250,9 @@ var refInit = {
 //			console.log("Player Left Coll");
 			if(whaBot.type=="coin"){
 				if(whaBot.score>0){
-					var x = document.querySelector("#coinS");
-					x.volume=0.4;
-					x.play();
+					var c = document.querySelector("#coinS");
+					c.volume=0.4;
+					c.play();
 				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
@@ -257,9 +268,9 @@ var refInit = {
 //			console.log("Player Right Coll");
 			if(whaBot.type=="coin"){
 				if(whaBot.score>0){
-					var x = document.querySelector("#coinS");
-					x.volume=0.4;
-					x.play();
+					var c = document.querySelector("#coinS");
+					c.volume=0.4;
+					c.play();
 				}
 				whaBot.health=-0;
 				player1.score+=whaBot.score;
@@ -268,16 +279,6 @@ var refInit = {
 				this.x=whaBot.leftPos-this.width;
 				this.speedX=0;
 				this.speedY*=0.98;
-			}
-		}
-		/**Player Ground Collision*/
-		this.hitBottom = function(){
-			var rockbottom=refInit.canvas.height-this.height*1.83;
-			if(this.y>=rockbottom){
-				this.gravitySpeed=0;
-				this.speedY=0;
-				this.speedX=0;
-				this.y=rockbottom;
 			}
 		}
 	}
