@@ -9,89 +9,26 @@ clearArc = function(cotx, x, y, radius, color){
 	cotx.arc(this.x, this.y, this.width, 0, 2*Math.PI, false);
 	cotx.fill();
 };
-function movement(){//"sL=sR"
-	for(let i=0;i<arguments.length;i++){
-		switch(arguments[i]){
-			case "sL=sR":
-				if(arguments[0].x>=cWidth){arguments[0].x=0-arguments[0].width;}
-				else if(arguments[0].x+arguments[0].width<0){arguments[0].x=cWidth;}
-				break;
-			case "sLB":if(arguments[0].x<0){arguments[0].x=0;} break;
-			case "sRB":if(arguments[0].x>=cWidth-arguments[0].width){arguments[0].x=cWidth-arguments[0].width;} break;
-			case "sBB":if(arguments[0].y>=cHeight-arguments[0].height){arguments[0].y=cHeight-arguments[0].height;} break;
-			case "sUB":if(arguments[0].y<0){arguments[0].y=0;} break;
-			case "space":if(refInit.keys && refInit.keys[" "]){arguments[0].speedY=-8;} break;
-			case "arrows":
-				if(refInit.keys && refInit.keys["ArrowLeft"]){arguments[0].speedX=-2;}
-				if(refInit.keys && refInit.keys["ArrowRight"]){arguments[0].speedX=2;}
-				if(refInit.keys && refInit.keys["ArrowDown"]){arguments[0].speedY=0.5; arguments[0].speedX/=4;}
-				if(refInit.keys && refInit.keys["ArrowUp"]){arguments[0].speedY=-4.6;}
-				break;
-			case "wasd":
-				if(refInit.keys && refInit.keys["a"]){arguments[0].speedX=-2.2;}
-				if(refInit.keys && refInit.keys["d"]){arguments[0].speedX=2.2;}
-				if(refInit.keys && refInit.keys["s"]){arguments[0].speedY=0.5; arguments[0].speedX/=4;}
-				if(refInit.keys && refInit.keys["w"]){arguments[0].speedY=-4.6;}
-				break;
-		}
-	}
-}
+
 var refInit = {
 	canvas: document.querySelector("#daCan"),
-	start: function(dimention, direction, ufunct, int, dW, dH){
-		clearInterval(this.interval);
-		int=(null)? 16:int;
-		window.addEventListener('keydown', function(e){
-			e.preventDefault();
-			refInit.keys = (refInit.keys || []);
-			refInit.keys[e.key] = (e.type == "keydown");
-//			console.log(e);
-			optT(e);
-		});
-		window.addEventListener('keyup', function(e){
-			refInit.keys[e.key] = (e.type == "keydown");
-			optT(e);
-		});
-		if(dimention=="2d"){
-			if(direction=="down"){
-				var cWidth = this.canvas.width=dW || window.innerWidth;
-				this.canvas.height=dH || window.innerHeight;
-				this.context=this.canvas.getContext("2d");
-				this.frameNo=0;
-				console.log("2d down-facing time!");
-				this.interval=setInterval(ufunct, int);
-			}else if(direction=="left"){
-				this.canvas.width=dW || window.innerWidth;
-				this.canvas.height=dH || window.innerHeight;
-				this.context=this.canvas.getContext("2d");
-				this.frameNo=0;
-				console.log("2d left-on time!");
-				this.interval=setInterval(ufunct, int);
-			}else if(direction=="forward"){
-				this.canvas.width=dW || window.innerWidth;
-				this.canvas.height=dH || window.innerHeight;
-				this.context=this.canvas.getContext("2d");
-				this.frameNo=0;
-				console.log("2d first person time!");
-				this.interval=setInterval(ufunct, int);
-			}
-		}else if(dimention=="3d"){
-		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
-		}else{console.warn("No Dimention Found");}
-	},
-	stop: function(){clearInterval(this.interval); return window.reload();},  
-	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); frI=(refInit.frameNo>=60)? refInit.frameNo=1:refInit.frameNo+=1;},
-	/** * refInit.draw( type | width | height | x-position | y-position | color | image-src | text | text-font ) */
+	/*** refInit.draw(9);
+	 ** (type|width|height|x-position|y-position|color|image-src|text|text-font)
+	 */
 	draw: function(type, width, height, x, y, color, iSrc, text, font){
-		this.type=type;
-		this.width=width;
-		this.height=height;
-		this.x=x;
-		this.leftPos=x;
-		this.rightPos=this.leftPos+this.width;
-		this.y=y;
-		this.topPos=y;
-		this.bottomPos=this.topPos+this.height;
+	/**Positional*/
+		this.width=width||this.width;
+		this.height=height||this.height;
+		this.x=this.x||x;
+		this.y=this.y||y;
+		this.xL=x||this.x;
+		this.yT=y||this.y;
+		this.xR=this.xL+this.width;
+		this.yB=this.yT+this.height;
+		this.rotation=0;
+
+	/**Statistical*/
+		this.type=type||this.type;
 		this.iSrc=iSrc;
 		this.text=text;
 		this.font=font;
@@ -99,17 +36,177 @@ var refInit = {
 		this.speedY=0;
 		this.gravity=0;
 		this.gravitySpeed=0;
-		this.rotation=0;
 		this.health=100;
 		this.score=0;
 
+		this.move = function(){
+			for(let i=0;i<arguments.length;i++){
+				switch(arguments[i]){
+					case "sL=sR":
+						if(this.x>=cWidth){this.x=0-this.width;}
+						else if(this.x+this.width<0){this.x=cWidth;}
+						break;
+					case "sLB":if(this.x<0){this.x=0;} break;
+					case "sRB":if(this.x>=cWidth-this.width){this.x=cWidth-this.width;} break;
+					case "sBB":if(this.y>=cHeight-this.height){this.y=cHeight-this.height;} break;
+					case "sUB":if(this.y<0){this.y=0;} break;
+					case "space":if(refInit.keys && refInit.keys[" "]){this.speedY=-8;} break;
+					case "arrows":
+						if(refInit.keys && refInit.keys["ArrowLeft"]){this.speedX=-2;}
+						if(refInit.keys && refInit.keys["ArrowRight"]){this.speedX=2;}
+						if(refInit.keys && refInit.keys["ArrowDown"]){this.speedY=0.5; this.speedX/=4;}
+						if(refInit.keys && refInit.keys["ArrowUp"]){this.speedY=-4.6;}
+						break;
+					case "wasd":
+						if(refInit.keys && refInit.keys["a"]){this.speedX=-2.2;}
+						if(refInit.keys && refInit.keys["d"]){this.speedX=2.2;}
+						if(refInit.keys && refInit.keys["s"]){this.speedY=0.5; this.speedX/=4;}
+						if(refInit.keys && refInit.keys["w"]){this.speedY=-4.6;}
+						break;
+				}
+			}
+		},
+		/**Player Ground Collision*/
+		this.hitBottom = function(){
+			var rockbottom=refInit.canvas.height-this.height*1.83;
+			if(this.y>=rockbottom){
+				this.gravitySpeed=0;
+				this.speedY=0;
+				this.speedX/=4;
+				this.y=rockbottom;
+			}
+		};
+
+		this.collide = function(player, obj){
+			if(player.xL<=obj.xR&&!(player.xL<obj.xR-10)&&!(player.xL>obj.xR)&&(player.yT<=obj.yB-2)&&(player.yB>=obj.yT+2)){
+				console.log("Player Collided Left");
+				this.x=obj.xR;
+			}
+			else if(player.xR>=obj.xL&&!(player.xR>obj.xL+10)&&!(player.xR<obj.xL)&&(player.yT<=obj.yB-2)&&(player.yB>=obj.yT+2)){
+				console.log("Player Collided Right");
+				player.x=obj.xL-player.width;
+			}
+			if(player.yT<=obj.yB&&!(player.yT<=obj.yB-1)&&!(player.yT>obj.yB)&&(player.xR>=obj.xL+2)&&(player.xL<=obj.xR-2)){
+				console.log("Player Collided Top");
+				this.y=obj.yB;
+				this.speedY/4;
+			}
+			else if(player.yB>=obj.yT&&!(player.yB>=obj.yT+1)&&!(player.yB<=obj.yT)&&(player.xR>=obj.xL+2)&&(player.xL<=obj.xR-2)){
+				console.log("Player Collided Bottom");
+				this.gravitySpeed=0;
+				this.speedY=0;
+				this.y=(obj.yT-this.height);
+			}
+		};
+		//if(side deep in a side){push side out & if(side at a side){set side at side}}
+		//if(side at side){if(side deep in side){push side out} and set side at side}
+		/**Collision and Gravity Rules*/
+		this.newPos = function(){
+			this.gravitySpeed+=this.gravity*0.2;
+			this.x+=this.speedX*0.99;
+			this.y+=(this.speedY+this.gravitySpeed);
+			this.xL=this.x;
+			this.yT=this.y;
+			this.xR=this.xL+this.width;
+			this.yB=this.yT+this.height;
+			for(var i=0;i<statObjs.length;i+=1){
+				var objC=statObjs[i];
+				var myWidthH=player1.width/1.5; var myHeightH=player1.height/1.5;
+				if(this.xL<=objC.xR //everything left of myLeft
+				&& !(this.xL<objC.xR-(objC.width/2))//nothing left of myLeft
+				&& !(this.xL>objC.xR) //nothing right of myLeft
+				&& (this.yT<=objC.yB-5)
+				&& (this.yB>=objC.yT+5)){
+					if(objC.type==="coin"){
+						if(objC.score>0){
+							var c = document.querySelector("#coinS");
+							c.volume=0.4;
+							c.play();
+						}
+						objC.health=-0;
+						this.score+=objC.score;
+						objC.score=0;
+					}else{
+						this.x+=(Math.abs(this.speedX)*3.75);
+						this.gravitySpeed*=1.004;
+						this.speedX=0;
+						this.collide(this, objC);
+					}
+				}//my left collide
+				else if(this.xR>=objC.xL//everything right of myRight
+				&& !(this.xR>objC.xL+(objC.width/2))//nothing right of myRight
+				&& !(this.xR<objC.xL)//nothing left of myRight
+				&& (this.yT<=objC.yB-5)
+				&& (this.yB>=objC.yT+5)){
+					if(objC.type==="coin"){
+						if(objC.score>0){
+							var c = document.querySelector("#coinS");
+							c.volume=0.4;
+							c.play();
+						}
+						objC.health=-0;
+						this.score+=objC.score;
+						objC.score=0;
+					}else{
+						this.x-=Math.abs(this.speedX)*3.75;
+						this.gravitySpeed*=1.004;
+						this.speedX=0;
+						this.collide(this, objC);
+					}
+				}//my right collide
+				if(this.yT<objC.yB//everything above myTop
+				&& !(this.yT<objC.yB-(objC.height/2))//nothing above myTop
+				&& !(this.yT>objC.yB)//nothing below myTop
+				&& (this.xR>=objC.xL+5)
+				&& (this.xL<=objC.xR-5)){
+					if(objC.type==="coin"){
+						if(objC.score>0){
+							var c = document.querySelector("#coinS");
+							c.volume=0.4;
+							c.play();
+						}
+						objC.health=-0;
+						this.score+=objC.score;
+						objC.score=0;
+					}else{
+						this.speedX/=2;
+						this.y+=(Math.abs(this.speedY)*2)+this.gravitySpeed;
+
+						this.collide(this, objC);
+					}
+				}//my top collide
+				else if(this.yB>objC.yT//everything below myBottom
+				&& !(this.yB>objC.yT+(objC.height/2))//nothing below myBottom
+				&& !(this.yB<objC.yT)//nothing above myBottom
+				&& (this.xR>=objC.xL+5)
+				&& (this.xL<=objC.xR-5)){
+					if(objC.type==="coin"){
+						if(objC.score>0){
+							var c = document.querySelector("#coinS");
+							c.volume=0.4;
+							c.play();
+						}
+						objC.health=-0;
+						this.score+=objC.score;
+						objC.score=0;
+					}else{
+						this.gravitySpeed=0;
+						this.y-=Math.abs(this.speedY)+(this.gravity*0.2);
+						this.speedX=this.speedX*0.5;
+						this.speedY=0;
+						this.collide(this, objC);
+					}
+				}//my bottom collide
+			}
+			this.hitBottom();
+		};
 		/*** fillStyle( color | gradient | pattern )
 		*  * fillRect( x | y | width | height ) 
 		*  * clearArc( context | x | y | radius | color ) */
 		this.update = function(){
 			if(this.health<=0){return;}
 			ctx=refInit.context;
-			if(this.type==="static"){ 
+			if(this.type==="static"){
 				ctx.fillStyle=color;
 				ctx.rotate(this.rotation);
 				ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -126,15 +223,13 @@ var refInit = {
 				rLeg = ctx.fillRect(this.x+20.5, this.y+72, this.width*0.485, this.height*0.4);
 				this.newPos();
 			}else if(this.type==="pict"){//movable picture *doesn't work*
-				var imG = new Image();
+				var imG = new Image(this.width, this.height);
+				imG.onload = function animate(){refInit.clear(); if(refInit.frameNo>0){ctx.drawImage(imG, this.x, this.y);}};
 				imG.src=this.iSrc;
 				imG.id="imgH";
-				console.log(refInit.frameNo);
-				imG.onload = function animate(){refInit.clear(); if(refInit.frameNo>0){ctx.drawImage(imG, x, y);}};
-				ctx.fillStyle=color;
-				ctx.width=this.width/2;
-				ctx.height=this.height/2;
 				this.newPos();
+				refInit.clear();
+				ctx.drawImage(imG, this.x, this.y);
 			}else if(this.type==="text"){//text
 				ctx.font=(((this.height+this.width)/2))+"px "+font;
 				ctx.fillStyle=color;
@@ -155,133 +250,52 @@ var refInit = {
 				ctx.fillStyle=color;
 				ctx.fillRect(this.x, this.y, this.width, this.height);
 			}
-		}
-		/**Collision and Gravity Rules*/
-		this.newPos = function(){
-			this.gravitySpeed+=this.gravity*0.2;
-			this.x+=this.speedX*0.9;
-			this.y+=this.speedY+this.gravitySpeed;
-			this.hitBottom();
-			for(var i=0; i<statObjs.length; i+=1){
-				var myWidthH=player1.width/1.5; var myHeightH=player1.height/1.5;
-				var myTop=player1.y; var myBottom=player1.y+(player1.height);
-				var myLeft=player1.x; var myRight=player1.x+(player1.width);
-				
-				var otTop=statObjs[i].y; var otBottom=statObjs[i].y+statObjs[i].height;
-				var otLeft=statObjs[i].x; var otRight=statObjs[i].x+statObjs[i].width;
-//				console.log(this.x+this.width, this.rightPos, myRight);
-		
-				if(myLeft-2<otRight //everything left of myLeft
-				&& !(myLeft<otRight-2)//nothing left of myLeft
-				&& !(myLeft>otRight+2) //nothing right of myLeft
-				&& (myTop<otBottom-1)
-				&& (myBottom>otTop+1))
-					{player1.pHitLeft(statObjs[i]);}//my left collide
-				else if(myRight+2>otLeft//everything right of myRight
-				&& !(myRight>otLeft+2)//nothing right of myRight
-				&& !(myRight<otLeft-2)//nothing left of myRight
-				&& (myTop<otBottom-1)
-				&& (myBottom>otTop+1))
-					{player1.pHitRight(statObjs[i]);}//my right collide
-//				console.log(this.topPos, otBottom);
-				if(myTop-2<otBottom//everything above myTop
-				&& !(myTop<otBottom-6)//nothing above myTop
-				&& !(myTop>otBottom+2)//nothing below myTop
-				&& (myRight>=otLeft+1)
-				&& (myLeft<=otRight-1))
-					{player1.pHitTop(statObjs[i]);}//my top collide
-				else if(this.bottomPos+2>otTop//everything below myBottom
-				&& !(myBottom>otTop+6)//nothing below myBottom
-				&& !(myBottom<otTop-2)//nothing above myBottom
-				&& (myRight>=otLeft+1)
-				&& (myLeft<=otRight-1))
-					{player1.pHitBottom(statObjs[i]);}//my bottom collide
+		};
+	},  
+	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); frI=(refInit.frameNo>=60)? refInit.frameNo=1:refInit.frameNo+=1;},
+	stop: function(){clearInterval(this.interval);},
+	start: function(dimention, direction, ufunct, int, dW, dH){
+		clearInterval(this.interval);
+		int=(null)? 16:int;
+		window.addEventListener('keydown', function(e){
+			e.preventDefault();
+			refInit.keys = (refInit.keys || []);
+			refInit.keys[e.key] = (e.type == "keydown");
+//			console.log(e);
+			optT(e);
+		});
+		window.addEventListener('keyup', function(e){
+			refInit.keys[e.key] = (e.type == "keydown");
+			optT(e);
+		});
+		if(dimention=="2d"){
+			if(direction=="down"){
+				this.canvas.width=dW || window.innerWidth;
+				this.canvas.height=dH || window.innerHeight;
+				this.context=this.canvas.getContext("2d");
+				this.frameNo=0;
+				console.log("2d down-facing time!");
+				this.interval=setInterval(ufunct, int);
+			}else if(direction=="left"){
+				window.innerWidth=dW||window.innerWidth;
+				window.innerHeight=dH||window.innerHeight;
+				this.canvas.width=window.innerWidth;
+				this.canvas.height=window.innerHeight;
+				this.context=this.canvas.getContext("2d");
+				this.frameNo=0;
+				console.log("2d left-on time!");
+				this.interval=setInterval(ufunct, int);
+			}else if(direction=="forward"){
+				this.canvas.width=dW || window.innerWidth;
+				this.canvas.height=dH || window.innerHeight;
+				this.context=this.canvas.getContext("2d");
+				this.frameNo=0;
+				console.log("2d first person time!");
+				this.interval=setInterval(ufunct, int);
 			}
-		}
-		/**Player Ground Collision*/
-		this.hitBottom = function(){
-			var rockbottom=refInit.canvas.height-this.height*1.83;
-			if(this.y>=rockbottom){
-				this.gravitySpeed=0;
-				this.speedY=0;
-				this.speedX/=4;
-				this.y=rockbottom;
-			}
-		}
-		/**Player Sides Collision Physics*/
-		this.pHitBottom = function(whaBot){
-//			console.log("Player Bottom Coll");
-			if(whaBot.type=="coin"){
-				if(whaBot.score>0){
-					var c = document.querySelector("#coinS");
-					c.volume=0.4;
-					c.play();
-				}
-				whaBot.health=-0;
-				player1.score+=whaBot.score;
-				whaBot.score=0;
-			}else{
-				this.gravitySpeed=0;
-				this.speedY=0;
-				this.speedX/=4;
-				this.y=whaBot.topPos-this.height;
-			}
-		}
-		/**Player Sides Collision Physics*/
-		this.pHitTop = function(whaBot){
-//			console.log("Player Top Coll");
-			if(whaBot.type=="coin"){
-				if(whaBot.score>0){
-					var c = document.querySelector("#coinS");
-					c.volume=0.4;
-					c.play();
-				}
-				whaBot.health=-0;
-				player1.score+=whaBot.score;
-				whaBot.score=0;
-			}else{
-				this.gravitySpeed+=0.2;
-				this.speedY=0.2;
-				this.y=whaBot.bottomPos;
-			}
-		}
-		/**Player Sides Collision Physics*/
-		this.pHitLeft = function(whaBot){
-//			console.log("Player Left Coll");
-			if(whaBot.type=="coin"){
-				if(whaBot.score>0){
-					var c = document.querySelector("#coinS");
-					c.volume=0.4;
-					c.play();
-				}
-				whaBot.health=-0;
-				player1.score+=whaBot.score;
-				whaBot.score=0;
-			}else{
-				this.x=whaBot.rightPos;
-				this.speedX=0;
-				this.speedY*=0.98;
-			}
-		}
-		/**Player Sides Collision Physics*/
-		this.pHitRight = function(whaBot){
-//			console.log("Player Right Coll");
-			if(whaBot.type=="coin"){
-				if(whaBot.score>0){
-					var c = document.querySelector("#coinS");
-					c.volume=0.4;
-					c.play();
-				}
-				whaBot.health=-0;
-				player1.score+=whaBot.score;
-				whaBot.score=0;
-			}else{
-				this.x=whaBot.leftPos-this.width;
-				this.speedX=0;
-				this.speedY*=0.98;
-			}
-		}
-	}
-}
-
+		}else if(dimention=="3d"){
+		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
+		}else{console.warn("No Dimention Found");}
+	},
+};
 //used a lot from: https://www.w3schools.com/graphics/game_intro.asp and https://www.w3schools.com/tags/ref_canvas.asp
