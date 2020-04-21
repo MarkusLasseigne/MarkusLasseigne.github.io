@@ -6,8 +6,8 @@ var updateGame2 = function(){//refInit.clear();
 	eartBox.update();
 };
 var level2 = function(){
-	sL1=(refInit.frameNo!==undefined)? refInit.clear():refInit.start("2d", "down", updateGame2, 10);
+	sL2=(refInit.frameNo!==undefined)? refInit.clear():refInit.start("2d", "down", updateGame2, 10);
 	eartBox = new refInit.draw("pict", 250, 250, 20, 20, "rgba(0,0,0,0)","/projects/bouncingearth.png");
 	eartBox.gravity=0;
-	eartBox.speedX=1;
+	eartBox.speedX=1; eartBox.speedY=1;
 };

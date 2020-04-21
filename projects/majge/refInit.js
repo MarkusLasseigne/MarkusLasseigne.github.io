@@ -1,5 +1,5 @@
 /** clearArc( context | x-position | y-position | radius | color ) */
-clearArc = function(cotx, x, y, radius, color){
+var clearArc = function(cotx, x, y, radius, color){
 	cotx.save();
 	cotx.globalCompositeOperation = 'destination-out';
 	cotx.beginPath();
@@ -15,7 +15,7 @@ var refInit = {
 	/*** refInit.draw(9);
 	 ** (type|width|height|x-position|y-position|color|image-src|text|text-font)
 	 */
-	draw: function(type, width, height, x, y, color, iSrc, text, font){
+	draw: function(type, name, width, height, x, y, color, iSrc, text, font){
 	/**Positional*/
 		this.width=width||this.width;
 		this.height=height||this.height;
@@ -25,31 +25,37 @@ var refInit = {
 		this.yT=y||this.y;
 		this.xR=this.xL+this.width;
 		this.yB=this.yT+this.height;
+		this.xC=this.x+(this.width/2);
+		this.yC=this.y+(this.height/2);
 		this.rotation=0;
 
-	/**Statistical*/
-		this.type=type||this.type;
-		this.iSrc=iSrc;
-		this.text=text;
-		this.font=font;
+		this.mass=50;
 		this.speedX=0;
 		this.speedY=0;
 		this.gravity=0;
 		this.gravitySpeed=0;
+
+	/**Statistical*/
+		this.name=name||"";
+		this.type=type||this.type;
+		this.iSrc=iSrc;
+		this.text=text;
+		this.font=font;
 		this.health=100;
 		this.score=0;
 
 		this.move = function(){
 			for(let i=0;i<arguments.length;i++){
+//				console.log(this.speedX, this.speedY);
 				switch(arguments[i]){
 					case "sL=sR":
 						if(this.x>=cWidth){this.x=0-this.width;}
 						else if(this.x+this.width<0){this.x=cWidth;}
 						break;
-					case "sLB":if(this.x<0){this.x=0;} break;
-					case "sRB":if(this.x>=cWidth-this.width){this.x=cWidth-this.width;} break;
-					case "sBB":if(this.y>=cHeight-this.height){this.y=cHeight-this.height;} break;
-					case "sUB":if(this.y<0){this.y=0;} break;
+					case "sLB":if(this.x<0){this.speedX=(0-this.speedX); this.x=0;} break;
+					case "sRB":if(this.x>=cWidth-this.width){ this.speedX=(0-this.speedX); this.x=cWidth-this.width;} break;
+					case "sBB":if(this.y>=cHeight-this.height){this.speedY=(0+this.speedY); this.y=cHeight-this.height;} break;
+					case "sUB":if(this.y<0){this.speedY=(0-this.speedY); this.y=0;} break;
 					case "space":if(refInit.keys && refInit.keys[" "]){this.speedY=-8;} break;
 					case "arrows":
 						if(refInit.keys && refInit.keys["ArrowLeft"]){this.speedX=-2;}
@@ -72,29 +78,22 @@ var refInit = {
 			if(this.y>=rockbottom){
 				this.gravitySpeed=0;
 				this.speedY=0;
-				this.speedX/=4;
+				this.speedX*=0.02;
 				this.y=rockbottom;
 			}
 		};
 
-		this.collide = function(player, obj){
-			if(player.xL<=obj.xR&&!(player.xL<obj.xR-10)&&!(player.xL>obj.xR)&&(player.yT<=obj.yB-2)&&(player.yB>=obj.yT+2)){
-				console.log("Player Collided Left");
+		this.collide = function(obj){
+			if(this.xL<=obj.xR &&!(this.xL<=obj.xR-4)&&!(this.xL>obj.xR)&&(this.yT<=obj.yB-2)&&(this.yB>=obj.yT+2)){
 				this.x=obj.xR;
 			}
-			else if(player.xR>=obj.xL&&!(player.xR>obj.xL+10)&&!(player.xR<obj.xL)&&(player.yT<=obj.yB-2)&&(player.yB>=obj.yT+2)){
-				console.log("Player Collided Right");
-				player.x=obj.xL-player.width;
+			else if(this.xR>=obj.xL&&!(this.xR>=obj.xL+4)&&!(this.xR<obj.xL)&&(this.yT<=obj.yB-2)&&(this.yB>=obj.yT+2)){
+				this.x=(obj.xL-this.width);
 			}
-			if(player.yT<=obj.yB&&!(player.yT<=obj.yB-1)&&!(player.yT>obj.yB)&&(player.xR>=obj.xL+2)&&(player.xL<=obj.xR-2)){
-				console.log("Player Collided Top");
+			if(this.yT<=obj.yB&&!(this.yT<=obj.yB-5)&&!(this.yT>obj.yB)&&(this.xR>=obj.xL+2)&&(this.xL<=obj.xR-2)){
 				this.y=obj.yB;
-				this.speedY/4;
 			}
-			else if(player.yB>=obj.yT&&!(player.yB>=obj.yT+1)&&!(player.yB<=obj.yT)&&(player.xR>=obj.xL+2)&&(player.xL<=obj.xR-2)){
-				console.log("Player Collided Bottom");
-				this.gravitySpeed=0;
-				this.speedY=0;
+			else if(this.yB>=obj.yT&&!(this.yB>=obj.yT+5)&&!(this.yB<=obj.yT)&&(this.xR>=obj.xL+2)&&(this.xL<=obj.xR-2)){
 				this.y=(obj.yT-this.height);
 			}
 		};
@@ -109,94 +108,100 @@ var refInit = {
 			this.yT=this.y;
 			this.xR=this.xL+this.width;
 			this.yB=this.yT+this.height;
+			this.xC=this.x+(this.width/2);
+			this.yC=this.y+(this.height/2);
 			for(var i=0;i<statObjs.length;i+=1){
 				var objC=statObjs[i];
 				var myWidthH=player1.width/1.5; var myHeightH=player1.height/1.5;
-				if(this.xL<=objC.xR //everything left of myLeft
-				&& !(this.xL<objC.xR-(objC.width/2))//nothing left of myLeft
-				&& !(this.xL>objC.xR) //nothing right of myLeft
-				&& (this.yT<=objC.yB-5)
-				&& (this.yB>=objC.yT+5)){
-					if(objC.type==="coin"){
-						if(objC.score>0){
-							var c = document.querySelector("#coinS");
-							c.volume=0.4;
-							c.play();
+				if(this.xL<=objC.xR&&this.xR>=objC.xL&&this.yT<=objC.yB&&this.yB>=objC.yT){
+					if(this.xL<=objC.xR //everything left of myLeft
+					&& !(this.xL<objC.xR-(objC.width/2))//nothing left of myLeft
+					&& !(this.xL>objC.xR) //nothing right of myLeft
+					&& (this.yT<=objC.yB-5)
+					&& (this.yB>=objC.yT+5)){
+						if(objC.type==="coin"){
+							if(objC.score>0){
+								var c = document.querySelector("#coinS");
+								c.volume=0.4;
+								c.play();
+							}
+							objC.health=-0;
+							this.score+=objC.score;
+							objC.score=0;
+						}else{
+							this.gravitySpeed*=1.004;
+							this.speedX=0;
+							this.x+=2.18;
+							this.collide(objC);
 						}
-						objC.health=-0;
-						this.score+=objC.score;
-						objC.score=0;
-					}else{
-						this.x+=(Math.abs(this.speedX)*3.75);
-						this.gravitySpeed*=1.004;
-						this.speedX=0;
-						this.collide(this, objC);
-					}
-				}//my left collide
-				else if(this.xR>=objC.xL//everything right of myRight
-				&& !(this.xR>objC.xL+(objC.width/2))//nothing right of myRight
-				&& !(this.xR<objC.xL)//nothing left of myRight
-				&& (this.yT<=objC.yB-5)
-				&& (this.yB>=objC.yT+5)){
-					if(objC.type==="coin"){
-						if(objC.score>0){
-							var c = document.querySelector("#coinS");
-							c.volume=0.4;
-							c.play();
+					}//my left collide
+					else if(this.xR>=objC.xL//everything right of myRight
+					&& !(this.xR>objC.xL+(objC.width/2))//nothing right of myRight
+					&& !(this.xR<objC.xL)//nothing left of myRight
+					&& (this.yT<=objC.yB-5)
+					&& (this.yB>=objC.yT+5)){
+						if(objC.type==="coin"){
+							if(objC.score>0){
+								var c = document.querySelector("#coinS");
+								c.volume=0.4;
+								c.play();
+							}
+							objC.health=-0;
+							this.score+=objC.score;
+							objC.score=0;
+						}else{
+							this.gravitySpeed*=1.004;
+							this.speedX=0;
+							this.x-=2.18;
+							this.collide(objC);
 						}
-						objC.health=-0;
-						this.score+=objC.score;
-						objC.score=0;
-					}else{
-						this.x-=Math.abs(this.speedX)*3.75;
-						this.gravitySpeed*=1.004;
-						this.speedX=0;
-						this.collide(this, objC);
-					}
-				}//my right collide
-				if(this.yT<objC.yB//everything above myTop
-				&& !(this.yT<objC.yB-(objC.height/2))//nothing above myTop
-				&& !(this.yT>objC.yB)//nothing below myTop
-				&& (this.xR>=objC.xL+5)
-				&& (this.xL<=objC.xR-5)){
-					if(objC.type==="coin"){
-						if(objC.score>0){
-							var c = document.querySelector("#coinS");
-							c.volume=0.4;
-							c.play();
+					}//my right collide
+					if(this.yT<objC.yB//everything above myTop
+					&& !(this.yT<objC.yB-(objC.height/2))//nothing above myTop
+					&& !(this.yT>objC.yB)//nothing below myTop
+					&& (this.xR>=objC.xL+4)
+					&& (this.xL<=objC.xR-4)){
+						if(objC.type==="coin"){
+							if(objC.score>0){
+								var c = document.querySelector("#coinS");
+								c.volume=0.4;
+								c.play();
+							}
+							objC.health=-0;
+							this.score+=objC.score;
+							objC.score=0;
+						}else{
+							this.speedX/=this.speedY;
+							this.gravitySpeed=(0-this.speedY);
+							this.y+=(6+(Math.abs(this.speedY)));
+							this.speedY=0;
+							this.collide(objC);
 						}
-						objC.health=-0;
-						this.score+=objC.score;
-						objC.score=0;
-					}else{
-						this.speedX/=2;
-						this.y+=(Math.abs(this.speedY)*2)+this.gravitySpeed;
+					}//my top collide
+					else if(this.yB>objC.yT//everything below myBottom
+					&& !(this.yB>objC.yT+(objC.height/2))//nothing below myBottom
+					&& !(this.yB<objC.yT)//nothing above myBottom
+					&& (this.xR>=objC.xL+4)
+					&& (this.xL<=objC.xR-4)){
+						if(objC.type==="coin"){
+							if(objC.score>0){
+								var c = document.querySelector("#coinS");
+								c.volume=0.4;
+								c.play();
+							}
+							objC.health=-0;
+							this.score+=objC.score;
+							objC.score=0;
+						}else{
+							this.speedX/=2;
+							this.gravitySpeed=0;
+							this.speedY=0;
+							this.y-=(6+(Math.abs(this.speedY)/2));
+							this.collide(objC);
+						}
+					}//my bottom collide
+				}
 
-						this.collide(this, objC);
-					}
-				}//my top collide
-				else if(this.yB>objC.yT//everything below myBottom
-				&& !(this.yB>objC.yT+(objC.height/2))//nothing below myBottom
-				&& !(this.yB<objC.yT)//nothing above myBottom
-				&& (this.xR>=objC.xL+5)
-				&& (this.xL<=objC.xR-5)){
-					if(objC.type==="coin"){
-						if(objC.score>0){
-							var c = document.querySelector("#coinS");
-							c.volume=0.4;
-							c.play();
-						}
-						objC.health=-0;
-						this.score+=objC.score;
-						objC.score=0;
-					}else{
-						this.gravitySpeed=0;
-						this.y-=Math.abs(this.speedY)+(this.gravity*0.2);
-						this.speedX=this.speedX*0.5;
-						this.speedY=0;
-						this.collide(this, objC);
-					}
-				}//my bottom collide
 			}
 			this.hitBottom();
 		};
@@ -206,10 +211,16 @@ var refInit = {
 		this.update = function(){
 			if(this.health<=0){return;}
 			ctx=refInit.context;
+//			refInit.clear();
 			if(this.type==="static"){
 				ctx.fillStyle=color;
 				ctx.rotate(this.rotation);
 				ctx.fillRect(this.x, this.y, this.width, this.height);
+			}else if(this.type==="playe"){
+				ctx.fillStyle=color;
+				ctx.fillRect(this.x, this.y, this.width, this.height);
+//				refInit.context = new refInit.draw(null, this.width, this.height, this.x+this.width, this.y, "rgba(50,50,200,1)");
+				this.newPos();
 			}else if(this.type==="player"){//standard static player
 				ctx.fillStyle="rgba(0,0,0,0.08)";
 				shad = ctx.fillRect(this.x, this.y+20, this.width, this.height*0.888);
@@ -227,16 +238,14 @@ var refInit = {
 				imG.onload = function animate(){refInit.clear(); if(refInit.frameNo>0){ctx.drawImage(imG, this.x, this.y);}};
 				imG.src=this.iSrc;
 				imG.id="imgH";
-				this.newPos();
-				refInit.clear();
 				ctx.drawImage(imG, this.x, this.y);
+				this.newPos();
 			}else if(this.type==="text"){//text
 				ctx.font=(((this.height+this.width)/2))+"px "+font;
 				ctx.fillStyle=color;
-				this.text=text;
+				this.text=text||this.text;
 				ctx.fillText(this.text, this.x-(this.width*2), this.y-(this.height*2));
 			}else if(this.type==="sText"){//player score text
-//				console.log(this.text);
 				ctx.font= (this.width/3.4)+"px "+font;
 				ctx.fillStyle=color;
 				this.text="Score: "+player1.score;
@@ -250,9 +259,15 @@ var refInit = {
 				ctx.fillStyle=color;
 				ctx.fillRect(this.x, this.y, this.width, this.height);
 			}
+			if(this.name&&false){
+				ctx.font=(this.width/2)+"px "+" Ariel";
+				ctx.fillStyle="rgba(0,0,0,1)";
+				ctx.fillText(this.name, this.x, this.y);
+			}
 		};
 	},  
-	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height); frI=(refInit.frameNo>=60)? refInit.frameNo=1:refInit.frameNo+=1;},
+	clear: function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);// frI=(refInit.frameNo>=60)? refInit.frameNo=1:refInit.frameNo+=1;
+	},
 	stop: function(){clearInterval(this.interval);},
 	start: function(dimention, direction, ufunct, int, dW, dH){
 		clearInterval(this.interval);
@@ -274,7 +289,6 @@ var refInit = {
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
-				console.log("2d down-facing time!");
 				this.interval=setInterval(ufunct, int);
 			}else if(direction=="left"){
 				window.innerWidth=dW||window.innerWidth;
@@ -283,18 +297,16 @@ var refInit = {
 				this.canvas.height=window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
-				console.log("2d left-on time!");
 				this.interval=setInterval(ufunct, int);
 			}else if(direction=="forward"){
 				this.canvas.width=dW || window.innerWidth;
 				this.canvas.height=dH || window.innerHeight;
 				this.context=this.canvas.getContext("2d");
 				this.frameNo=0;
-				console.log("2d first person time!");
 				this.interval=setInterval(ufunct, int);
 			}
 		}else if(dimention=="3d"){
-		console.log("Woahh nelly, that'll take more time!(would be voxel based)");
+			console.warn("Woahh nelly, that'll take more time!(would be voxel based)");
 		}else{console.warn("No Dimention Found");}
 	},
 };
