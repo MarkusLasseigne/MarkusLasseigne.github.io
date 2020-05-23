@@ -1,3 +1,10 @@
+submit_git sh:
+cd /projects/$1.github.io
+git add .
+git commit -m "save all"
+git push
+
+fix_and_submit_git sh:
 cd /projects
 mv $1.github.io backup
 git clone https://github.com/$1/$1.github.io
@@ -8,3 +15,7 @@ git config user.email a@gmail.com
 git add .
 git commit -m "save all"
 git push
+
+cleanup sh:
+cd /projects
+rm -rf backup

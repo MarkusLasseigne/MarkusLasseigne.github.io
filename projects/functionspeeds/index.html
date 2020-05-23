@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			html, body{
+				width:100vw;
+				height:100vh;
+				background:rgba(100,100,100,1);
+				user-select:none;
+				padding:0;
+				margin:0;
+			}
+			#control{
+				width:100%;
+				height:5vh;
+				background-color:rgba(255,255,255,1);
+				position:sticky;
+				top:0;
+				left:0;
+			}
+			.cont{
+				width:19.9%;
+				height:100%;
+				font:4vh Arial, sans-serif;
+				background-color:rgba(255,255,255,1);
+				border-left:0.1vw solid rgba(0,0,0,1);
+				border-radius:2px;
+				padding:0;
+				text-align:center;
+				float:left;
+				top:0;
+			}
+			.cont:hover{background-color:rgba(200,200,200,1);}
+			#sResp{
+				width:100%;
+				height:50%;
+				background-color:rgba(100,100,100,1);
+			}
+		</style>
+		<script>var inR=[456,8,946,13];</script>
+	</head>
+	<body>
+		<div id="control">
+			<form class="cont" id="bInt" action="index.html">
+				Ints.Per.Sec:<input type="number" id="bIS" min="5" max="288">
+			</form>
+			<div class="cont" id="bStart" onclick="lps.start(fS,16,inR);">Start</div>
+			<div class="cont" id="bStop">Stop</div>
+			<div class="cont" id="fps">FPS:</div>
+			<div class="cont" id="elap">Timer:</div>
+		</div>
+		<div id="sResp"></div>
+		<script src="fTools.js"></script>
+		<script src="index.js" async></script>
+		<script>
+			var eIn = document.querySelector("#bIS").addEventListener("keydown", function(e){if(e.key==="Enter"){}});
+		</script>
+	</body>
+</html>

@@ -8,130 +8,166 @@
 				width:100%;
 				height:100%;
 				overflow:hidden;
-				background-color:rgba(0,0,0,0);
+				background-color:rgba(255,255,255,0.5);
 				user-select:none;
 				margin:0;
 			}
-			#nOptC{
+			#gMenu{
 				width:20vw;
-				height:25vw;
-				border:0.5em solid rgba(0,0,0,1);
+				height:12.75vh;
+				border:2px solid rgba(0,0,0,1);
+				background-color:rgba(240,240,240,1);
 				overflow:hidden;
-				background-color:rgba(255,255,255,0.9);
 				position:absolute;
-				margin:0;
 				top:5%;
-				left:15%;
+				left:5%;
 			}
-			#pName{
+			#gMT{
 				width:100%;
+				height:6.5vh;
+				overflow:hidden;
+			}
+			#gBC{
+				width:100%;
+				height:3vh;
+				overflow:hidden;
+				border-top:2px solid rgba(0,0,0,1);
+				border-bottom:2px solid rgba(0,0,0,1);
+			}
+			.menuS{
+				width:100%;
+				height:3vh;
+				background-color:rgba(240,240,240,1);
+				overflow:hidden;
+				position:absolute;
+			}
+			.mTops{
+				margin-top:0;
+				float:left;
+			}
+			#gTitle{
 				font:bold 2.75vw arial, sans-serif;
-				text-align:left;
-				padding:0;
-			}
-			.optH{
-				font:bold 2.5vw arial, sans-serif;
-				text-align:left;
-			}
-			.optH:hover{background-color:rgba(200, 200, 200, 0.75);}
-			.lvltxt{
-				font:bold 2vw Times, serif;
 				margin:0;
 			}
-			.bSt{
-				max-width:25%;
-				font:1.5vw arial, sans-serif;
+			#mX{
+				width:1vw;
+				height:1vw;
 				border:1px solid rgba(0,0,0,1);
+				border-radius:5px;
+				background-color:rgba(255,255,255,1);
 				cursor:pointer;
-				visibility:visible;
+				font:bold 1vw arial, sans-serif;
 				text-align:center;
-				padding:0;
-			}
-			.bSt:hover{background-color:rgba(240,240,240,0.8);}
-			#imgH{
 				position:absolute;
-				cursor:pointer;
+				top:0;
+				right:0;
 			}
+			#mX:hover{background-color:rgba(200,200,200,1);}
+			.gButts{
+				height:100%;
+				border:0;
+				border-right:2px solid rgba(0,0,0,1);
+				border-radius:0 6px 0 0;
+				background-color:rgba(255,255,255,1);
+				padding:0 1px 0 2px;
+				cursor:pointer;
+				font:bold 150% arial, sans-serif;
+				text-align:center;
+				float:left;
+				margin:0;
+			}
+			.gButts:hover{background-color:rgba(200,200,200,1);}
+			#levC{z-index:2;}
+			#optC{z-index:1;}
+			#devC{z-index:0;}
 		</style>
+		<script>
+			var cHeight=window.innerHeight; var cWidth=window.innerWidth;
+			var coinSound=document.querySelector("#coinS");
+			coinSound.volume=0.4;
+			window.addEventListener('keydown', function(e){
+					e.preventDefault();
+					window.keys = (window.keys || []);
+					window.keys[e.key] = (e.type == "keydown");
+//					console.log(e);
+					menF(e.key);
+			});
+			window.addEventListener('keyup', function(e){
+				if(window.keys){
+					window.keys[e.key] = (e.type == "keydown");
+//					menF(e.key);
+				}
+			});
+			window.addEventListener("click", function(e){
+				window.clicks=(window.clicks||[]);
+				clickD={cX:e.x, cY:e.y, tStamp:e.timeStamp};
+				window.clicks.push(clickD);
+				if(window.clicks.length>=3){window.clicks.shift();}
+			});
+		</script>
 	</head>
 	<body>
-		<img id="imgH" src="/projects/bouncingearth.png" style="visibility:hidden;">
 		<canvas id="daCan"></canvas>
-		<table id="nOptC">
-			<tr id="prName">
-				<th id="pName" colspan="2">Project Majg'e</th>
-			</tr>
-			<tr>
-				<th class="optH" colspan="2" onclick="levelT();">Levels</th>
-			</tr>
-			<tr>
-				<td class="bSt" id="demo1" onclick="optT('bClose'); level1();">Demo-1</td>
-			</tr>
-			<tr>
-				<td class="bSt" id="demo2" onclick="optT('bClose'); level2();">BouncingTest</td>
-			</tr>
-			<tr>
-				<th class="optH" colspan="2" onclick="optionT();">Options</th>
-			</tr>
-			<tr>
-				<td class="bSt" id="opt1" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</td>
-			</tr>
-			<tr>
-				<td class="bSt" id="opt2" onclick="document.querySelector('body').requestFullscreen();">Fullscreen</td>
-			</tr>
-		</table>
+		<div id="gMenu" style="visibility: visible;">
+			<div id="gMT">
+				<p class="mTops" id="gTitle">Project Majg'e</p>
+				<p class="mTops" id="mX" onclick="menF('mClose');">X</p>
+			</div>
+			<div id="gBC">
+				<p class="gButts" onclick="menF('tLevels');">Levels</p>
+				<p class="gButts" onclick="menF('tOptions');">Options</p>
+				<p class="gButts" onclick="menF('tDev');">Dev</p>
+			</div>
+			<div class="menuS" id="levC">
+				<input type="button" class="gButts" id="l1" onclick="menF('mClose'); level1();" value="Demo-1">
+				<input type="button" class="gButts" id="l2" onclick="menF('mClose'); level2();" value="BouncingTest">
+				<input type="button" class="gButts" id="l3" onclick="menF('mClose'); level3();" value="Snake">
+			</div>
+			<div class="menuS" id="optC">
+				<input type="button" class="gButts" onclick="document.querySelector('body').requestFullscreen();" value="Fullscreen">
+			</div>
+			<div class="menuS" id="devC">
+				<input type="button" class="gButts" onclick="this.value=window.innerWidth+'x'+window.innerHeight;" value="Resolution">
+			</div>
+		</div>
 		<script src="refInit.js"></script>
 		<script src="levelc1.js"></script>
 		<script src="levelc2.js"></script>
+		<script src="levelc3.js"></script>
 		<script>
-			var levelT=function(){
-				if(document.querySelector("#demo1").style.visibility==="visible" && document.querySelector("#demo2").style.visibility==="visible"){
-					document.querySelector("#demo1").style.visibility="hidden";
-					document.querySelector("#demo2").style.visibility="hidden";
-				}else{
-					document.querySelector("#demo1").style.visibility="visible";
-					document.querySelector("#demo2").style.visibility="visible";
-				}
-			};
-			var optionT=function(){
-				if(document.querySelector("#opt1").style.visibility==="visible" && document.querySelector("#opt2").style.visibility==="visible"){
-					document.querySelector("#opt1").style.visibility="hidden";
-					document.querySelector("#opt2").style.visibility="hidden";
-				}else{
-					document.querySelector("#opt1").style.visibility="visible";
-					document.querySelector("#opt2").style.visibility="visible";
-				}
-			};
-			var keyU=function(){window.addEventListener("keyup",optT);};
-			var keyP=function(){window.addEventListener("keypress",optT);};
-			var keyD=window.addEventListener("keydown",optT);
-			var lClick=window.addEventListener("click",optT);
-			var rClick=window.addEventListener("contextmenu",optT);
+			var gMenu = document.querySelectorAll("#gMenu")[0].style;
+			var l1 = document.querySelectorAll("#l1")[0].style;
+			var l2 = document.querySelectorAll("#l2")[0].style;
+			var l3 = document.querySelectorAll("#l3")[0].style;
+			var sel1 = document.querySelectorAll("#levC")[0].style;
+			var sel2 = document.querySelectorAll("#optC")[0].style;
+			var sel3 = document.querySelectorAll("#devC")[0].style;
 
-			function optT(e){
-				if(e.key=="Escape"||e=="bClose"){
-					var opCSV=document.querySelector("#nOptC").style;
-					if(opCSV.visibility!=="hidden"){
-						opCSV.visibility="hidden";
-						document.querySelector("#demo1").style.visibility="hidden";
-						document.querySelector("#demo2").style.visibility="hidden";
-						document.querySelector("#opt1").style.visibility="hidden";
-						document.querySelector("#opt2").style.visibility="hidden";
-					}else{
-						opCSV.visibility="visible";
-						document.querySelector("#demo1").style.visibility="visible";
-						document.querySelector("#demo2").style.visibility="visible";
-						document.querySelector("#opt1").style.visibility="visible";
-						document.querySelector("#opt2").style.visibility="visible";
-					}
+//			var keyD=window.addEventListener("keydown",optT);
+			var cTS;
+			var menF = function(toDo){
+				switch(toDo){
+					case "r":
+					case "F5":
+						location.reload();
+						break;
+					case "c":
+						console.clear();
+						break;
+					case "tLevels":
+						sel1.zIndex=2; sel2.zIndex=1; sel3.zIndex=0;
+						break;
+					case "tOptions":
+						sel1.zIndex=0; sel2.zIndex=2; sel3.zIndex=1;
+						break;
+					case "tDev":
+						sel1.zIndex=1; sel2.zIndex=0; sel3.zIndex=2;
+						break;
 				}
-				if(e.key=="r"||e.key=="F5"){
-					location.reload();
-				}
-				if(e.key=="c"){
-					console.clear();
-				}
-			}
+				if((toDo==="mClose"||toDo==="Escape")&&gMenu.visibility==="visible"){gMenu.visibility="hidden";}
+				else if((toDo==="mOpen"||toDo==="Escape")&&gMenu.visibility==="hidden"){gMenu.visibility="visible";}
+			};
+
 //&#9776;⚙️
 		</script>
 	</body>
