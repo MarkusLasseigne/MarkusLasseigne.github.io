@@ -30,7 +30,7 @@ var level1 = function(){
 			coin2 = new majge.create("coin", "nocolide", 30, 30, 375, y-304, "rgba(200,200,0,0.9)"),
 			coin3 = new majge.create("coin", "nocolide", 30, 30, 1320, y-314, "rgba(200,200,0,0.9)")],
 		obstacles: [
-			wall1 = new majge.create("wall", "colidestatic", 200, 50, 300, y-148, "rgba(46,24,0,1)"),
+//			wall1 = new majge.create("wall", "colidestatic", 200, 50, 300, y-148, "rgba(46,24,0,1)"),
 			wall2 = new majge.create("pipe", "colidestatic", 54, 154, 720, y-154, "rgba(0,60,0,1)"),
 			wall3 = new majge.create("wall", "colidestatic", 200, 20, 1420, y-10, "rgba(0,160,0,1)"),
 			wall4 = new majge.create("wall", "colidestatic", 100, 30, 700, y-314, "rgba(46,24,0,1)"),
