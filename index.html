@@ -110,7 +110,7 @@
 		</nav>
 		<nav id="leftBar"></nav>
 		<iframe class="fClass" id="iFrame" src="/home.html" 'SameSite=None' 'Secure'></iframe>
-		<script> //To add new button, add button object to paths.json
+		<script> /**To add new button, add button object to paths.json */
 			var pLBar=document.querySelector("#leftBar");
 			var pFrame=document.querySelector("#iFrame");
 			var pFstyle=pFrame.style;
@@ -123,8 +123,6 @@
 					else if(a.className!==("P"+(b+1))){a.className=("P"+(b+1));}
 				}); document.title=nP1.value; pFrame.src=nP1.link;
 			};
-			/**Calls jBtnD on refresh window.onload(if(){jBtnD("home")};);*/
-			
 			/**Handles LeftBar opening and closing.*/
 			var lBtnF = function(){
 				let dIn=document.querySelectorAll("INPUT").forEach(function(e){e.onclick=function(){
