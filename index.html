@@ -116,12 +116,15 @@
 			var pFstyle=pFrame.style;
 			/**Handles Button Shuffling.*/
 			let jBtnD = function(nP1){let lBarL=pLBar.childNodes; let iS=0;
+				if(nP1.link === pFrame.src){jBtnD(nP1);};
 				lBarL.forEach(function(a, b, c){
 					if(nP1===a){nP1.className="P1";	iS=1;}
 					else if(iS<=0){a.className=("P"+(b+2));}
 					else if(a.className!==("P"+(b+1))){a.className=("P"+(b+1));}
 				}); document.title=nP1.value; pFrame.src=nP1.link;
 			};
+			/**Calls jBtnD on refresh window.onload(if(){jBtnD("home")};);*/
+			
 			/**Handles LeftBar opening and closing.*/
 			var lBtnF = function(){
 				let dIn=document.querySelectorAll("INPUT").forEach(function(e){e.onclick=function(){
