@@ -92,7 +92,7 @@
 		</nav>
 		<nav id="leftBar"></nav>
 		<iframe class="fClass" id="iFrame" src="/home.html"></iframe>
-		<script onload="jBtnD(homeButton);"> /**To add new button, add button object to paths.json */
+		<script > /**To add new button, add button object to paths.json */
 			var pLBar=document.querySelector("#leftBar");
 			var pFrame=document.querySelector("#iFrame");
 			var pFstyle=pFrame.style;
@@ -110,13 +110,12 @@
 							}
 							pLBar.appendChild(nBtn);
 					}});
-					lBtnF();
+					pFrame.src="/home.html"; lBtnF();
 				}
 			}; pJson();
 			var homeButton=document.querySelectorAll("#home");
 			/**Handles Button Shuffling.*/
 			let jBtnD = function(nP1){let lBarL=pLBar.childNodes; let iS=0;
-				if(nP1.link != pFrame.src){pFrame.src=nP1.link;};
 				lBarL.forEach(function(a, b, c){
 					if(nP1===a){nP1.className="P1";	iS=1;}
 					else if(iS<=0){a.className=("P"+(b+2));}
