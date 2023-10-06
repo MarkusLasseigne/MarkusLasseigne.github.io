@@ -92,7 +92,10 @@
 		</nav>
 		<nav id="leftBar"></nav>
 		<iframe class="fClass" id="iFrame" src="/home.html"></iframe>
-		<script> /**To add new button, add button object to paths.json */
+		<script onload="jBtnD(homeButton);"> /**To add new button, add button object to paths.json */
+			var pLBar=document.querySelector("#leftBar");
+			var pFrame=document.querySelector("#iFrame");
+			var pFstyle=pFrame.style;
 			/**Pulls button objects from json file to create the main buttons.*/
 			let pJson = function(){pJ=new XMLHttpRequest(); pJ.open('GET','/paths.json'); pJ.responseType='json'; pJ.send();
 				pJ.onload=function(){let pJR=pJ.response;
@@ -110,9 +113,7 @@
 					lBtnF();
 				}
 			}; pJson();
-			var pLBar=document.querySelector("#leftBar");
-			var pFrame=document.querySelector("#iFrame");
-			var pFstyle=pFrame.style;
+			var homeButton=document.querySelectorAll("#home");
 			/**Handles Button Shuffling.*/
 			let jBtnD = function(nP1){let lBarL=pLBar.childNodes; let iS=0;
 				if(nP1.link != pFrame.src){pFrame.src=nP1.link;};
