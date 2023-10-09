@@ -1,139 +1,55 @@
 <!DOCTYPE HTML>
-<html>
+<html style="width:100%; height:100%; background:none; user-select:none; text-align:center; margin:0;">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
-			html, body{
-				width:100%;
-				height:100%;
-				background:none;
-				user-select:none;
-				text-align:center;
-				margin:0;
-				top:0;
-			}
-			#definers{
-				width:94vw;
-				height:auto;
-				border-radius:0 0 10px 10px;
-				background:rgba(235,245,255,0.7);
-				overflow:hidden;
-				margin:auto;
-				top:0;
-			}
 			ul{
 				padding:0;
+				margin:0;
 				list-style-type:none;
 				background:rgba(235,245,255,0.88);
 				text-align:left;
-				margin:0;
 			}
-			#pName{font:bold 1.6vw sans-serif;}
-			#pDescr{font:1.4vw sans-serif;}
-			#pPath{font:1vw sans-serif;}
-			#opSp{
-				background-color:rgba(245,245,245,0.75);
-				border-top:2px solid rgba(0,0,0,1);
-				border-bottom:2px solid rgba(0,0,0,1);
-			}
+			#cardName{font:bold 1.6vw sans-serif;}
+			#cardDescription{font:1.4vw sans-serif;}
+			#cardPath{font:1vw sans-serif;}
 		</style>
 	</head>
-	<body>
-		<div id="definers">
-			<ul id="rIndex">
-				<li id="pName">Root Index.html:</li>
-				<li id="pDescr">The root index is commonly the main page of a website, that then transfers to other pages, but in this case it acts as a hub, putting the selected page in its "iframe" and keeping the same navbar, allowing for superior modularity in quantity.</li>
-				<li id="pPath">Path:#/index.html</li>
+	<body style="width:100%; height:100%; background:none; user-select:none; text-align:center; margin:0;">
+		<div id="newDefiners" style="width:94vw; height:auto; display:flex; flex-direction:column; border-radius:0 0 10px 10px; background:rgba(235,245,255,0.7); margin:auto;">
+			<ul id="opSp" style="order:5; background-color:rgba(245,245,245,0.75);	border-top:2px solid black; border-bottom:2px solid black;">
+				<li id="cardName">Operation Spark:</li>
+				<li id="cardDescription">Everything below assigned to me by the coding school Operation Spark.</li>
 			</ul>
-			<ul id="home">
-				<li id="pName">Home:</li>
-				<li id="pDescr">The main page for the site.</li>
-				<li id="pPath">Path:#/home.html</li>
-			</ul>
-			<ul id="meta">
-				<li id="pName">Portfolio:</li>
-				<li id="pDescr">The page that lists the other pages and what they do.</li>
-				<li id="pPath">Path:#/portfolio.html</li>
-			</ul>
-			<ul id="majg">
-				<li id="pName">Majg'e (WIP):</li>
-				<li id="pDescr">Modular JavaScript Game Engine is a custom JS game engine I'm working on to replace all of the individual game engines used in previous projects.</li>
-				<li id="pPath">Path:#/projects/majge/index.html</li>
-			</ul>
-			<ul id="clog">
-				<li id="pName">Change Log:</li>
-				<li id="pDescr">The page where I post more in-depth descriptions of what I change and when.</li>
-				<li id="pPath">Path:#/changelog.html</li>
-			</ul>
-			<ul id="opSp">
-				<li id="pName">Operation Spark:</li>
-				<li id="pDescr">Everything below assigned to me by the coding school Operation Spark.</li>
-			</ul>
-			<ul id="box">
-				<li id="pName">Bouncing Box:</li>
-				<li id="pDescr">A project that gives the taste of game development on the web.</li>
-				<li id="pPath">Path:#/projects/bouncing-box/index.html</li>
-			</ul>
-			<ul id="plat">
-				<li id="pName">Platformer:</li>
-				<li id="pDescr">A cannon-dodging, collectible-grabbing adventure game for HalleBot</li>
-				<li id="pPath">Path:#/projects/platformer/index.html</li>
-			</ul>
-			<ul id="circ">
-				<li id="pName">Circularity:</li>
-				<li id="pDescr">A motion poem using random number generation and velocity, applied to circle shapes.</li>
-				<li id="pPath">Path:#/projects/circularity/index.html</li>
-			</ul>
-			<ul id="run">
-				<li id="pName">Runtime:</li>
-				<li id="pDescr">A side-scroller game featuring our own HalleBot!</li>
-				<li id="pPath">Path:#/projects/bouncing-box/index.html</li>
-			</ul>
-			<ul id="spl">
-				<li id="pName">Scratch Pad Strings:</li>
-				<li id="pDescr">Practicing the basics of JavaScript by passing string function tests in a runtime.</li>
-				<li id="pPath">Path:#/projects/scrach-pad-strings/index.html</li>
-			</ul>
-			<ul id="spl">
-				<li id="pName">Scratch Pad Loops:</li>
-				<li id="pDescr">Practicing the basics of JavaScript by passing loop function tests in a runtime.</li>
-				<li id="pPath">Path:#/projects/scrach-pad-loops/index.html</li>
-			</ul>
-			<ul id="spc">
-				<li id="pName">Scratch Pad Conditions:</li>
-				<li id="pDescr">Practicing the basics of JavaScript by passing condition function tests in a runtime.</li>
-				<li id="pPath">Path:#/projects/scrach-pad-conditionals/index.html</li>
-			</ul>
-			<ul id="tgu">
-				<li id="pName">Test Guru:</li>
-				<li id="pDescr">Practicing learning JavaScript by fixing function checks in a runtime.</li>
-				<li id="pPath">Path:#/projects/test-guru/index.html</li>
-			</ul>
-			<ul id="fgu">
-				<li id="pName">Function Guru:</li>
-				<li id="pDescr">Practicing learning JavaScript by fixing checked functions in a runtime.</li>
-				<li id="pPath">Path:#/projects/function-guru/index.html</li>
-			</ul>
-			<ul id="bpe">
-				<li id="pName">Billypedia:</li>
-				<li id="pDescr">An intro project into jQuery by tweaking with a wiki page.</li>
-				<li id="pPath">Path:#/projects/billypedia/index.html</li>
-			</ul>
-			<ul id="udp">
-				<li id="pName">Underpants:</li>
-				<li id="pDescr">Practicing using JavaScript libraries by passing tests in a runtime.</li>
-				<li id="pPath">Path:#/projects/underpants/index.html</li>
-			</ul>
-			<ul id="udp">
-				<li id="pName">Lets-Get-Functional:</li>
-				<li id="pDescr">A functional library for opspark projects.</li>
-				<li id="pPath">Path:#/projects/lodown/</li>
-			</ul>
-			<ul id="tips">
-				<li id="pName">Site Tips:</li>
-				<li id="pDescr">For iframes(the main content of the pages):</li>
-				<li id="pPath">Right click-Context Menu has a reload on iframes to adjust for rescaling. Bottom right corner will resize/rescale on click and drag.</li>
+			<ul id="tips" style="order:17;">
+				<li id="cardName">Site Tips:</li>
+				<li id="cardDescription">For iframes(the main content of the pages):</li>
+				<li id="cardPath">Right click-Context Menu has a reload on iframes to adjust for rescaling. Bottom right corner will resize/rescale on click and drag.</li>
 			</ul>
 		</div>
+		<script>
+			var cardContainer = document.querySelector("#newDefiners");
+			var pullJSON = function(){pJ=new XMLHttpRequest(); pJ.open('GET','/paths.json'); pJ.responseType='json'; pJ.send();
+				pJ.onload=function(){let pJR=pJ.response; pJR.forEach(function(a,b,c){
+						var cards = document.createElement("UL");
+						var cardName = document.createElement("LI");
+						var cardDescription = document.createElement("LI");
+						var cardPath = document.createElement("LI");
+						cards.style="order:"+b+";";
+						for(let key in a){
+								cards.className="card"+key;
+								cardName.innerText=key+":";
+								cardName.id="cardName";
+								cardDescription.innerText=a[key].description;
+								cardDescription.id="cardDescription";
+								cardPath.innerText="Path:#"+a[key].path;
+								cardPath.id="cardPath";
+						}
+						cards.appendChild(cardName);
+						cards.appendChild(cardDescription);
+						cards.appendChild(cardPath);
+						cardContainer.appendChild(cards);
+			})};}; pullJSON();
+		</script>
 	</body>
 </html>
