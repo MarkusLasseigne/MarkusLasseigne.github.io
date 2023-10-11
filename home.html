@@ -5,22 +5,15 @@
 		<style>
 			html, body{
 				width:100%;
-				height:100%;
-				display:flex;
 				background:transparent;
-				user-select:none;
 				padding:0;
 				margin:0;
-				overflow:hidden;
 			}
 			.main{
 				width:90vw;
-				height:100%;
 				padding:2px;
 				background-color:rgba(235,245,255,0.96);
-				margin:0 auto;
-				overflow:hidden;
-				border-radius:0 0 2% 2%;
+				border-radius:0 0 3ch 3ch;
 			}
 			.logo{
 				width:6.5%;
@@ -31,15 +24,11 @@
 				max-width:100%;
 				text-align:center;
 				font-size:8.6vw;
-				user-select:none;
 				margin:-2% 0 0 0;
 			}
 			.nC{
 				width:60%;
-				display:flex;
 				flex-wrap:wrap;
-				margin:0 auto;
-				user-select:none;
 			}
 			.self, .about{
 				box-sizing:border-box;
@@ -47,21 +36,24 @@
 				max-height:80vh;
 				font:2.5vw arial, sans-serif;
 				flex:50%;
-				overflow:hidden;
 				border-radius:2%;
-			}
-			@media (max-width:60vh){
-				.self, .about{
-					flex:100%;
-					font:5vw arial, sans-serif;
-				}
-			}
-			h2, h3{
-				margin:-3% 0;
 			}
 			li{
 				margin-left:4vw;
 				float:left;
+			}
+			html, body, .main{height:100%;}
+			html, body, .nC{display:flex;}
+			h2, h3{margin:-3% 0;}
+			.main, .nC{margin:0 auto;}
+			html, body, .self, .about{overflow:hidden;}
+			html, body, .fname, .nC{user-select:none;}
+			@media (max-width:85vh){
+				.self, .about{
+					max-height:50vh;
+					flex:100%;
+					font:5vw arial, sans-serif;
+				}
 			}
 		</style>
 	</head>

@@ -5,40 +5,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			html, body{
-				width:100%;
-				height:100%;
-				background:black url("startile.png") repeat left top;
-				overflow:hidden;
 				padding:0;
 				margin:0;
 			}
 			#leftBar{
-				width:8vw;
 				min-width:2.6vh;
-				height:100%;
-				background-color:rgba(0,0,1,0.88);
-				display:flex;
-				flex-direction:column;
 				z-index:0;
 				overflow-y:auto;
 			}
 			input{
 				height:4vh;
-				font:bold 1vw arial, sans-serif;
-				border:none;
-				border-bottom:0.2vh solid white;
-				background-color:rgba(0,0,1,0.88);
-				color:white;
 				cursor:pointer;
-			}
-			@media(max-width:60vh){
-				input{height:auto; line-height:0; writing-mode:vertical-rl; text-orientation: upright; font:bold 2vw arial, sans-serif;}
-				.P1{writing-mode:initial;}
-			}
-			input:hover, .P1{
-				transition-duration: 0.3s;
-				background-color:white;
-				color:black;
 			}
 			.P1{
 				top:0;
@@ -47,96 +24,88 @@
 				order:-1;
 			}
 			#contentDiv{
-				width:100%;
 				max-width:92vw;
-				height:100%;
-				display:flex;
-				flex-direction:column;
 				z-index:1;
 			}
-			#topBar{
-				width:100%;
-				display:flex;
-				flex-direction:row;
-				background-color:rgba(0,0,1,0.88);
-			}
-			#topBar, .P1{
-				height:5vh;
-				flex-shrink:0;
-			}
 			#pageDescription{
-				width:100%;
 				margin-top:0;
 				margin-left:0.4vh;
-				font:bold 1vw arial, sans-serif;
-				color:white;
 			}
-			@media(max-width:60vh){#pageDescription{font-size:45%;}}
+			html, body, #contentDiv, #topBar, #pageDescription, #frameDiv{width:100%;}
+			#leftBar, #optionB{width:8vw;}
+			html, body, #leftBar, #contentDiv, #optionB, #frameDiv{height:100%;}
+			#topBar, .P1{height:5vh; flex-shrink:0;}
+			#iFrame[name="closed"]{max-width:99vw; margin-left:-8vw;}
+			#iFrame[name="open"]{max-width:91vw; margin-left:0;}
+			.bodyS, #leftBar, #contentDiv, #topBar{display:flex;}
+			.bodyS, #topBar{flex-direction:row;}
+			#leftBar, #contentDiv{flex-direction:column;}
+			input, #pageDescription{font:bold 1vw arial, sans-serif;}
+			html, body, #iFrame{background:rgba(0,0,1,0.88) url("startile.png") repeat right bottom;}
+			#leftBar, input, #topBar{background-color:rgba(0,0,1,0.88);}
+			input, #pageDescription{color:white;}
+			input, #topBar, #iFrame{border:0; border-bottom:0.2vh solid white;}
+			html, body, #iFrame{overflow:hidden;}
+			input:hover, .P1{
+				transition-duration:0.3s;
+				background-color:white;
+				color:black;
+			}
 			#iFrame{
-				width:99vw;
-				min-width:25%;
-				max-width:99vw;
-				height:100%;
-				min-height:25%;
-				max-height:94.5vh;
+				border-radius:0 0 0.5em 0;
+				border-right:0.2vh solid white;
 				resize:both;
-				border-radius:0 0 8px 0;
-				border:0.2vh solid white;
-				border-left:0;
-				margin-left:-8vw;
-				overflow:hidden;
-				background:rgba(0,0,1,0.88) url("startile.png") repeat right bottom;
+			}
+			@media(max-width:82vh){
+				input{height:auto; line-height:0; writing-mode:vertical-rl; text-orientation: upright; font:bold 2vw arial, sans-serif;}
+				.P1{padding-left:1px; writing-mode:initial;}
+				#pageDescription{font-size:45%;}
 			}
 		</style>
 		<title>Home</title>
 	</head>
-	<body class="bodyS" style="display:flex; flex-direction:row;">
+	<body class="bodyS">
 		<nav id="leftBar"></nav>
 		<div id="contentDiv">
 			<nav id="topBar">
 				<p id="pageDescription"></p>
-				<button id="optionB" width="16vw" style="height:100%; float:right;" onclick="this.innerText=innerWidth+'x'+innerHeight;">Resolution</button>
+				<button id="optionB" onclick="this.innerText=innerWidth+'x'+innerHeight;" style="font-size:1.25vw; float:right; border:0.2vh; border-radius:0.25em;">Resolution</button>
 			</nav>
-			<div id="frameDiv" style="height:100%; width:100%;"><iframe id="iFrame" class="fClass" name="Home" src="/home.html"></iframe></div>
+			<div id="frameDiv"><iframe id="iFrame" class="fClass" name="closed" title="Home" src="/home.html" style="width:99vw; height:99%; min-height:25%;"></iframe></div>
 		</div>
-		<script > /**To add new button, add button object to paths.json */
+		<script> /**To add new button, add button object to paths.json */
 			var pageDescriptor=document.querySelector("#pageDescription");
 			var pageFrame=document.querySelector("#iFrame");
 			var pageFrameStyle=pageFrame.style;
 			/**Pulls button objects from json file to create the main buttons.*/
-			let pageJson = function(){pJson=new XMLHttpRequest(); pJson.open('GET','/paths.json'); pJson.responseType='json'; pJson.send();
+			let pageJson=function(){pJson=new XMLHttpRequest(); pJson.open('GET','/paths.json'); pJson.responseType='json'; pJson.send();
 			pJson.onload=function(){let pageJsonResponse=pJson.response; pageJsonResponse.forEach(function(a,b,c){
-						if(b===1){for(let key in a){
-							pageDescriptor.innerText=a[key].description;
-							pageFrame.src="/home.html";
-							pageFrame.name="Home";
-							document.title="Home";
-						}}
 						if(b>=1){
 							var newButton = document.createElement("INPUT");
 							newButton.className=("P"+b);
 							newButton.type="button";
 							for(let key in a){
+//								console.log(key);
 								newButton.id=a[key].id;
 								newButton.value=key;
 								newButton.src=a[key].path;
-								newButton.onclick=function(){pageButtonCheck(this);};
+								newButton.onclick=function(){pageButtonCheck(newButton)};
 								newButton.name=a[key].description;
 							}
 							document.querySelector("#leftBar").appendChild(newButton);
+							if(b===1){pageButtonCheck(newButton);}
 					}});
 				}
 			}; pageJson();
 			var pageButtonCheck=function(changeTo){/**Button Check and Set*/
 				var sideButtons=document.querySelectorAll("INPUT");
 				let iS=0;
-				
 				var doLot=function(state,changeToo){
-					if(state==="open"){pageFrameStyle.marginLeft="0vw";pageFrameStyle.maxWidth="91vw";}else if(state==="closed"){pageFrameStyle.marginLeft="-8vw";pageFrameStyle.maxWidth="99vw";};
-					if(changeTo.value!=pageFrame.name){
+					if(state==="open"){pageFrame.name="open";}else if(state==="closed"){pageFrame.name="closed";};
+					if(changeTo.value!=pageFrame.title){
 						pageDescriptor.innerText=changeTo.name;
 						document.title=changeTo.value;
-						pageFrame.name=changeTo.value;
+						pageFrame.title=changeTo.value;
 						pageFrame.src=changeTo.src;
 						sideButtons.forEach(function(a,b,c){
 							if(changeTo===a){changeTo.className="P1"; iS=1;}
@@ -145,14 +114,15 @@
 						});
 					}
 				};
-				if(pageFrame&&changeTo){
-					if((pageFrame.name===changeTo.value||changeTo.className==="P1")&&pageFrameStyle.marginLeft!="0vw"){doLot("open");
-					}else if((pageFrame.name===changeTo.value||changeTo.className==="P1")&&pageFrameStyle.marginLeft==="0vw"){doLot("closed");
-					}else if(pageFrame.name!=changeTo.value&&pageFrameStyle.marginLeft==="0vw"){doLot("closed",changeTo);
-					}else if(pageFrame.name!=changeTo.value){doLot("closed",changeTo);}	
+				if(sideButtons.length>1&&changeTo.value){
+					if((pageFrame.title===changeTo.value||changeTo.className==="P1")&&pageFrame.name==="closed"){doLot("open");
+					}else if((pageFrame.title===changeTo.value||changeTo.className==="P1")&&pageFrame.name==="open"){doLot("closed");
+					}else if(pageFrame.title!=changeTo.value&&pageFrame.name==="open"){doLot("closed",changeTo);
+					}else if(pageFrame.title!=changeTo.value){doLot("closed",changeTo);}	
+				}else if(sideButtons.length>1&&!changeTo.value){
 				}
 			};
-			pageFrame.addEventListener("load",console.log("yo"));
+			pageFrame.addEventListener("load", pageButtonCheck(pageFrame.title));
 		</script>
 	</body>
 </html>
