@@ -44,7 +44,7 @@
 			html, body, #iFrame{background:rgba(0,0,1,0.88) url("startile.png") repeat right bottom;}
 			#leftBar, input, #topBar{background-color:rgba(0,0,1,0.88);}
 			input, #pageDescription{color:white;}
-			input, #topBar, #iFrame{border:0; border-bottom:0.2vh solid white;}
+			input, #iFrame{border:0; border-bottom:0.2vh solid white;}
 			html, body, #iFrame{overflow:hidden;}
 			input:hover, .P1{
 				transition-duration:0.3s;
@@ -53,6 +53,7 @@
 			}
 			#iFrame{
 				border-radius:0 0 0.5em 0;
+				border-top:0.2vh solid white;
 				border-right:0.2vh solid white;
 				resize:both;
 			}
@@ -85,7 +86,6 @@
 							newButton.className=("P"+b);
 							newButton.type="button";
 							for(let key in a){
-//								console.log(key);
 								newButton.id=a[key].id;
 								newButton.value=key;
 								newButton.src=a[key].path;
