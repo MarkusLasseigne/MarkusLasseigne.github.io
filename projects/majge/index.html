@@ -4,68 +4,59 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			html, body{width:100vw;height:100vh;margin:0;}
-			#daCan{
+			#gameCanvas, button{width:100%;}
+			#gameCanvas, #mainMenu{position:absolute;}
+			#mainMenu, button{border-radius:0.2em;background-color:white;}
+			#gameCanvas{
 				height:100%;
-				width:100%;
-				position:absolute;
 				top:0;
-				left:0;
+				z-index:-1;
 			}
 			#mainMenu{
 				width:20vw;
 				height:auto;
-				flex:auto;
-				position:absolute;
+				display:flex;
+				left:8vw;
+				top:2vh;
+				border:2px solid black;
 				font:bold 2.75vw arial, sans-serif;
-				z-index: 1;
-			}
-			#menuTitle{
-				border-bottom:2px solid black;
+				flex-direction:column;
+				z-index:auto;
+				overflow: hidden;
 			}
 			button{
-				height:100%;
-				width:100%;
-				flex:auto;
-				left:0;
-				visibility: inherit;
+				position:relative;
+				display:flex;
 				font:bold 80% arial, sans-serif;
-				background-color:white;
-				border-radius:0 6px 0 0;
 				border:0;
-				border-right:2px solid black;
+				cursor:pointer;
 			}
+			button, #menuTitle{border-bottom:2px solid black;}
+			.menuRows[style="order: 1;"]{button{z-index: 1;}}
+			.menuRows[style="order: 2;"]{button{z-index: -1;}}
+			.menuRows[style="order: 3;"]{button{z-index: -1;}}
 		</style>
 	</head>
 	<body id="majgeBody">
-		<audio id="coinS"><source src="/projects/coin-collect.wav" type="audio/wav"></source></audio>
 		<script>
-			var cHeight=window.innerHeight; var cWidth=window.innerWidth;
-//			var coinSound=document.querySelector("#coinS");
-//			coinSound.volume=0.4;
-		</script>
-		<script>
-			var menuInit={//TODO: Make entire page into this object
-				menuList:{
-					mainMenu:{type:"DIV",style:"visibility:visible;",parent:"#majgeBody"},
-					menuTitle:{type:"DIV",innerText:"Project Majg'e",parent:"#mainMenu"},
-					menuTabs:{type:"DIV",parent:"#mainMenu"},
-					menuButtons:{type:"DIV",parent:"#mainMenu"},
-					menuLevels:{type:"BUTTON",class:"menuButtons",innerText:"Levels",parent:"#menuTabs"},
-					menuOptions:{type:"BUTTON",class:"menuButtons",innerText:"Options",parent:"#menuTabs"},
-					menuDev:{type:"BUTTON",class:"menuButtons",innerText:"Dev",parent:"#menuTabs"},
-					fullscreen:{type:"BUTTON",style:"visibility:hidden;",class:"optionButtons",innerText:"Fullscreen",parent:"#menuButtons"},
-					resolution:{type:"BUTTON",style:"visibility:hidden;",class:"devButtons",innerText:"Resolution",parent:"#menuButtons"},
-					l1Demo:{type:"BUTTON",class:"gamesButton",innerText:"L1Demo",src:"l1Demo.js",parent:"#menuButtons"},
-					l2Bouncing:{type:"BUTTON",class:"gamesButton",innerText:"L2Bouncing",src:"l2Bouncing.js",parent:"#menuButtons"},
-					l3Snake:{type:"BUTTON",class:"gamesButton",innerText:"L3Snake",src:"l3Snake.js",parent:"#menuButtons"},
-					l4GOL:{type:"BUTTON",class:"gamesButton",innerText:"L4GOL",src:"l4GOL.js",parent:"#menuButtons"},
-					l5Blackjack:{type:"BUTTON",class:"gamesButton",innerText:"L5Blackjack",src:"l5Blackjack.js",parent:"#menuButtons"},
-				},
-				canvasSettings:{
-					canvasHeight:window.innerHeight,
-					canvasWidth:window.innerWidth,
-					coinSound:document.querySelector("#coinS").volume=0.4,
-					pageVolume:1
+			var menuInit={
+				menuList:{//id=name:
+					mainMenu:{type:"DIV",		style:"visibility:visible;",	parent:"#majgeBody"},
+					menuTitle:{type:"DIV",		innerText:"Project Majg'e",		parent:"#mainMenu"},
+					menuTabs:{type:"DIV",		class:"menuRows",		parent:"#mainMenu"},//Parent Div for tab buttons
+					menuLevels:{type:"BUTTON",	class:"menuButtons",	innerText:"Levels",			parent:"#menuTabs"},
+					menuOptions:{type:"BUTTON",	class:"menuButtons",	innerText:"Options",		parent:"#menuTabs"},
+					menuDev:{type:"BUTTON",		class:"menuButtons",	innerText:"Dev",			parent:"#menuTabs"},
+					levelButtons:{type:"DIV",	class:"menuRows",		style:"order: 1;",			parent:"#mainMenu"},//Parent Div for Level buttons
+					l1Demo:{type:"BUTTON",		class:"gamesButton",	innerText:"L1Demo",			src:"l1Demo.js",		parent:"#levelButtons"},
+					l2Bouncing:{type:"BUTTON",	class:"gamesButton",	innerText:"L2Bouncing",		src:"l2Bouncing.js",	parent:"#levelButtons"},
+					l3Snake:{type:"BUTTON",		class:"gamesButton",	innerText:"L3Snake",		src:"l3Snake.js",		parent:"#levelButtons"},
+					l4GOL:{type:"BUTTON",		class:"gamesButton",	innerText:"L4GOL",			src:"l4GOL.js",			parent:"#levelButtons"},
+					l5Blackjack:{type:"BUTTON",	class:"gamesButton",	innerText:"L5Blackjack",	src:"l5Blackjack.js",	parent:"#levelButtons"},
+					optionButtons:{type:"DIV",	class:"menuRows",		style:"order: 2;",			parent:"#mainMenu"},//Parent Div for Option buttons
+					fullscreen:{type:"BUTTON",	class:"optionButtons",	innerText:"Fullscreen",		parent:"#optionButtons"},
+					devButtons:{type:"DIV",		class:"menuRows",		style:"order: 3;",			parent:"#mainMenu"},//Parent Div for Dev buttons
+					resolution:{type:"BUTTON",	class:"devButtons",		innerText:"Resolution",		parent:"#devButtons"},
 				},
 				pageControls:function(){
 					window.addEventListener('keydown', function(e){
@@ -76,8 +67,7 @@
 					});
 					window.addEventListener('keyup', function(e){
 						if(window.keys){
-							window.keys[e.key] = (e.type == "keydown");
-//							menF(e.key);
+							window.keys[e.key] = (e.type == "keydown");//menF(e.key);
 						}
 					});
 					window.addEventListener("click", function(e){
@@ -89,10 +79,10 @@
 				},
 				pageBuild:function(){
 					var body = document.querySelector("#majgeBody");
+					var coinHTML=document.createElement("AUDIO"); coinHTML.id="coinS"; coinHTML.src="/projects/coin-collect.wav"; coinHTML.type="audio/wav"; body.appendChild(coinHTML);
 					menuInit.pageControls();
 					var refInit=document.createElement("SCRIPT"); refInit.src="refInit.js"; body.appendChild(refInit);
-					//Make Menu Box
-					for(let iN in menuInit.menuList){ let newHtml;
+					for(let iN in menuInit.menuList){ let newHtml; //Make Menu Box by iterating through menuList 
 						for(let inIN in menuInit.menuList[iN]){
 							if(inIN=="type"){newHtml=document.createElement(menuInit.menuList[iN][inIN]); newHtml.id=iN;}
 							if(inIN=="class"){newHtml.className=menuInit.menuList[iN][inIN];}
@@ -101,30 +91,34 @@
 							if(inIN=="src"){let newScript=document.createElement("SCRIPT"); newScript.src=menuInit.menuList[iN][inIN]; body.appendChild(newScript);}
 							if(inIN=="parent"){document.querySelector(menuInit.menuList[iN][inIN]).appendChild(newHtml);}
 						}
-					}
+					}var makeCanvas=document.createElement("CANVAS"); makeCanvas.id="gameCanvas"; body.appendChild(makeCanvas);
+				},
+				canvasSettings:{
+					canvasHeight:window.innerHeight,
+					canvasWidth:window.innerWidth,
+					pageVolume:1
 				},
 				menuSwitch:function(to){
-					var mMenu = document.querySelectorAll("#mainMenu")[0].style;
-					var gButton = document.querySelectorAll(".gamesButton")[0].style;
-					var oButtons = document.querySelectorAll(".optionButtons")[0].style;
-					var dButtons = document.querySelectorAll(".devButtons")[0].style;
+					var mMenu = document.querySelector("#mainMenu").style;
+					var gButton = document.querySelector("#levelButtons").style;
+					var oButtons = document.querySelector("#optionButtons").style;
+					var dButtons = document.querySelector("#devButtons").style;
 					if(to=="Project Majg'e"||to=="Escape"){if(mMenu.visibility=="visible"){mMenu.visibility="hidden";}else{mMenu.visibility="visible";}}
-					if(to=="Levels"){gButton.visibility="visible"; oButtons.visibility="hidden"; dButtons.visibility="hidden";}
-					if(to=="Options"){gButton.visibility="hidden"; oButtons.visibility="visible"; dButtons.visibility="hidden";}
-					if(to=="Dev"){gButton.visibility="hidden"; oButtons.visibility="hidden"; dButtons.visibility="visible";}
+					if(to=="Levels"){gButton.order="1"; oButtons.order="2"; dButtons.order="3";}
+					if(to=="Options"){gButton.order="2"; oButtons.order="1"; dButtons.order="3";}
+					if(to=="Dev"){gButton.order="2"; oButtons.order="3"; dButtons.order="1";}
 					if(to=="Fullscreen"){document.querySelector('body').requestFullscreen();}
 					if(to=="Resolution"){return document.querySelector('#resolution').innerText=window.innerWidth+'x'+window.innerHeight;}
-					if(to=="L1Demo"){l1Demo();}
-					if(to=="L2Bouncing"){l2Bouncing();}
-					if(to=="L3Snake"){l3Snake();}
-					if(to=="L4GOL"){l4GOL();}
-					if(to=="L5Blackjack"){l5Blackjack();}
+					if(to=="L1Demo"){mMenu.visibility="hidden"; l1Demo();}
+					if(to=="L2Bouncing"){mMenu.visibility="hidden"; l2Bouncing();}
+					if(to=="L3Snake"){mMenu.visibility="hidden"; l3Snake();}
+					if(to=="L4GOL"){mMenu.visibility="hidden"; l4GOL();}
+					if(to=="L5Blackjack"){mMenu.visibility="hidden"; l5Blackjack();}
 					if(to=="r"||to=="F5"){location.reload();}
 					if(to=="c"){console.clear();}
-				}
+				},
 			}; menuInit.pageBuild();
-//&#9776;⚙️
+//&#9776⚙️
 		</script>
-		<canvas id="daCan"></canvas>
 	</body>
 </html>

@@ -79,10 +79,10 @@ var updateGame3 = function(){
 
 
 	if(snake.coin.score<=0){
-		xRand=Math.floor(Math.random()*Math.floor(cWidth));
-		yRand=Math.floor(Math.random()*Math.floor(cHeight));
-		snake.coin.x=Math.floor(Math.random()*Math.floor(cWidth-snake.coin.width));
-		snake.coin.y=Math.floor(Math.random()*Math.floor(cHeight-snake.coin.height));
+		xRand=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasWidth));
+		yRand=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasHeight));
+		snake.coin.x=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasWidth-snake.coin.width));
+		snake.coin.y=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasHeight-snake.coin.height));
 		snake.coin.score=1;
 		snake.tails.push(new majge.create("box", "colide", 40, 40, snake.tails[snake.tails.length-1].x, snake.tails[snake.tails.length-1].y, "rgba(0,200,0,1)"));
 //		snake.tails[snake.tails.length-1].update();
@@ -93,8 +93,8 @@ var updateGame3 = function(){
 var l3Snake = function(){
 	majge.start("2d", "down", updateGame3, 25);
 	sY=300; sX=300;
-	xRand=Math.floor(Math.random()*Math.floor(cWidth-30));
-	yRand=Math.floor(Math.random()*Math.floor(cHeight-30));
+	xRand=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasWidth-30));
+	yRand=Math.floor(Math.random()*Math.floor(menuInit.canvasSettings.canvasHeight-30));
 	snake={
 		head: new majge.create("sHead", "gravcolide", 50, 50, sX, sY, "rgba(0,50,0,1)"),
 		tails:[

@@ -21,10 +21,11 @@ function updateGame1(){
 
 var l1Demo = function(){
 	majge.start("2d", "left", updateGame1, 10);
-	y=cHeight-100; x=cWidth-100;
+	console.log(menuInit.canvasHeight);
+	y=menuInit.canvasSettings.canvasHeight-100; x=menuInit.canvasSettings.canvasWidth-100;
 
 	gObjs={// V (type|width|height|x-position|y-position|color|image-src|text|text-font)
-		sky: new majge.create("sky", "nocolide", cWidth, cHeight, 0, 0, "rgba(100,240,245,0.88)"),
+		sky: new majge.create("sky", "nocolide", menuInit.canvasSettings.canvasWidth, menuInit.canvasSettings.canvasHeight, 0, 0, "rgba(100,240,245,0.88)"),
 		coins: [
 			coin1 = new majge.create("coin", "nocolide", 30, 30, 150, 500, "rgba(200,200,0,0.9)"),
 			coin2 = new majge.create("coin", "nocolide", 30, 30, 375, y-304, "rgba(200,200,0,0.9)"),
@@ -37,7 +38,7 @@ var l1Demo = function(){
 			wall5 = new majge.create("wall", "colidestatic", 200, 30, 900, y-180, "rgba(0,0,0,1)")
 		],
 //		enemies: [],
-		ground: new majge.create("ground", "colidestatic", cWidth*1.2, 100, 0, y, "rgba(0,160,0,1)"),
+		ground: new majge.create("ground", "colidestatic", menuInit.canvasSettings.canvasWidth*1.2, 100, 0, y, "rgba(0,160,0,1)"),
 		player: new majge.create("player", "colide", 40, 120, 20, y-140, "rgba(46,24,0,1)"),
 		info: [
 			fps = new majge.create("fps", "nocolide", 100, 20, 120, y+10, "rgba(0,0,0,1)"),

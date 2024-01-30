@@ -11,7 +11,7 @@ var clearArc = function(cotx, x, y, radius, color){
 };
 
 var majge={
-	canvas: document.querySelector("#daCan"),
+	canvas: document.querySelector("#gameCanvas"),
 	/**create( type | name | width | height | x | y | color | src | text | font ); */
 	create: function(){
 		var args=[]; for(let i=0;i<arguments.length;i++){args.push(arguments[i]);}
@@ -113,21 +113,21 @@ var majge={
 				switch(arguments[i]){
 					case "bEnd":
 						if(this.x<=0||this.y<=0){snake.head.score=-1;}
-						if(this.xR>=cWidth||this.yB>=cHeight){snake.head.score=-1;}
+						if(this.xR>=menuInit.canvasSettings.canvasWidth||this.yB>=menuInit.canvasSettings.canvasHeight){snake.head.score=-1;}
 						break;
 					case "bAll":
 						if(this.x<0){this.speedX=Math.abs(this.speedX);}
-						if(this.xR>cWidth){this.speedX=(0-Math.abs(this.speedX));}
+						if(this.xR>menuInit.canvasSettings.canvasWidth){this.speedX=(0-Math.abs(this.speedX));}
 						if(this.y<0){this.speedY=Math.abs(this.speedY);}
-						if(this.yB>cHeight){this.speedY=(0-Math.abs(this.speedY));}
+						if(this.yB>menuInit.canvasSettings.canvasHeight){this.speedY=(0-Math.abs(this.speedY));}
 						break;
 					case "sL=sR":
-						if(this.x>=cWidth){this.x=0-this.width;}
-						else if(this.x+this.width<0){this.x=cWidth;}
+						if(this.x>=menuInit.canvasSettings.canvasWidth){this.x=0-this.width;}
+						else if(this.x+this.width<0){this.x=menuInit.canvasSettings.canvasWidth;}
 						break;
 					case "sLB":if(this.x<0){this.speedX=(0-this.speedX); this.x=0;} break;
-					case "sRB":if(this.x>=cWidth-this.width){ this.speedX=(0-this.speedX); this.x=cWidth-this.width;} break;
-					case "sBB":if(this.y>=cHeight-this.height){this.speedY=(0+this.speedY); this.y=cHeight-this.height;} break;
+					case "sRB":if(this.x>=menuInit.canvasSettings.canvasWidth-this.width){ this.speedX=(0-this.speedX); this.x=menuInit.canvasSettings.canvasWidth-this.width;} break;
+					case "sBB":if(this.y>=menuInit.canvasSettings.canvasHeight-this.height){this.speedY=(0+this.speedY); this.y=menuInit.canvasSettings.canvasHeight-this.height;} break;
 					case "sUB":if(this.y<0){this.speedY=(0-this.speedY); this.y=0;} break;
 					case "space":if(window.keys && window.keys[" "]){this.speedY=-8;} break;
 					case "arrows":
@@ -166,7 +166,7 @@ var majge={
 //			console.log(this.name,obj);
 			if(obj.name==="coin"){
 				if(this.xL<=obj.xR&&this.xR>=obj.xL&&this.yT<=obj.yB&&this.yB>=obj.yT){
-					if(obj.score>0){let coin = menuInit.canvasSettings.coinSound; coin.play();}
+					if(obj.score>0){document.querySelector("#coinS").play();}
 					obj.health=-0;
 					this.score+=obj.score;
 					obj.score=0;
@@ -327,11 +327,11 @@ var majge={
 	/** win(object|score needed|lose at); */
 	win: function(player, nScore, lScore){
 		if(player.score<=lScore){
-			lose = new majge.create("text", "nocolide", 100, 100, cWidth/2, cHeight/2, "rgba(0,0,0,1)", null, "You Lose!", " Ariel");
+			lose = new majge.create("text", "nocolide", 100, 100, menuInit.canvasSettings.canvasWidth/2, menuInit.canvasSettings.canvasHeight/2, "rgba(0,0,0,1)", null, "You Lose!", " Ariel");
 			lose.update();
 			majge.clear("interval");
 		}else if(player.score>=nScore){
-			win = new majge.create("text", "nocolide", 100, 100, cWidth/2, cHeight/2, "rgba(0,0,0,1)", null, "You Win!", " Ariel");
+			win = new majge.create("text", "nocolide", 100, 100, menuInit.canvasSettings.canvasWidth/2, menuInit.canvasSettings.canvasHeight/2, "rgba(0,0,0,1)", null, "You Win!", " Ariel");
 			win.update();
 			majge.clear("interval");
 		}
