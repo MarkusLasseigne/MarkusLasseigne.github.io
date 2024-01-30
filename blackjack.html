@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Blackjack</title>
+		<style></style>
+	</head>
+	<body>
+		<input style="position:absolute;" id="start" type="text" placeholder="Double Click to Start" ondblclick="game.start();"></input>
+	</body>
+	<script>
+		var body=document.querySelector("BODY");
+		var game={playerAmount:0,playerCards:[],dealerAmount:0,dealerCards:[],
+			split:function(){},
+			hold:function(){//auto draw till 18 or greater than player, if more than 21 gg player
+				for(;game.dealerAmount<=18||game.dealerAmount>game.playeramount;){//while the dealer is less than 18 or less than the player amount, draw cards
+					game.draw("dealer");
+				}
+			},
+			draw:function(who){//give the player or dealer cards
+				document.querySelector("#start").style.visibility="hidden";
+				if(game.playerAmount<21){
+					if(who=="player"){//give player cards
+						game.playerCards.push(Math.floor(Math.random()*(11-1+1))+1);
+						game.playerAmount=game.playerCards.reduce((accumulator,currentValue)=>{return accumulator+currentValue},0);
+					}else if(who=="dealer"){//give dealer cards
+						console.log("yo");
+						game.dealerCards.push(Math.floor(Math.random()*(11-1+1))+1);
+						game.dealerAmount=game.dealerCards.reduce((accumulator,currentValue)=>{return accumulator+currentValue},0);
+					}//update html
+					document.querySelector("#playerAmount").innerHTML=game.playerAmount;document.querySelector("#playerCards").innerHTML=game.playerCards;document.querySelector("#dealerAmount").innerHTML=game.dealerAmount;document.querySelector("#dealerCards").innerHTML=game.dealerCards;
+				}else if(game.playerAmount==21){this.win=1;this.start("reset");//if player amount is 21, restart game
+				}else if(game.playerAmount>21){this.win=-1;this.start("reset");}//if player amount is more than 21, restart game
+			},
+			win:0,
+			start:function(reset){//start or reset game
+				console.clear();
+				this.playerAmount=0;this.playerCards=[];this.dealerAmount=0;this.dealerCards=[];
+				if(reset=="reset"){document.querySelector("#playerAmount").style.visibility="hidden";document.querySelector("#playerCards").style.visibility="hidden";document.querySelector("#dealerAmount").style.visibility="hidden";document.querySelector("#dealerCards").style.visibility="hidden";document.querySelector("#draw").style.visibility="hidden";document.querySelector("#hold").style.visibility="hidden";
+					return document.querySelector("#start").style.visibility="visible";
+				}else{
+					if(!document.querySelector("#dealerCards")){
+						for(let iN in this){
+							if(iN=="playerAmount"||iN=="playerCards"||iN=="dealerAmount"||iN=="dealerCards"){let div = document.createElement("DIV"); div.id=iN; div.innerHTML=this[iN]; body.appendChild(div);
+							}else if(iN=="hold"){let buttons=document.createElement("BUTTON"); buttons.id=iN; buttons.innerHTML=iN; buttons.onclick=function(){game.hold();}; body.appendChild(buttons);
+							}else if(iN=="draw"){let buttons=document.createElement("BUTTON"); buttons.id=iN; buttons.innerHTML=iN; buttons.onclick=function(){game.draw("player");}; body.appendChild(buttons);}
+						}
+					}
+					document.querySelector("#playerAmount").style.visibility="visible";document.querySelector("#playerCards").style.visibility="visible";document.querySelector("#dealerAmount").style.visibility="visible";document.querySelector("#dealerCards").style.visibility="visible";document.querySelector("#draw").style.visibility="visible";document.querySelector("#hold").style.visibility="visible";document.querySelector("#start").style.visibility="hidden";}
+				this.draw("player");this.draw("player");this.draw("dealer");//auto draw 2 for player and 1 for dealer
+			}
+		};
+	</script>
+</html>

@@ -15,7 +15,7 @@ var updateGame2 = function(){
 	majge.frameNo+=1;
 	if(majge.frameNo>=60){majge.frameNo=1}
 };
-var level2 = function(){
+var l2Bouncing = function(){
 	if(window.clicks&&window.clicks.length>=1){window.clicks.shift();
 		if(window.clicks.length>=0){window.clicks[0]=undefined;}
 	}

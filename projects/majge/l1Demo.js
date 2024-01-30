@@ -19,7 +19,7 @@ function updateGame1(){
 	gObjs.player.update(gObjs);
 }
 
-var level1 = function(){
+var l1Demo = function(){
 	majge.start("2d", "left", updateGame1, 10);
 	y=cHeight-100; x=cWidth-100;
 

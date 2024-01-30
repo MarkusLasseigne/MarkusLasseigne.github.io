@@ -90,7 +90,7 @@ var updateGame3 = function(){
 		snake.coin.update();
 	}
 };
-var level3 = function(){
+var l3Snake = function(){
 	majge.start("2d", "down", updateGame3, 25);
 	sY=300; sX=300;
 	xRand=Math.floor(Math.random()*Math.floor(cWidth-30));

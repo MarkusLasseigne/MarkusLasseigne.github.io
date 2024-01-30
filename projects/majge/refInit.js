@@ -166,7 +166,7 @@ var majge={
 //			console.log(this.name,obj);
 			if(obj.name==="coin"){
 				if(this.xL<=obj.xR&&this.xR>=obj.xL&&this.yT<=obj.yB&&this.yB>=obj.yT){
-					if(obj.score>0){coinSound.play();}
+					if(obj.score>0){let coin = menuInit.canvasSettings.coinSound; coin.play();}
 					obj.health=-0;
 					this.score+=obj.score;
 					obj.score=0;
