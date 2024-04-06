@@ -39,7 +39,6 @@ var majge={
 		this.font=this.font||args[9];
 		this.health=100;
 		this.score=0;
-
 		this.draW=function(){
 			if(this.health<=0){return;}
 			ctx=majge.context;
@@ -75,10 +74,11 @@ var majge={
 				if(this.text>9){bean=6;}				
 				ctx.fillText(this.text, this.x+(this.width/bean), this.y+(this.height/1.5));
 			}else if(this.name==="text"){//text
+//				ctx.fillRect(this.x, this.y, this.width, this.height); // Text debug
 				ctx.font=(((this.height+this.width)/2))+"px "+(this.font||" Ariel");
 				ctx.fillStyle=this.color;
-//				this.text=this.text;
-				ctx.fillText(this.text, this.x-(this.width*2), this.y-(this.height*2));
+				ctx.textAlign="center";
+				ctx.fillText(this.text, this.x+(this.width-20), this.y+(this.height-5));
 			}else if(this.name==="fps"){//fps text
 				ctx.font=((this.width/3.7))+"px "+(this.font||" Ariel");
 				ctx.fillStyle=this.color;
@@ -104,7 +104,7 @@ var majge={
 			}
 			if(this.name&&false){
 				ctx.font=(this.width/2)+"px "+" Ariel";
-				ctx.fillStyle="rgba(0,0,0,1)";
+				ctx.fillStyle=this.color;
 				ctx.fillText(this.name, this.x, this.y);
 			}
 		};
@@ -277,6 +277,11 @@ var majge={
 				if(this.yC-obj.yC<0){
 					console.log("Center Above");
 				}//This Center Above
+			}else if(obj.cType==="check"){
+				if(this.xL<=obj.xR&&this.xR>=obj.xL&&this.yT<=obj.yB&&this.yB>=obj.yT){
+					return true;
+				}else{return false;}
+//				return console.log("yo");
 			}
 		};
 		//this.x=obj.xR; this.x=(obj.xL-this.width); this.y=obj.yB; this.y=(obj.yT-this.height);
@@ -325,13 +330,13 @@ var majge={
 //		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);// frI=(majge.frameNo>=60)? majge.frameNo=1:majge.frameNo+=1;
 	},
 	/** win(object|score needed|lose at); */
-	win: function(player, nScore, lScore){
-		if(player.score<=lScore){
+	win: function(player, nScore, lScore, text){
+		if(player.score<=lScore&&lScore!=""){
 			lose = new majge.create("text", "nocolide", 100, 100, menuInit.canvasSettings.canvasWidth/2, menuInit.canvasSettings.canvasHeight/2, "rgba(0,0,0,1)", null, "You Lose!", " Ariel");
 			lose.update();
 			majge.clear("interval");
 		}else if(player.score>=nScore){
-			win = new majge.create("text", "nocolide", 100, 100, menuInit.canvasSettings.canvasWidth/2, menuInit.canvasSettings.canvasHeight/2, "rgba(0,0,0,1)", null, "You Win!", " Ariel");
+			win = new majge.create("text", "nocolide", 100, 100, menuInit.canvasSettings.canvasWidth/2, menuInit.canvasSettings.canvasHeight/2, "rgba(0,0,0,1)", null, text||"You Win!", " Ariel");
 			win.update();
 			majge.clear("interval");
 		}

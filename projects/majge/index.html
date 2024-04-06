@@ -50,9 +50,10 @@
 					levelButtons:{type:"DIV",	class:"menuRows",		style:"order: 1;",			parent:"#mainMenu"},//Parent Div for Level buttons
 					l1Demo:{type:"BUTTON",		class:"gamesButton",	innerText:"L1Demo",			src:"l1Demo.js",		parent:"#levelButtons"},
 					l2Bouncing:{type:"BUTTON",	class:"gamesButton",	innerText:"L2Bouncing",		src:"l2Bouncing.js",	parent:"#levelButtons"},
-					l3Snake:{type:"BUTTON",		class:"gamesButton",	innerText:"L3Snake",		src:"l3Snake.js",		parent:"#levelButtons"},
-					l4GOL:{type:"BUTTON",		class:"gamesButton",	innerText:"L4GOL",			src:"l4GOL.js",			parent:"#levelButtons"},
-					l5Blackjack:{type:"BUTTON",	class:"gamesButton",	innerText:"L5Blackjack",	src:"l5Blackjack.js",	parent:"#levelButtons"},
+					l3Snake:{type:"BUTTON",		class:"gamesButton",	innerText:"L3Snake (WIP)",		src:"l3Snake.js",		parent:"#levelButtons"},
+					l4GOL:{type:"BUTTON",		class:"gamesButton",	innerText:"L4GOL (WIP)",			src:"l4GOL.js",			parent:"#levelButtons"},
+					l5Blackjack:{type:"BUTTON",	class:"gamesButton",	innerText:"L5Blackjack (WIP)",	src:"l5Blackjack.js",	parent:"#levelButtons"},
+					l6RPS:{type:"BUTTON",	class:"gamesButton",	innerText:"L6RPS",	src:"l6RPS.js",	parent:"#levelButtons"},
 					optionButtons:{type:"DIV",	class:"menuRows",		style:"order: 2;",			parent:"#mainMenu"},//Parent Div for Option buttons
 					fullscreen:{type:"BUTTON",	class:"optionButtons",	innerText:"Fullscreen",		parent:"#optionButtons"},
 					devButtons:{type:"DIV",		class:"menuRows",		style:"order: 3;",			parent:"#mainMenu"},//Parent Div for Dev buttons
@@ -114,11 +115,12 @@
 					if(to=="L3Snake"){mMenu.visibility="hidden"; l3Snake();}
 					if(to=="L4GOL"){mMenu.visibility="hidden"; l4GOL();}
 					if(to=="L5Blackjack"){mMenu.visibility="hidden"; l5Blackjack();}
+					if(to=="L6RPS"){mMenu.visibility="hidden"; l6RPS();}
 					if(to=="r"||to=="F5"){location.reload();}
 					if(to=="c"){console.clear();}
 				},
 			}; menuInit.pageBuild();
-//&#9776⚙️
+//&#9776⚙️ 
 		</script>
 	</body>
 </html>
