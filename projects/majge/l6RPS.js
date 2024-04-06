@@ -19,17 +19,12 @@ var updateGame6 = function(){
 		Papers.forEach(function(sA,sB,sC){if(a.collide(sA)){Scissors.push(Papers.splice(Papers.indexOf(sA),1)[0]); sA.text="✂"; sA.color="rgba(100,0,0,1)"; sA.update();}});
 		a.score=Scissors.length; a.move("bAll"); a.update();}
 	);
-	majge.frameNo+=1;
-	if(majge.frameNo>=60){majge.frameNo=1}
+	majge.frameNo+=1; if(majge.frameNo>=60){majge.frameNo=1}
 };
 var l6RPS = function(){
-	if(window.clicks&&window.clicks.length>=1){window.clicks.shift();
-		if(window.clicks.length>=0){window.clicks[0]=undefined;}
-	}
 	majge.start("2d", "down", updateGame6, 14);
 	for(;Rocks.length<each;){
 		rock = new majge.create("text","check", 40, 40, Math.floor((Math.random()*(majge.canvas.width-1)+1)), Math.floor((Math.random()*(majge.canvas.height-1)+1)), "rgba(0,0,0,1)", "","🪨")
-//		if(){}
 		rock.wGravity=0;
 		rock.speedX=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
 		rock.speedY=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
@@ -37,7 +32,6 @@ var l6RPS = function(){
 	}
 	for(;Papers.length<each;){
 		paper = new majge.create("text","check", 40, 40, Math.floor((Math.random()*(majge.canvas.width-1)+1)), Math.floor((Math.random()*(majge.canvas.height-1)+1)), "rgba(0,0,100,1)", "","🗎")
-
 		paper.wGravity=0;
 		paper.speedX=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
 		paper.speedY=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
@@ -45,7 +39,6 @@ var l6RPS = function(){
 	}
 	for(;Scissors.length<each;){
 		scissor = new majge.create("text","check", 40, 40, Math.floor((Math.random()*(majge.canvas.width-1)+1)), Math.floor((Math.random()*(majge.canvas.height-1)+1)), "rgba(100,0,0,1)", "","✂")
-
 		scissor.wGravity=0;
 		scissor.speedX=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
 		scissor.speedY=Math.ceil(Math.random() * 3) * (Math.round(Math.random()) ? 1 : -1);
