@@ -1,7 +1,7 @@
-# MarkusLasseigne.github.io
+# BlueFlareGaming.github.io
 My personal portfolio website for learning and/or expirementing with coding, started through Operation Spark.
 
-## [Home](MarkusLasseigne.github.io)
+## [Home](BlueFlareGaming.github.io)
 The main page for the site.
 
 ## Portfolio
