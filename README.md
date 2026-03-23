@@ -1,5 +1,5 @@
 # BlueFlareGaming.github.io
-My personal portfolio website for learning and/or expirementing with coding, started through Operation Spark.
+My personal portfolio website for learning and/or experimenting with coding, started through Operation Spark.
 
 ## [Home](BlueFlareGaming.github.io)
 The main page for the site.
@@ -14,7 +14,7 @@ The page where I post more in-depth descriptions of what I change and when.
 Modular JavaScript Game Engine is a custom  JS game engine I'm working on to replace all of the individual game engines used in previous projects.
 
 ## Operation Spark
-Everything below was aassigned to me by the coding school Operation Spark.
+Everything below was assigned to me by the coding school Operation Spark.
 
 ## Runtime
 ![Halle](http://i.imgur.com/yUKA9EN.gif)
@@ -33,7 +33,7 @@ A motion poem using random number generation and velocity applied to circles.
 Also at: http://bit.ly/op-spark-circularity
 
 ## FunctionGuru
-Practicing learning JavaScript by fixing cheched functions in a runtime.
+Practicing learning JavaScript by fixing test functions in a runtime.
 
 ## GetFunctional
 A functional library for opspark projects.
